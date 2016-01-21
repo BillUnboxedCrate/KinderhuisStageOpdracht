@@ -5,7 +5,8 @@ using System.Web;
 
 namespace KinderhuisStageOpdracht.Models.Domain
 {
-    public class Client
+    public class Client : Gebruiker
     {
+        public Planning Planning { get; set; }
     }
 }

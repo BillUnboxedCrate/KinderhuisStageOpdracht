@@ -7,5 +7,8 @@ namespace KinderhuisStageOpdracht.Models.Domain
 {
     public class PlanningItem
     {
+        public int Id { get; set; }
+        public string Titel { get; set; }
+        public string Omschrijving { get; set; }
     }
 }
