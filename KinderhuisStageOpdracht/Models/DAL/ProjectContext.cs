@@ -13,7 +13,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
     {
         DbSet<Gebruiker> Gebruikers { get; set; }
 
-        public ProjectContext() : base("kinderhuisdb")
+        public ProjectContext()
+            : base("kinderhuisconnectionstring")
         {
             
         }
@@ -27,7 +28,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             modelBuilder.Configurations.Add(new KamerToDoItemMapper());
             modelBuilder.Configurations.Add(new KamerToDoMapper());
             modelBuilder.Configurations.Add(new MenuItemMapper());
-            modelBuilder.Configurations.Add(new MenuItemMapper());
+            modelBuilder.Configurations.Add(new MenuMapper());
             modelBuilder.Configurations.Add(new PlanningItemMapper());
             modelBuilder.Configurations.Add(new PlanningMapper());
             modelBuilder.Configurations.Add(new TaakMapper());
