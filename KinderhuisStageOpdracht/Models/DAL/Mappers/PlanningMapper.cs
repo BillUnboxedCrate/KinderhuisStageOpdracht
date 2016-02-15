@@ -17,8 +17,9 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //Properties
 
             //Foreign Key
-            HasRequired(p => p.Client).WithRequiredPrincipal().Map(p => p.MapKey("ClientId"));
-            HasMany(p => p.PlanningItems).WithRequired().Map(p => p.MapKey("PlanningId"));
+            //HasRequired(p => p.Client).WithRequiredPrincipal().Map(p => p.MapKey("ClientId"));
+            //HasMany(p => p.PlanningItems).WithRequired().Map(p => p.MapKey("PlanningId")).WillCascadeOnDelete(true);
+            HasMany(p => p.PlanningItems).WithRequired().WillCascadeOnDelete(true);
         }  
     }
 }

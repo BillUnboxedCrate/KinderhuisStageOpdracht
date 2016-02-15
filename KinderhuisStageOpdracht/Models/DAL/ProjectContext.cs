@@ -11,7 +11,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
     [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class ProjectContext:DbContext
     {
-        DbSet<Gebruiker> Gebruikers { get; set; }
+        public DbSet<Gebruiker> GebruikerSet { get; set; }
 
         public ProjectContext()
             : base("kinderhuisconnectionstring")

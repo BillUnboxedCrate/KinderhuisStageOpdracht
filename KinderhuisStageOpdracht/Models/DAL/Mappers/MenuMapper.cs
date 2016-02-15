@@ -17,7 +17,8 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //Properties
 
             //Foreign Key
-            HasMany(m => m.MenuItems).WithRequired().Map(m => m.MapKey("MenuId"));
+            //HasMany(m => m.MenuItems).WithRequired().Map(m => m.MapKey("MenuId"));
+            HasMany(m => m.MenuItems).WithRequired();
         }
     }
 }

@@ -7,7 +7,13 @@ namespace KinderhuisStageOpdracht.Models.Domain
 {
     public class Client : Gebruiker
     {
-        public virtual Planning Planning { get; set; }
-        public virtual KamerToDo KamerToDo { get; set; }
+        public virtual ICollection<Planning> Plannings { get; set; }
+        public virtual ICollection<KamerToDo> KamerToDos { get; set; }
+
+        public Client()
+        {
+            Plannings = new List<Planning>();
+            KamerToDos = new List<KamerToDo>();
+        }
     }
 }

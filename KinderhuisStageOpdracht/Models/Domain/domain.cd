@@ -1,2 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.Admin">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Domain\Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.Client">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAgA=</HashCode>
+      <FileName>Models\Domain\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.Gebruiker" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAQAgAAAAAAAAAAAABgAAEAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Models\Domain\Gebruiker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.KamerToDo">
+    <Position X="7.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAQ=</HashCode>
+      <FileName>Models\Domain\KamerToDo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.KamerToDoItem">
+    <Position X="7.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAEQAAA=</HashCode>
+      <FileName>Models\Domain\KamerToDoItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.Menu">
+    <Position X="0.5" Y="2.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Domain\Menu.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="MenuItems" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.MenuItem">
+    <Position X="1" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAIAAAAAAAAAAAAAAAAgAKAAAAAAAAgAAAAAI=</HashCode>
+      <FileName>Models\Domain\MenuItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.Opvoeder">
+    <Position X="3.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Domain\Opvoeder.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Clients" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.Planning">
+    <Position X="3.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\Domain\Planning.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.PlanningItem">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAACAAAAAAgAIAAQAAA=</HashCode>
+      <FileName>Models\Domain\PlanningItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.Taak">
+    <Position X="9.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAA=</HashCode>
+      <FileName>Models\Domain\Taak.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.Voorstel">
+    <Position X="9.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Domain\Voorstel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
