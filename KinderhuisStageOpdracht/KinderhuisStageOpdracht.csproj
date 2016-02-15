@@ -184,7 +184,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DAL\ProjectContext.cs" />
+    <Compile Include="Models\DAL\Mappers\KamerToDoItemMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\KamerToDoMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\MenuItemMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\MenuMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\PlanningItemMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\PlanningMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\TaakMapper.cs" />
+    <Compile Include="Models\DAL\ProjectContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Models\DAL\ProjectInitializer.cs" />
     <Compile Include="Models\Domain\KamerToDo.cs" />
     <Compile Include="Models\Domain\KamerToDoItem.cs" />
@@ -258,7 +267,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\DAL\Mappers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

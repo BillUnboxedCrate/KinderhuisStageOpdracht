@@ -9,5 +9,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
     {
         public int Id { get; set; }
         public KamerToDo KamerToDo { get; set; }
+        public string Titel { get; set; }
+        public string Beschrijving { get; set; }
     }
 }

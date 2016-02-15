@@ -12,5 +12,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public string Naam { get; set; }
         public DateTime GeboorteDatum { get; set; }
 
+
     }
 }
