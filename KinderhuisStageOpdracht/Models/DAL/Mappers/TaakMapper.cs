@@ -19,6 +19,12 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             Property(t => t.Beschrijving).IsRequired();
 
             //Foreign Key
+            HasMany(t => t.Vrijwilligers).WithMany(g => g.Taken).Map(m =>
+            {
+                m.ToTable("Vrijwilligers");
+                m.MapLeftKey("TaakId");
+                m.MapRightKey("GebruikerId");
+            });
         }
     }
 }

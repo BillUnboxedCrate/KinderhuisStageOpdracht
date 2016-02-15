@@ -14,11 +14,13 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public DateTime GeboorteDatum { get; set; }
         public string Gebruikersnaam { get; set; }
         public string Wachtwoord { get; set; }
+        public virtual ICollection<Taak> Taken { get; set; }
+
         public string Salt { get; set; }
 
         protected Gebruiker()
         {
-            Salt = GenerateSalt();
+            Taken = new List<Taak>();
         }
 
 
@@ -26,7 +28,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             StringBuilder stringBuilder = new StringBuilder(Voornaam);
             stringBuilder.Append(Naam);
-            stringBuilder.Append(GeboorteDatum.Date.Day);
+            stringBuilder.Append(GeboorteDatum.Date.Year);
 
             var salt = stringBuilder.ToString();
 
