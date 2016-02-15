@@ -16,6 +16,8 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //Property
 
             //Foreign Key
+            HasMany(a => a.Clients);
+            HasMany(a => a.Opvoeders);
         }
     }
 }

@@ -15,6 +15,11 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             HasKey(mi => mi.Id);
 
             //Properties
+            Property(mi => mi.Voorgerecht).IsRequired();
+            Property(mi => mi.Hoofdgerecht).IsRequired();
+            Property(mi => mi.Dessert).IsRequired();
+            Property(mi => mi.Dag).IsRequired();
+            Property(mi => mi.Datum).IsRequired();
 
             //Foreign Key
         }  

@@ -9,7 +9,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
     {
         public int Id { get; set; }
         public Client Client { get; set; }
-        public Opvoeder Opvoeder { get; set; }
-        public ICollection<KamerToDoItem> KamerToDoItems { get; set; } 
+        //public Opvoeder Opvoeder { get; set; }
+        public virtual ICollection<KamerToDoItem> KamerToDoItems { get; set; } 
     }
 }

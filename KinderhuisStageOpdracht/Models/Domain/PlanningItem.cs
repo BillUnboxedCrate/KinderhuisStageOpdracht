@@ -10,5 +10,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public int Id { get; set; }
         public string Titel { get; set; }
         public string Omschrijving { get; set; }
+        public virtual Planning Planning { get; set; }
     }
 }

@@ -15,6 +15,8 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             HasKey(t => t.Id);
 
             //Properties
+            Property(t => t.Titel).IsRequired().HasMaxLength(50);
+            Property(t => t.Beschrijving).IsRequired();
 
             //Foreign Key
         }

@@ -8,7 +8,8 @@ namespace KinderhuisStageOpdracht.Models.Domain
     public class Planning
     {
         public int Id { get; set; }
-        public Client Client { get; set; }
-        public ICollection<PlanningItem> PlanningItems { get; set; } 
+        public int ClientId { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual ICollection<PlanningItem> PlanningItems { get; set; } 
     }
 }

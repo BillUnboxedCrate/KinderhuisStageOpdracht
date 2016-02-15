@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Web;
+using KinderhuisStageOpdracht.Models.Domain;
 
 namespace KinderhuisStageOpdracht.Models.DAL.Mappers
 {
-    public class OpvoederMapper : EntityTypeConfiguration<OpvoederMapper>
+    public class OpvoederMapper : EntityTypeConfiguration<Opvoeder>
     {
         public OpvoederMapper()
         {
@@ -15,6 +16,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //Property
 
             //Foreign Key
+            HasMany(o => o.Clients);
         }
     }
 }

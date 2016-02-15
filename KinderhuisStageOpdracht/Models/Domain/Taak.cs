@@ -8,7 +8,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
     public class Taak
     {
         public int Id { get; set; }
-        public string Naam { get; set; }
+        public string Titel { get; set; }
         public string Beschrijving { get; set; }
     }
-}
+}   

@@ -8,8 +8,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
     public class MenuItem
     {
         public int Id { get; set; }
-        public Menu Menu { get; set; }
-        public DateTime Dag { get; set; }
+
+        public virtual Menu Menu { get; set; }
+
+        public DateTime Datum { get; set; }
+        public string Dag { get; set; }
         public string Voorgerecht { get; set; }
         public string Hoofdgerecht { get; set; }
         public string Dessert { get; set; }

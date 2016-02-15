@@ -16,6 +16,9 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //Property
 
             //Foreign Key
+            HasRequired(c => c.Planning).WithRequiredPrincipal().Map(c => c.MapKey("PlanningId"));
+            HasRequired(c => c.KamerToDo).WithRequiredPrincipal().Map(c => c.MapKey("KamerToDoId"));
+
         }
     }
 }

@@ -7,6 +7,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
 {
     public class Client : Gebruiker
     {
-        public Planning Planning { get; set; }
+        public virtual Planning Planning { get; set; }
+        public virtual KamerToDo KamerToDo { get; set; }
     }
 }
