@@ -7,7 +7,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
 {
     public class Admin : Gebruiker
     {
-        public List<Client> Clients { get; set; }
-        public List<Opvoeder> Opvoeders { get; set; } 
+        public ICollection<Client> Clients { get; set; }
+        public ICollection<Opvoeder> Opvoeders { get; set; } 
     }
 }

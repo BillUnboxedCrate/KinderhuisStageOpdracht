@@ -9,6 +9,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
     {
         public int Id { get; set; }
         public Client Client { get; set; }
-        public List<PlanningItem> PlanningItems { get; set; } 
+        public ICollection<PlanningItem> PlanningItems { get; set; } 
     }
 }

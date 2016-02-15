@@ -7,6 +7,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
 {
     public class Opvoeder : Gebruiker
     {
-        public List<Client> Clients { get; set; };
+        public ICollection<Client> Clients { get; set; }
     }
 }
