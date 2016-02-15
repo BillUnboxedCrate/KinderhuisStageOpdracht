@@ -184,10 +184,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DAL\Mappers\AdminMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\ClientMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\GebruikerMapper.cs" />
     <Compile Include="Models\DAL\Mappers\KamerToDoItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\KamerToDoMapper.cs" />
     <Compile Include="Models\DAL\Mappers\MenuItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\MenuMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\OpvoederMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PlanningItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PlanningMapper.cs" />
     <Compile Include="Models\DAL\Mappers\TaakMapper.cs" />

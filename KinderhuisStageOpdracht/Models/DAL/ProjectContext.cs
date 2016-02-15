@@ -4,12 +4,15 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using KinderhuisStageOpdracht.Models.DAL.Mappers;
+using KinderhuisStageOpdracht.Models.Domain;
 
 namespace KinderhuisStageOpdracht.Models.DAL
 {
     [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class ProjectContext:DbContext
     {
+        DbSet<Gebruiker> Gebruikers { get; set; }
+
         public ProjectContext() : base("kinderhuisdb")
         {
             
@@ -17,6 +20,10 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new GebruikerMapper());
+
+
+
             modelBuilder.Configurations.Add(new KamerToDoItemMapper());
             modelBuilder.Configurations.Add(new KamerToDoMapper());
             modelBuilder.Configurations.Add(new MenuItemMapper());
