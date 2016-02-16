@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace KinderhuisStageOpdracht.Models.Domain
 {
-    interface IGebruikerRepository
+    public interface IGebruikerRepository
     {
         //Telt voor alle gebruikers
         IQueryable<Gebruiker> FindAll();
         Gebruiker FindById(int id);
+        Gebruiker FindByUsername(string username);
 
         //Admins
         IQueryable<Admin> FindAllAdmins();

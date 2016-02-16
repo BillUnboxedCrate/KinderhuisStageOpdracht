@@ -38,9 +38,8 @@ namespace KinderhuisStageOpdracht.Models
     public class LoginViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Gebruikersnaam")]
+        public string Gebruikersnaam { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

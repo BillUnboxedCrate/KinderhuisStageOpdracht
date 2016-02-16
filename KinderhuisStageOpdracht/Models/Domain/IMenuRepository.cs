@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KinderhuisStageOpdracht.Models.Domain
 {
-    interface IMenuRepository
+    public interface IMenuRepository
     {
         IQueryable<Menu> FindAll();
         Menu FindById(int id);

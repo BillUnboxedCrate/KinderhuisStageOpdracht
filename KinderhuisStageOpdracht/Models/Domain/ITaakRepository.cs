@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KinderhuisStageOpdracht.Models.Domain
 {
-    interface ITaakRepository
+    public interface ITaakRepository
     {
         IQueryable<Taak> FindAll();
         Taak FindById(int id);

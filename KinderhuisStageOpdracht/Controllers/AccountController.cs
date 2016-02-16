@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using KinderhuisStageOpdracht.Models;
+using KinderhuisStageOpdracht.Models.Domain;
 
 namespace KinderhuisStageOpdracht.Controllers
 {
@@ -18,9 +19,15 @@ namespace KinderhuisStageOpdracht.Controllers
     public class AccountController : Controller
     {
         private ApplicationUserManager _userManager;
+        private readonly IGebruikerRepository _gebruikerRepository;
 
         public AccountController()
         {
+        }
+
+        public AccountController(IGebruikerRepository gebruikerRepository)
+        {
+            _gebruikerRepository = gebruikerRepository;
         }
 
         public AccountController(ApplicationUserManager userManager)
@@ -57,15 +64,36 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindAsync(model.Email, model.Password);
-                if (user != null)
+                //var user = await UserManager.FindAsync(model.Gebruikersnaam, model.Password);
+                //if (user != null)
+                //{
+                //    await SignInAsync(user, model.RememberMe);
+                //    return RedirectToLocal(returnUrl);
+                //}
+                var gebruiker = _gebruikerRepository.FindByUsername(model.Gebruikersnaam);
+                if (gebruiker.Gebruikersnaam == model.Gebruikersnaam && gebruiker.Wachtwoord == model.Password)
                 {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    System.Diagnostics.Debug.WriteLine("Logged in!");
+                    if (gebruiker is Admin)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Type admin");
+                    }
+                    else if (gebruiker is Opvoeder)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Type opvoeder");
+                    }
+                    else if (gebruiker is Client)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Type client");
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("Type gebruiker");
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ModelState.AddModelError("", "Er is een foute gebruikersnaam of wachtwoord in gegeven.");
                 }
             }
 
