@@ -17,5 +17,10 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             PlanningItems = new List<PlanningItem>();
         }
+
+        public void AddPlanningsItem(PlanningItem item)
+        {
+            PlanningItems.Add(item);
+        }
     }
 }

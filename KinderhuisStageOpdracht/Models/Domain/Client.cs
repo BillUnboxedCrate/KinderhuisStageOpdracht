@@ -17,5 +17,10 @@ namespace KinderhuisStageOpdracht.Models.Domain
             KamerToDos = new List<KamerToDo>();
             Opvoeders = new List<Opvoeder>();
         }
+
+        public void AddKamerToDo(KamerToDo toDo)
+        {
+            KamerToDos.Add(toDo);
+        }
     }
 }

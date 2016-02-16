@@ -16,5 +16,10 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             MenuItems = new List<MenuItem>();
         }
+
+        public void AddMenuItem(MenuItem item)
+        {
+            MenuItems.Add(item);
+        }
     }
 }

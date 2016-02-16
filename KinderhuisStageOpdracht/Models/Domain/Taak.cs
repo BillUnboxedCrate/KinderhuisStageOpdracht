@@ -10,7 +10,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public int Id { get; set; }
         public string Titel { get; set; }
         public string Beschrijving { get; set; }
-        public DateTime Datum { get; set; }
+        public DateTime DatumTijd { get; set; }
         public virtual ICollection<Gebruiker> Gebruikers { get; set; }
 
         public Taak()

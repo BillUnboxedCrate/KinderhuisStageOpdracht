@@ -246,14 +246,14 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Titel = "Tuin",
                 Beschrijving = "De tuin moet worden onderhouden",
-                Datum = new DateTime(2016,2,18),
+                DatumTijd = new DateTime(2016,2,18,14,0,0)
             };
 
             var taak2 = new Taak()
             {
                 Titel = "Keuken",
                 Beschrijving = "Afwas doen",
-                Datum = new DateTime(2016,2,17)
+                DatumTijd = new DateTime(2016,2,17,12,0,0)
             };
             #endregion
 

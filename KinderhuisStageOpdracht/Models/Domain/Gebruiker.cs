@@ -21,14 +21,15 @@ namespace KinderhuisStageOpdracht.Models.Domain
         protected Gebruiker()
         {
             Taken = new List<Taak>();
+            Salt = GenerateSalt();
         }
 
 
         private string GenerateSalt()
         {
-            StringBuilder stringBuilder = new StringBuilder(Voornaam);
+            var stringBuilder = new StringBuilder(Voornaam);
             stringBuilder.Append(Naam);
-            stringBuilder.Append(GeboorteDatum.Date.Year);
+            //stringBuilder.Append(GeboorteDatum.Date.Year);
 
             var salt = stringBuilder.ToString();
 
