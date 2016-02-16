@@ -71,7 +71,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 //    return RedirectToLocal(returnUrl);
                 //}
                 var gebruiker = _gebruikerRepository.FindByUsername(model.Gebruikersnaam);
-                if (gebruiker.Gebruikersnaam == model.Gebruikersnaam && gebruiker.Wachtwoord == model.Password)
+                if (gebruiker.Wachtwoord == model.Password)
                 {
                     System.Diagnostics.Debug.WriteLine("Logged in!");
                     if (gebruiker is Admin)

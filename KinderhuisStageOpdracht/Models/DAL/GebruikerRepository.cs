@@ -27,7 +27,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
         public Gebruiker FindByUsername(string username)
         {
-            return _context.GebruikerSet.FirstOrDefault(g => g.Gebruikersnaam == username);
+            return _context.GebruikerSet.FirstOrDefault(g => g.Gebruikersnaam.ToLower() == username.ToLower());
         }
 
         public IQueryable<Admin> FindAllAdmins()
