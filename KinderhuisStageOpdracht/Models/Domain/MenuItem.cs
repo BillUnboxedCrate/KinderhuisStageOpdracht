@@ -9,8 +9,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
     {
         public int Id { get; set; }
 
-        public virtual Menu Menu { get; set; }
-
         public DateTime Datum { get; set; }
         public string Dag { get; set; }
         public string Voorgerecht { get; set; }

@@ -10,9 +10,9 @@ namespace KinderhuisStageOpdracht.Models.Domain
     {
         IQueryable<Taak> FindAll();
         Taak FindById(int id);
-        void AddTaak(Taak taak);
-        void DeleteTaak(int taakId);
-        void UpdateTaak(Taak taak);
+        void AddMenu(Taak taak);
+        void DeleteMenu(int id);
+        void UpdateMenu(Taak taak);
 
         void SaveChanges();
     }

@@ -11,11 +11,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public string Titel { get; set; }
         public string Beschrijving { get; set; }
         public DateTime Datum { get; set; }
-        public virtual ICollection<Gebruiker> Vrijwilligers { get; set; }
+        public virtual ICollection<Gebruiker> Gebruikers { get; set; }
 
         public Taak()
         {
-            Vrijwilligers = new List<Gebruiker>();
+            Gebruikers = new List<Gebruiker>();
         }
     }
 }   

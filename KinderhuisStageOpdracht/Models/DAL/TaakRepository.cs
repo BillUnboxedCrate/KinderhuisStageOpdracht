@@ -26,18 +26,18 @@ namespace KinderhuisStageOpdracht.Models.DAL
             return _context.TaakSet.Find(id);
         }
 
-        public void AddTaak(Taak taak)
+        public void AddMenu(Taak taak)
         {
             _context.TaakSet.Add(taak);
         }
 
-        public void DeleteTaak(int taakId)
+        public void DeleteMenu(int id)
         {
-            Taak taak = _context.TaakSet.Find(taakId);
+            Taak taak = _context.TaakSet.Find(id);
             _context.TaakSet.Remove(taak);
         }
 
-        public void UpdateTaak(Taak taak)
+        public void UpdateMenu(Taak taak)
         {
             _context.Entry(taak).State = EntityState.Modified;
         }

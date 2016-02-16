@@ -16,7 +16,12 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //Property
 
             //Foreign Key
-            HasMany(o => o.Clients);
+            HasMany(o => o.Clients).WithMany(c => c.Opvoeders).Map(m =>
+            {
+                m.ToTable("ClientOpvoeder");
+                m.MapLeftKey("OpvoederId");
+                m.MapRightKey("ClientId");
+            });
         }
     }
 }
