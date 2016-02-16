@@ -77,6 +77,7 @@ namespace KinderhuisStageOpdracht.Controllers
                     if (gebruiker is Admin)
                     {
                         System.Diagnostics.Debug.WriteLine("Type admin");
+                        return RedirectToAction("Index", "Home");
                     }
                     else if (gebruiker is Opvoeder)
                     {
