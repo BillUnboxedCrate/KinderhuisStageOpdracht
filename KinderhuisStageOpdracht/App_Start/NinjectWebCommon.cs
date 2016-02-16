@@ -1,4 +1,6 @@
 using KinderhuisStageOpdracht.Models.DAL;
+using KinderhuisStageOpdracht.Models.DAL.Mappers;
+using KinderhuisStageOpdracht.Models.Domain;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(KinderhuisStageOpdracht.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(KinderhuisStageOpdracht.App_Start.NinjectWebCommon), "Stop")]
@@ -64,6 +66,11 @@ namespace KinderhuisStageOpdracht.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             //Add repos here
+            kernel.Bind<IGebruikerRepository>().To<GebruikerRepository>().InRequestScope();
+            kernel.Bind<ITaakRepository>().To<TaakRepository>().InRequestScope();
+            kernel.Bind<IMenuRepository>().To<MenuRepository>().InRequestScope();
+
+
             kernel.Bind<ProjectContext>().ToSelf().InRequestScope();
         }        
     }

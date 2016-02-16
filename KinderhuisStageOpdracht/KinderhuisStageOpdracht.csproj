@@ -186,6 +186,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DAL\GebruikerRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Models\DAL\Mappers\AdminMapper.cs" />
     <Compile Include="Models\DAL\Mappers\ClientMapper.cs" />
     <Compile Include="Models\DAL\Mappers\GebruikerMapper.cs" />
@@ -197,10 +200,15 @@
     <Compile Include="Models\DAL\Mappers\PlanningItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PlanningMapper.cs" />
     <Compile Include="Models\DAL\Mappers\TaakMapper.cs" />
+    <Compile Include="Models\DAL\MenuRepository.cs" />
     <Compile Include="Models\DAL\ProjectContext.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\DAL\ProjectInitializer.cs" />
+    <Compile Include="Models\DAL\TaakRepository.cs" />
+    <Compile Include="Models\Domain\IGebruikerRepository.cs" />
+    <Compile Include="Models\Domain\IMenuRepository.cs" />
+    <Compile Include="Models\Domain\ITaakRepository.cs" />
     <Compile Include="Models\Domain\KamerToDo.cs" />
     <Compile Include="Models\Domain\KamerToDoItem.cs" />
     <Compile Include="Models\Domain\Menu.cs" />
