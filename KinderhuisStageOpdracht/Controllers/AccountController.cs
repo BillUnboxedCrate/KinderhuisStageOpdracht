@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using KinderhuisStageOpdracht.Helpers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -80,20 +81,21 @@ namespace KinderhuisStageOpdracht.Controllers
                     if (gebruiker is Admin)
                     {
                         System.Diagnostics.Debug.WriteLine("Type admin");
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("AdminIndex", "Gebruiker", new {id = gebruiker.Id});
                     }
-                    else if (gebruiker is Opvoeder)
+                    if (gebruiker is Opvoeder)
                     {
                         System.Diagnostics.Debug.WriteLine("Type opvoeder");
+                        return RedirectToAction("OpvoederIndex", "Gebruiker", new { id = gebruiker.Id });
                     }
-                    else if (gebruiker is Client)
+                    if (gebruiker is Client)
                     {
                         System.Diagnostics.Debug.WriteLine("Type client");
+                        return RedirectToAction("ClientIndex", "Gebruiker", new { id = gebruiker.Id });
                     }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine("Type gebruiker");
-                    }
+                    
+                    System.Diagnostics.Debug.WriteLine("Type gebruiker");
+
                 }
                 else
                 {
