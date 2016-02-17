@@ -7,6 +7,7 @@ using KinderhuisStageOpdracht.Models.Domain;
 
 namespace KinderhuisStageOpdracht.Controllers
 {
+    
     public class GebruikerController : Controller
     {
         private readonly IGebruikerRepository _gebruikerRepository;
@@ -17,6 +18,7 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         // GET: Gebruiker
+        [Authorize]
         public ActionResult ClientIndex(int id)
         {
             var client = _gebruikerRepository.FindById(id);
@@ -24,6 +26,7 @@ namespace KinderhuisStageOpdracht.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult OpvoederIndex(int id)
         {
             var opvoeder = _gebruikerRepository.FindById(id);
@@ -31,6 +34,7 @@ namespace KinderhuisStageOpdracht.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult AdminIndex(int id)
         {
             var admin = _gebruikerRepository.FindById(id);

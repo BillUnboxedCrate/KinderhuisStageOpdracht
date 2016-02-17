@@ -68,12 +68,12 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var user = await UserManager.FindAsync(model.Gebruikersnaam, model.Password);
-                //if (user != null)
-                //{
-                //    await SignInAsync(user, model.RememberMe);
-                //    return RedirectToLocal(returnUrl);
-                //}
+                var user = await UserManager.FindAsync(model.Gebruikersnaam, model.Password);
+                if (user != null)
+                {
+                    await SignInAsync(user, model.RememberMe);
+                    return RedirectToLocal(returnUrl);
+                }
                 var gebruiker = _gebruikerRepository.FindByUsername(model.Gebruikersnaam);
                 //if (gebruiker.Wachtwoord == GebruikerHelper.CreatePasswordHash(model.Password, gebruiker.Salt))
                 if (gebruiker != null)
