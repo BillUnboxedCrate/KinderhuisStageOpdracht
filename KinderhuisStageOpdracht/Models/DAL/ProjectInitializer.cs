@@ -29,8 +29,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Bram",
                 GeboorteDatum = new DateTime(1993,11,16),
                 Gebruikersnaam = "Admin",
-                Wachtwoord = "test"
-                
+                Wachtwoord = "test",
+                Salt = ""  
             };
 
             //Opvoeders
@@ -40,7 +40,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Tom",
                 GeboorteDatum = new DateTime(1990,11,11),
                 Gebruikersnaam = "Opvoeder",
-                Wachtwoord = "test"
+                Wachtwoord = "test",
+                Salt = ""
             };
 
             var opvoeder2 = new Opvoeder()
@@ -49,7 +50,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Yannick",
                 GeboorteDatum = new DateTime(1992,3,24),
                 Gebruikersnaam = "YannickBraeckman",
-                Wachtwoord = "test"
+                Wachtwoord = "test",
+                Salt = ""
             };
 
             //Clients
@@ -59,7 +61,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Brikke",
                 GeboorteDatum = new DateTime(1991, 12, 5),
                 Gebruikersnaam = "BrikkeBauwens",
-                Wachtwoord = "test"
+                Wachtwoord = "test",
+                Salt = ""
             };
 
             var client2 = new Client()
@@ -68,7 +71,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Roy",
                 GeboorteDatum = new DateTime(1992,2,14),
                 Gebruikersnaam = "RoyHollanders",
-                Wachtwoord = "test"
+                Wachtwoord = "test",
+                Salt = ""
             };
 
             var client3 = new Client()
@@ -77,7 +81,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Rutger",
                 GeboorteDatum = new DateTime(1993,9,24),
                 Gebruikersnaam = "RutgerVanDenBerghe",
-                Wachtwoord = "test"
+                Wachtwoord = "test",
+                Salt = ""
             };
 
             var client4 = new Client()
@@ -86,7 +91,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Sean",
                 GeboorteDatum = new DateTime(1992,3,25),
                 Gebruikersnaam = "SeanBraeckman",
-                Wachtwoord = "test"
+                Wachtwoord = "test",
+                Salt = ""
             };
             #endregion
 

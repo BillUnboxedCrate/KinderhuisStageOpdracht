@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using KinderhuisStageOpdracht.Helpers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -20,6 +21,7 @@ namespace KinderhuisStageOpdracht.Controllers
     {
         private ApplicationUserManager _userManager;
         private readonly IGebruikerRepository _gebruikerRepository;
+
 
         public AccountController()
         {
@@ -71,7 +73,8 @@ namespace KinderhuisStageOpdracht.Controllers
                 //    return RedirectToLocal(returnUrl);
                 //}
                 var gebruiker = _gebruikerRepository.FindByUsername(model.Gebruikersnaam);
-                if (gebruiker.Wachtwoord == model.Password)
+                //if (gebruiker.Wachtwoord == GebruikerHelper.CreatePasswordHash(model.Password, gebruiker.Salt))
+                if(gebruiker.Wachtwoord == model.Password)
                 {
                     System.Diagnostics.Debug.WriteLine("Logged in!");
                     if (gebruiker is Admin)

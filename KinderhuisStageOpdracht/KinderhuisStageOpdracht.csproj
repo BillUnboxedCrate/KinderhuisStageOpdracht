@@ -186,6 +186,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\GebruikerHelper.cs" />
     <Compile Include="Models\DAL\GebruikerRepository.cs">
       <SubType>Code</SubType>
     </Compile>
