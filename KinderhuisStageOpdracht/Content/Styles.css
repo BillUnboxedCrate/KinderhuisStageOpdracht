@@ -15,13 +15,41 @@ body {
     top: 50%;
     transform: translateY(-50%);
     border: solid 1px;
-    background-color: blue;
+    background-color: #f8f8ff;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
+    padding: 10px;
+    font-size: medium;
 }
 
 #loginForm {
     
+}
+
+.button-gray {
+    padding: 7px 10px;
+    background: rgb(238, 233, 233);
+    border: 1px solid rgb(139, 137, 137);
+    border-radius: 5px;
+    width: 100px;
+
+    /*color: white;*/
+}
+
+.button-red {
+    padding: 7px 10px;
+    background: #b22222;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    /*color: white;*/
+}
+
+.button-green {
+    padding: 7px 10px;
+    background: #32cd32;
+    border: 1px solid #228b22;
+    border-radius: 5px;
+    /*color: white;*/
 }
 
 #loginWrapper {
@@ -32,4 +60,50 @@ body {
     margin: 0 auto;
     height: 100%;
     overflow: auto;
+}
+
+input[type="text"], input[type="password"], textarea {
+    border: 1px solid rgb(194, 194, 194);
+    padding: 10px 10px;
+    border-radius: 3px;
+    width: 100%;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+    border-color: #000;
+    color: #000;
+    outline: none;
+}
+
+.text-danger {
+  font-style: italic;
+    background: rgb(255, 76, 90);
+    width: 100%;
+    display: block;
+    border-radius: 3px;
+    color: white;
+    /*padding: 5px;*/
+    box-sizing: border-box;
+    margin-top: 3px;
+
+}
+
+.text-success {
+  color: #468847;
+}
+
+.text-info {
+  color: #3a87ad;
+}
+
+.text-muted {
+  color: #999999;
+}
+
+.text-primary {
+  color: #428bca;
+}
+
+.text-warning {
+  color: #c09853;
 }
