@@ -46,8 +46,6 @@ namespace KinderhuisStageOpdracht.Controllers
             var admin = (Admin) _gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(admin.GetType());
 
-           
-
             var opvoederlistvm = new GebruikerViewModel.OpvoederListViewModel();
             var clientlistvm = new GebruikerViewModel.ClientListViewModel();
 
@@ -87,5 +85,19 @@ namespace KinderhuisStageOpdracht.Controllers
 
             return View(oeclvm);
         }
+
+        public ActionResult CreateOpvoeder()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateOpvoeder(GebruikerViewModel.CreateOpvoederViewModel model)
+        {
+
+            return View();
+        }
     }
+
+    
 }

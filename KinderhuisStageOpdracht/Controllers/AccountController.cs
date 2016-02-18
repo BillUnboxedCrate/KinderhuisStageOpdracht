@@ -15,6 +15,7 @@ using Microsoft.Owin.Security;
 using Owin;
 using KinderhuisStageOpdracht.Models;
 using KinderhuisStageOpdracht.Models.Domain;
+using KinderhuisStageOpdracht.Models.Viewmodels;
 
 namespace KinderhuisStageOpdracht.Controllers
 {

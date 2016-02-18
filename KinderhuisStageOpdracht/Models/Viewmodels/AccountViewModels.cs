@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KinderhuisStageOpdracht.Models
+namespace KinderhuisStageOpdracht.Models.Viewmodels
 {
     public class ExternalLoginConfirmationViewModel
     {

@@ -8,12 +8,14 @@
 <h2>AdminIndex</h2>
 
 <h3>Opvoeders</h3>
+@Html.ActionLink("Voeg opvoeder toe", "CreateOpvoeder", new {@class = "button-red"})
 <table class="table">
     <tr>
         <th>Naam</th>
         <th>Voornaam</th>
         <th>Email adress</th>
         <th>Acties</th>
+        
     </tr>
     @foreach (var o in Model.Olmv.Opvoeders)
     {
@@ -21,6 +23,7 @@
             <td>@Html.DisplayFor(modelItem => o.Naam)</td>
             <td>@Html.DisplayFor(modelItem => o.Voornaam)</td>
             <td>@Html.DisplayFor(modelItem => o.Email)</td>
+           
             <td>
             @*@Html.ActionLink("Details", "Detail", new { id = suggestion.Id })
     <span> | </span>
