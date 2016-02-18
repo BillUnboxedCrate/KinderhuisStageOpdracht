@@ -41,6 +41,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 GeboorteDatum = new DateTime(1990,11,11),
                 Gebruikersnaam = "Opvoeder",
                 Wachtwoord = "test",
+                Email = "tomdesaeger@gmail.com",
                 Salt = ""
             };
 
@@ -51,6 +52,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 GeboorteDatum = new DateTime(1992,3,24),
                 Gebruikersnaam = "YannickBraeckman",
                 Wachtwoord = "test",
+                Email = "yannickbraeckman@gmail.com",
                 Salt = ""
             };
 

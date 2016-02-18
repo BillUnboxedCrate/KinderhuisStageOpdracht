@@ -83,10 +83,12 @@ namespace KinderhuisStageOpdracht.Controllers
                     {
                         FormsAuthentication.SetAuthCookie(model.Gebruikersnaam, false);
                         System.Diagnostics.Debug.WriteLine("Logged in!");
+
                         if (gebruiker is Admin)
                         {
                             System.Diagnostics.Debug.WriteLine("Type admin");
                             return RedirectToAction("AdminIndex", "Gebruiker", new { id = gebruiker.Id });
+                            //return RedirectToAction("AdminIndex", "Gebruiker");
                         }
                         if (gebruiker is Opvoeder)
                         {
@@ -98,6 +100,7 @@ namespace KinderhuisStageOpdracht.Controllers
                             System.Diagnostics.Debug.WriteLine("Type client");
                             return RedirectToAction("ClientIndex", "Gebruiker", new { id = gebruiker.Id });
                         }
+
 
                         System.Diagnostics.Debug.WriteLine("Type gebruiker");
                     }
