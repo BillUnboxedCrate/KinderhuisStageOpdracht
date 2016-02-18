@@ -30,19 +30,19 @@ namespace KinderhuisStageOpdracht.Models.DAL
             return _context.GebruikerSet.FirstOrDefault(g => g.Gebruikersnaam.ToLower() == username.ToLower());
         }
 
-        public IQueryable<Admin> FindAllAdmins()
+        public IQueryable<Gebruiker> FindAllAdmins()
         {
-            throw new NotImplementedException();
+            return _context.GebruikerSet.Where(g => g is Admin);
         }
 
-        public IQueryable<Opvoeder> FindAllOpvoeders()
+        public IQueryable<Gebruiker> FindAllOpvoeders()
         {
-            throw new NotImplementedException();
+            return _context.GebruikerSet.Where(g => g is Opvoeder);
         }
 
-        public IQueryable<Client> FindAllClients()
+        public IQueryable<Gebruiker> FindAllClients()
         {
-            throw new NotImplementedException();
+            return _context.GebruikerSet.Where(g => g is Client);
         }
 
         public void SaveChanges()

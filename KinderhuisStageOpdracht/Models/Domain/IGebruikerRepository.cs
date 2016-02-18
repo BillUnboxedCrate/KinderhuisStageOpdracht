@@ -14,13 +14,13 @@ namespace KinderhuisStageOpdracht.Models.Domain
         Gebruiker FindByUsername(string username);
 
         //Admins
-        IQueryable<Admin> FindAllAdmins();
+        IQueryable<Gebruiker> FindAllAdmins();
 
         //Opvoeders
-        IQueryable<Opvoeder> FindAllOpvoeders();
+        IQueryable<Gebruiker> FindAllOpvoeders();
 
         //Clienten
-        IQueryable<Client> FindAllClients();
+        IQueryable<Gebruiker> FindAllClients();
         
 
         void SaveChanges();

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 using KinderhuisStageOpdracht.Helpers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -80,6 +81,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     if (gebruiker.Wachtwoord == model.Password)
                     {
+                        FormsAuthentication.SetAuthCookie(model.Gebruikersnaam, false);
                         System.Diagnostics.Debug.WriteLine("Logged in!");
                         if (gebruiker is Admin)
                         {

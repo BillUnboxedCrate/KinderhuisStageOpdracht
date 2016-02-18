@@ -11,6 +11,7 @@ namespace KinderhuisStageOpdracht.Controllers
     public class GebruikerController : Controller
     {
         private readonly IGebruikerRepository _gebruikerRepository;
+        private Gebruiker gebruiker;
 
         public GebruikerController(IGebruikerRepository gebruikerRepository)
         {
@@ -18,27 +19,34 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         // GET: Gebruiker
-        [Authorize]
+        //[Authorize]
         public ActionResult ClientIndex(int id)
         {
-            var client = _gebruikerRepository.FindById(id);
-            System.Diagnostics.Debug.WriteLine(client.GetType());
+            //var client = (Client) _gebruikerRepository.FindById(id);
+            gebruiker = _gebruikerRepository.FindById(id);
+            System.Diagnostics.Debug.WriteLine(gebruiker.GetType());
             return View();
         }
 
-        [Authorize]
+        //[Authorize]
         public ActionResult OpvoederIndex(int id)
         {
-            var opvoeder = _gebruikerRepository.FindById(id);
-            System.Diagnostics.Debug.WriteLine(opvoeder.GetType());
+            //var opvoeder = (Opvoeder)_gebruikerRepository.FindById(id);
+            gebruiker = _gebruikerRepository.FindById(id);
+            System.Diagnostics.Debug.WriteLine(gebruiker.GetType());
             return View();
         }
 
-        [Authorize]
+        //[Authorize]
         public ActionResult AdminIndex(int id)
         {
-            var admin = _gebruikerRepository.FindById(id);
-            System.Diagnostics.Debug.WriteLine(admin.GetType());
+            //var admin = (Admin) _gebruikerRepository.FindById(id);
+            gebruiker = (Admin) _gebruikerRepository.FindById(id);
+            System.Diagnostics.Debug.WriteLine(gebruiker.GetType());
+
+            List<Gebruiker> opvoeders = _gebruikerRepository.FindAllOpvoeders().ToList();
+            List<Gebruiker> clients = _gebruikerRepository.FindAllClients().ToList();            
+            
             return View();
         }
     }
