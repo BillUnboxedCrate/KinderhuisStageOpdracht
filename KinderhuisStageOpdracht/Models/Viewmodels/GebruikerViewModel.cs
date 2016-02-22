@@ -86,6 +86,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Bevestig wachtwoord")]
             [Compare("Wachtwoord", ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
             public string BevestigWachtwoord { get; set; }
+
+            [Display(Name = "Kies een opvangtehuis")]
+            public List<string> Opvangtehuizen { get; set; }
+
+            public string GeselecteerdOpvangtehuisId { get; set; }
+
         }
 
         public class EditOpvoederViewModel
@@ -149,6 +155,19 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Bevestig wachtwoord")]
             [Compare("Wachtwoord", ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
             public string BevestigWachtwoord { get; set; }
+
+            [Display(Name = "Kies een opvangtehuis")]
+            public List<string> Opvangtehuizen { get; set; }
+
+            [Required]
+            public string GeselecteerdOpvangtehuisId { get; set; }
+
+            public CreateClientViewModel()
+            {
+                Opvangtehuizen = new List<string>();
+            }
+
+            
         }
 
         public class EditClientViewModel

@@ -207,6 +207,7 @@
     <Compile Include="Models\DAL\Mappers\PlanningMapper.cs" />
     <Compile Include="Models\DAL\Mappers\TaakMapper.cs" />
     <Compile Include="Models\DAL\MenuRepository.cs" />
+    <Compile Include="Models\DAL\OpvangtehuisRepository.cs" />
     <Compile Include="Models\DAL\ProjectContext.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -214,6 +215,7 @@
     <Compile Include="Models\DAL\TaakRepository.cs" />
     <Compile Include="Models\Domain\IGebruikerRepository.cs" />
     <Compile Include="Models\Domain\IMenuRepository.cs" />
+    <Compile Include="Models\Domain\IOpvangtehuisRepository.cs" />
     <Compile Include="Models\Domain\ITaakRepository.cs" />
     <Compile Include="Models\Domain\KamerToDo.cs" />
     <Compile Include="Models\Domain\KamerToDoItem.cs" />
@@ -331,6 +333,7 @@
     <Content Include="Views\Gebruiker\OpvoederIndex.cshtml" />
     <Content Include="Views\Gebruiker\CreateClient.cshtml" />
     <Content Include="Views\Gebruiker\Details.cshtml" />
+    <Content Include="Views\Gebruiker\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

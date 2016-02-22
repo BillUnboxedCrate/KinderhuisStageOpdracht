@@ -110,12 +110,9 @@ namespace KinderhuisStageOpdracht.Controllers
                         System.Diagnostics.Debug.WriteLine("Type gebruiker");
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Er is een foute gebruikersnaam of wachtwoord in gegeven.");
-                }
             }
 
+            ModelState.AddModelError("", "Er is een foute gebruikersnaam of wachtwoord in gegeven.");
             // If we got this far, something failed, redisplay form
             return View(model);
         }

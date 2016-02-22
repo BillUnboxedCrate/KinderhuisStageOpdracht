@@ -14,10 +14,12 @@ namespace KinderhuisStageOpdracht.Controllers
     public class GebruikerController : Controller
     {
         private readonly IGebruikerRepository _gebruikerRepository;
+        private readonly IOpvangtehuisRepository _opvangtehuisRepository;
 
-        public GebruikerController(IGebruikerRepository gebruikerRepository)
+        public GebruikerController(IGebruikerRepository gebruikerRepository, IOpvangtehuisRepository opvangtehuisRepository)
         {
             _gebruikerRepository = gebruikerRepository;
+            _opvangtehuisRepository = opvangtehuisRepository;
         }
 
         // GET: Gebruiker
@@ -102,7 +104,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateOpvoeder()
         {
-            return View();
+            var covm = new GebruikerViewModel.CreateOpvoederViewModel
+            {
+                Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList()
+            };
+            return View(covm);
         }
 
         [HttpPost]
@@ -130,15 +136,19 @@ namespace KinderhuisStageOpdracht.Controllers
                 _gebruikerRepository.AddOpvoeder(opvoeder);
                 _gebruikerRepository.SaveChanges();
 
-                return RedirectToAction("AdminIndex", new {id = gebruikerId});
+                return RedirectToAction("AdminIndex");
             }
    
-            return View();
+            return View(model);
         }
 
         public ActionResult CreateClient()
         {
-            return View();
+            var ccvm = new GebruikerViewModel.CreateClientViewModel()
+            {
+                Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList()
+            };
+            return View(ccvm);
         }
 
         [HttpPost]
@@ -155,7 +165,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     Naam = model.Naam,
                     Voornaam = model.Voornaam,
-                    Opvangtehuis = _gebruikerRepository.FindById(gebruikerId).Opvangtehuis,
+                    Opvangtehuis = _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId),
                     Gebruikersnaam = model.GebruikersNaam,
                     GeboorteDatum = model.GeboorteDatum,
                     Email = model.Email,
@@ -166,10 +176,10 @@ namespace KinderhuisStageOpdracht.Controllers
                 _gebruikerRepository.AddClient(client);
                 _gebruikerRepository.SaveChanges();
 
-                return RedirectToAction("AdminIndex", new { id = gebruikerId });
+                return RedirectToAction("AdminIndex");
             }
 
-            return View();
+            return View(model);
         }
 
         public ActionResult Details(int id)
@@ -194,6 +204,12 @@ namespace KinderhuisStageOpdracht.Controllers
             return View("Details", dvm);
         }
 
+        
+        /*public ActionResult Delete()
+        {
+            return View();
+        }*/
+
         [HttpPost]
         public ActionResult Delete(int id)
         {   
@@ -204,6 +220,11 @@ namespace KinderhuisStageOpdracht.Controllers
           
 
             return View("AdminIndex");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 
