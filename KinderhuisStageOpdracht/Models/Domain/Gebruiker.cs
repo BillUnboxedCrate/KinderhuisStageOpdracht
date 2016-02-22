@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using Microsoft.AspNet.Identity;
 
 namespace KinderhuisStageOpdracht.Models.Domain
 {
@@ -15,6 +16,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public string Voornaam { get; set; }
         public string Naam { get; set; }
         public DateTime GeboorteDatum { get; set; }
+        public string Email { get; set; }
         public string Gebruikersnaam { get; set; }
         public string Wachtwoord { get; set; }
         [NotMapped]
@@ -22,8 +24,8 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public virtual ICollection<Taak> Taken { get; set; }
 
         public virtual Opvangtehuis Opvangtehuis { get; set; }
-
-        private string _salt;
+        public string Salt { get; set; }
+        /*private string _salt;
         public string Salt
         {
             get
@@ -34,7 +36,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             {
                 _salt = GenerateSalt();
             }
-        }
+        }*/
 
         protected Gebruiker()
         {

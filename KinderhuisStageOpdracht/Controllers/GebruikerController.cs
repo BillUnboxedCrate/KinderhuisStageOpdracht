@@ -4,6 +4,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using KinderhuisStageOpdracht.Models.Domain;
 using KinderhuisStageOpdracht.Models.Viewmodels;
 
@@ -13,7 +14,6 @@ namespace KinderhuisStageOpdracht.Controllers
     public class GebruikerController : Controller
     {
         private readonly IGebruikerRepository _gebruikerRepository;
-        private int gebruikerId;
 
         public GebruikerController(IGebruikerRepository gebruikerRepository)
         {
@@ -24,7 +24,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult ClientIndex(int id)
         {
-            gebruikerId = id;
+            Session["gebruiker"] = id;
             var client = (Client) _gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(client.GetType());
             return View();
@@ -33,7 +33,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult OpvoederIndex(int id)
         {
-            gebruikerId = id;
+            Session["gebruiker"] = id;
             var opvoeder = (Opvoeder)_gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(opvoeder.GetType());
             return View();
@@ -42,7 +42,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult AdminIndex(int id)
         {
-            gebruikerId = id;
+            Session["gebruiker"] = id;
             var admin = (Admin) _gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(admin.GetType());
 
@@ -94,6 +94,62 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult CreateOpvoeder(GebruikerViewModel.CreateOpvoederViewModel model)
         {
+            if (ModelState.IsValid)
+            {
+                int gebruikerId = (int)Session["gebruiker"];
+                var crypto = new SimpleCrypto.PBKDF2();
+                var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
+                var opvoeder = new Opvoeder()
+                {
+                    Naam = model.Naam,
+                    Voornaam = model.Voornaam,
+                    Opvangtehuis = _gebruikerRepository.FindById(gebruikerId).Opvangtehuis,
+                    Gebruikersnaam = model.GebruikersNaam,
+                    GeboorteDatum = model.GeboorteDatum,
+                    Email = model.Email,
+                    Wachtwoord = encrytwachtwoord,
+                    Salt = crypto.Salt,
+                };
+
+                _gebruikerRepository.AddOpvoeder(opvoeder);
+                _gebruikerRepository.SaveChanges();
+
+                return RedirectToAction("AdminIndex", new {id = gebruikerId});
+            }
+   
+            return View();
+        }
+
+        public ActionResult CreateClient()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateClient(GebruikerViewModel.CreateClientViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                int gebruikerId = (int)Session["gebruiker"];
+                var crypto = new SimpleCrypto.PBKDF2();
+                var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
+                var opvoeder = new Opvoeder()
+                {
+                    Naam = model.Naam,
+                    Voornaam = model.Voornaam,
+                    Opvangtehuis = _gebruikerRepository.FindById(gebruikerId).Opvangtehuis,
+                    Gebruikersnaam = model.GebruikersNaam,
+                    GeboorteDatum = model.GeboorteDatum,
+                    Email = model.Email,
+                    Wachtwoord = encrytwachtwoord,
+                    Salt = crypto.Salt,
+                };
+
+                _gebruikerRepository.AddOpvoeder(opvoeder);
+                _gebruikerRepository.SaveChanges();
+
+                return RedirectToAction("AdminIndex", new { id = gebruikerId });
+            }
 
             return View();
         }

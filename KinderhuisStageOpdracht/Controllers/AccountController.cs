@@ -80,15 +80,16 @@ namespace KinderhuisStageOpdracht.Controllers
                 //if (gebruiker.Wachtwoord == GebruikerHelper.CreatePasswordHash(model.Password, gebruiker.Salt))
                 if (gebruiker != null)
                 {
-                    if (gebruiker.Wachtwoord == model.Password)
+                    //if (gebruiker.Wachtwoord == model.Password)
+                    if(IsValid(model.Password, model.Gebruikersnaam))
                     {
                         FormsAuthentication.SetAuthCookie(model.Gebruikersnaam, false);
                         System.Diagnostics.Debug.WriteLine("Logged in!");
-
+                      
                         if (gebruiker is Admin)
                         {
                             System.Diagnostics.Debug.WriteLine("Type admin");
-                            return RedirectToAction("AdminIndex", "Gebruiker", new { id = gebruiker.Id });
+                            return RedirectToAction("AdminIndex", "Gebruiker", new {id = gebruiker.Id});
                             //return RedirectToAction("AdminIndex", "Gebruiker");
                         }
                         if (gebruiker is Opvoeder)
@@ -114,6 +115,23 @@ namespace KinderhuisStageOpdracht.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        public bool IsValid(string password, string username)
+        {
+            var crypto = new SimpleCrypto.PBKDF2();
+            bool isValid = false;
+
+            var gebruiker = _gebruikerRepository.FindByUsername(username);
+            if (gebruiker != null)
+            {
+                if (gebruiker.Wachtwoord == crypto.Compute(password, gebruiker.Salt))
+                {
+                    isValid = true;
+                }
+            }
+
+            return isValid;
         }
 
         //

@@ -14,7 +14,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //Primary Key
 
             //Property
-            Property(o => o.Email).IsRequired().HasMaxLength(50);
+            //Property(o => o.Email).IsRequired().HasMaxLength(50);
 
             //Foreign Key
 

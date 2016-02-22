@@ -10,14 +10,14 @@
   <Class Name="KinderhuisStageOpdracht.Models.Domain.Client">
     <Position X="7.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAAgAAAAAAAAAAAAAAAAAAAgAAAAAAgA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAgAAAAAAgA=</HashCode>
       <FileName>Models\Domain\Client.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="KinderhuisStageOpdracht.Models.Domain.Gebruiker" Collapsed="true">
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABCAQAgAAAAAAAAAAAgBgEAEAAAAAAAAAgAAAAAAAQ=</HashCode>
+      <HashCode>CABCAQAgAAAAAAAAAAAgBgAAEAAAAAAAAAgAAAAAAAQ=</HashCode>
       <FileName>Models\Domain\Gebruiker.cs</FileName>
     </TypeIdentifier>
   </Class>

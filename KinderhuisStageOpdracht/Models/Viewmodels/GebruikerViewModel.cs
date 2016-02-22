@@ -128,6 +128,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             [Display(Name = "Gebruikers naam")]
             public string GebruikersNaam { get; set; }
+
+            [Required]
+            [EmailAddress]
+            [Display(Name = "Email adres")]
+            public string Email { get; set; }
             
             [Required]
             [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} karakters lang zijn.", MinimumLength = 6)]

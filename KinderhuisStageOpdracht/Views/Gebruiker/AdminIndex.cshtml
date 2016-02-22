@@ -11,50 +11,54 @@
 @Html.ActionLink("Voeg opvoeder toe", "CreateOpvoeder", new {@class = "button-red"})
 <table class="table">
     <tr>
-        <th>Naam</th>
         <th>Voornaam</th>
+        <th>Naam</th>
         <th>Email adress</th>
         <th>Acties</th>
-        
+
     </tr>
     @foreach (var o in Model.Olmv.Opvoeders)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
             <td>@Html.DisplayFor(modelItem => o.Voornaam)</td>
+            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
             <td>@Html.DisplayFor(modelItem => o.Email)</td>
-           
+
             <td>
-            @*@Html.ActionLink("Details", "Detail", new { id = suggestion.Id })
-    <span> | </span>
-    @Html.ActionLink("Aanpassen", "Edit", new { id = suggestion.Id })
-    <span> | </span>
-    @Html.ActionLink("Verwijderen", "Delete", new { id = suggestion.Id })
-            *@
+                @*
+                @Html.ActionLink("Details", "Detail", new { id = suggestion.Id })
+                <span> | </span>
+                @Html.ActionLink("Aanpassen", "Edit", new { id = suggestion.Id })
+                <span> | </span>
+                @Html.ActionLink("Verwijderen", "Delete", new { id = suggestion.Id })
+                *@
             </td>
         </tr>
     }
 </table>
 
 <h3>Cliënten</h3>
+@Html.ActionLink("Voeg opvoeder toe", "CreateClient", new { @class = "button-red" })
 <table class="table">
     <tr>
-        <th>Naam</th>
         <th>Voornaam</th>
+        <th>Naam</th>
         <th>Acties</th>
     </tr>
 
     @foreach (var o in Model.Clvm.Clients)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
             <td>@Html.DisplayFor(modelItem => o.Voornaam)</td>
+            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
+
             <td>
-                @*@Html.ActionLink("Details", "Detail", new { id = suggestion.Id })
-                    <span> | </span>
-                    @Html.ActionLink("Aanpassen", "Edit", new { id = suggestion.Id })
-                    <span> | </span>
-                    @Html.ActionLink("Verwijderen", "Delete", new { id = suggestion.Id })
+                @*
+                @Html.ActionLink("Details", "Detail", new { id = suggestion.Id })
+                <span> | </span>
+                @Html.ActionLink("Aanpassen", "Edit", new { id = suggestion.Id })
+                <span> | </span>
+                @Html.ActionLink("Verwijderen", "Delete", new { id = suggestion.Id })
                 *@
             </td>
         </tr>

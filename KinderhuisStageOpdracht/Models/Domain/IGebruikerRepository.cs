@@ -21,6 +21,9 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         //Clienten
         IQueryable<Gebruiker> FindAllClients();
+
+        void AddOpvoeder(Opvoeder opvoeder);
+        void AddClient(Client client);
         
 
         void SaveChanges();

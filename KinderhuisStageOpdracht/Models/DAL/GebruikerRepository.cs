@@ -45,6 +45,16 @@ namespace KinderhuisStageOpdracht.Models.DAL
             return _context.GebruikerSet.Where(g => g is Client);
         }
 
+        public void AddOpvoeder(Opvoeder opvoeder)
+        {
+            _context.GebruikerSet.Add(opvoeder);
+        }
+
+        public void AddClient(Client client)
+        {
+            _context.GebruikerSet.Add(client);
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

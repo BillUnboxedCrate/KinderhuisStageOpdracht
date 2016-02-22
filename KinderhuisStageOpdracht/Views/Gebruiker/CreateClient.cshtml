@@ -1,20 +1,20 @@
-﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.CreateOpvoederViewModel
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.CreateClientViewModel
 
 @{
     ViewBag.Title = "View";
 }
 
-@using (Html.BeginForm("CreateOpvoeder", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("CreateClient", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h2>Maak een nieuwe opvoeder aan.</h2>
     <hr />
     @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
     <div class="form-group">
-        @Html.LabelFor(m => m.Voornaam, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.Voornaam, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Voornaam, new {@class = "form-control"})
-            @Html.ValidationMessageFor(m => m.Voornaam, "", new {@class = "text-danger"})
+            @Html.TextBoxFor(m => m.Voornaam, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Voornaam, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
@@ -33,7 +33,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.GeboorteDatum, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.GeboorteDatum, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.EditorFor(m => m.GeboorteDatum, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(m => m.GeboorteDatum, "", new { @class = "text-danger" })
@@ -41,7 +41,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.GebruikersNaam, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.GebruikersNaam, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.GebruikersNaam, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.GebruikersNaam, "", new { @class = "text-danger" })
@@ -49,7 +49,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Wachtwoord, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.Wachtwoord, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Wachtwoord, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Wachtwoord, "", new { @class = "text-danger" })

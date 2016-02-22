@@ -56,8 +56,11 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Bram",
                 GeboorteDatum = new DateTime(1993,11,16),
                 Gebruikersnaam = "Admin",
-                Wachtwoord = "test",
-                Salt = "",
+                //Wachtwoord = "test",
+                //testing
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Email = "bram.baert@hotmail.com",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1
                 
             };
@@ -69,9 +72,9 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Tom",
                 GeboorteDatum = new DateTime(1990,11,11),
                 Gebruikersnaam = "Opvoeder",
-                Wachtwoord = "test",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "tomdesaeger@gmail.com",
-                Salt = "",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1
             };
 
@@ -81,9 +84,9 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Yannick",
                 GeboorteDatum = new DateTime(1992,3,24),
                 Gebruikersnaam = "YannickBraeckman",
-                Wachtwoord = "test",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "yannickbraeckman@gmail.com",
-                Salt = "",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1
             };
 
@@ -94,8 +97,9 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Brikke",
                 GeboorteDatum = new DateTime(1991, 12, 5),
                 Gebruikersnaam = "BrikkeBauwens",
-                Wachtwoord = "test",
-                Salt = "",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Email = "brikke.bauwens@gmail.com",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1
             };
 
@@ -105,8 +109,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Roy",
                 GeboorteDatum = new DateTime(1992,2,14),
                 Gebruikersnaam = "RoyHollanders",
-                Wachtwoord = "test",
-                Salt = "",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1
             };
 
@@ -116,8 +120,9 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Rutger",
                 GeboorteDatum = new DateTime(1993,9,24),
                 Gebruikersnaam = "RutgerVanDenBerghe",
-                Wachtwoord = "test",
-                Salt = "",
+                Email = "doglife3@runescape.ayy",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1
             };
 
@@ -127,8 +132,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Voornaam = "Sean",
                 GeboorteDatum = new DateTime(1992,3,25),
                 Gebruikersnaam = "SeanBraeckman",
-                Wachtwoord = "test",
-                Salt = "",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1
             };
             #endregion
