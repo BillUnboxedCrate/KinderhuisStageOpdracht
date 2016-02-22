@@ -83,24 +83,27 @@ namespace KinderhuisStageOpdracht.Controllers
                     //if (gebruiker.Wachtwoord == model.Password)
                     if(IsValid(model.Password, model.Gebruikersnaam))
                     {
+                        Session["gebruiker"] = gebruiker.Id;
                         FormsAuthentication.SetAuthCookie(model.Gebruikersnaam, false);
                         System.Diagnostics.Debug.WriteLine("Logged in!");
                       
                         if (gebruiker is Admin)
                         {
                             System.Diagnostics.Debug.WriteLine("Type admin");
-                            return RedirectToAction("AdminIndex", "Gebruiker", new {id = gebruiker.Id});
-                            //return RedirectToAction("AdminIndex", "Gebruiker");
+                            //return RedirectToAction("AdminIndex", "Gebruiker", new {id = gebruiker.Id});
+                            return RedirectToAction("AdminIndex", "Gebruiker");
                         }
                         if (gebruiker is Opvoeder)
                         {
                             System.Diagnostics.Debug.WriteLine("Type opvoeder");
-                            return RedirectToAction("OpvoederIndex", "Gebruiker", new { id = gebruiker.Id });
+                            //return RedirectToAction("OpvoederIndex", "Gebruiker", new { id = gebruiker.Id });
+                            return RedirectToAction("OpvoederIndex", "Gebruiker");
                         }
                         if (gebruiker is Client)
                         {
                             System.Diagnostics.Debug.WriteLine("Type client");
-                            return RedirectToAction("ClientIndex", "Gebruiker", new { id = gebruiker.Id });
+                            //return RedirectToAction("ClientIndex", "Gebruiker", new { id = gebruiker.Id });
+                            return RedirectToAction("ClientIndex", "Gebruiker");
                         }
 
 

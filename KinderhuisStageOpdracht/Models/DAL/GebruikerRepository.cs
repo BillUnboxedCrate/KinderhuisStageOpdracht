@@ -55,6 +55,12 @@ namespace KinderhuisStageOpdracht.Models.DAL
             _context.GebruikerSet.Add(client);
         }
 
+        public void DeleteGebruiker(int id)
+        {
+            var gebruiker = _context.GebruikerSet.Find(id);
+            _context.GebruikerSet.Remove(gebruiker);
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

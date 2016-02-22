@@ -22,27 +22,40 @@ namespace KinderhuisStageOpdracht.Controllers
 
         // GET: Gebruiker
         //[Authorize]
-        public ActionResult ClientIndex(int id)
+        public ActionResult ClientIndex()
         {
-            Session["gebruiker"] = id;
+            if (Session["gebruiker"] == null)
+            {
+                return View("Error");
+            }
+            var id = (int)Session["gebruiker"];
             var client = (Client) _gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(client.GetType());
             return View();
         }
 
         //[Authorize]
-        public ActionResult OpvoederIndex(int id)
+        public ActionResult OpvoederIndex()
         {
-            Session["gebruiker"] = id;
+            if (Session["gebruiker"] == null)
+            {
+                return View("Error");
+            }
+            var id = (int)Session["gebruiker"];
             var opvoeder = (Opvoeder)_gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(opvoeder.GetType());
             return View();
         }
 
         //[Authorize]
-        public ActionResult AdminIndex(int id)
+        public ActionResult AdminIndex()
         {
-            Session["gebruiker"] = id;
+            if (Session["gebruiker"] == null)
+            {
+                return View("Error");
+            }
+            var id = (int) Session["gebruiker"];
+            //Session["gebruiker"] = id;
             var admin = (Admin) _gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(admin.GetType());
 
@@ -98,8 +111,10 @@ namespace KinderhuisStageOpdracht.Controllers
             if (ModelState.IsValid)
             {
                 int gebruikerId = (int)Session["gebruiker"];
+                
                 var crypto = new SimpleCrypto.PBKDF2();
                 var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
+                
                 var opvoeder = new Opvoeder()
                 {
                     Naam = model.Naam,
@@ -132,8 +147,10 @@ namespace KinderhuisStageOpdracht.Controllers
             if (ModelState.IsValid)
             {
                 int gebruikerId = (int)Session["gebruiker"];
+                
                 var crypto = new SimpleCrypto.PBKDF2();
                 var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
+                
                 var client = new Client()
                 {
                     Naam = model.Naam,
@@ -153,6 +170,40 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             return View();
+        }
+
+        public ActionResult Details(int id)
+        {
+            var gebruiker = _gebruikerRepository.FindById(id);
+            GebruikerViewModel.DetailViewModel dvm = null;
+
+            if (gebruiker != null)
+            {
+                dvm = new GebruikerViewModel.DetailViewModel
+                {
+                    Id = gebruiker.Id,
+                    Naam = gebruiker.Naam,
+                    Voornaam = gebruiker.Voornaam,
+                    Email = gebruiker.Email,
+                    GeboorteDatum = gebruiker.GeboorteDatum,
+                    GebruikersNaam = gebruiker.Gebruikersnaam,
+                    Opvangtehuis = gebruiker.Opvangtehuis.ToString()
+                };
+            }
+
+            return View("Details", dvm);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {   
+            if (_gebruikerRepository.FindById(id) != null)
+            {
+                _gebruikerRepository.DeleteGebruiker(id);
+            }
+          
+
+            return View("AdminIndex");
         }
     }
 

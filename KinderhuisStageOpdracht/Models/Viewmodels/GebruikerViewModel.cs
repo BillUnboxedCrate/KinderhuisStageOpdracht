@@ -176,5 +176,31 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Email { get; set; }
             //public string Wachtwoord { get; set; }
         }
+
+        public class DetailViewModel
+        {
+            [Display(Name = "Gebruikers id")]
+            public int Id { get; set; }
+
+            [Display(Name = "Naam")]
+            public string Naam { get; set; }
+
+            [Display(Name = "Voornaam")]
+            public string Voornaam { get; set; }
+
+            [DataType(DataType.Date)]
+            [Display(Name = "Geboorte datum")]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+            public DateTime GeboorteDatum { get; set; }
+
+            [Display(Name = "Gebruikers naam")]
+            public string GebruikersNaam { get; set; }
+
+            [Display(Name = "Email adres")]
+            public string Email { get; set; }
+
+            [Display(Name = "Opvangtehuis")]
+            public string Opvangtehuis { get; set; }
+        }
     }
 }

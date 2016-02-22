@@ -1,0 +1,42 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.DetailViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<table>
+    <tr>
+        <td>@Html.LabelFor(m => m.Id)</td>
+        <td>@Html.DisplayFor(m => m.Id)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m => m.Voornaam)</td>
+        <td>@Html.DisplayFor(m => m.Voornaam)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m => m.Naam)</td>
+        <td>@Html.DisplayFor(m => m.Naam)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m => m.GebruikersNaam)</td>
+        <td>@Html.DisplayFor(m => m.GebruikersNaam)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m => m.Email)</td>
+        <td>@Html.DisplayFor(m => m.Email)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m => m.GeboorteDatum)</td>
+        <td>@Html.DisplayFor(m => m.GeboorteDatum)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m => m.Opvangtehuis)</td>
+        <td>@Html.DisplayFor(m => m.Opvangtehuis)</td>
+    </tr>   
+</table>

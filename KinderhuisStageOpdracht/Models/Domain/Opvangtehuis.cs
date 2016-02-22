@@ -21,5 +21,10 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             Gebruikers = new List<Gebruiker>();
         }*/
+
+        public override string ToString()
+        {
+            return String.Format("{0}\n{1} {2}\n{3} {4}", Naam, Straat, StraatNummer, Postcode, Gemeente);
+        }
     }
 }

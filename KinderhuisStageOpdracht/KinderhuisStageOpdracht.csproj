@@ -330,6 +330,7 @@
     <Content Include="Views\Gebruiker\AdminIndex.cshtml" />
     <Content Include="Views\Gebruiker\OpvoederIndex.cshtml" />
     <Content Include="Views\Gebruiker\CreateClient.cshtml" />
+    <Content Include="Views\Gebruiker\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
