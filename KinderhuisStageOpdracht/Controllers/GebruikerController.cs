@@ -72,7 +72,8 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     Id = c.Id,
                     Naam = c.Naam,
-                    Voornaam = c.Voornaam
+                    Voornaam = c.Voornaam,
+                    Email = c.Email
                 };
                 clientlistvm.Clients.Add(clientvm);
             }
@@ -133,7 +134,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 int gebruikerId = (int)Session["gebruiker"];
                 var crypto = new SimpleCrypto.PBKDF2();
                 var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
-                var opvoeder = new Opvoeder()
+                var client = new Client()
                 {
                     Naam = model.Naam,
                     Voornaam = model.Voornaam,
@@ -145,7 +146,7 @@ namespace KinderhuisStageOpdracht.Controllers
                     Salt = crypto.Salt,
                 };
 
-                _gebruikerRepository.AddOpvoeder(opvoeder);
+                _gebruikerRepository.AddClient(client);
                 _gebruikerRepository.SaveChanges();
 
                 return RedirectToAction("AdminIndex", new { id = gebruikerId });

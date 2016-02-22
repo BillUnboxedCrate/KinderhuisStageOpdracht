@@ -38,6 +38,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Id { get; set; }
             public string Voornaam { get; set; }
             public string Naam { get; set; }
+            public string Email { get; set; }
         }
 
         public class ClientListViewModel
@@ -98,7 +99,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Voornaam { get; set; }
             
             [Required]
+            [DataType(DataType.Date)]
             [Display(Name = "Geboorte datum")]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime GeboorteDatum { get; set; }
             
             [Required]
@@ -107,6 +110,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             //public string Wachtwoord { get; set; }
             
             [Required]
+            [EmailAddress]
             [Display(Name = "Email adres")]
             public string Email { get; set; }
         }
@@ -122,14 +126,15 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Voornaam { get; set; }
             
             [Required]
+            [DataType(DataType.Date)]
             [Display(Name = "Geboorte datum")]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime GeboorteDatum { get; set; }
             
             [Required]
             [Display(Name = "Gebruikers naam")]
             public string GebruikersNaam { get; set; }
 
-            [Required]
             [EmailAddress]
             [Display(Name = "Email adres")]
             public string Email { get; set; }
@@ -151,15 +156,24 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             [Display(Name = "Naam")]
             public string Naam { get; set; }
+            
             [Required]
             [Display(Name = "Voornaam")]
             public string Voornaam { get; set; }
+            
             [Required]
+            [DataType(DataType.Date)]
             [Display(Name = "Geboorte datum")]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime GeboorteDatum { get; set; }
+            
             [Required]
             [Display(Name = "Gebruikers naam")]
             public string GebruikersNaam { get; set; }
+
+            [EmailAddress]
+            [Display(Name="Email adres")]
+            public string Email { get; set; }
             //public string Wachtwoord { get; set; }
         }
     }

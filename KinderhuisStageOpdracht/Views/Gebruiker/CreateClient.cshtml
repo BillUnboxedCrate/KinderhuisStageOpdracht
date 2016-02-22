@@ -7,7 +7,7 @@
 @using (Html.BeginForm("CreateClient", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h2>Maak een nieuwe opvoeder aan.</h2>
+    <h2>Maak een nieuwe cliënt aan.</h2>
     <hr />
     @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
     <div class="form-group">
@@ -65,7 +65,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Voeg opvoeder toe" />
+            <input type="submit" class="btn btn-default" value="Voeg cliënt toe" />
         </div>
     </div>
 }
