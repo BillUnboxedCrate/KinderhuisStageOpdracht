@@ -14,14 +14,10 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //Primary Key
 
             //Property
+            Property(o => o.Email).IsRequired().HasMaxLength(50);
 
             //Foreign Key
-            HasMany(o => o.Clients).WithMany(c => c.Opvoeders).Map(m =>
-            {
-                m.ToTable("ClientOpvoeder");
-                m.MapLeftKey("OpvoederId");
-                m.MapRightKey("ClientId");
-            });
+
         }
     }
 }

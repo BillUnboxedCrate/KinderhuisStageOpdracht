@@ -13,7 +13,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
     {
         public DbSet<Gebruiker> GebruikerSet { get; set; }
         public DbSet<Menu> MenuSet { get; set; }
-        public DbSet<Taak> TaakSet { get; set; } 
+        public DbSet<Taak> TaakSet { get; set; }
+        public DbSet<Opvangtehuis> OpvangtehuisSet { get; set; } 
 
         public ProjectContext()
             : base("kinderhuisconnectionstring")
@@ -25,8 +26,6 @@ namespace KinderhuisStageOpdracht.Models.DAL
         {
             modelBuilder.Configurations.Add(new GebruikerMapper());
 
-
-
             modelBuilder.Configurations.Add(new KamerToDoItemMapper());
             modelBuilder.Configurations.Add(new KamerToDoMapper());
             modelBuilder.Configurations.Add(new MenuItemMapper());
@@ -34,6 +33,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             modelBuilder.Configurations.Add(new PlanningItemMapper());
             modelBuilder.Configurations.Add(new PlanningMapper());
             modelBuilder.Configurations.Add(new TaakMapper());
+            modelBuilder.Configurations.Add(new OpvangtehuisMapper());
         }
     }
 }

@@ -23,6 +23,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             Property(g => g.Wachtwoord).IsRequired();
 
             //Foreign Key
+            HasRequired(g => g.Opvangtehuis).WithMany();
         }
     }
 }

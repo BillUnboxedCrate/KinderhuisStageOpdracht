@@ -21,6 +21,8 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public string PlainWachtwoord { get; set; }
         public virtual ICollection<Taak> Taken { get; set; }
 
+        public virtual Opvangtehuis Opvangtehuis { get; set; }
+
         private string _salt;
         public string Salt
         {

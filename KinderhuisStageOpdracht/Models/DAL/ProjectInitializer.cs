@@ -21,7 +21,34 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
         protected override void Seed(ProjectContext context)
         {
-            #region gebruikers
+            #region opvangtehuizen
+
+            var opvangtehuis1 = new Opvangtehuis()
+            {
+                Naam = "Kinderhuis Sint Vincentius",
+                Gemeente = "Dendermonde",
+                Postcode = "9200",
+                Straat = "Leopold II laan",
+                StraatNummer = "6",
+                Telefoonnummer = "052/21 21 74"
+            };
+
+            var opvangtehuis2 = new Opvangtehuis()
+            {
+                Naam = "Kindertehuis Dageraad",
+                Gemeente = "Hamme",
+                Postcode = "9220",
+                Straat = "Jagerstraat",
+                StraatNummer = "32",
+                Telefoonnummer = "052/47 25 64"
+            };
+
+            //Add opvangtehuizen
+            context.OpvangtehuisSet.Add(opvangtehuis1);
+            context.OpvangtehuisSet.Add(opvangtehuis2);
+            #endregion
+
+            #region "
             //Admins
             var admin1 = new Admin()
             {
@@ -30,7 +57,9 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 GeboorteDatum = new DateTime(1993,11,16),
                 Gebruikersnaam = "Admin",
                 Wachtwoord = "test",
-                Salt = ""  
+                Salt = "",
+                Opvangtehuis = opvangtehuis1
+                
             };
 
             //Opvoeders
@@ -42,7 +71,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Gebruikersnaam = "Opvoeder",
                 Wachtwoord = "test",
                 Email = "tomdesaeger@gmail.com",
-                Salt = ""
+                Salt = "",
+                Opvangtehuis = opvangtehuis1
             };
 
             var opvoeder2 = new Opvoeder()
@@ -53,7 +83,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Gebruikersnaam = "YannickBraeckman",
                 Wachtwoord = "test",
                 Email = "yannickbraeckman@gmail.com",
-                Salt = ""
+                Salt = "",
+                Opvangtehuis = opvangtehuis1
             };
 
             //Clients
@@ -64,7 +95,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 GeboorteDatum = new DateTime(1991, 12, 5),
                 Gebruikersnaam = "BrikkeBauwens",
                 Wachtwoord = "test",
-                Salt = ""
+                Salt = "",
+                Opvangtehuis = opvangtehuis1
             };
 
             var client2 = new Client()
@@ -74,7 +106,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 GeboorteDatum = new DateTime(1992,2,14),
                 Gebruikersnaam = "RoyHollanders",
                 Wachtwoord = "test",
-                Salt = ""
+                Salt = "",
+                Opvangtehuis = opvangtehuis1
             };
 
             var client3 = new Client()
@@ -84,7 +117,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 GeboorteDatum = new DateTime(1993,9,24),
                 Gebruikersnaam = "RutgerVanDenBerghe",
                 Wachtwoord = "test",
-                Salt = ""
+                Salt = "",
+                Opvangtehuis = opvangtehuis1
             };
 
             var client4 = new Client()
@@ -94,7 +128,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 GeboorteDatum = new DateTime(1992,3,25),
                 Gebruikersnaam = "SeanBraeckman",
                 Wachtwoord = "test",
-                Salt = ""
+                Salt = "",
+                Opvangtehuis = opvangtehuis1
             };
             #endregion
 
@@ -111,37 +146,10 @@ namespace KinderhuisStageOpdracht.Models.DAL
             context.GebruikerSet.Add(client3);
             context.GebruikerSet.Add(client4);
 
-            //Admin filling
-            admin1.Clients.Add(client1);
-            admin1.Clients.Add(client2);
-            admin1.Clients.Add(client3);
-            admin1.Clients.Add(client4);
-            admin1.Opvoeders.Add(opvoeder1);
-            admin1.Opvoeders.Add(opvoeder2);
+           
 
 
-            //Opvoeder filling
-            opvoeder1.Clients.Add(client1);
-            opvoeder1.Clients.Add(client2);
-            opvoeder1.Clients.Add(client3);
-            opvoeder1.Clients.Add(client4);
-
-            opvoeder2.Clients.Add(client1);
-            opvoeder2.Clients.Add(client2);
-            opvoeder2.Clients.Add(client3);
-            opvoeder2.Clients.Add(client4);
-
-            //Client filling
-            client1.Opvoeders.Add(opvoeder1);
-            client2.Opvoeders.Add(opvoeder1);
-            client3.Opvoeders.Add(opvoeder1);
-            client4.Opvoeders.Add(opvoeder1);
-
-            client1.Opvoeders.Add(opvoeder2);
-            client2.Opvoeders.Add(opvoeder2);
-            client3.Opvoeders.Add(opvoeder2);
-            client4.Opvoeders.Add(opvoeder2);
-
+            
 
             #region menus
             var menu1 = new Menu()

@@ -198,6 +198,7 @@
     <Compile Include="Models\DAL\Mappers\KamerToDoMapper.cs" />
     <Compile Include="Models\DAL\Mappers\MenuItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\MenuMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\OpvangtehuisMapper.cs" />
     <Compile Include="Models\DAL\Mappers\OpvoederMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PlanningItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PlanningMapper.cs" />
@@ -219,6 +220,7 @@
     <Compile Include="Models\Domain\PlanningItem.cs" />
     <Compile Include="Models\Domain\Taak.cs" />
     <Compile Include="Models\Domain\Voorstel.cs" />
+    <Compile Include="Models\Domain\Opvangtehuis.cs" />
     <Compile Include="Models\Viewmodels\AccountViewModels.cs" />
     <Compile Include="Models\Domain\Admin.cs" />
     <Compile Include="Models\Domain\Client.cs" />

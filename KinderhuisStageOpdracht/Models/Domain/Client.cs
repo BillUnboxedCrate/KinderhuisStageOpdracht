@@ -9,13 +9,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
     {
         public virtual ICollection<Planning> Plannings { get; set; }
         public virtual ICollection<KamerToDo> KamerToDos { get; set; }
-        public virtual ICollection<Opvoeder> Opvoeders { get; set; } 
 
         public Client()
         {
             Plannings = new List<Planning>();
             KamerToDos = new List<KamerToDo>();
-            Opvoeders = new List<Opvoeder>();
         }
 
         public void AddKamerToDo(KamerToDo toDo)
