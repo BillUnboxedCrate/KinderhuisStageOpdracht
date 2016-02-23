@@ -46,7 +46,25 @@ namespace KinderhuisStageOpdracht.Controllers
             var id = (int)Session["gebruiker"];
             var opvoeder = (Opvoeder)_gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(opvoeder.GetType());
-            return View();
+
+            var clientlistvm = new GebruikerViewModel.ClientListViewModel();
+
+            List<Gebruiker> clients = _gebruikerRepository.FindAllClients().ToList();
+
+            foreach (var gebruiker in clients)
+            {
+                var c = (Client)gebruiker;
+                var clientvm = new GebruikerViewModel.ClientViewModel
+                {
+                    Id = c.Id,
+                    Naam = c.Naam,
+                    Voornaam = c.Voornaam,
+                    Email = c.Email
+                };
+                clientlistvm.Clients.Add(clientvm);
+            }
+
+            return View(clientlistvm);
         }
 
         //[Authorize]
@@ -147,10 +165,17 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateClient()
         {
-            var ccvm = new GebruikerViewModel.CreateClientViewModel()
+            var ccvm = new GebruikerViewModel.CreateClientViewModel();
+
+            if (_gebruikerRepository.FindById((int) Session["gebruiker"]) is Admin)
             {
-                Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList()
-            };
+                ccvm.Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList();
+            }
+            else
+            {
+                ccvm.Opvangtehuizen.Add(_gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis.Naam);
+            }
+
             return View(ccvm);
         }
 
@@ -162,7 +187,6 @@ namespace KinderhuisStageOpdracht.Controllers
                 if (model.GeselecteerdOpvangtehuisId != null)
                 {
                     
-                
                 var crypto = new SimpleCrypto.PBKDF2();
                 var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
                 
@@ -181,7 +205,16 @@ namespace KinderhuisStageOpdracht.Controllers
                 _gebruikerRepository.AddClient(client);
                 _gebruikerRepository.SaveChanges();
 
-                return RedirectToAction("AdminIndex");
+                    if (_gebruikerRepository.FindById((int) Session["gebruiker"]) is Admin)
+                    {
+                        return RedirectToAction("AdminIndex");
+                    }
+                    else
+                    {
+                        return RedirectToAction("OpvoederIndex");
+                    }
+
+                
                 }
             }
 

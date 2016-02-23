@@ -1,7 +1,37 @@
-﻿
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.ClientListViewModel
+
 @{
     ViewBag.Title = "OpvoederIndex";
 }
 
 <h2>OpvoederIndex</h2>
+<h3>Cliënten</h3>
+@Html.ActionLink("Voeg cliënt toe", "CreateClient", new { @class = "button-red" })
+<table class="table">
+    <tr>
+        <th>Voornaam</th>
+        <th>Naam</th>
+        <th>Email adres</th>
+        <th>Acties</th>
+    </tr>
+
+    @foreach (var o in Model.Clients)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => o.Voornaam)</td>
+            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
+            <td>@Html.DisplayFor(modelItem => o.Email)</td>
+
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = o.Id })
+                <span> | </span>
+                @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })
+                @*
+                    <span> | </span>
+                    @Html.ActionLink("Verwijderen", "Delete", new { id = suggestion.Id })
+                *@
+            </td>
+        </tr>
+    }
+</table>
 
