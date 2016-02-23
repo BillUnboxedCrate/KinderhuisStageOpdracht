@@ -115,9 +115,7 @@ namespace KinderhuisStageOpdracht.Controllers
         public ActionResult CreateOpvoeder(GebruikerViewModel.CreateOpvoederViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                int gebruikerId = (int)Session["gebruiker"];
-                
+            {   
                 var crypto = new SimpleCrypto.PBKDF2();
                 var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
                 
@@ -125,7 +123,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     Naam = model.Naam,
                     Voornaam = model.Voornaam,
-                    Opvangtehuis = _gebruikerRepository.FindById(gebruikerId).Opvangtehuis,
+                    Opvangtehuis = _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId),
                     Gebruikersnaam = model.GebruikersNaam,
                     GeboorteDatum = model.GeboorteDatum,
                     Email = model.Email,
@@ -138,8 +136,13 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 return RedirectToAction("AdminIndex");
             }
-   
-            return View(model);
+
+            var covm = new GebruikerViewModel.CreateOpvoederViewModel
+            {
+                Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList()
+            };
+
+            return View(covm);
         }
 
         public ActionResult CreateClient()
@@ -156,7 +159,9 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             if (ModelState.IsValid)
             {
-                int gebruikerId = (int)Session["gebruiker"];
+                if (model.GeselecteerdOpvangtehuisId != null)
+                {
+                    
                 
                 var crypto = new SimpleCrypto.PBKDF2();
                 var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
@@ -177,9 +182,15 @@ namespace KinderhuisStageOpdracht.Controllers
                 _gebruikerRepository.SaveChanges();
 
                 return RedirectToAction("AdminIndex");
+                }
             }
 
-            return View(model);
+            var ccvm = new GebruikerViewModel.CreateClientViewModel
+            {
+                Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList()
+            };
+
+            return View(ccvm);
         }
 
         public ActionResult Details(int id)
