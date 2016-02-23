@@ -238,7 +238,7 @@ namespace KinderhuisStageOpdracht.Controllers
             var gebruiker = _gebruikerRepository.FindById(id);
 
 
-            var evm = new GebruikerViewModel.EditViewModel(
+            var evm = new GebruikerViewModel.EditViewModel
             {
                 Id = gebruiker.Id,
                 Voornaam = gebruiker.Voornaam,

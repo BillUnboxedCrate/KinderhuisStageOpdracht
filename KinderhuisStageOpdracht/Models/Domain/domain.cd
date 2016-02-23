@@ -17,7 +17,7 @@
   <Class Name="KinderhuisStageOpdracht.Models.Domain.Gebruiker" Collapsed="true">
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CABCAQAgAAAAAAAAAAAgBgAAEAAAAAAAAAgAAAAAAAQ=</HashCode>
+      <HashCode>CABCAQAgACAAAAAAAAAgBgAAEAAAAAAAAAgAAAAAAAQ=</HashCode>
       <FileName>Models\Domain\Gebruiker.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -55,7 +55,7 @@
   <Class Name="KinderhuisStageOpdracht.Models.Domain.Opvoeder">
     <Position X="3.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\Opvoeder.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -78,13 +78,6 @@
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAQEQAAA=</HashCode>
       <FileName>Models\Domain\Taak.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="KinderhuisStageOpdracht.Models.Domain.Voorstel">
-    <Position X="9.5" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>Models\Domain\Voorstel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

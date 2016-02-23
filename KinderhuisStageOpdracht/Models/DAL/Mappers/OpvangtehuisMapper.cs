@@ -23,6 +23,8 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             Property(oh => oh.Postcode).IsRequired().HasMaxLength(4);
 
             //Foreign Key
+            HasMany(oh => oh.Suggesties).WithRequired();
+            HasMany(oh => oh.Menus).WithRequired();
         }
 
     }

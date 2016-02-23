@@ -307,8 +307,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             #endregion
             #endregion
 
-
-
+           
             //Add menus
             context.MenuSet.Add(menu1);
             context.MenuSet.Add(menu2);
@@ -324,6 +323,10 @@ namespace KinderhuisStageOpdracht.Models.DAL
             menu2.MenuItems.Add(menuitem8);
             menu2.MenuItems.Add(menuitem9);
             menu2.MenuItems.Add(menuitem10);
+
+            opvangtehuis1.Menus.Add(menu1);
+            opvangtehuis1.Menus.Add(menu2);
+
 
             //Add taken
             context.TaakSet.Add(taak1);

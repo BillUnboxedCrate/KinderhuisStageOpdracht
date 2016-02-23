@@ -5,9 +5,14 @@ using System.Web;
 
 namespace KinderhuisStageOpdracht.Models.Domain
 {
-    public class Voorstel
+    public class Suggestie
     {
         public int Id { get; set; }
         public string Beschrijving { get; set; }
+        public DateTime TimeStamp { get; set; }
+        public Client Client { get; set; }
+        public string Genre { get; set; }
+
+        
     }
 }

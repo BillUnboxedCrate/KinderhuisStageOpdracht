@@ -252,7 +252,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             [DataType(DataType.Date)]
             [Display(Name = "Geboorte datum")]
-            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+            [DisplayFormat(DataFormatString = "{0:d}")]
             public DateTime GeboorteDatum { get; set; }
 
             [Required]

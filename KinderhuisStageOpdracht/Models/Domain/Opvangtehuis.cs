@@ -14,6 +14,15 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public string StraatNummer { get; set; }
         public string Gemeente { get; set; }
         public string Postcode { get; set; }
+
+        public virtual ICollection<Suggestie> Suggesties { get; set; }
+        public virtual ICollection<Menu> Menus { get; set; } 
+
+        public Opvangtehuis()
+        {
+            Suggesties = new List<Suggestie>();
+            Menus = new List<Menu>();
+        }
         
         /*public virtual ICollection<Gebruiker> Gebruikers { get; set; }
 
