@@ -54,10 +54,10 @@
             <td>@Html.DisplayFor(modelItem => o.Email)</td>
 
             <td>
-                @*
-                @Html.ActionLink("Details", "Detail", new { id = suggestion.Id })
+                @Html.ActionLink("Details", "Details", new { id = o.Id })
                 <span> | </span>
-                @Html.ActionLink("Aanpassen", "Edit", new { id = suggestion.Id })
+                @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })
+                @*
                 <span> | </span>
                 @Html.ActionLink("Verwijderen", "Delete", new { id = suggestion.Id })
                 *@

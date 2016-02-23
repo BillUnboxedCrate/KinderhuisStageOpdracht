@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using KinderhuisStageOpdracht.Models.Domain;
@@ -55,6 +56,21 @@ namespace KinderhuisStageOpdracht.Models.DAL
             _context.GebruikerSet.Add(client);
         }
 
+        public void UpdateGebruiker(Gebruiker gebruiker)
+        {
+            _context.Entry(gebruiker).State = EntityState.Modified;
+        }
+
+        public void UpdateOpvoeder(Opvoeder opvoeder)
+        {
+            _context.Entry(opvoeder).State = EntityState.Modified;
+        }
+
+        public void UpdateClient(Client client)
+        {
+            _context.Entry(client).State = EntityState.Modified;
+        }
+        
         public void DeleteGebruiker(int id)
         {
             var gebruiker = _context.GebruikerSet.Find(id);

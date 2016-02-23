@@ -235,9 +235,44 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Edit(int id)
         {
-            throw new NotImplementedException();
+            var gebruiker = _gebruikerRepository.FindById(id);
+
+
+            var evm = new GebruikerViewModel.EditViewModel(
+            {
+                Id = gebruiker.Id,
+                Voornaam = gebruiker.Voornaam,
+                Email = gebruiker.Email,
+                Naam = gebruiker.Naam,
+                GeboorteDatum = gebruiker.GeboorteDatum,
+                GebruikersNaam = gebruiker.Gebruikersnaam,
+                Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(ho => ho.Naam).ToList(),
+                GeselecteerdOpvangtehuisId = gebruiker.Opvangtehuis.Naam
+            };
+
+            return View(evm);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(GebruikerViewModel.EditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var gebruiker = _gebruikerRepository.FindById(model.Id);
+                gebruiker.Naam = model.Naam;
+                gebruiker.Voornaam = model.Voornaam;
+                gebruiker.Email = model.Email;
+                gebruiker.Gebruikersnaam = model.GebruikersNaam;
+                gebruiker.Opvangtehuis = _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId);
+                gebruiker.GeboorteDatum = model.GeboorteDatum;
+
+                _gebruikerRepository.UpdateGebruiker(gebruiker);
+                _gebruikerRepository.SaveChanges();
+
+                return RedirectToAction("AdminIndex");
+            }
+            return View(model);
+
         }
     }
-
-    
 }

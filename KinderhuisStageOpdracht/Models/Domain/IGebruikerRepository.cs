@@ -24,6 +24,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         void AddOpvoeder(Opvoeder opvoeder);
         void AddClient(Client client);
+
+        void UpdateGebruiker(Gebruiker gebruiker);
+        void UpdateOpvoeder(Opvoeder opvoeder);
+        void UpdateClient(Client client);
+
         void DeleteGebruiker(int id);
 
         void SaveChanges();

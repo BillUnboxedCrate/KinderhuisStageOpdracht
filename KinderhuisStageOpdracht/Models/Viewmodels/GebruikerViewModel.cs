@@ -96,6 +96,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
         public class EditOpvoederViewModel
         {
+            public int Id { get; set; }
+
             [Required]
             [Display(Name = "Naam")]
             public string Naam { get; set; }
@@ -119,6 +121,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [EmailAddress]
             [Display(Name = "Email adres")]
             public string Email { get; set; }
+
+            [Display(Name = "Kies een opvangtehuis")]
+            public List<string> Opvangtehuizen { get; set; }
+
+            public string GeselecteerdOpvangtehuisId { get; set; }
         }
 
         public class CreateClientViewModel
@@ -169,9 +176,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             
         }
-
+        
         public class EditClientViewModel
         {
+            public int Id { get; set; }
+
             [Required]
             [Display(Name = "Naam")]
             public string Naam { get; set; }
@@ -194,8 +203,14 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name="Email adres")]
             public string Email { get; set; }
             //public string Wachtwoord { get; set; }
+
+            [Display(Name = "Kies een opvangtehuis")]
+            public List<string> Opvangtehuizen { get; set; }
+
+            public string GeselecteerdOpvangtehuisId { get; set; }
         }
 
+       
         public class DetailViewModel
         {
             [Display(Name = "Gebruikers id")]
@@ -220,6 +235,39 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Display(Name = "Opvangtehuis")]
             public string Opvangtehuis { get; set; }
+        }
+
+        public class EditViewModel
+        {
+            public int Id { get; set; }
+
+            [Required]
+            [Display(Name = "Naam")]
+            public string Naam { get; set; }
+
+            [Required]
+            [Display(Name = "Voornaam")]
+            public string Voornaam { get; set; }
+
+            [Required]
+            [DataType(DataType.Date)]
+            [Display(Name = "Geboorte datum")]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+            public DateTime GeboorteDatum { get; set; }
+
+            [Required]
+            [Display(Name = "Gebruikers naam")]
+            public string GebruikersNaam { get; set; }
+
+            [EmailAddress]
+            [Display(Name = "Email adres")]
+            public string Email { get; set; }
+            //public string Wachtwoord { get; set; }
+
+            [Display(Name = "Kies een opvangtehuis")]
+            public List<string> Opvangtehuizen { get; set; }
+
+            public string GeselecteerdOpvangtehuisId { get; set; }
         }
     }
 }
