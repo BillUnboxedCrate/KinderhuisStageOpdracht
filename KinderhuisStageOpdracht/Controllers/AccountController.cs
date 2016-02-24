@@ -66,7 +66,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public ActionResult Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -85,6 +85,10 @@ namespace KinderhuisStageOpdracht.Controllers
                     {
                         Session["gebruiker"] = gebruiker.Id;
                         FormsAuthentication.SetAuthCookie(model.Gebruikersnaam, false);
+                        if (Request.IsAuthenticated)
+                        {
+                            System.Diagnostics.Debug.WriteLine("Secure Logged in!");  
+                        }
                         System.Diagnostics.Debug.WriteLine("Logged in!");
                       
                         if (gebruiker is Admin)
@@ -498,6 +502,7 @@ namespace KinderhuisStageOpdracht.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
+            Session["gebruiker"] = "";
             return RedirectToAction("Login", "Account");
         }
 
