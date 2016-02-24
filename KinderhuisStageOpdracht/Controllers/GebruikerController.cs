@@ -272,12 +272,35 @@ namespace KinderhuisStageOpdracht.Controllers
             return View();
         }*/
 
-        [HttpPost]
         public ActionResult Delete(int id)
-        {    
+        {
+            var gebruiker = _gebruikerRepository.FindById(id);
+            GebruikerViewModel.DetailViewModel dvm = null;
+
+            if (gebruiker != null)
+            {
+                dvm = new GebruikerViewModel.DetailViewModel
+                {
+                    Id = gebruiker.Id,
+                    Naam = gebruiker.Naam,
+                    Voornaam = gebruiker.Voornaam,
+                    Email = gebruiker.Email,
+                    GeboorteDatum = gebruiker.GeboorteDatum,
+                    GebruikersNaam = gebruiker.Gebruikersnaam,
+                    Opvangtehuis = gebruiker.Opvangtehuis.ToString()
+                };
+            }
+            return View(dvm);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
             _gebruikerRepository.DeleteGebruiker(id);
-           
-            return View("AdminIndex");
+            _gebruikerRepository.SaveChanges();
+            
+            return RedirectToAction("AdminIndex");
         }
 
         public ActionResult Edit(int id)

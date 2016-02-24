@@ -1,0 +1,45 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.DetailViewModel
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Bent u zeker dat u deze gebruiker wilt verwijderen?</h2>
+@using (Html.BeginForm("Delete", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>@Html.LabelFor(m => m.Voornaam)</td>
+            <td>@Html.DisplayFor(m => m.Voornaam)</td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m => m.Naam)</td>
+            <td>@Html.DisplayFor(m => m.Naam)</td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m => m.GebruikersNaam)</td>
+            <td>@Html.DisplayFor(m => m.GebruikersNaam)</td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m => m.Email)</td>
+            <td>@Html.DisplayFor(m => m.Email)</td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m => m.GeboorteDatum)</td>
+            <td>@Html.DisplayFor(m => m.GeboorteDatum)</td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m => m.Opvangtehuis)</td>
+            <td>@Html.DisplayFor(m => m.Opvangtehuis)</td>
+        </tr>
+    </table>
+
+    <div class="form-group">  
+        <input type="submit" class="btn btn-default" value="Verwijderen" />
+    </div>
+}

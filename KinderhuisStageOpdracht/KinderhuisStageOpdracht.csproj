@@ -335,6 +335,7 @@
     <Content Include="Views\Gebruiker\CreateClient.cshtml" />
     <Content Include="Views\Gebruiker\Details.cshtml" />
     <Content Include="Views\Gebruiker\Edit.cshtml" />
+    <Content Include="Views\Gebruiker\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

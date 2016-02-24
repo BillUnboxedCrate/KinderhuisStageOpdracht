@@ -28,9 +28,8 @@
                 @Html.ActionLink("Details", "Details", new { id = o.Id })
                 <span> | </span>
                 @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })   
-     @*
-        @Html.ActionLink("Verwijderen", "AdminIndex", new { id = o.Id })
-     *@
+                <span> | </span>
+                @Html.ActionLink("Verwijderen", "Delete", new { id = o.Id })
             </td>
         </tr>
     }
@@ -57,10 +56,8 @@
                 @Html.ActionLink("Details", "Details", new { id = o.Id })
                 <span> | </span>
                 @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })
-                @*
                 <span> | </span>
-                @Html.ActionLink("Verwijderen", "Delete", new { id = suggestion.Id })
-                *@
+                @Html.ActionLink("Verwijderen", "Delete", new { id = o.Id })
             </td>
         </tr>
     }
