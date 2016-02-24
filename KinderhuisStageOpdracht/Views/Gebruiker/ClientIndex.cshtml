@@ -1,7 +1,30 @@
-﻿
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.OpvoederListViewModel
+
 @{
     ViewBag.Title = "ClientIndex";
 }
 
-<h2>ClientIndex</h2>
+<h2>CliëntIndex</h2>
+<h3>Opvoeders</h3>
+<table class="table">
+    <tr>
+        <th>Voornaam</th>
+        <th>Naam</th>
+        <th>Email adres</th>
+        <th>Acties</th>
+    </tr>
+
+    @foreach (var o in Model.Opvoeders)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => o.Voornaam)</td>
+            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
+            <td>@Html.DisplayFor(modelItem => o.Email)</td>
+
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = o.Id })
+            </td>
+        </tr>
+    }
+</table>
 

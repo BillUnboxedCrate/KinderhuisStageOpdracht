@@ -33,7 +33,25 @@ namespace KinderhuisStageOpdracht.Controllers
             var id = (int)Session["gebruiker"];
             var client = (Client) _gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(client.GetType());
-            return View();
+
+            var clientlistvm = new GebruikerViewModel.OpvoederListViewModel();
+
+            List<Gebruiker> opvoeders = _gebruikerRepository.FindAllClients().Where(c => c.Opvangtehuis.Id == client.Opvangtehuis.Id).ToList();
+
+            foreach (var gebruiker in opvoeders)
+            {
+                var c = (Client)gebruiker;
+                var clientvm = new GebruikerViewModel.OpvoederViewModel()
+                {
+                    Id = c.Id,
+                    Naam = c.Naam,
+                    Voornaam = c.Voornaam,
+                    Email = c.Email
+                };
+                clientlistvm.Opvoeders.Add(clientvm);
+            }
+
+            return View(clientlistvm);
         }
 
         //[Authorize]
@@ -49,7 +67,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
             var clientlistvm = new GebruikerViewModel.ClientListViewModel();
 
-            List<Gebruiker> clients = _gebruikerRepository.FindAllClients().ToList();
+            List<Gebruiker> clients = _gebruikerRepository.FindAllClients().Where(c => c.Opvangtehuis.Id == opvoeder.Opvangtehuis.Id).ToList();
 
             foreach (var gebruiker in clients)
             {
@@ -256,13 +274,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         [HttpPost]
         public ActionResult Delete(int id)
-        {   
-            if (_gebruikerRepository.FindById(id) != null)
-            {
-                _gebruikerRepository.DeleteGebruiker(id);
-            }
-          
-
+        {    
+            _gebruikerRepository.DeleteGebruiker(id);
+           
             return View("AdminIndex");
         }
 

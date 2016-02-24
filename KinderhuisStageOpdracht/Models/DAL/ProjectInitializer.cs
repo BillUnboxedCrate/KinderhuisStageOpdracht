@@ -48,7 +48,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             context.OpvangtehuisSet.Add(opvangtehuis2);
             #endregion
 
-            #region "
+            #region gebruikers
             //Admins
             var admin1 = new Admin()
             {
@@ -134,7 +134,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Gebruikersnaam = "SeanBraeckman",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1
+                Opvangtehuis = opvangtehuis2
             };
             #endregion
 
@@ -150,11 +150,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             context.GebruikerSet.Add(client2);
             context.GebruikerSet.Add(client3);
             context.GebruikerSet.Add(client4);
-
-           
-
-
-            
+             
 
             #region menus
             var menu1 = new Menu()
