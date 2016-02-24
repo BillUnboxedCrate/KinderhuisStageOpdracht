@@ -26,14 +26,17 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Display(Name = "Aangemaakt op")]
             [DataType(DataType.DateTime)]
-            [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+            [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
             public DateTime TimeStamp { get; set; }
-            
+
             [Display(Name = "Genre")]
-            public string Genre{ get; set; }
-            
+            public string Genre { get; set; }
+
             [Display(Name = "Gesuggereerd door")]
             public string Client { get; set; }
+
+            [Display(Name = "Suggestie")]
+            public string Beschrijving { get; set; }
         }
 
         public class CreateSuggestieViewModel
@@ -48,13 +51,13 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 get
                 {
                     return new[]
-                {
-                    new SelectListItem {Text = "Suggestie voor eten", Value = "Eten"},
-                    new SelectListItem {Text = "Suggestie voor een activiteit", Value = "Activiteit"},
-                    
-                };
+                    {   
+                        new SelectListItem {Text = "Suggestie voor eten", Value = "Eten"},
+                        new SelectListItem {Text = "Suggestie voor een activiteit", Value = "Activiteit"}
+                    };
                 }
             }
         }
+   
     }
 }

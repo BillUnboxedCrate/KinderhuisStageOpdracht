@@ -22,10 +22,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 @*<ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-    </ul>*@
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>*@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -41,21 +41,21 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryui")
-<script>
-    $(function() {
-        $(".jqueryui-marker-datepicker").datepicker({
-            dateFormat: "dd/mm/yyyy",
-            changeYear: true,
-            showOn: "button"
-        }).css("display", "inline-block").next("button").button({
-            icons: { primary: "ui-icon-calander" },
-            label: "Selecteer een datum",
-            text: false
+    <script>
+        $(function () {
+            $(".jqueryui-marker-datepicker").datepicker({
+                dateFormat: "dd/mm/yyyy",
+                changeYear: true,
+                showOn: "button"
+            }).css("display", "inline-block").next("button").button({
+                icons: { primary: "ui-icon-calander" },
+                label: "Selecteer een datum",
+                text: false
+            });
         });
-    });
-</script>
+    </script>
     @RenderSection("scripts", required: false)
-    
-    
+
+
 </body>
 </html>

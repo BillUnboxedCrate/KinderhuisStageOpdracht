@@ -61,6 +61,9 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return generatedSalt;
         }
 
-
+        public string GiveFullName()
+        {
+            return Voornaam + " " + Naam;
+        }
     }
 }

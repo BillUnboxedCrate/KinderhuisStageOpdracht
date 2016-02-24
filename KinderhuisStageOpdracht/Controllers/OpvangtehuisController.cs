@@ -22,22 +22,22 @@ namespace KinderhuisStageOpdracht.Controllers
         // GET: Opvangtehuis
         public ActionResult Suggesties()
         {
-            //Opvangtehuis opvangtehuis = _gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis;
-            //var slvm = new OpvangtehuisViewModel.SuggestieListViewModel();
+            Opvangtehuis opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+            var slvm = new OpvangtehuisViewModel.SuggestieListViewModel();
 
-            //foreach (var s in opvangtehuis.Suggesties)
-            //{
-            //    var svm = new OpvangtehuisViewModel.SuggestieViewModel
-            //    {
-            //        Client = s.ToString(),
-            //        Id = s.Id,
-            //        Genre = s.Genre,
-            //        TimeStamp = s.TimeStamp
-            //    };
-            //    slvm.Suggesties.Add(svm);
-            //}
-            //return View(slvm);
-            return View();
+            foreach (var s in opvangtehuis.Suggesties)
+            {
+                var svm = new OpvangtehuisViewModel.SuggestieViewModel
+                {
+                    Client = s.Client.GiveFullName(),
+                    Id = s.Id,
+                    Genre = s.Genre,
+                    TimeStamp = s.TimeStamp,
+                    Beschrijving = s.Beschrijving
+                };
+                slvm.Suggesties.Add(svm);
+            }
+            return View(slvm);
         }
 
         public ActionResult CreateSuggestie()
@@ -61,7 +61,7 @@ namespace KinderhuisStageOpdracht.Controllers
             opvangtehuis.AddSuggestie(s);
             _opvangtehuisRepository.SaveChanges();
 
-            return View();
+            return RedirectToAction("ClientIndex","Gebruiker");
         }
     }
 }

@@ -6,26 +6,19 @@
 <h2>Index</h2>
 <table class="table">
     <tr>
-        <th>Voornaam</th>
-        <th>Naam</th>
-        <th>Email adres</th>
-        <th>Acties</th>
+        <th>Genre</th>
+        <th>Cliënt</th>
+        <th>Wanneer</th>
+        <th>Suggestie</th>
 
     </tr>
-    @foreach (var o in Model)
+    @foreach (var o in Model.Suggesties)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Voornaam)</td>
-            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
-            <td>@Html.DisplayFor(modelItem => o.Email)</td>
-
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = o.Id })
-                <span> | </span>
-                @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })
-                <span> | </span>
-                @Html.ActionLink("Verwijderen", "Delete", new { id = o.Id })
-            </td>
+            <td>@Html.DisplayFor(modelItem => o.Genre)</td>
+            <td>@Html.DisplayFor(modelItem => o.Client)</td>
+            <td>@Html.DisplayFor(modelItem => o.TimeStamp)</td>
+            <td>@Html.DisplayFor(modelItem => o.Beschrijving)</td>
         </tr>
     }
 </table>
