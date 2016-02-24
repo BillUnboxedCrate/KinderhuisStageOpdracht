@@ -187,6 +187,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GebruikerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OpvangtehuisController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -207,17 +208,13 @@
     <Compile Include="Models\DAL\Mappers\PlanningMapper.cs" />
     <Compile Include="Models\DAL\Mappers\SuggestieMapper.cs" />
     <Compile Include="Models\DAL\Mappers\TaakMapper.cs" />
-    <Compile Include="Models\DAL\MenuRepository.cs" />
     <Compile Include="Models\DAL\OpvangtehuisRepository.cs" />
     <Compile Include="Models\DAL\ProjectContext.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\DAL\ProjectInitializer.cs" />
-    <Compile Include="Models\DAL\TaakRepository.cs" />
     <Compile Include="Models\Domain\IGebruikerRepository.cs" />
-    <Compile Include="Models\Domain\IMenuRepository.cs" />
     <Compile Include="Models\Domain\IOpvangtehuisRepository.cs" />
-    <Compile Include="Models\Domain\ITaakRepository.cs" />
     <Compile Include="Models\Domain\KamerToDo.cs" />
     <Compile Include="Models\Domain\KamerToDoItem.cs" />
     <Compile Include="Models\Domain\Menu.cs" />
@@ -234,6 +231,7 @@
     <Compile Include="Models\Domain\Opvoeder.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Viewmodels\GebruikerViewModel.cs" />
+    <Compile Include="Models\Viewmodels\OpvangtehuisViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -336,6 +334,8 @@
     <Content Include="Views\Gebruiker\Details.cshtml" />
     <Content Include="Views\Gebruiker\Edit.cshtml" />
     <Content Include="Views\Gebruiker\Delete.cshtml" />
+    <Content Include="Views\Opvangtehuis\Suggesties.cshtml" />
+    <Content Include="Views\Opvangtehuis\CreateSuggestie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

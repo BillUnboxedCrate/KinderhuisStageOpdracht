@@ -1,0 +1,32 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.OpvangtehuisViewModel.SuggestieListViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table class="table">
+    <tr>
+        <th>Voornaam</th>
+        <th>Naam</th>
+        <th>Email adres</th>
+        <th>Acties</th>
+
+    </tr>
+    @foreach (var o in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => o.Voornaam)</td>
+            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
+            <td>@Html.DisplayFor(modelItem => o.Email)</td>
+
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = o.Id })
+                <span> | </span>
+                @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })
+                <span> | </span>
+                @Html.ActionLink("Verwijderen", "Delete", new { id = o.Id })
+            </td>
+        </tr>
+    }
+</table>
+

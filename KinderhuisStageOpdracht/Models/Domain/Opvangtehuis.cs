@@ -16,24 +16,32 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public string Postcode { get; set; }
 
         public virtual ICollection<Suggestie> Suggesties { get; set; }
-        public virtual ICollection<Menu> Menus { get; set; } 
+        public virtual ICollection<Menu> Menus { get; set; }
+
+        //public virtual ICollection<Gebruiker> Gebruikers { get; set; }
 
         public Opvangtehuis()
         {
             Suggesties = new List<Suggestie>();
             Menus = new List<Menu>();
+            //Gebruikers = new List<Gebruiker>();
         }
         
-        /*public virtual ICollection<Gebruiker> Gebruikers { get; set; }
-
-        public Opvangtehuis() 
+        public void AddSuggestie(Suggestie suggestie)
         {
-            Gebruikers = new List<Gebruiker>();
-        }*/
+            Suggesties.Add(suggestie);
+        }
 
         public override string ToString()
         {
             return String.Format("{0}\n{1} {2}\n{3} {4}", Naam, Straat, StraatNummer, Postcode, Gemeente);
         }
+
+        /*
+        public List<Gebruiker> GetGebruikers()
+        {
+            return Gebruikers.OrderBy(g => g.Voornaam).ToList();
+        }
+        */
     }
 }

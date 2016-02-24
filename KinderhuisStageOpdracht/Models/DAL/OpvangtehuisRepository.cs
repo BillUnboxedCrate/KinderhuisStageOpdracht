@@ -29,5 +29,10 @@ namespace KinderhuisStageOpdracht.Models.DAL
         {
             return _context.OpvangtehuisSet.SingleOrDefault(oh => oh.Naam == name);
         }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

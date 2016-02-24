@@ -10,5 +10,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
         IQueryable<Opvangtehuis> FindAll();
         Opvangtehuis FindById(int id);
         Opvangtehuis FindByName(string name);
+        void SaveChanges();
     }
 }
