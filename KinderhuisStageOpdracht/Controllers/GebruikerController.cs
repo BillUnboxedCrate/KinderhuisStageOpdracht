@@ -36,19 +36,19 @@ namespace KinderhuisStageOpdracht.Controllers
 
             var clientlistvm = new GebruikerViewModel.OpvoederListViewModel();
 
-            List<Gebruiker> opvoeders = _gebruikerRepository.FindAllClients().Where(c => c.Opvangtehuis.Id == client.Opvangtehuis.Id).ToList();
+            List<Gebruiker> opvoeders = _gebruikerRepository.FindAllOpvoeders().Where(c => c.Opvangtehuis.Id == client.Opvangtehuis.Id).ToList();
 
             foreach (var gebruiker in opvoeders)
             {
-                var c = (Client)gebruiker;
-                var clientvm = new GebruikerViewModel.OpvoederViewModel()
+                var o = (Opvoeder)gebruiker;
+                var opvoedervm = new GebruikerViewModel.OpvoederViewModel()
                 {
-                    Id = c.Id,
-                    Naam = c.Naam,
-                    Voornaam = c.Voornaam,
-                    Email = c.Email
+                    Id = o.Id,
+                    Naam = o.Naam,
+                    Voornaam = o.Voornaam,
+                    Email = o.Email
                 };
-                clientlistvm.Opvoeders.Add(clientvm);
+                clientlistvm.Opvoeders.Add(opvoedervm);
             }
 
             return View(clientlistvm);
