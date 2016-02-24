@@ -12,8 +12,6 @@ namespace KinderhuisStageOpdracht.Models.DAL
     public class ProjectContext:DbContext
     {
         public DbSet<Gebruiker> GebruikerSet { get; set; }
-        public DbSet<Menu> MenuSet { get; set; }
-        public DbSet<Taak> TaakSet { get; set; }
         public DbSet<Opvangtehuis> OpvangtehuisSet { get; set; } 
 
         public ProjectContext()

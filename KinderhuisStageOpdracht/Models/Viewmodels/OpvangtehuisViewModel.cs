@@ -23,7 +23,6 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         {
             public int Id { get; set; }
 
-
             [Display(Name = "Aangemaakt op")]
             [DataType(DataType.DateTime)]
             [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
@@ -58,6 +57,29 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 }
             }
         }
-   
+
+        public class MenuListViewModel
+        {
+            public List<MenuViewModel> Menus { get; set; }
+
+            public MenuListViewModel()
+            {
+                Menus = new List<MenuViewModel>();
+            }
+        }
+
+        public class MenuViewModel
+        {
+            public string Week { get; set; }
+            public DateTime BeginWeek { get; set; }
+            public DateTime EindeWeek { get; set; }
+        }
+
+        public class CreateMenuItemViewModel
+        {
+            public string Voorgerecht { get; set; }
+            public string Hoofdgerecht { get; set; }
+            public string Dessert { get; set; }
+        }
     }
 }
