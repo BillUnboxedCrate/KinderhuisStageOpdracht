@@ -11,10 +11,10 @@
     <hr />
     @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
     <div class="form-group">
-        @Html.LabelFor(m => m.Voornaam, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.Voornaam, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Voornaam, new {@class = "form-control"})
-            @Html.ValidationMessageFor(m => m.Voornaam, "", new {@class = "text-danger"})
+            @Html.TextBoxFor(m => m.Voornaam, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Voornaam, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
@@ -33,10 +33,10 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.GeboorteDatum, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.GeboorteDatum, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.EditorFor(m => m.GeboorteDatum, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(m => m.GeboorteDatum, "", new {@class = "text-danger"})
+            @Html.TextBoxFor(m => m.GeboorteDatum, new { @class = "form-control datepicker", @readonly = true, @type = "date" })
+            @Html.ValidationMessageFor(m => m.GeboorteDatum, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -46,18 +46,18 @@
             @Html.DropDownListFor(m => m.GeselecteerdOpvangtehuisId, new SelectList(Model.Opvangtehuizen), new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.GeselecteerdOpvangtehuisId, "", new { @class = "text-danger" })
         </div>
-    </div>  
+    </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.GebruikersNaam, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.GebruikersNaam, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.GebruikersNaam, new { @class = "form-control" })    
+            @Html.TextBoxFor(m => m.GebruikersNaam, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.GebruikersNaam, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Wachtwoord, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.Wachtwoord, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Wachtwoord, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Wachtwoord, "", new { @class = "text-danger" })
@@ -76,4 +76,7 @@
             <input type="submit" class="btn btn-default" value="Voeg cliënt toe" />
         </div>
     </div>
+
 }
+
+

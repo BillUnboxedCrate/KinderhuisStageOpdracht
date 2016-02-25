@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using KinderhuisStageOpdracht.Extensions;
 using KinderhuisStageOpdracht.Models.Domain;
 using KinderhuisStageOpdracht.Models.Viewmodels;
 
@@ -170,6 +171,8 @@ namespace KinderhuisStageOpdracht.Controllers
                 _gebruikerRepository.AddOpvoeder(opvoeder);
                 _gebruikerRepository.SaveChanges();
 
+
+                this.AddNotification("Opvoeder toegevoegd", NotificationType.SUCCESS);
                 return RedirectToAction("AdminIndex");
             }
 
@@ -225,10 +228,12 @@ namespace KinderhuisStageOpdracht.Controllers
 
                     if (_gebruikerRepository.FindById((int) Session["gebruiker"]) is Admin)
                     {
+                        this.AddNotification("Cliënt toegevoegd", NotificationType.SUCCESS);
                         return RedirectToAction("AdminIndex");
                     }
                     else
                     {
+                        this.AddNotification("Cliënt toegevoegd", NotificationType.SUCCESS);
                         return RedirectToAction("OpvoederIndex");
                     }
 
@@ -299,7 +304,8 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             _gebruikerRepository.DeleteGebruiker(id);
             _gebruikerRepository.SaveChanges();
-            
+
+            this.AddNotification("De gebruiker is verwijderd", NotificationType.SUCCESS);
             return RedirectToAction("AdminIndex");
         }
 
@@ -339,6 +345,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 _gebruikerRepository.UpdateGebruiker(gebruiker);
                 _gebruikerRepository.SaveChanges();
 
+                this.AddNotification("De gebruiker is aangepast", NotificationType.SUCCESS);
                 return RedirectToAction("AdminIndex");
             }
             return View(model);

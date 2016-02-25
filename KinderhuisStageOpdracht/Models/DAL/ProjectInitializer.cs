@@ -305,33 +305,27 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
            
             //Add menus
-            context.MenuSet.Add(menu1);
-            context.MenuSet.Add(menu2);
+            //menu1.MenuItems.Add(menuitem1);
+            //menu1.MenuItems.Add(menuitem2);
+            //menu1.MenuItems.Add(menuitem3);
+            //menu1.MenuItems.Add(menuitem4);
+            //menu1.MenuItems.Add(menuitem5);
 
-            menu1.MenuItems.Add(menuitem1);
-            menu1.MenuItems.Add(menuitem2);
-            menu1.MenuItems.Add(menuitem3);
-            menu1.MenuItems.Add(menuitem4);
-            menu1.MenuItems.Add(menuitem5);
+            //menu2.MenuItems.Add(menuitem6);
+            //menu2.MenuItems.Add(menuitem7);
+            //menu2.MenuItems.Add(menuitem8);
+            //menu2.MenuItems.Add(menuitem9);
+            //menu2.MenuItems.Add(menuitem10);
 
-            menu2.MenuItems.Add(menuitem6);
-            menu2.MenuItems.Add(menuitem7);
-            menu2.MenuItems.Add(menuitem8);
-            menu2.MenuItems.Add(menuitem9);
-            menu2.MenuItems.Add(menuitem10);
-
-            opvangtehuis1.Menus.Add(menu1);
-            opvangtehuis1.Menus.Add(menu2);
+            //opvangtehuis1.Menus.Add(menu1);
+            //opvangtehuis1.Menus.Add(menu2);
 
 
             //Add taken
-            context.TaakSet.Add(taak1);
-            context.TaakSet.Add(taak2);
-
-            taak1.Gebruikers.Add(client1);
-            taak2.Gebruikers.Add(client1);
-            taak1.Gebruikers.Add(client3);
-            taak1.Gebruikers.Add(client4);
+            //taak1.Gebruikers.Add(client1);
+            //taak2.Gebruikers.Add(client1);
+            //taak1.Gebruikers.Add(client3);
+            //taak1.Gebruikers.Add(client4);
             
 
             context.SaveChanges();
