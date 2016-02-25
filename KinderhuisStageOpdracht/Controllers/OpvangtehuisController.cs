@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Configuration;
 using System.Web;
 using System.Web.Mvc;
+using KinderhuisStageOpdracht.Extensions;
 using KinderhuisStageOpdracht.Models.Domain;
 using KinderhuisStageOpdracht.Models.Viewmodels;
 
@@ -22,10 +24,10 @@ namespace KinderhuisStageOpdracht.Controllers
         // GET: Opvangtehuis
         public ActionResult Suggesties()
         {
-            Opvangtehuis opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+            var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var slvm = new OpvangtehuisViewModel.SuggestieListViewModel();
 
-            foreach (var s in opvangtehuis.Suggesties)
+            foreach (var s in opvangtehuis.Suggesties.OrderByDescending(s => s.TimeStamp))
             {
                 var svm = new OpvangtehuisViewModel.SuggestieViewModel
                 {
@@ -49,19 +51,78 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult CreateSuggestie(OpvangtehuisViewModel.CreateSuggestieViewModel model)
         {
-            Suggestie s = new Suggestie()
+            if (ModelState.IsValid)
             {
-                Beschrijving = model.Beschrijving,
-                Genre = model.GeselecteerdGenre,
-                Client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]),
-                TimeStamp = DateTime.Now
-            };
+                var s = new Suggestie()
+                {
+                    Beschrijving = model.Beschrijving,
+                    Genre = model.GeselecteerdGenre,
+                    Client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]),
+                    TimeStamp = DateTime.Now
+                };
 
-            Opvangtehuis opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-            opvangtehuis.AddSuggestie(s);
-            _opvangtehuisRepository.SaveChanges();
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                opvangtehuis.AddSuggestie(s);
+                _opvangtehuisRepository.SaveChanges();
 
-            return RedirectToAction("ClientIndex","Gebruiker");
+                this.AddNotification("Uw suggestie wordt doorgegeven", NotificationType.SUCCESS);
+                return RedirectToAction("ClientIndex", "Gebruiker");
+            }
+
+            var csvm = new OpvangtehuisViewModel.CreateSuggestieViewModel();
+            return View(csvm);
+           
+        }
+
+        public ActionResult MenuIndex()
+        {
+            var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+            var mlvm = new OpvangtehuisViewModel.MenuListViewModel();
+
+            foreach (var m in opvangtehuis.Menus.OrderByDescending(m => m.Week))
+            {
+                var mvm = new OpvangtehuisViewModel.MenuViewModel
+                {
+                    Week = m.Week,
+                    BeginWeek = m.BegindagWeek,
+                    EindeWeek = m.EinddagWeek
+                };
+                mlvm.Menus.Add(mvm);
+            }
+
+            return View(mlvm);
+        }
+
+        public ActionResult CreateMenu()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateMenu(OpvangtehuisViewModel.MenuViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var menu = new Menu
+                {
+                    BegindagWeek = model.BeginWeek,
+                    EinddagWeek = model.EindeWeek,
+                    Week = model.Week
+                };
+
+                foreach (var mi in model.MenuItemListViewModels)
+                {
+                    menu.AddMenuItem(mi.Dessert, mi.Hoofdgerecht, mi.Voorgerecht);
+                }
+
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                opvangtehuis.AddMenu(menu);
+                _opvangtehuisRepository.SaveChanges();
+
+                return RedirectToAction("MenuIndex");
+            }
+
+            return View();
         }
     }
 }

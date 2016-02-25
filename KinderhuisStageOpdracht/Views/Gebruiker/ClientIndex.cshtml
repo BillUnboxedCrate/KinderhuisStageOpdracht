@@ -5,6 +5,10 @@
 }
 
 <h2>CliëntIndex</h2>
+<ul class="category-menu">
+    <li>@Html.ActionLink("Suggestie", "CreateSuggestie", "Opvangtehuis")</li>
+</ul>
+
 <h3>Opvoeders</h3>
 <table class="table">
     <tr>
@@ -22,18 +26,10 @@
             <td>@Html.DisplayFor(modelItem => o.Email)</td>
 
             <td>
-                @Html.ActionLink("Details", "Details", new {id = o.Id})
+                @Html.ActionLink("Details", "Details", new { id = o.Id })
             </td>
         </tr>
     }
 </table>
 
-<table>
-    <tr>
-        <th>Acties</th>
-    </tr>
-    <tr>
-        <td>@Html.ActionLink("Suggestie", "CreateSuggestie", "Opvangtehuis")</td>
-    </tr>
-</table>
-    
+

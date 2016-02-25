@@ -1,0 +1,22 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.OpvangtehuisViewModel.MenuViewModel
+
+@{
+    ViewBag.Title = "CreateMenu";
+}
+
+<h2>CreateMenu</h2>
+
+@using (Html.BeginForm("CreateMenu", "Opvangtehuis", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.BeginWeek, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.BeginWeek, new {@class = "form-control datepicker", @readonly = true, @type = "date"})
+            @Html.ValidationMessageFor(m => m.BeginWeek, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+    //for (var i = 0; i <= 5; i++)
+    
+
+}

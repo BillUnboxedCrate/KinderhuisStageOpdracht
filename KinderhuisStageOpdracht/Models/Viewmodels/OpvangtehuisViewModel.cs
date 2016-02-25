@@ -71,14 +71,37 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         public class MenuViewModel
         {
             public string Week { get; set; }
+
+            [DataType(DataType.Date)]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime BeginWeek { get; set; }
+
+            [DataType(DataType.Date)]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime EindeWeek { get; set; }
+
+            public List<CreateMenuItemViewModel> MenuItemListViewModels { get; set; }
+
+            public MenuViewModel()
+            {
+                MenuItemListViewModels = new List<CreateMenuItemViewModel>();
+            }
         }
 
         public class CreateMenuItemViewModel
         {
+            public string Dag { get; set; }
+
+            [Required]
+            [Display(Name = "Voorgerecht")]
             public string Voorgerecht { get; set; }
+
+            [Required]
+            [Display(Name = "Hoofdgerecht")]
             public string Hoofdgerecht { get; set; }
+
+            [Required]
+            [Display(Name = "Dessert")]
             public string Dessert { get; set; }
         }
     }

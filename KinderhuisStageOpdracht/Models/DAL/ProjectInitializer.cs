@@ -54,7 +54,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Baert",
                 Voornaam = "Bram",
-                GeboorteDatum = new DateTime(1993,11,16),
+                GeboorteDatum = new DateTime(1993, 11, 16),
                 Gebruikersnaam = "Admin",
                 //Wachtwoord = "test",
                 //testing
@@ -62,7 +62,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Email = "bram.baert@hotmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1
-                
+
             };
 
             //Opvoeders
@@ -70,7 +70,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "De Seager",
                 Voornaam = "Tom",
-                GeboorteDatum = new DateTime(1990,11,11),
+                GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Opvoeder",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "tomdesaeger@gmail.com",
@@ -82,12 +82,12 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Braeckman",
                 Voornaam = "Yannick",
-                GeboorteDatum = new DateTime(1992,3,24),
+                GeboorteDatum = new DateTime(1992, 3, 24),
                 Gebruikersnaam = "YannickBraeckman",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "yannickbraeckman@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1
+                Opvangtehuis = opvangtehuis2
             };
 
             //Clients
@@ -107,7 +107,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Hollanders",
                 Voornaam = "Roy",
-                GeboorteDatum = new DateTime(1992,2,14),
+                GeboorteDatum = new DateTime(1992, 2, 14),
                 Gebruikersnaam = "RoyHollanders",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
@@ -118,7 +118,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Van Den Berghe",
                 Voornaam = "Rutger",
-                GeboorteDatum = new DateTime(1993,9,24),
+                GeboorteDatum = new DateTime(1993, 9, 24),
                 Gebruikersnaam = "RutgerVanDenBerghe",
                 Email = "doglife3@runescape.ayy",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
@@ -130,7 +130,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Braeckman",
                 Voornaam = "Sean",
-                GeboorteDatum = new DateTime(1992,3,25),
+                GeboorteDatum = new DateTime(1992, 3, 25),
                 Gebruikersnaam = "SeanBraeckman",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
@@ -150,27 +150,29 @@ namespace KinderhuisStageOpdracht.Models.DAL
             context.GebruikerSet.Add(client2);
             context.GebruikerSet.Add(client3);
             context.GebruikerSet.Add(client4);
-             
+
 
             #region menus
             var menu1 = new Menu()
             {
-                BegindagWeek = new DateTime(2016,2,15),
-                EinddagWeek = new DateTime(2016,2,19)
+                BegindagWeek = new DateTime(2016, 2, 15),
+                EinddagWeek = new DateTime(2016, 2, 19),
+                Week = "1"
             };
 
             var menu2 = new Menu()
             {
                 BegindagWeek = new DateTime(2016, 2, 22),
-                EinddagWeek = new DateTime(2016, 2, 26)
+                EinddagWeek = new DateTime(2016, 2, 26),
+                Week = "2"
             };
 
             #region menuitems
             var menuitem1 = new MenuItem()
             {
-                Datum = new DateTime(2016,2,15),
+                Datum = new DateTime(2016, 2, 15),
                 Dag = Dagen.Maandag.ToString(),
-                Voorgerecht= "Soep",
+                Voorgerecht = "Soep",
                 Hoofdgerecht = "Eten",
                 Dessert = "Dessert"
             };
@@ -257,20 +259,20 @@ namespace KinderhuisStageOpdracht.Models.DAL
             };
             #endregion
             #endregion
-            
+
             #region taken
             var taak1 = new Taak()
             {
                 Titel = "Tuin",
                 Beschrijving = "De tuin moet worden onderhouden",
-                DatumTijd = new DateTime(2016,2,18,14,0,0)
+                DatumTijd = new DateTime(2016, 2, 18, 14, 0, 0)
             };
 
             var taak2 = new Taak()
             {
                 Titel = "Keuken",
                 Beschrijving = "Afwas doen",
-                DatumTijd = new DateTime(2016,2,17,12,0,0)
+                DatumTijd = new DateTime(2016, 2, 17, 12, 0, 0)
             };
             #endregion
 
@@ -278,8 +280,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
             var planning1 = new Planning()
             {
-                BegindagWeek = new DateTime(2016,2,15),
-                EinddagWeek = new DateTime(2016,2,21)
+                BegindagWeek = new DateTime(2016, 2, 15),
+                EinddagWeek = new DateTime(2016, 2, 21)
             };
 
             var planning2 = new Planning()
@@ -303,22 +305,22 @@ namespace KinderhuisStageOpdracht.Models.DAL
             #endregion
             #endregion
 
-           
+
             //Add menus
-            //menu1.MenuItems.Add(menuitem1);
-            //menu1.MenuItems.Add(menuitem2);
-            //menu1.MenuItems.Add(menuitem3);
-            //menu1.MenuItems.Add(menuitem4);
-            //menu1.MenuItems.Add(menuitem5);
+            menu1.MenuItems.Add(menuitem1);
+            menu1.MenuItems.Add(menuitem2);
+            menu1.MenuItems.Add(menuitem3);
+            menu1.MenuItems.Add(menuitem4);
+            menu1.MenuItems.Add(menuitem5);
 
-            //menu2.MenuItems.Add(menuitem6);
-            //menu2.MenuItems.Add(menuitem7);
-            //menu2.MenuItems.Add(menuitem8);
-            //menu2.MenuItems.Add(menuitem9);
-            //menu2.MenuItems.Add(menuitem10);
+            menu2.MenuItems.Add(menuitem6);
+            menu2.MenuItems.Add(menuitem7);
+            menu2.MenuItems.Add(menuitem8);
+            menu2.MenuItems.Add(menuitem9);
+            menu2.MenuItems.Add(menuitem10);
 
-            //opvangtehuis1.Menus.Add(menu1);
-            //opvangtehuis1.Menus.Add(menu2);
+            opvangtehuis1.Menus.Add(menu1);
+            opvangtehuis1.Menus.Add(menu2);
 
 
             //Add taken
@@ -326,7 +328,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             //taak2.Gebruikers.Add(client1);
             //taak1.Gebruikers.Add(client3);
             //taak1.Gebruikers.Add(client4);
-            
+
 
             context.SaveChanges();
             System.Diagnostics.Debug.WriteLine("Database created!");

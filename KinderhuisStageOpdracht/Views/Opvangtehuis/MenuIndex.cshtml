@@ -1,0 +1,23 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.OpvangtehuisViewModel.MenuListViewModel
+@{
+    ViewBag.Title = "MenuIndex";
+}
+
+<h2>Index</h2>
+<table class="table">
+    <tr>
+        <th>Week</th>
+        <th>Begin van de week</th>
+        <th>Einde van de week</th>
+    </tr>
+
+    @foreach (var m in Model.Menus)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => m.Week)</td>
+            <td>@Html.DisplayFor(modelItem => m.BeginWeek)</td>
+            <td>@Html.DisplayFor(modelItem => m.EindeWeek)</td>
+        </tr>
+    }
+</table>
+

@@ -107,3 +107,25 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 .text-warning {
   color: #c09853;
 }
+
+.category-menu {
+	margin:0;
+	padding:0;
+}
+.category-menu > li {
+	list-style: none;
+	display:inline-block;
+}
+.category-menu > li + li {
+	margin-left:10px;
+}
+.category-menu > li > a {
+	display:inline-block;
+	height:100px;
+	width:100px;
+	background: rgb(248, 248, 248);
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	border-radius: 5px;
+}

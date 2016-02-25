@@ -10,6 +10,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public int Id { get; set; }
         public DateTime BegindagWeek { get; set; }
         public DateTime EinddagWeek { get; set; }
+        public string Week { get; set; }
         public virtual ICollection<MenuItem> MenuItems { get; set; }
 
         public Menu()
@@ -19,6 +20,18 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public void AddMenuItem(MenuItem item)
         {
+            MenuItems.Add(item);
+        }
+
+        public void AddMenuItem(string dessert, string hoofdgerecht, string voorgerecht)
+        {
+            var item = new MenuItem()
+            {
+                Voorgerecht = voorgerecht,
+                Hoofdgerecht = hoofdgerecht,
+                Dessert = dessert
+            };
+
             MenuItems.Add(item);
         }
     }

@@ -5,8 +5,14 @@
 }
 
 <h2>OpvoederIndex</h2>
+<div>
+    <ul class="category-menu">
+        <li>@Html.ActionLink("Toon lijst van gegeven suggesties", "Suggesties", "Opvangtehuis")</li>
+        <li>@Html.ActionLink("Toon lijst van menus", "MenuIndex", "Opvangtehuis")</li>
+    </ul>
+</div>
 <h3>Cliënten</h3>
-@Html.ActionLink("Voeg cliënt toe", "CreateClient", new { @class = "button-red" })
+@Html.ActionLink("Voeg cliënt toe", "CreateClient")
 <table class="table">
     <tr>
         <th>Voornaam</th>
@@ -35,12 +41,14 @@
     }
 </table>
 
-<table>
+@*<table>
     <tr>
         <th>Acties</th>
     </tr>
     <tr>
-        <td>@Html.ActionLink("Toon lijst van gegeven suggesties", "Suggesties", "Opvangtehuis")</td>
+        <td class="">@Html.ActionLink("Toon lijst van gegeven suggesties", "Suggesties", "Opvangtehuis")</td>
     </tr>
-</table>
+</table>*@
+
+
 
