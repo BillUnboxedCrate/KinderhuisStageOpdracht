@@ -269,5 +269,40 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public string GeselecteerdOpvangtehuisId { get; set; }
         }
+
+        public class ForumListViewModel
+        {
+            public List<ForumViewModel> List { get; set; }
+
+            public ForumListViewModel()
+            {
+                List = new List<ForumViewModel>();
+            }
+        }
+
+        public class ForumViewModel
+        {
+            public int Id { get; set; }
+            public string Client { get; set; }
+
+        }
+
+        public class PostsListViewModel
+        {
+            public List<PostViewModel> List { get; set; }
+
+            public PostsListViewModel()
+            {
+                List = new List<PostViewModel>();
+            }
+        }
+
+        public class PostViewModel
+        {
+            public int Id { get; set; }
+            public string SendBy { get; set; }
+            public DateTime TimeStamp { get; set; }
+            public string Boodschap { get; set; }
+        }
     }
 }

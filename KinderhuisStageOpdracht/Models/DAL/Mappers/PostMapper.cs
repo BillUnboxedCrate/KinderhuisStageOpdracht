@@ -7,18 +7,19 @@ using KinderhuisStageOpdracht.Models.Domain;
 
 namespace KinderhuisStageOpdracht.Models.DAL.Mappers
 {
-    public class OpvoederMapper : EntityTypeConfiguration<Opvoeder>
+    public class PostMapper : EntityTypeConfiguration<Post>
     {
-        public OpvoederMapper()
+        public PostMapper()
         {
-            //Primary Key
+            //Primary id
+            HasKey(p => p.Id);
 
             //Property
-            //Property(o => o.Email).IsRequired().HasMaxLength(50);
+            Property(p => p.Boodschap).IsRequired();
+            Property(p => p.TimeStamp).IsRequired();
 
             //Foreign Key
-            HasMany(o => o.Forums).WithRequired();
-
+            HasRequired(p => p.Gebruiker).WithMany();
         }
     }
 }

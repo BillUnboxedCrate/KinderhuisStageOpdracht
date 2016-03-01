@@ -198,6 +198,7 @@
     </Compile>
     <Compile Include="Models\DAL\Mappers\AdminMapper.cs" />
     <Compile Include="Models\DAL\Mappers\ClientMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\ForumMapper.cs" />
     <Compile Include="Models\DAL\Mappers\GebruikerMapper.cs" />
     <Compile Include="Models\DAL\Mappers\KamerToDoItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\KamerToDoMapper.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Models\DAL\Mappers\OpvoederMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PlanningItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PlanningMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\PostMapper.cs" />
     <Compile Include="Models\DAL\Mappers\SuggestieMapper.cs" />
     <Compile Include="Models\DAL\Mappers\TaakMapper.cs" />
     <Compile Include="Models\DAL\OpvangtehuisRepository.cs" />
@@ -214,6 +216,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\DAL\ProjectInitializer.cs" />
+    <Compile Include="Models\Domain\Forum.cs" />
     <Compile Include="Models\Domain\IGebruikerRepository.cs" />
     <Compile Include="Models\Domain\IOpvangtehuisRepository.cs" />
     <Compile Include="Models\Domain\KamerToDo.cs" />
@@ -222,6 +225,7 @@
     <Compile Include="Models\Domain\MenuItem.cs" />
     <Compile Include="Models\Domain\Planning.cs" />
     <Compile Include="Models\Domain\PlanningItem.cs" />
+    <Compile Include="Models\Domain\Post.cs" />
     <Compile Include="Models\Domain\Suggestie.cs" />
     <Compile Include="Models\Domain\Taak.cs" />
     <Compile Include="Models\Domain\Opvangtehuis.cs" />
@@ -341,6 +345,8 @@
     <Content Include="Views\Opvangtehuis\CreateMenu.cshtml" />
     <Content Include="Views\Opvangtehuis\MenuIndex.cshtml" />
     <Content Include="Views\Opvangtehuis\AddMenuItemPartial.cshtml" />
+    <Content Include="Views\Gebruiker\ForumIndex.cshtml" />
+    <Content Include="Views\Gebruiker\Forum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

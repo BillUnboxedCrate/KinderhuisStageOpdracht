@@ -351,5 +351,23 @@ namespace KinderhuisStageOpdracht.Controllers
             return View(model);
 
         }
+
+        public ActionResult ForumIndex()
+        {
+            var flvm = new GebruikerViewModel.ForumListViewModel();
+
+            var opvoeder = (Opvoeder)_gebruikerRepository.FindById((int)Session["gebruiker"]);
+
+            foreach (var f in opvoeder.Forums)
+            {
+                var fvm = new GebruikerViewModel.ForumViewModel
+                {
+                    Id = f.Id,
+                };
+                flvm.List.Add(fvm);
+            }
+
+            return View(flvm);
+        }
     }
 }

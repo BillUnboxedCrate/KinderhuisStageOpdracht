@@ -5,11 +5,11 @@ using System.Web;
 
 namespace KinderhuisStageOpdracht.Models.Domain
 {
-    public class KamerToDoItem
+    public class Post
     {
         public int Id { get; set; }
-        public string Titel { get; set; }
-        public string Beschrijving { get; set; }
-        public bool Gedaan { get; set; }
+        public string Boodschap { get; set; }
+        public Gebruiker Gebruiker { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }

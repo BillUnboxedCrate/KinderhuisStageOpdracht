@@ -305,6 +305,32 @@ namespace KinderhuisStageOpdracht.Models.DAL
             #endregion
             #endregion
 
+            #region forum
+            var forum1 = new Forum();
+
+            var forum2 = new Forum();
+            #endregion
+
+            #region posts
+            var post1 = new Post()
+            {
+                Boodschap = "Testpost",
+                Gebruiker = opvoeder1,
+                TimeStamp = DateTime.Now
+            };
+            #endregion
+
+            forum1.AddPost(post1);
+
+            //Add forum
+            opvoeder1.AddForum(forum1);
+            client1.AddForum(forum1);
+
+            opvoeder2.AddForum(forum2);
+            client4.AddForum(forum2);
+
+
+
 
             //Add menus
             menu1.MenuItems.Add(menuitem1);

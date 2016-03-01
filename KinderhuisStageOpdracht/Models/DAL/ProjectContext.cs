@@ -24,6 +24,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
         {
             modelBuilder.Configurations.Add(new GebruikerMapper());
 
+            modelBuilder.Configurations.Add(new ForumMapper());
+            modelBuilder.Configurations.Add(new PostMapper());
             modelBuilder.Configurations.Add(new KamerToDoItemMapper());
             modelBuilder.Configurations.Add(new KamerToDoMapper());
             modelBuilder.Configurations.Add(new MenuItemMapper());
