@@ -369,5 +369,51 @@ namespace KinderhuisStageOpdracht.Controllers
 
             return View(flvm);
         }
+
+        public ActionResult Forum(int id)
+        {
+            var plvm = new GebruikerViewModel.PostsListViewModel();
+
+            if (_gebruikerRepository.FindById((int) Session["gebruiker"]) is Opvoeder)
+            {
+                var opvoeder = (Opvoeder)_gebruikerRepository.FindById((int) Session["gebruiker"]);
+                var forum = opvoeder.Forums.FirstOrDefault(f => f.Id == id);
+
+                if (forum == null)
+                {
+                    
+                }
+
+                foreach (var p in forum.Posts)
+                {
+                    var pvm = new GebruikerViewModel.PostViewModel()
+                    {
+                        Boodschap = p.Boodschap,
+                        SendBy = p.Gebruiker.GiveFullName(),
+                        TimeStamp = p.TimeStamp
+                    };
+                    plvm.List.Add(pvm);
+                }
+                
+            }
+            else
+            {
+                var client = (Client)_gebruikerRepository.FindById((int) Session["gebruiker"]);
+                var forum = client.Forums.FirstOrDefault(f => f.Id == id);
+
+                foreach (var p in forum.Posts)
+                {
+                    var pvm = new GebruikerViewModel.PostViewModel()
+                    {
+                        Boodschap = p.Boodschap,
+                        SendBy = p.Gebruiker.GiveFullName(),
+                        TimeStamp = p.TimeStamp
+                    };
+                    plvm.List.Add(pvm);
+                }
+            }
+
+            return View(plvm);
+        }
     }
 }

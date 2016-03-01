@@ -23,5 +23,14 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             KamerToDoItems.Add(item);
         }
+
+        public void AddKamerToDoItem(string titel, string beschrijving)
+        {
+            var KamerToDoItem = new KamerToDoItem()
+            {
+                Beschrijving = beschrijving,
+
+            };
+        }
     }
 }

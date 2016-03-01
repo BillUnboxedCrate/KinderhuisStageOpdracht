@@ -32,9 +32,31 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Suggesties.Add(suggestie);
         }
 
+        public void DeleteSuggestion(Suggestie suggestie)
+        {
+            Suggesties.Remove(suggestie);
+        }
+
+        public void DeleteSuggestie(int id)
+        {
+            var suggestie = Suggesties.FirstOrDefault(s => s.Id == id);
+            Suggesties.Remove(suggestie);
+        }
+
         public void AddMenu(Menu menu)
         {
-            
+            Menus.Add(menu);
+        }
+
+        public void RemoveMenu(Menu menu)
+        {
+            Menus.Remove(menu);
+        }
+
+        public void RemoveMenu(int id)
+        {
+            var menu = Menus.FirstOrDefault(m => m.Id == id);
+            Menus.Remove(menu);
         }
 
         public override string ToString()
