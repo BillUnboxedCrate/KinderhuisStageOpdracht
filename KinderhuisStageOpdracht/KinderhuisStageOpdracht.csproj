@@ -202,6 +202,7 @@
     <Compile Include="Models\DAL\Mappers\GebruikerMapper.cs" />
     <Compile Include="Models\DAL\Mappers\KamerToDoItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\KamerToDoMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\KlachtMapper.cs" />
     <Compile Include="Models\DAL\Mappers\MenuItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\MenuMapper.cs" />
     <Compile Include="Models\DAL\Mappers\OpvangtehuisMapper.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="Models\Domain\IOpvangtehuisRepository.cs" />
     <Compile Include="Models\Domain\KamerToDo.cs" />
     <Compile Include="Models\Domain\KamerToDoItem.cs" />
+    <Compile Include="Models\Domain\Klacht.cs" />
     <Compile Include="Models\Domain\Menu.cs" />
     <Compile Include="Models\Domain\MenuItem.cs" />
     <Compile Include="Models\Domain\Planning.cs" />

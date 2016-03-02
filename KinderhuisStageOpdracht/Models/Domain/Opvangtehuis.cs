@@ -18,12 +18,15 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public virtual ICollection<Suggestie> Suggesties { get; set; }
         public virtual ICollection<Menu> Menus { get; set; }
 
+        public virtual ICollection<Klacht> Klachten { get; set; } 
+
         //public virtual ICollection<Gebruiker> Gebruikers { get; set; }
 
         public Opvangtehuis()
         {
             Suggesties = new List<Suggestie>();
             Menus = new List<Menu>();
+            Klachten = new List<Klacht>();
             //Gebruikers = new List<Gebruiker>();
         }
         
@@ -57,6 +60,24 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             var menu = Menus.FirstOrDefault(m => m.Id == id);
             Menus.Remove(menu);
+        }
+
+        public void AddKlacht(Klacht klacht)
+        {
+            Klachten.Add(klacht);
+        }
+
+        public void AddKlacht(string title, string beschrijving, Client client)
+        {
+            var klacht = new Klacht()
+            {
+                Beschrijving = beschrijving,
+                Client = client,
+                Titel = title,
+                TimeStamp = DateTime.Now
+            };
+
+            Klachten.Add(klacht);
         }
 
         public override string ToString()
