@@ -1,9 +1,9 @@
 ﻿@model KinderhuisStageOpdracht.Models.Viewmodels.OpvangtehuisViewModel.CreateSuggestieViewModel
 @{
-    ViewBag.Title = "CreateSuggestie";
+    ViewBag.Title = "Geef ons een suggestie";
 }
 
-<h2>CreateSuggestie</h2>
+<h2>@ViewBag.Title</h2>
 @using (Html.BeginForm("CreateSuggestie", "Opvangtehuis", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <div class="form-group">
