@@ -11,8 +11,8 @@
 @Html.ActionLink("Voeg opvoeder toe", "CreateOpvoeder", new {@class = "button-red"})
 <table class="table">
     <tr>
-        <th>Voornaam</th>
         <th>Naam</th>
+        <th>Opvangtehuis</th>
         <th>Email adres</th>
         <th>Acties</th>
 
@@ -20,8 +20,8 @@
     @foreach (var o in Model.Olmv.Opvoeders)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Voornaam)</td>
             <td>@Html.DisplayFor(modelItem => o.Naam)</td>
+            <td>@Html.DisplayFor(modelItem => o.Opvangtehuis)</td>
             <td>@Html.DisplayFor(modelItem => o.Email)</td>
 
             <td>
@@ -39,8 +39,8 @@
 @Html.ActionLink("Voeg cliënt toe", "CreateClient", new { @class = "button-red" })
 <table class="table">
     <tr>
-        <th>Voornaam</th>
         <th>Naam</th>
+        <th>Opvangtehuis</th>
         <th>Email adres</th>
         <th>Acties</th>
     </tr>
@@ -48,8 +48,8 @@
     @foreach (var o in Model.Clvm.Clients)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Voornaam)</td>
             <td>@Html.DisplayFor(modelItem => o.Naam)</td>
+            <td>@Html.DisplayFor(modelItem => o.Opvangtehuis)</td>
             <td>@Html.DisplayFor(modelItem => o.Email)</td>
 
             <td>

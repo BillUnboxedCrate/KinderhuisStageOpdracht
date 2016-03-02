@@ -18,9 +18,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         public class OpvoederViewModel
         {
             public int Id { get; set; }
-            public string Voornaam { get; set; }
             public string Naam { get; set; }
             public string Email { get; set; }
+            public string Opvangtehuis { get; set; }
         }
 
         public class OpvoederListViewModel
@@ -36,9 +36,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         public class ClientViewModel
         {
             public int Id { get; set; }
-            public string Voornaam { get; set; }
             public string Naam { get; set; }
             public string Email { get; set; }
+            public string Opvangtehuis { get; set; }
         }
 
         public class ClientListViewModel

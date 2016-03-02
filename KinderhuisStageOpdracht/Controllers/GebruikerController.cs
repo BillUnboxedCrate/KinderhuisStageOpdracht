@@ -45,8 +45,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 var opvoedervm = new GebruikerViewModel.OpvoederViewModel()
                 {
                     Id = o.Id,
-                    Naam = o.Naam,
-                    Voornaam = o.Voornaam,
+                    Naam = o.GiveFullName(),
                     Email = o.Email
                 };
                 clientlistvm.Opvoeders.Add(opvoedervm);
@@ -76,8 +75,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 var clientvm = new GebruikerViewModel.ClientViewModel
                 {
                     Id = c.Id,
-                    Naam = c.Naam,
-                    Voornaam = c.Voornaam,
+                    Naam = c.GiveFullName(),
                     Email = c.Email
                 };
                 clientlistvm.Clients.Add(clientvm);
@@ -110,9 +108,9 @@ namespace KinderhuisStageOpdracht.Controllers
                 var opvoedervm = new GebruikerViewModel.OpvoederViewModel
                 {
                     Id = o.Id,
-                    Naam = o.Naam,
-                    Voornaam = o.Voornaam,
-                    Email = o.Email
+                    Naam = o.GiveFullName(),
+                    Email = o.Email,
+                    Opvangtehuis = o.Opvangtehuis.Naam
                 };
                 opvoederlistvm.Opvoeders.Add(opvoedervm);
             }
@@ -123,9 +121,9 @@ namespace KinderhuisStageOpdracht.Controllers
                 var clientvm = new GebruikerViewModel.ClientViewModel
                 {
                     Id = c.Id,
-                    Naam = c.Naam,
-                    Voornaam = c.Voornaam,
-                    Email = c.Email
+                    Naam = c.GiveFullName(),
+                    Email = c.Email,
+                    Opvangtehuis = c.Opvangtehuis.Naam
                 };
                 clientlistvm.Clients.Add(clientvm);
             }
