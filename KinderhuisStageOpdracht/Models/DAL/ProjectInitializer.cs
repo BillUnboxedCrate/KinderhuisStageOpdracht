@@ -153,7 +153,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
 
             #region menus
-            var menu1 = new Menu(new DateTime(2016, 2, 15));
+            var menu1 = new Menu(new DateTime(2016, 2, 29));
             
             var menu2 = new Menu(new DateTime(2016, 2, 22));
             

@@ -51,7 +51,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return BegindagWeek.AddDays(4);
         }
 
-        public int GetWeekVanHetJaar()
+        private int GetWeekVanHetJaar()
         {
             var dfi = DateTimeFormatInfo.CurrentInfo;
             var cal = dfi.Calendar;

@@ -131,7 +131,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 .menuItemBox {
-    border: 1px solid black;
+    border: 1px solid black ;
     padding: 10px;
     margin: 10px;   
 }
@@ -139,3 +139,17 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 .menuItemBox th td{
     padding: 50px;
 }
+
+#weekMenu, #weekMenu th, #weekMenu td{
+    border: 1px solid ;
+    /*padding: 30px;*/
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#weekMenu th, #weekMenu td {
+    width: 400px;
+    height: 100px;
+}
+
