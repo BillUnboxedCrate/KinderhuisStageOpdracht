@@ -153,20 +153,10 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
 
             #region menus
-            var menu1 = new Menu()
-            {
-                BegindagWeek = new DateTime(2016, 2, 15),
-                EinddagWeek = new DateTime(2016, 2, 19),
-                Week = "1"
-            };
-
-            var menu2 = new Menu()
-            {
-                BegindagWeek = new DateTime(2016, 2, 22),
-                EinddagWeek = new DateTime(2016, 2, 26),
-                Week = "2"
-            };
-
+            var menu1 = new Menu(new DateTime(2016, 2, 15));
+            
+            var menu2 = new Menu(new DateTime(2016, 2, 22));
+            
             #region menuitems
             var menuitem1 = new MenuItem()
             {
@@ -328,9 +318,6 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
             opvoeder2.AddForum(forum2);
             client4.AddForum(forum2);
-
-
-
 
             //Add menus
             menu1.MenuItems.Add(menuitem1);

@@ -18,7 +18,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public virtual ICollection<Suggestie> Suggesties { get; set; }
         public virtual ICollection<Menu> Menus { get; set; }
 
-        public virtual ICollection<Klacht> Klachten { get; set; } 
+        public virtual ICollection<Klacht> Klachten { get; set; }
 
         //public virtual ICollection<Gebruiker> Gebruikers { get; set; }
 
@@ -29,7 +29,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Klachten = new List<Klacht>();
             //Gebruikers = new List<Gebruiker>();
         }
-        
+
         public void AddSuggestie(Suggestie suggestie)
         {
             Suggesties.Add(suggestie);
@@ -78,6 +78,12 @@ namespace KinderhuisStageOpdracht.Models.Domain
             };
 
             Klachten.Add(klacht);
+        }
+
+        public Menu GetMenuVanDeWeek()
+        {
+            var menu = Menus.FirstOrDefault(m => m.BegindagWeek <= DateTime.Today || m.EinddagWeek >= DateTime.Today);
+            return menu;
         }
 
         public override string ToString()

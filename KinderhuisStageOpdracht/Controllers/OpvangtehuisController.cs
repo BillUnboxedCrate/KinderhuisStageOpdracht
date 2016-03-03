@@ -79,7 +79,7 @@ namespace KinderhuisStageOpdracht.Controllers
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var mlvm = new OpvangtehuisViewModel.MenuListViewModel();
 
-            foreach (var m in opvangtehuis.Menus.OrderByDescending(m => m.Week))
+            foreach (var m in opvangtehuis.Menus.OrderByDescending(m => m.BegindagWeek))
             {
                 var mvm = new OpvangtehuisViewModel.MenuViewModel
                 {
@@ -95,33 +95,59 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateMenu()
         {
-            return View();
+            var mvm = new OpvangtehuisViewModel.MenuViewModel();
+            return View(mvm);
         }
+
+        //[HttpPost]
+        //public ActionResult CreateMenu(OpvangtehuisViewModel.MenuViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var menu = new Menu
+        //        {
+        //            BegindagWeek = model.BeginWeek,
+        //            EinddagWeek = model.EindeWeek,
+        //            Week = model.Week
+        //        };
+
+        //        foreach (var mi in model.MenuItemListViewModels)
+        //        {
+        //            menu.AddMenuItem(mi.Dessert, mi.Hoofdgerecht, mi.Voorgerecht);
+        //        }
+
+        //        var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+        //        opvangtehuis.AddMenu(menu);
+        //        _opvangtehuisRepository.SaveChanges();
+
+        //        return RedirectToAction("MenuIndex");
+        //    }
+
+        //    return View();
+        //}
 
         [HttpPost]
         public ActionResult CreateMenu(OpvangtehuisViewModel.MenuViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var menu = new Menu
-                {
-                    BegindagWeek = model.BeginWeek,
-                    EinddagWeek = model.EindeWeek,
-                    Week = model.Week
-                };
+                var menu = new Menu(model.BeginWeek);
 
-                foreach (var mi in model.MenuItemListViewModels)
-                {
-                    menu.AddMenuItem(mi.Dessert, mi.Hoofdgerecht, mi.Voorgerecht);
-                }
+                menu.AddMenuItem("Maandag" ,model.MaandagViewModel.Hoofdgerecht, model.MaandagViewModel.Voorgerecht, model.MaandagViewModel.Dessert);
+                menu.AddMenuItem("Dinsdag", model.DinsdagViewModel.Hoofdgerecht, model.DinsdagViewModel.Voorgerecht, model.DinsdagViewModel.Dessert);
+                menu.AddMenuItem("Woensdag", model.WoensdagViewModel.Hoofdgerecht, model.WoensdagViewModel.Voorgerecht, model.WoensdagViewModel.Dessert);
+                menu.AddMenuItem("Donderdag", model.DonderdagViewModel.Hoofdgerecht, model.DonderdagViewModel.Voorgerecht, model.DonderdagViewModel.Dessert);
+                menu.AddMenuItem("Vrijdag", model.VrijdagViewModel.Hoofdgerecht, model.VrijdagViewModel.Voorgerecht, model.VrijdagViewModel.Dessert);
 
                 var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
                 opvangtehuis.AddMenu(menu);
                 _opvangtehuisRepository.SaveChanges();
 
+                this.AddNotification("De menu is aangemaakt", NotificationType.SUCCESS);
                 return RedirectToAction("MenuIndex");
-            }
 
+            }
+            this.AddNotification("Er was ergens een fout", NotificationType.ERROR);
             return View();
         }
     }

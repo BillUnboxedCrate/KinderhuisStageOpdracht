@@ -139,9 +139,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Voornaam { get; set; }
             
             [Required]
-            [DataType(DataType.Date)]
+            [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             [Display(Name = "Geboorte datum")]
-            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime GeboorteDatum { get; set; }
             
             [Required]

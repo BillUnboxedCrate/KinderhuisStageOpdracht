@@ -68,10 +68,48 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
         }
 
+        //public class MenuViewModel
+        //{
+        //    public int Week { get; set; }
+
+        //    [DataType(DataType.Date)]
+        //    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        //    public DateTime BeginWeek { get; set; }
+
+        //    [DataType(DataType.Date)]
+        //    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        //    public DateTime EindeWeek { get; set; }
+
+        //    public List<CreateMenuItemViewModel> MenuItemListViewModels { get; set; }
+
+        //    public MenuViewModel()
+        //    {
+        //        MenuItemListViewModels = new List<CreateMenuItemViewModel>();
+        //    }
+        //}
+
+        //public class CreateMenuItemViewModel
+        //{
+        //    public string Dag { get; set; }
+
+        //    [Required]
+        //    [Display(Name = "Voorgerecht")]
+        //    public string Voorgerecht { get; set; }
+
+        //    [Required]
+        //    [Display(Name = "Hoofdgerecht")]
+        //    public string Hoofdgerecht { get; set; }
+
+        //    [Required]
+        //    [Display(Name = "Dessert")]
+        //    public string Dessert { get; set; }
+        //}
+
         public class MenuViewModel
         {
-            public string Week { get; set; }
+            public int Week { get; set; }
 
+            [Display(Name = "Begin van de week")]
             [DataType(DataType.Date)]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime BeginWeek { get; set; }
@@ -80,15 +118,83 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime EindeWeek { get; set; }
 
-            public List<CreateMenuItemViewModel> MenuItemListViewModels { get; set; }
-
-            public MenuViewModel()
-            {
-                MenuItemListViewModels = new List<CreateMenuItemViewModel>();
-            }
+            public CreateMenuItemMaandagViewModel MaandagViewModel { get; set; }
+            public CreateMenuItemDinsdagViewModel DinsdagViewModel { get; set; }
+            public CreateMenuItemWoensdagViewModel WoensdagViewModel { get; set; }
+            public CreateMenuItemDonderdagViewModel DonderdagViewModel { get; set; }
+            public CreateMenuItemVrijdagViewModel VrijdagViewModel { get; set; }
+            
         }
 
-        public class CreateMenuItemViewModel
+        public class CreateMenuItemMaandagViewModel
+        {
+            public string Dag { get; set; }
+
+            [Required]
+            [Display(Name = "Voorgerecht")]
+            public string Voorgerecht { get; set; }
+
+            [Required]
+            [Display(Name = "Hoofdgerecht")]
+            public string Hoofdgerecht { get; set; }
+
+            [Required]
+            [Display(Name = "Dessert")]
+            public string Dessert { get; set; }
+        }
+
+        public class CreateMenuItemDinsdagViewModel
+        {
+            public string Dag { get; set; }
+
+            [Required]
+            [Display(Name = "Voorgerecht")]
+            public string Voorgerecht { get; set; }
+
+            [Required]
+            [Display(Name = "Hoofdgerecht")]
+            public string Hoofdgerecht { get; set; }
+
+            [Required]
+            [Display(Name = "Dessert")]
+            public string Dessert { get; set; }
+        }
+
+        public class CreateMenuItemWoensdagViewModel
+        {
+            public string Dag { get; set; }
+
+            [Required]
+            [Display(Name = "Voorgerecht")]
+            public string Voorgerecht { get; set; }
+
+            [Required]
+            [Display(Name = "Hoofdgerecht")]
+            public string Hoofdgerecht { get; set; }
+
+            [Required]
+            [Display(Name = "Dessert")]
+            public string Dessert { get; set; }
+        }
+
+        public class CreateMenuItemDonderdagViewModel
+        {
+            public string Dag { get; set; }
+
+            [Required]
+            [Display(Name = "Voorgerecht")]
+            public string Voorgerecht { get; set; }
+
+            [Required]
+            [Display(Name = "Hoofdgerecht")]
+            public string Hoofdgerecht { get; set; }
+
+            [Required]
+            [Display(Name = "Dessert")]
+            public string Dessert { get; set; }
+        }
+
+        public class CreateMenuItemVrijdagViewModel
         {
             public string Dag { get; set; }
 

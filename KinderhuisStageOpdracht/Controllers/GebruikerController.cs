@@ -344,7 +344,17 @@ namespace KinderhuisStageOpdracht.Controllers
                 _gebruikerRepository.SaveChanges();
 
                 this.AddNotification("De gebruiker is aangepast", NotificationType.SUCCESS);
-                return RedirectToAction("AdminIndex");
+
+                if (_gebruikerRepository.FindById((int) Session["gebruiker"]) is Admin)
+                {
+                    return RedirectToAction("AdminIndex");
+                }
+                else
+                {
+                    return RedirectToAction("OpvoederIndex");
+                }
+
+                
             }
             return View(model);
 
