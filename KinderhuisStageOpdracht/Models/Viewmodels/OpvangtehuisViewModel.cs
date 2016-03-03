@@ -107,6 +107,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
         public class MenuViewModel
         {
+            public int Id { get; set; }
             public int Week { get; set; }
 
             [Display(Name = "Begin van de week")]

@@ -10,6 +10,7 @@
         <th>Week</th>
         <th>Begin van de week</th>
         <th>Einde van de week</th>
+        <th>Acties</th>
     </tr>
 
     @foreach (var m in Model.Menus)
@@ -18,6 +19,9 @@
             <td>@Html.DisplayFor(modelItem => m.Week)</td>
             <td>@Html.DisplayFor(modelItem => m.BeginWeek)</td>
             <td>@Html.DisplayFor(modelItem => m.EindeWeek)</td>
+            <td>
+                @Html.ActionLink("Aanpassen", "EditMenu", new { id = m.Id })
+            </td>
         </tr>
     }
 </table>

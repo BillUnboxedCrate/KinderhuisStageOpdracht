@@ -8,6 +8,7 @@
 
 @using (Html.BeginForm("CreateMenu", "Opvangtehuis", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
+    @Html.HiddenFor(model => model.Id)
     <div class="form-group">
         @Html.LabelFor(m => m.BeginWeek, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -18,155 +19,175 @@
 
     <table>
         <tr>
-            <th>Maandag</th>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.MaandagViewModel.Voorgerecht, new { @class = "col-md-2 control-label" })</td>
             <td>
-                @Html.TextBoxFor(m => m.MaandagViewModel.Voorgerecht, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.MaandagViewModel.Voorgerecht, "", new { @class = "text-danger" })
+                <table class="menuItemBox">
+                    <tr>
+                        <th colspan="2">Maandag</th>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.MaandagViewModel.Voorgerecht, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.MaandagViewModel.Voorgerecht, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.MaandagViewModel.Voorgerecht, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => m.MaandagViewModel.Hoofdgerecht, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.MaandagViewModel.Hoofdgerecht, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.MaandagViewModel.Hoofdgerecht, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => m.MaandagViewModel.Dessert, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.MaandagViewModel.Dessert, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.MaandagViewModel.Dessert, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+
+            <td>
+                <table class="menuItemBox">
+                    <tr>
+                        <th colspan="2">Dinsdag</th>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.DinsdagViewModel.Voorgerecht, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.DinsdagViewModel.Voorgerecht, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DinsdagViewModel.Voorgerecht, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => m.DinsdagViewModel.Hoofdgerecht, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.DinsdagViewModel.Hoofdgerecht, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DinsdagViewModel.Hoofdgerecht, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => m.DinsdagViewModel.Dessert, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.DinsdagViewModel.Dessert, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DinsdagViewModel.Dessert, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                </table>
             </td>
         </tr>
 
         <tr>
-            <td>@Html.LabelFor(m => m.MaandagViewModel.Hoofdgerecht, new { @class = "col-md-2 control-label" })</td>
             <td>
-                @Html.TextBoxFor(m => m.MaandagViewModel.Hoofdgerecht, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.MaandagViewModel.Hoofdgerecht, "", new { @class = "text-danger" })
+                <table class="menuItemBox">
+                    <tr>
+                        <th colspan="2">Woensdag</th>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.WoensdagViewModel.Voorgerecht, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.WoensdagViewModel.Voorgerecht, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.WoensdagViewModel.Voorgerecht, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => m.WoensdagViewModel.Hoofdgerecht, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.WoensdagViewModel.Hoofdgerecht, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.WoensdagViewModel.Hoofdgerecht, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => m.WoensdagViewModel.Dessert, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.WoensdagViewModel.Dessert, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.WoensdagViewModel.Dessert, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+
+            <td>
+                <table class="menuItemBox">
+                    <tr>
+                        <th colspan="2">Donderdag</th>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.DonderdagViewModel.Voorgerecht, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.DonderdagViewModel.Voorgerecht, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DonderdagViewModel.Voorgerecht, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => m.DonderdagViewModel.Hoofdgerecht, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.DonderdagViewModel.Hoofdgerecht, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DonderdagViewModel.Hoofdgerecht, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => m.DonderdagViewModel.Dessert, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.DonderdagViewModel.Dessert, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DonderdagViewModel.Dessert, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                </table>
             </td>
         </tr>
 
         <tr>
-            <td>@Html.LabelFor(m => m.MaandagViewModel.Dessert, new { @class = "col-md-2 control-label" })</td>
             <td>
-                @Html.TextBoxFor(m => m.MaandagViewModel.Dessert, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.MaandagViewModel.Dessert, "", new { @class = "text-danger" })
+                <table class="menuItemBox">
+                    <tr>
+                        <th colspan="2">Vrijdag</th>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.VrijdagViewModel.Voorgerecht, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.VrijdagViewModel.Voorgerecht, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.VrijdagViewModel.Voorgerecht, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => m.VrijdagViewModel.Hoofdgerecht, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.VrijdagViewModel.Hoofdgerecht, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.VrijdagViewModel.Hoofdgerecht, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => m.VrijdagViewModel.Dessert, new { @class = "col-md-2 control-label" })</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.VrijdagViewModel.Dessert, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.VrijdagViewModel.Dessert, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                </table>
             </td>
         </tr>
-
     </table>
 
-    <table>
-        <tr>
-            <th>Dinsdag</th>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.DinsdagViewModel.Voorgerecht, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.DinsdagViewModel.Voorgerecht, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.DinsdagViewModel.Voorgerecht, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-        <tr>
-            <td>@Html.LabelFor(m => m.DinsdagViewModel.Hoofdgerecht, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.DinsdagViewModel.Hoofdgerecht, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.DinsdagViewModel.Hoofdgerecht, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-        <tr>
-            <td>@Html.LabelFor(m => m.DinsdagViewModel.Dessert, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.DinsdagViewModel.Dessert, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.DinsdagViewModel.Dessert, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-    </table>
-
-    <table>
-        <tr>
-            <th>Woensdag</th>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.WoensdagViewModel.Voorgerecht, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.WoensdagViewModel.Voorgerecht, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.WoensdagViewModel.Voorgerecht, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-        <tr>
-            <td>@Html.LabelFor(m => m.WoensdagViewModel.Hoofdgerecht, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.WoensdagViewModel.Hoofdgerecht, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.WoensdagViewModel.Hoofdgerecht, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-        <tr>
-            <td>@Html.LabelFor(m => m.WoensdagViewModel.Dessert, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.WoensdagViewModel.Dessert, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.WoensdagViewModel.Dessert, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-    </table>
-
-    <table>
-        <tr>
-            <th>Donderdag</th>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.DonderdagViewModel.Voorgerecht, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.DonderdagViewModel.Voorgerecht, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.DonderdagViewModel.Voorgerecht, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-        <tr>
-            <td>@Html.LabelFor(m => m.DonderdagViewModel.Hoofdgerecht, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.DonderdagViewModel.Hoofdgerecht, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.DonderdagViewModel.Hoofdgerecht, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-        <tr>
-            <td>@Html.LabelFor(m => m.DonderdagViewModel.Dessert, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.DonderdagViewModel.Dessert, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.DonderdagViewModel.Dessert, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-    </table>
-
-    <table>
-        <tr>
-            <th>Vrijdag</th>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.VrijdagViewModel.Voorgerecht, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.VrijdagViewModel.Voorgerecht, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.VrijdagViewModel.Voorgerecht, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-        <tr>
-            <td>@Html.LabelFor(m => m.VrijdagViewModel.Hoofdgerecht, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.VrijdagViewModel.Hoofdgerecht, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.VrijdagViewModel.Hoofdgerecht, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-        <tr>
-            <td>@Html.LabelFor(m => m.VrijdagViewModel.Dessert, new { @class = "col-md-2 control-label" })</td>
-            <td>
-                @Html.TextBoxFor(m => m.VrijdagViewModel.Dessert, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.VrijdagViewModel.Dessert, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
-    </table>
-
-
-
-
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Opslaan" />
+        </div>
+    </div>
 }
