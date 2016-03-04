@@ -9,7 +9,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
     {
         public int Id { get; set; }
         public string Boodschap { get; set; }
-        public Gebruiker Gebruiker { get; set; }
+        public virtual Gebruiker Gebruiker { get; set; }
         public DateTime TimeStamp { get; set; }
     }
 }

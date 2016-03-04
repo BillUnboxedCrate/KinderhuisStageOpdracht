@@ -17,6 +17,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             {
                 Suggesties = new List<SuggestieViewModel>();
             }
+
+            public void AddSuggestie(SuggestieViewModel svm)
+            {
+                Suggesties.Add(svm);
+            }
         }
 
         public class SuggestieViewModel
@@ -36,6 +41,17 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Display(Name = "Suggestie")]
             public string Beschrijving { get; set; }
+
+            public SuggestieViewModel(DateTime timestamp, string genre, string client, string beschrijving, int id)
+            {
+                Id = id;
+                TimeStamp = timestamp;
+                Genre = genre;
+                Client = client;
+                Beschrijving = beschrijving;
+            }
+
+            public SuggestieViewModel() { }
         }
 
         public class CreateSuggestieViewModel
@@ -65,6 +81,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public MenuListViewModel()
             {
                 Menus = new List<MenuViewModel>();
+            }
+
+            public void AddMenu(MenuViewModel mvm)
+            {
+                Menus.Add(mvm);
             }
         }
 

@@ -28,17 +28,11 @@ namespace KinderhuisStageOpdracht.Controllers
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var slvm = new OpvangtehuisViewModel.SuggestieListViewModel();
 
-            foreach (var s in opvangtehuis.Suggesties.OrderByDescending(s => s.TimeStamp))
+            foreach (var s in opvangtehuis.GetSuggesties())
             {
-                var svm = new OpvangtehuisViewModel.SuggestieViewModel
-                {
-                    Client = s.Client.GiveFullName(),
-                    Id = s.Id,
-                    Genre = s.Genre,
-                    TimeStamp = s.TimeStamp,
-                    Beschrijving = s.Beschrijving
-                };
-                slvm.Suggesties.Add(svm);
+                var svm = new OpvangtehuisViewModel.SuggestieViewModel(s.TimeStamp, s.Genre, s.Client.GiveFullName(),
+                    s.Beschrijving, s.Id);
+               slvm.AddSuggestie(svm);
             }
             return View(slvm);
         }
@@ -54,16 +48,8 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             if (ModelState.IsValid)
             {
-                var s = new Suggestie()
-                {
-                    Beschrijving = model.Beschrijving,
-                    Genre = model.GeselecteerdGenre,
-                    Client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]),
-                    TimeStamp = DateTime.Now
-                };
-
                 var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-                opvangtehuis.AddSuggestie(s);
+                opvangtehuis.AddSuggestie(model.Beschrijving, model.GeselecteerdGenre, (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]));
                 _opvangtehuisRepository.SaveChanges();
 
                 this.AddNotification("Uw suggestie wordt doorgegeven", NotificationType.SUCCESS);
@@ -80,7 +66,7 @@ namespace KinderhuisStageOpdracht.Controllers
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var mlvm = new OpvangtehuisViewModel.MenuListViewModel();
 
-            foreach (var m in opvangtehuis.Menus.OrderByDescending(m => m.BegindagWeek))
+            foreach (var m in opvangtehuis.GetMenus())
             {
                 var mvm = new OpvangtehuisViewModel.MenuViewModel
                 {
@@ -151,7 +137,6 @@ namespace KinderhuisStageOpdracht.Controllers
 
                     var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
                     opvangtehuis.AddMenu(menu);
-
 
                     this.AddNotification("De menu is aangemaakt", NotificationType.SUCCESS);
                 }

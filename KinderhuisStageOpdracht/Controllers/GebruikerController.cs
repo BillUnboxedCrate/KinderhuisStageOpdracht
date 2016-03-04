@@ -11,7 +11,7 @@ using KinderhuisStageOpdracht.Models.Viewmodels;
 
 namespace KinderhuisStageOpdracht.Controllers
 {
-    
+
     public class GebruikerController : Controller
     {
         private readonly IGebruikerRepository _gebruikerRepository;
@@ -32,7 +32,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 return View("Error");
             }
             var id = (int)Session["gebruiker"];
-            var client = (Client) _gebruikerRepository.FindById(id);
+            var client = (Client)_gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(client.GetType());
 
             var clientlistvm = new GebruikerViewModel.OpvoederListViewModel();
@@ -42,13 +42,8 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var gebruiker in opvoeders)
             {
                 var o = (Opvoeder)gebruiker;
-                var opvoedervm = new GebruikerViewModel.OpvoederViewModel()
-                {
-                    Id = o.Id,
-                    Naam = o.GiveFullName(),
-                    Email = o.Email
-                };
-                clientlistvm.Opvoeders.Add(opvoedervm);
+                var opvoedervm = new GebruikerViewModel.OpvoederViewModel(o.Id, o.GiveFullName(), o.Email);
+                clientlistvm.AddOpvoeder(opvoedervm);
             }
 
             return View(clientlistvm);
@@ -72,13 +67,9 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var gebruiker in clients)
             {
                 var c = (Client)gebruiker;
-                var clientvm = new GebruikerViewModel.ClientViewModel
-                {
-                    Id = c.Id,
-                    Naam = c.GiveFullName(),
-                    Email = c.Email
-                };
-                clientlistvm.Clients.Add(clientvm);
+                var clientvm = new GebruikerViewModel.ClientViewModel(c.Id, c.GiveFullName(), c.Email);
+
+                clientlistvm.AddClient(clientvm);
             }
 
             return View(clientlistvm);
@@ -91,9 +82,9 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 return View("Error");
             }
-            var id = (int) Session["gebruiker"];
+            var id = (int)Session["gebruiker"];
             //Session["gebruiker"] = id;
-            var admin = (Admin) _gebruikerRepository.FindById(id);
+            var admin = (Admin)_gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(admin.GetType());
 
             var opvoederlistvm = new GebruikerViewModel.OpvoederListViewModel();
@@ -104,35 +95,23 @@ namespace KinderhuisStageOpdracht.Controllers
 
             foreach (var gebruiker in opvoeders)
             {
-                var o = (Opvoeder) gebruiker;
-                var opvoedervm = new GebruikerViewModel.OpvoederViewModel
-                {
-                    Id = o.Id,
-                    Naam = o.GiveFullName(),
-                    Email = o.Email,
-                    Opvangtehuis = o.Opvangtehuis.Naam
-                };
-                opvoederlistvm.Opvoeders.Add(opvoedervm);
+                var o = (Opvoeder)gebruiker;
+                var opvoedervm = new GebruikerViewModel.OpvoederViewModel(o.Id, o.GiveFullName(), o.Email,
+                    o.GetOpvangtehuisnaam());
+
+                opvoederlistvm.AddOpvoeder(opvoedervm);
             }
 
             foreach (var gebruiker in clients)
             {
-                var c = (Client) gebruiker;
-                var clientvm = new GebruikerViewModel.ClientViewModel
-                {
-                    Id = c.Id,
-                    Naam = c.GiveFullName(),
-                    Email = c.Email,
-                    Opvangtehuis = c.Opvangtehuis.Naam
-                };
-                clientlistvm.Clients.Add(clientvm);
+                var c = (Client)gebruiker;
+                var clientvm = new GebruikerViewModel.ClientViewModel(c.Id, c.GiveFullName(), c.Email,
+                    c.GetOpvangtehuisnaam());
+
+                clientlistvm.AddClient(clientvm);
             }
 
-            var oeclvm = new GebruikerViewModel.OpvoederEnClientListViewModel()
-            {
-                Clvm = clientlistvm,
-                Olmv = opvoederlistvm
-            };
+            var oeclvm = new GebruikerViewModel.OpvoederEnClientListViewModel(opvoederlistvm, clientlistvm);
 
             return View(oeclvm);
         }
@@ -150,34 +129,24 @@ namespace KinderhuisStageOpdracht.Controllers
         public ActionResult CreateOpvoeder(GebruikerViewModel.CreateOpvoederViewModel model)
         {
             if (ModelState.IsValid)
-            {   
+            {
                 var crypto = new SimpleCrypto.PBKDF2();
                 var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
-                
-                var opvoeder = new Opvoeder()
-                {
-                    Naam = model.Naam,
-                    Voornaam = model.Voornaam,
-                    Opvangtehuis = _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId),
-                    Gebruikersnaam = model.GebruikersNaam,
-                    GeboorteDatum = model.GeboorteDatum,
-                    Email = model.Email,
-                    Wachtwoord = encrytwachtwoord,
-                    Salt = crypto.Salt,
-                };
+
+                var opvoeder = new Opvoeder(model.Naam, model.Voornaam,
+                    _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
+                    model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum);
 
                 _gebruikerRepository.AddOpvoeder(opvoeder);
                 _gebruikerRepository.SaveChanges();
-
 
                 this.AddNotification("Opvoeder toegevoegd", NotificationType.SUCCESS);
                 return RedirectToAction("AdminIndex");
             }
 
-            var covm = new GebruikerViewModel.CreateOpvoederViewModel
-            {
-                Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList()
-            };
+            var covm =
+                new GebruikerViewModel.CreateOpvoederViewModel(
+                    _opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList());
 
             return View(covm);
         }
@@ -186,13 +155,13 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             var ccvm = new GebruikerViewModel.CreateClientViewModel();
 
-            if (_gebruikerRepository.FindById((int) Session["gebruiker"]) is Admin)
+            if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
             {
-                ccvm.Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList();
+                ccvm.SetOpvangtehuizen(_opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList());
             }
             else
             {
-                ccvm.Opvangtehuizen.Add(_gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis.Naam);
+                ccvm.AddOpvangtehuis(_gebruikerRepository.FindById((int)Session["gebruiker"]).GetOpvangtehuisnaam());
             }
 
             return View(ccvm);
@@ -205,37 +174,26 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 if (model.GeselecteerdOpvangtehuisId != null)
                 {
-                    
-                var crypto = new SimpleCrypto.PBKDF2();
-                var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
-                
-                var client = new Client()
-                {
-                    Naam = model.Naam,
-                    Voornaam = model.Voornaam,
-                    Opvangtehuis = _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId),
-                    Gebruikersnaam = model.GebruikersNaam,
-                    GeboorteDatum = model.GeboorteDatum,
-                    Email = model.Email,
-                    Wachtwoord = encrytwachtwoord,
-                    Salt = crypto.Salt,
-                };
 
-                _gebruikerRepository.AddClient(client);
-                _gebruikerRepository.SaveChanges();
+                    var crypto = new SimpleCrypto.PBKDF2();
+                    var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
 
-                    if (_gebruikerRepository.FindById((int) Session["gebruiker"]) is Admin)
+                    var client = new Client(model.Naam, model.Voornaam,
+                        _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
+                        model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum);
+
+                    _gebruikerRepository.AddClient(client);
+                    _gebruikerRepository.SaveChanges();
+
+                    if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
                     {
                         this.AddNotification("Cliënt toegevoegd", NotificationType.SUCCESS);
                         return RedirectToAction("AdminIndex");
                     }
-                    else
-                    {
-                        this.AddNotification("Cliënt toegevoegd", NotificationType.SUCCESS);
-                        return RedirectToAction("OpvoederIndex");
-                    }
 
-                
+                    this.AddNotification("Cliënt toegevoegd", NotificationType.SUCCESS);
+                    return RedirectToAction("OpvoederIndex");
+
                 }
             }
 
@@ -254,22 +212,14 @@ namespace KinderhuisStageOpdracht.Controllers
 
             if (gebruiker != null)
             {
-                dvm = new GebruikerViewModel.DetailViewModel
-                {
-                    Id = gebruiker.Id,
-                    Naam = gebruiker.Naam,
-                    Voornaam = gebruiker.Voornaam,
-                    Email = gebruiker.Email,
-                    GeboorteDatum = gebruiker.GeboorteDatum,
-                    GebruikersNaam = gebruiker.Gebruikersnaam,
-                    Opvangtehuis = gebruiker.Opvangtehuis.ToString()
-                };
+                dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
+                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis());
             }
 
             return View("Details", dvm);
         }
 
-        
+
         /*public ActionResult Delete()
         {
             return View();
@@ -282,16 +232,8 @@ namespace KinderhuisStageOpdracht.Controllers
 
             if (gebruiker != null)
             {
-                dvm = new GebruikerViewModel.DetailViewModel
-                {
-                    Id = gebruiker.Id,
-                    Naam = gebruiker.Naam,
-                    Voornaam = gebruiker.Voornaam,
-                    Email = gebruiker.Email,
-                    GeboorteDatum = gebruiker.GeboorteDatum,
-                    GebruikersNaam = gebruiker.Gebruikersnaam,
-                    Opvangtehuis = gebruiker.Opvangtehuis.ToString()
-                };
+                dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
+                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis());
             }
             return View(dvm);
         }
@@ -312,17 +254,17 @@ namespace KinderhuisStageOpdracht.Controllers
             var gebruiker = _gebruikerRepository.FindById(id);
 
 
-            var evm = new GebruikerViewModel.EditViewModel
+            var evm = new GebruikerViewModel.EditViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
+                gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuisnaam());
+
+            if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
             {
-                Id = gebruiker.Id,
-                Voornaam = gebruiker.Voornaam,
-                Email = gebruiker.Email,
-                Naam = gebruiker.Naam,
-                GeboorteDatum = gebruiker.GeboorteDatum,
-                GebruikersNaam = gebruiker.Gebruikersnaam,
-                Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(ho => ho.Naam).ToList(),
-                GeselecteerdOpvangtehuisId = gebruiker.Opvangtehuis.Naam
-            };
+                evm.SetOpvangtehuizen(_opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList());
+            }
+            else
+            {
+                evm.AddOpvangtehuis(_gebruikerRepository.FindById((int)Session["gebruiker"]).GetOpvangtehuisnaam());
+            }
 
             return View(evm);
         }
@@ -333,28 +275,20 @@ namespace KinderhuisStageOpdracht.Controllers
             if (ModelState.IsValid)
             {
                 var gebruiker = _gebruikerRepository.FindById(model.Id);
-                gebruiker.Naam = model.Naam;
-                gebruiker.Voornaam = model.Voornaam;
-                gebruiker.Email = model.Email;
-                gebruiker.Gebruikersnaam = model.GebruikersNaam;
-                gebruiker.Opvangtehuis = _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId);
-                gebruiker.GeboorteDatum = model.GeboorteDatum;
+                gebruiker.EditGebruiker(model.Naam, model.Voornaam, _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam, model.Email, model.GeboorteDatum);
 
                 _gebruikerRepository.UpdateGebruiker(gebruiker);
                 _gebruikerRepository.SaveChanges();
 
                 this.AddNotification("De gebruiker is aangepast", NotificationType.SUCCESS);
 
-                if (_gebruikerRepository.FindById((int) Session["gebruiker"]) is Admin)
+                if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
                 {
                     return RedirectToAction("AdminIndex");
                 }
-                else
-                {
-                    return RedirectToAction("OpvoederIndex");
-                }
 
-                
+                return RedirectToAction("OpvoederIndex");
+
             }
             return View(model);
 
@@ -368,11 +302,8 @@ namespace KinderhuisStageOpdracht.Controllers
 
             foreach (var f in opvoeder.Forums)
             {
-                var fvm = new GebruikerViewModel.ForumViewModel
-                {
-                    Id = f.Id,
-                };
-                flvm.List.Add(fvm);
+                var fvm = new GebruikerViewModel.ForumViewModel(f.Id);
+                flvm.AddForum(fvm);
             }
 
             return View(flvm);
@@ -382,42 +313,27 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             var plvm = new GebruikerViewModel.PostsListViewModel();
 
-            if (_gebruikerRepository.FindById((int) Session["gebruiker"]) is Opvoeder)
+            if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder)
             {
-                var opvoeder = (Opvoeder)_gebruikerRepository.FindById((int) Session["gebruiker"]);
+                var opvoeder = (Opvoeder)_gebruikerRepository.FindById((int)Session["gebruiker"]);
                 var forum = opvoeder.Forums.FirstOrDefault(f => f.Id == id);
-
-                if (forum == null)
-                {
-                    
-                }
 
                 foreach (var p in forum.Posts)
                 {
-                    var pvm = new GebruikerViewModel.PostViewModel()
-                    {
-                        Boodschap = p.Boodschap,
-                        SendBy = p.Gebruiker.GiveFullName(),
-                        TimeStamp = p.TimeStamp
-                    };
-                    plvm.List.Add(pvm);
+                    var pvm = new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap);
+                    plvm.AddPost(pvm);
                 }
-                
+
             }
             else
             {
-                var client = (Client)_gebruikerRepository.FindById((int) Session["gebruiker"]);
+                var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
                 var forum = client.Forums.FirstOrDefault(f => f.Id == id);
 
                 foreach (var p in forum.Posts)
                 {
-                    var pvm = new GebruikerViewModel.PostViewModel()
-                    {
-                        Boodschap = p.Boodschap,
-                        SendBy = p.Gebruiker.GiveFullName(),
-                        TimeStamp = p.TimeStamp
-                    };
-                    plvm.List.Add(pvm);
+                    var pvm = new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap);
+                    plvm.AddPost(pvm);
                 }
             }
 

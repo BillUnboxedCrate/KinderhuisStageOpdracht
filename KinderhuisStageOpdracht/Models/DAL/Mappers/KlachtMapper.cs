@@ -20,7 +20,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             Property(k => k.TimeStamp).IsRequired();
             
             //Foreign key
-            HasRequired(k => k.Client).WithMany();
+            HasRequired(k => k.Client).WithMany().WillCascadeOnDelete(true);
         }
     }
 }

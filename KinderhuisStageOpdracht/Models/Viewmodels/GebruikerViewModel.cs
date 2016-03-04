@@ -13,6 +13,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         {
             public OpvoederListViewModel Olmv { get; set; }
             public ClientListViewModel Clvm { get; set; }
+
+            public OpvoederEnClientListViewModel(OpvoederListViewModel olvm, ClientListViewModel clvm)
+            {
+                Olmv = olvm;
+                Clvm = clvm;
+            }
         }
 
         public class OpvoederViewModel
@@ -21,15 +27,37 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Naam { get; set; }
             public string Email { get; set; }
             public string Opvangtehuis { get; set; }
+
+            public OpvoederViewModel() { }
+
+            public OpvoederViewModel(int id, string naam, string email)
+            {
+                Id = id;
+                Naam = naam;
+                Email = email;
+            }
+
+            public OpvoederViewModel(int id, string naam, string email, string opvangtehuis)
+            {
+                Id = id;
+                Naam = naam;
+                Email = email;
+                Opvangtehuis = opvangtehuis;
+            }
         }
 
         public class OpvoederListViewModel
         {
-            public List<OpvoederViewModel> Opvoeders {get; set; }
+            public List<OpvoederViewModel> Opvoeders { get; set; }
 
             public OpvoederListViewModel()
             {
                 Opvoeders = new List<OpvoederViewModel>();
+            }
+
+            public void AddOpvoeder(OpvoederViewModel opvoeder)
+            {
+                Opvoeders.Add(opvoeder);
             }
         }
 
@@ -39,6 +67,23 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Naam { get; set; }
             public string Email { get; set; }
             public string Opvangtehuis { get; set; }
+
+            public ClientViewModel() { }
+
+            public ClientViewModel(int id, string naam, string email)
+            {
+                Id = id;
+                Naam = naam;
+                Email = email;
+            }
+
+            public ClientViewModel(int id, string naam, string email, string opvangtehuis)
+            {
+                Id = id;
+                Naam = naam;
+                Email = email;
+                Opvangtehuis = opvangtehuis;
+            }
         }
 
         public class ClientListViewModel
@@ -49,6 +94,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             {
                 Clients = new List<ClientViewModel>();
             }
+
+            public void AddClient(ClientViewModel client)
+            {
+                Clients.Add(client);
+            }
         }
 
         public class CreateOpvoederViewModel
@@ -56,21 +106,21 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             [Display(Name = "Naam")]
             public string Naam { get; set; }
-            
+
             [Required]
             [Display(Name = "Voornaam")]
             public string Voornaam { get; set; }
-            
+
             [Required]
             [DataType(DataType.Date)]
             [Display(Name = "Geboorte datum")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime GeboorteDatum { get; set; }
-            
+
             [Required]
             [Display(Name = "Gebruikers naam")]
             public string GebruikersNaam { get; set; }
-            
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email adres")]
@@ -92,6 +142,15 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public string GeselecteerdOpvangtehuisId { get; set; }
 
+            public CreateOpvoederViewModel()
+            {
+            }
+
+            public CreateOpvoederViewModel(List<string> opvangtehuizen)
+            {
+                Opvangtehuizen = opvangtehuizen;
+            }
+
         }
 
         public class EditOpvoederViewModel
@@ -101,22 +160,22 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             [Display(Name = "Naam")]
             public string Naam { get; set; }
-            
+
             [Required]
             [Display(Name = "Voornaam")]
             public string Voornaam { get; set; }
-            
+
             [Required]
             [DataType(DataType.Date)]
             [Display(Name = "Geboorte datum")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime GeboorteDatum { get; set; }
-            
+
             [Required]
             [Display(Name = "Gebruikers naam")]
             public string GebruikersNaam { get; set; }
             //public string Wachtwoord { get; set; }
-            
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email adres")]
@@ -133,16 +192,16 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             [Display(Name = "Naam")]
             public string Naam { get; set; }
-            
+
             [Required]
             [Display(Name = "Voornaam")]
             public string Voornaam { get; set; }
-            
+
             [Required]
             [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             [Display(Name = "Geboorte datum")]
             public DateTime GeboorteDatum { get; set; }
-            
+
             [Required]
             [Display(Name = "Gebruikers naam")]
             public string GebruikersNaam { get; set; }
@@ -150,7 +209,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [EmailAddress]
             [Display(Name = "Email adres")]
             public string Email { get; set; }
-            
+
             [Required]
             [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} karakters lang zijn.", MinimumLength = 6)]
             [DataType(DataType.Password)]
@@ -173,9 +232,24 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Opvangtehuizen = new List<string>();
             }
 
-            
+            public CreateClientViewModel(List<string> opvangtehuizen)
+            {
+                Opvangtehuizen = opvangtehuizen;
+            }
+
+            public void AddOpvangtehuis(string opvangtehuis)
+            {
+                Opvangtehuizen.Add(opvangtehuis);
+            }
+
+            public void SetOpvangtehuizen(List<string> opvangtehuizen)
+            {
+                Opvangtehuizen = opvangtehuizen;
+            }
+
+
         }
-        
+
         public class EditClientViewModel
         {
             public int Id { get; set; }
@@ -183,23 +257,23 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             [Display(Name = "Naam")]
             public string Naam { get; set; }
-            
+
             [Required]
             [Display(Name = "Voornaam")]
             public string Voornaam { get; set; }
-            
+
             [Required]
             [DataType(DataType.Date)]
             [Display(Name = "Geboorte datum")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime GeboorteDatum { get; set; }
-            
+
             [Required]
             [Display(Name = "Gebruikers naam")]
             public string GebruikersNaam { get; set; }
 
             [EmailAddress]
-            [Display(Name="Email adres")]
+            [Display(Name = "Email adres")]
             public string Email { get; set; }
             //public string Wachtwoord { get; set; }
 
@@ -209,7 +283,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string GeselecteerdOpvangtehuisId { get; set; }
         }
 
-       
+
         public class DetailViewModel
         {
             [Display(Name = "Gebruikers id")]
@@ -224,7 +298,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [DataType(DataType.Date)]
             [Display(Name = "Geboorte datum")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            public DateTime GeboorteDatum { get; set; }
+            public DateTime? GeboorteDatum { get; set; }
 
             [Display(Name = "Gebruikers naam")]
             public string GebruikersNaam { get; set; }
@@ -234,6 +308,22 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Display(Name = "Opvangtehuis")]
             public string Opvangtehuis { get; set; }
+
+            public DetailViewModel()
+            {
+            }
+
+            public DetailViewModel(int id, string naam, string voornaam, DateTime? geboortedatum, string gebruikersnaam,
+                string email, string opvangtehuis)
+            {
+                Id = id;
+                Naam = naam;
+                Voornaam = voornaam;
+                GeboorteDatum = geboortedatum;
+                GebruikersNaam = gebruikersnaam;
+                Email = email;
+                Opvangtehuis = opvangtehuis;
+            }
         }
 
         public class EditViewModel
@@ -267,6 +357,36 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public List<string> Opvangtehuizen { get; set; }
 
             public string GeselecteerdOpvangtehuisId { get; set; }
+
+            public EditViewModel()
+            {
+                Opvangtehuizen = new List<string>();
+            }
+
+            public EditViewModel(int id, string naam, string voornaam, DateTime geboortedatum, string gebruikersnaam,
+                string email, string opvangtehuis)
+            {
+                Id = id;
+                Naam = naam;
+                Voornaam = voornaam;
+                GeboorteDatum = geboortedatum;
+                GebruikersNaam = gebruikersnaam;
+                Email = email;
+                GeselecteerdOpvangtehuisId = opvangtehuis;
+                Opvangtehuizen = new List<string>();
+            }
+
+            public void AddOpvangtehuis(string opvangtehuis)
+            {
+                Opvangtehuizen.Add(opvangtehuis);
+            }
+
+            public void SetOpvangtehuizen(List<string> opvangtehuizen)
+            {
+                Opvangtehuizen = opvangtehuizen;
+            }
+
+
         }
 
         public class ForumListViewModel
@@ -277,6 +397,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             {
                 List = new List<ForumViewModel>();
             }
+
+
+            public void AddForum(ForumViewModel forum)
+            {
+                List.Add(forum);
+            }
         }
 
         public class ForumViewModel
@@ -284,6 +410,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Id { get; set; }
             public string Client { get; set; }
 
+            public ForumViewModel() { }
+
+            public ForumViewModel(int id)
+            {
+                Id = id;
+            }
         }
 
         public class PostsListViewModel
@@ -294,6 +426,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             {
                 List = new List<PostViewModel>();
             }
+
+            public void AddPost(PostViewModel post)
+            {
+                List.Add(post);
+            }
         }
 
         public class PostViewModel
@@ -302,6 +439,17 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string SendBy { get; set; }
             public DateTime TimeStamp { get; set; }
             public string Boodschap { get; set; }
+
+            public PostViewModel()
+            {
+            }
+
+            public PostViewModel(string sendby, DateTime timestamp, string boodschap)
+            {
+                SendBy = sendby;
+                TimeStamp = timestamp;
+                Boodschap = boodschap;
+            }
         }
     }
 }

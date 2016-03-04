@@ -14,6 +14,19 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Forums = new List<Forum>();
         }
 
+        public Opvoeder(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            Opvangtehuis = opvangtehuis;
+            Gebruikersnaam = gebruikersnaam;
+            Email = email;
+            Wachtwoord = wachtwoord;
+            Salt = salt;
+            GeboorteDatum = geboortedatum;
+        }
+
+        
         public void AddForum(Forum forum)
         {
             Forums.Add(forum);

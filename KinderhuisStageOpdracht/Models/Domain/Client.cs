@@ -19,6 +19,18 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Forums = new List<Forum>();
         }
 
+        public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            Opvangtehuis = opvangtehuis;
+            Gebruikersnaam = gebruikersnaam;
+            Email = email;
+            Wachtwoord = wachtwoord;
+            Salt = salt;
+            GeboorteDatum = geboortedatum;
+        }
+
         public void AddKamerToDo(KamerToDo toDo)
         {
             KamerToDos.Add(toDo);

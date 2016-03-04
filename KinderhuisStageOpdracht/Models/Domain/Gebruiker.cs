@@ -21,10 +21,10 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public string Wachtwoord { get; set; }
         [NotMapped]
         public string PlainWachtwoord { get; set; }
-        public virtual ICollection<Taak> Taken { get; set; }
-
-        public virtual Opvangtehuis Opvangtehuis { get; set; }
         public string Salt { get; set; }
+
+        public virtual ICollection<Taak> Taken { get; set; }
+        public virtual Opvangtehuis Opvangtehuis { get; set; }
         /*private string _salt;
         public string Salt
         {
@@ -64,6 +64,27 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public string GiveFullName()
         {
             return Voornaam + " " + Naam;
+        }
+
+        public string GetOpvangtehuisnaam()
+        {
+            return Opvangtehuis.Naam;
+        }
+
+        public string GetOpvangtehuis()
+        {
+            return Opvangtehuis.ToString();
+        }
+
+        public void EditGebruiker(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam,
+            string email, DateTime geboortedatum)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            Opvangtehuis = opvangtehuis;
+            Gebruikersnaam = gebruikersnaam;
+            Email = email;
+            GeboorteDatum = geboortedatum;
         }
     }
 }

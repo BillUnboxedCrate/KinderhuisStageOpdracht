@@ -17,7 +17,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //Property
 
             //Foreign Key
-            HasMany(f => f.Posts).WithRequired();
+            HasMany(f => f.Posts).WithRequired().WillCascadeOnDelete(true);
         }
        
     }

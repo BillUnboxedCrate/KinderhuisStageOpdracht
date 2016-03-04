@@ -30,9 +30,33 @@ namespace KinderhuisStageOpdracht.Models.Domain
             //Gebruikers = new List<Gebruiker>();
         }
 
+        public List<Suggestie> GetSuggesties()
+        {
+            return Suggesties.OrderByDescending(s => s.TimeStamp).ToList();
+
+        }
+
+        public List<Menu> GetMenus()
+        {
+            return Menus.OrderByDescending(m => m.BegindagWeek).ToList();
+        } 
+
         public void AddSuggestie(Suggestie suggestie)
         {
             Suggesties.Add(suggestie);
+        }
+
+        public void AddSuggestie(string beschrijving, string genre, Client client)
+        {
+            var s = new Suggestie()
+            {
+                Beschrijving = beschrijving,
+                Genre = genre,
+                Client = client,
+                TimeStamp = DateTime.Now
+            };
+            Suggesties.Add(s);
+
         }
 
         public void DeleteSuggestion(Suggestie suggestie)
