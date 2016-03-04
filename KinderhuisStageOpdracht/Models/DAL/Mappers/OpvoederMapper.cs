@@ -17,7 +17,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //Property(o => o.Email).IsRequired().HasMaxLength(50);
 
             //Foreign Key
-            HasMany(o => o.Forums).WithRequired().WillCascadeOnDelete(true);
+            HasMany(o => o.Forums).WithRequired();
 
         }
     }

@@ -130,18 +130,25 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             if (ModelState.IsValid)
             {
-                var crypto = new SimpleCrypto.PBKDF2();
-                var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
+                try
+                {
+                    var crypto = new SimpleCrypto.PBKDF2();
+                    var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
 
-                var opvoeder = new Opvoeder(model.Naam, model.Voornaam,
-                    _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                    model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum);
+                    var opvoeder = new Opvoeder(model.Naam, model.Voornaam,
+                        _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
+                        model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum);
 
-                _gebruikerRepository.AddOpvoeder(opvoeder);
-                _gebruikerRepository.SaveChanges();
+                    _gebruikerRepository.AddOpvoeder(opvoeder);
+                    _gebruikerRepository.SaveChanges();
 
-                this.AddNotification("Opvoeder toegevoegd", NotificationType.SUCCESS);
-                return RedirectToAction("AdminIndex");
+                    this.AddNotification("Opvoeder toegevoegd", NotificationType.SUCCESS);
+                    return RedirectToAction("AdminIndex");
+                }
+                catch (ApplicationException e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                }
             }
 
             var covm =
@@ -172,28 +179,35 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.GeselecteerdOpvangtehuisId != null)
+                try
                 {
-
-                    var crypto = new SimpleCrypto.PBKDF2();
-                    var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
-
-                    var client = new Client(model.Naam, model.Voornaam,
-                        _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                        model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum);
-
-                    _gebruikerRepository.AddClient(client);
-                    _gebruikerRepository.SaveChanges();
-
-                    if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
+                    if (model.GeselecteerdOpvangtehuisId != null)
                     {
+
+                        var crypto = new SimpleCrypto.PBKDF2();
+                        var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
+
+                        var client = new Client(model.Naam, model.Voornaam,
+                            _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
+                            model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum);
+
+                        _gebruikerRepository.AddClient(client);
+                        _gebruikerRepository.SaveChanges();
+
+                        if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
+                        {
+                            this.AddNotification("Cliënt toegevoegd", NotificationType.SUCCESS);
+                            return RedirectToAction("AdminIndex");
+                        }
+
                         this.AddNotification("Cliënt toegevoegd", NotificationType.SUCCESS);
-                        return RedirectToAction("AdminIndex");
+                        return RedirectToAction("OpvoederIndex");
+
                     }
-
-                    this.AddNotification("Cliënt toegevoegd", NotificationType.SUCCESS);
-                    return RedirectToAction("OpvoederIndex");
-
+                }
+                catch (ApplicationException e)
+                {
+                    ModelState.AddModelError("", e.Message);
                 }
             }
 
@@ -242,11 +256,19 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            _gebruikerRepository.DeleteGebruiker(id);
-            _gebruikerRepository.SaveChanges();
+            try
+            {
+                _gebruikerRepository.DeleteGebruiker(id);
+                _gebruikerRepository.SaveChanges();
 
-            this.AddNotification("De gebruiker is verwijderd", NotificationType.SUCCESS);
-            return RedirectToAction("AdminIndex");
+                this.AddNotification("De gebruiker is verwijderd", NotificationType.SUCCESS);
+                return RedirectToAction("AdminIndex");
+            }
+            catch (ApplicationException e)
+            {
+                ModelState.AddModelError("", e.Message);
+            }
+            return View();
         }
 
         public ActionResult Edit(int id)
@@ -274,20 +296,29 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             if (ModelState.IsValid)
             {
-                var gebruiker = _gebruikerRepository.FindById(model.Id);
-                gebruiker.EditGebruiker(model.Naam, model.Voornaam, _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam, model.Email, model.GeboorteDatum);
-
-                _gebruikerRepository.UpdateGebruiker(gebruiker);
-                _gebruikerRepository.SaveChanges();
-
-                this.AddNotification("De gebruiker is aangepast", NotificationType.SUCCESS);
-
-                if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
+                try
                 {
-                    return RedirectToAction("AdminIndex");
-                }
+                    var gebruiker = _gebruikerRepository.FindById(model.Id);
+                    gebruiker.EditGebruiker(model.Naam, model.Voornaam,
+                        _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
+                        model.Email, model.GeboorteDatum);
 
-                return RedirectToAction("OpvoederIndex");
+                    _gebruikerRepository.UpdateGebruiker(gebruiker);
+                    _gebruikerRepository.SaveChanges();
+
+                    this.AddNotification("De gebruiker is aangepast", NotificationType.SUCCESS);
+
+                    if (_gebruikerRepository.FindById((int) Session["gebruiker"]) is Admin)
+                    {
+                        return RedirectToAction("AdminIndex");
+                    }
+
+                    return RedirectToAction("OpvoederIndex");
+                }
+                catch (ApplicationException e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                }
 
             }
             return View(model);

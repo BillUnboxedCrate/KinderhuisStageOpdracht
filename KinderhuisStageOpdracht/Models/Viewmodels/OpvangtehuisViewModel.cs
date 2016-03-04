@@ -140,6 +140,16 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime EindeWeek { get; set; }
 
+            public MenuViewModel() { }
+
+            public MenuViewModel(int id, int week, DateTime beginweek, DateTime eindeweek)
+            {
+                Id = id;
+                Week = week;
+                BeginWeek = beginweek;
+                EindeWeek = eindeweek;
+            }
+
             public CreateMenuItemMaandagViewModel MaandagViewModel { get; set; }
             public CreateMenuItemDinsdagViewModel DinsdagViewModel { get; set; }
             public CreateMenuItemWoensdagViewModel WoensdagViewModel { get; set; }

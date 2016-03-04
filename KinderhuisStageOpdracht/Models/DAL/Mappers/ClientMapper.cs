@@ -24,7 +24,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             HasMany(c => c.Plannings).WithRequired();
             HasMany(c => c.KamerToDos).WithRequired();
 
-            HasMany(c => c.Forums).WithRequired().WillCascadeOnDelete(true);
+            HasMany(c => c.Forums).WithRequired();
 
         }
     }

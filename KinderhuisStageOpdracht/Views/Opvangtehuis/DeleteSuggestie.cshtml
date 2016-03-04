@@ -1,0 +1,36 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.OpvangtehuisViewModel.SuggestieViewModel
+@{
+    ViewBag.Title = "DeleteSuggestie";
+}
+
+<h2>Bent u zeker dat u deze suggestie wilt verwijderen?</h2>
+@using (Html.BeginForm("DeleteSuggestie", "Opvangtehuis", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>@Html.LabelFor(m => m.Client)</td>
+            <td>@Html.DisplayFor(m => m.Client)</td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m => m.Beschrijving)</td>
+            <td>@Html.DisplayFor(m => m.Beschrijving)</td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m => m.Genre)</td>
+            <td>@Html.DisplayFor(m => m.Genre)</td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m => m.TimeStamp)</td>
+            <td>@Html.DisplayFor(m => m.TimeStamp)</td>
+        </tr>
+    </table>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-default" value="Verwijderen" />
+    </div>
+}
+

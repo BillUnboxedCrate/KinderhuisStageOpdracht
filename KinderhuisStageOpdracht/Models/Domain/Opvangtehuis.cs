@@ -59,6 +59,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         }
 
+        public Suggestie FindSuggestieById(int id)
+        {
+            return Suggesties.FirstOrDefault(s => s.Id == id);
+        }
+
         public void DeleteSuggestion(Suggestie suggestie)
         {
             Suggesties.Remove(suggestie);
@@ -68,6 +73,15 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             var suggestie = Suggesties.FirstOrDefault(s => s.Id == id);
             Suggesties.Remove(suggestie);
+        }
+
+        public void AddMenu(DateTime begindag)
+        {
+            var menu = new Menu
+            {
+                BegindagWeek = begindag
+            };
+            Menus.Add(menu);
         }
 
         public void AddMenu(Menu menu)

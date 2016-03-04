@@ -32,7 +32,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 var svm = new OpvangtehuisViewModel.SuggestieViewModel(s.TimeStamp, s.Genre, s.Client.GiveFullName(),
                     s.Beschrijving, s.Id);
-               slvm.AddSuggestie(svm);
+                slvm.AddSuggestie(svm);
             }
             return View(slvm);
         }
@@ -48,17 +48,53 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             if (ModelState.IsValid)
             {
-                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-                opvangtehuis.AddSuggestie(model.Beschrijving, model.GeselecteerdGenre, (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]));
-                _opvangtehuisRepository.SaveChanges();
+                try
+                {
+                    var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                    opvangtehuis.AddSuggestie(model.Beschrijving, model.GeselecteerdGenre,
+                        (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]));
+                    _opvangtehuisRepository.SaveChanges();
 
-                this.AddNotification("Uw suggestie wordt doorgegeven", NotificationType.SUCCESS);
-                return RedirectToAction("ClientIndex", "Gebruiker");
+                    this.AddNotification("Uw suggestie wordt doorgegeven", NotificationType.SUCCESS);
+                    return RedirectToAction("ClientIndex", "Gebruiker");
+                }
+                catch (ApplicationException e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                }
             }
 
             var csvm = new OpvangtehuisViewModel.CreateSuggestieViewModel();
             return View(csvm);
 
+        }
+
+        public ActionResult DeleteSuggestie(int id)
+        {
+            var s = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis.FindSuggestieById(id);
+            var svm = new OpvangtehuisViewModel.SuggestieViewModel(s.TimeStamp, s.Genre, s.Client.GiveFullName(), s.Beschrijving, s.Id);
+
+            return View(svm);
+        }
+
+        [HttpPost, ActionName("DeleteSuggestie")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteSuggestion(int id)
+        {
+            try
+            {
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                opvangtehuis.DeleteSuggestie(id);
+                _opvangtehuisRepository.SaveChanges();
+
+                this.AddNotification("De suggestie is verwijderd", NotificationType.SUCCESS);
+                return RedirectToAction("Suggesties");
+            }
+            catch (ApplicationException e)
+            {
+                ModelState.AddModelError("", e.Message);
+            }
+            return View();
         }
 
         public ActionResult MenuIndex()
@@ -68,14 +104,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
             foreach (var m in opvangtehuis.GetMenus())
             {
-                var mvm = new OpvangtehuisViewModel.MenuViewModel
-                {
-                    Id = m.Id,
-                    Week = m.Week,
-                    BeginWeek = m.BegindagWeek,
-                    EindeWeek = m.EinddagWeek
-                };
-                mlvm.Menus.Add(mvm);
+                var mvm = new OpvangtehuisViewModel.MenuViewModel(m.Id, m.Week, m.BegindagWeek, m.EinddagWeek);
+
+                mlvm.AddMenu(mvm);
             }
 
             return View(mlvm);
@@ -120,67 +151,74 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.Id <= 0)
+                try
                 {
-                    var menu = new Menu(model.BeginWeek);
+                    if (model.Id <= 0)
+                    {
+                        var menu = new Menu(model.BeginWeek);
 
-                    menu.AddMenuItem("Maandag", model.MaandagViewModel.Hoofdgerecht, model.MaandagViewModel.Voorgerecht,
-                        model.MaandagViewModel.Dessert);
-                    menu.AddMenuItem("Dinsdag", model.DinsdagViewModel.Hoofdgerecht, model.DinsdagViewModel.Voorgerecht,
-                        model.DinsdagViewModel.Dessert);
-                    menu.AddMenuItem("Woensdag", model.WoensdagViewModel.Hoofdgerecht,
-                        model.WoensdagViewModel.Voorgerecht, model.WoensdagViewModel.Dessert);
-                    menu.AddMenuItem("Donderdag", model.DonderdagViewModel.Hoofdgerecht,
-                        model.DonderdagViewModel.Voorgerecht, model.DonderdagViewModel.Dessert);
-                    menu.AddMenuItem("Vrijdag", model.VrijdagViewModel.Hoofdgerecht, model.VrijdagViewModel.Voorgerecht,
-                        model.VrijdagViewModel.Dessert);
+                        menu.AddMenuItem("Maandag", model.MaandagViewModel.Hoofdgerecht, model.MaandagViewModel.Voorgerecht,
+                            model.MaandagViewModel.Dessert);
+                        menu.AddMenuItem("Dinsdag", model.DinsdagViewModel.Hoofdgerecht, model.DinsdagViewModel.Voorgerecht,
+                            model.DinsdagViewModel.Dessert);
+                        menu.AddMenuItem("Woensdag", model.WoensdagViewModel.Hoofdgerecht,
+                            model.WoensdagViewModel.Voorgerecht, model.WoensdagViewModel.Dessert);
+                        menu.AddMenuItem("Donderdag", model.DonderdagViewModel.Hoofdgerecht,
+                            model.DonderdagViewModel.Voorgerecht, model.DonderdagViewModel.Dessert);
+                        menu.AddMenuItem("Vrijdag", model.VrijdagViewModel.Hoofdgerecht, model.VrijdagViewModel.Voorgerecht,
+                            model.VrijdagViewModel.Dessert);
 
-                    var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-                    opvangtehuis.AddMenu(menu);
+                        var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                        opvangtehuis.AddMenu(menu);
 
-                    this.AddNotification("De menu is aangemaakt", NotificationType.SUCCESS);
+                        this.AddNotification("De menu is aangemaakt", NotificationType.SUCCESS);
+                    }
+                    else
+                    {
+                        var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+
+                        var menu = opvangtehuis.Menus.FirstOrDefault(m => m.Id == model.Id);
+
+                        menu.AanpassenBeginDatum(model.BeginWeek);
+
+                        //Maandag
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Hoofdgerecht = model.MaandagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Voorgerecht = model.MaandagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Dessert = model.MaandagViewModel.Hoofdgerecht;
+
+                        //Dinsdag
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Hoofdgerecht = model.DinsdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Voorgerecht = model.DinsdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Dessert = model.DinsdagViewModel.Hoofdgerecht;
+
+
+                        //Woensdag
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Hoofdgerecht = model.WoensdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Voorgerecht = model.WoensdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Dessert = model.WoensdagViewModel.Hoofdgerecht;
+
+
+                        //Donderdag
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Hoofdgerecht = model.DonderdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Voorgerecht = model.DonderdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Dessert = model.DonderdagViewModel.Hoofdgerecht;
+
+                        //Vrijdag
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Hoofdgerecht = model.VrijdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Voorgerecht = model.VrijdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Dessert = model.VrijdagViewModel.Hoofdgerecht;
+
+                        this.AddNotification("De menu is gewijzigd", NotificationType.SUCCESS);
+
+                    }
+                    _opvangtehuisRepository.SaveChanges();
+                    return RedirectToAction("MenuIndex");
                 }
-                else
+                catch (ApplicationException e)
                 {
-                    var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
 
-                    var menu = opvangtehuis.Menus.FirstOrDefault(m => m.Id == model.Id);
-
-                    menu.AanpassenBeginDatum(model.BeginWeek);
-
-                    //Maandag
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Hoofdgerecht = model.MaandagViewModel.Hoofdgerecht;
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Voorgerecht = model.MaandagViewModel.Hoofdgerecht;
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Dessert = model.MaandagViewModel.Hoofdgerecht;
-
-                    //Dinsdag
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Hoofdgerecht = model.DinsdagViewModel.Hoofdgerecht;
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Voorgerecht = model.DinsdagViewModel.Hoofdgerecht;
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Dessert = model.DinsdagViewModel.Hoofdgerecht;
-
-
-                    //Woensdag
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Hoofdgerecht = model.WoensdagViewModel.Hoofdgerecht;
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Voorgerecht = model.WoensdagViewModel.Hoofdgerecht;
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Dessert = model.WoensdagViewModel.Hoofdgerecht;
-
-
-                    //Donderdag
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Hoofdgerecht = model.DonderdagViewModel.Hoofdgerecht;
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Voorgerecht = model.DonderdagViewModel.Hoofdgerecht;
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Dessert = model.DonderdagViewModel.Hoofdgerecht;
-
-                    //Vrijdag
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Hoofdgerecht = model.VrijdagViewModel.Hoofdgerecht;
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Voorgerecht = model.VrijdagViewModel.Hoofdgerecht;
-                    menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Dessert = model.VrijdagViewModel.Hoofdgerecht;
-
-                    this.AddNotification("De menu is gewijzigd", NotificationType.SUCCESS);
-
+                    ModelState.AddModelError("", e.Message);
                 }
-                _opvangtehuisRepository.SaveChanges();
-                return RedirectToAction("MenuIndex");
-
             }
             this.AddNotification("Er was ergens een fout", NotificationType.ERROR);
             return View();
@@ -238,6 +276,7 @@ namespace KinderhuisStageOpdracht.Controllers
             return View("CreateMenu", mvm);
         }
 
+        //Reformat needed
         public ActionResult WeekMenu()
         {
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;

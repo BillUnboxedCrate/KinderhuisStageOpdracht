@@ -10,6 +10,7 @@
         <th>Cliënt</th>
         <th>Wanneer</th>
         <th>Suggestie</th>
+        <th>Actie</th>
 
     </tr>
     @foreach (var o in Model.Suggesties)
@@ -19,6 +20,7 @@
             <td>@Html.DisplayFor(modelItem => o.Client)</td>
             <td>@Html.DisplayFor(modelItem => o.TimeStamp)</td>
             <td>@Html.DisplayFor(modelItem => o.Beschrijving)</td>
+            <td>@Html.ActionLink("Verwijderen", "DeleteSuggestie", new { id = o.Id })</td>
         </tr>
     }
 </table>

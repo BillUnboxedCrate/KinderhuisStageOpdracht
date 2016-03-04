@@ -73,8 +73,9 @@ namespace KinderhuisStageOpdracht.Models.DAL
         
         public void DeleteGebruiker(int id)
         {
-            var gebruiker = _context.GebruikerSet.Find(id);
+            var gebruiker = _context.GebruikerSet.Find(id); 
             _context.GebruikerSet.Remove(gebruiker);
+            _context.Entry(gebruiker).State = EntityState.Deleted;
         }
 
         public void SaveChanges()
