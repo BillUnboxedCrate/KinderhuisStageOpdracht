@@ -87,7 +87,21 @@
                 dateFormat: "dd/mm/yy",
                 shortYearCutoff: 50,
                 yearRange: "c-100:c+nn"
-            }).datepicker("setDate", new Date(2000,1,1));
+            }).datepicker("setDate", "01/01/2000");
+        });
+
+        $(function () {
+            $(".datepickeredit").datepicker({
+                dayNames: ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],
+                dayNamesMin: ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+                monthNamesShort: ["Jan", "Feb", "Maa", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: false,
+                dateFormat: "dd/mm/yy",
+                shortYearCutoff: 50,
+                yearRange: "c-100:c+nn"
+            });
         });
 
         var d = new Date();
@@ -106,6 +120,19 @@
             }
 
         }).datepicker("setDate", new Date());
+
+        $(".datepickermondayedit").datepicker({
+            dayNames: ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],
+            dayNamesMin: ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+            monthNamesShort: ["Jan", "Feb", "Maa", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
+            showButtonPanel: false,
+            dateFormat: "dd/mm/yy",
+            yearRange: "-nn:+nn",
+            beforeShowDay: function(date) {
+                var day = date.getDay();
+                return [(day === 1)];
+            }
+        });
     </script>
 
     @RenderSection("scripts", required: false)

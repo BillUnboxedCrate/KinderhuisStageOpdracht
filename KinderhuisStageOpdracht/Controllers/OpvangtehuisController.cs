@@ -72,7 +72,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
             var csvm = new OpvangtehuisViewModel.CreateSuggestieViewModel();
             return View(csvm);
-           
+
         }
 
         public ActionResult MenuIndex()
@@ -149,9 +149,9 @@ namespace KinderhuisStageOpdracht.Controllers
                     menu.AddMenuItem("Vrijdag", model.VrijdagViewModel.Hoofdgerecht, model.VrijdagViewModel.Voorgerecht,
                         model.VrijdagViewModel.Dessert);
 
-                    var opvangtehuis = _gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis;
+                    var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
                     opvangtehuis.AddMenu(menu);
-                    
+
 
                     this.AddNotification("De menu is aangemaakt", NotificationType.SUCCESS);
                 }
