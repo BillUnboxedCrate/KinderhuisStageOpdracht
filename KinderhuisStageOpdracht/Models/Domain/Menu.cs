@@ -58,5 +58,12 @@ namespace KinderhuisStageOpdracht.Models.Domain
             
             return cal.GetWeekOfYear(BegindagWeek, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
         }
+
+        public void AanpassenBeginDatum(DateTime date)
+        {
+            BegindagWeek = date;
+            EinddagWeek = GetEindeVanDeWeekDatum();
+            Week = GetWeekVanHetJaar();
+        }
     }
 }

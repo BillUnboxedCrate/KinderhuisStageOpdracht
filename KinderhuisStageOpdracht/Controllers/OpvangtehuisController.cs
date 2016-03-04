@@ -161,7 +161,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                     var menu = opvangtehuis.Menus.FirstOrDefault(m => m.Id == model.Id);
 
-                    menu.BegindagWeek = model.BeginWeek;
+                    menu.AanpassenBeginDatum(model.BeginWeek);
 
                     //Maandag
                     menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Hoofdgerecht = model.MaandagViewModel.Hoofdgerecht;
