@@ -11,8 +11,8 @@ namespace KinderhuisStageOpdracht.Helpers
     {
         public static string CreatePasswordHash(string pwd, string salt)
         {
-            string saltAndPwd = String.Concat(pwd, salt);
-            string hashedPwd = FormsAuthentication.HashPasswordForStoringInConfigFile(
+            var saltAndPwd = String.Concat(pwd, salt);
+            var hashedPwd = FormsAuthentication.HashPasswordForStoringInConfigFile(
                 saltAndPwd, "sha1");
             return hashedPwd;
         }

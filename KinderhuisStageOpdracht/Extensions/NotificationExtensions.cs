@@ -19,9 +19,9 @@ namespace KinderhuisStageOpdracht.Extensions
     {
         private static IDictionary<String, String> NotificationKey = new Dictionary<String, String>
         {
-            { "Error",      "App.Notifications.Error" }, 
-            { "Warning",    "App.Notifications.Warning" },
-            { "Success",    "App.Notifications.Success" },
+            { "Fout",      "App.Notifications.Error" }, 
+            { "Waarschuwing",    "App.Notifications.Warning" },
+            { "Gelukt",    "App.Notifications.Success" },
             { "Info",       "App.Notifications.Info" }
         };
 
@@ -61,9 +61,9 @@ namespace KinderhuisStageOpdracht.Extensions
 
     public static class NotificationType
     {
-        public const string ERROR = "Error";
-        public const string WARNING = "Warning";
-        public const string SUCCESS = "Success";
+        public const string ERROR = "Fout";
+        public const string WARNING = "Waarschuwing";
+        public const string SUCCESS = "Gelukt";
         public const string INFO = "Info";
 
     }

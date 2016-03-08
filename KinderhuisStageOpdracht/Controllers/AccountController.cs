@@ -501,6 +501,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            FormsAuthentication.SignOut();
             AuthenticationManager.SignOut();
             Session["gebruiker"] = "";
             return RedirectToAction("Login", "Account");

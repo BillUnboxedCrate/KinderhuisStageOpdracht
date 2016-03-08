@@ -210,6 +210,7 @@
     <Compile Include="Models\DAL\Mappers\PlanningItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PlanningMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PostMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\SanctieMapper.cs" />
     <Compile Include="Models\DAL\Mappers\SuggestieMapper.cs" />
     <Compile Include="Models\DAL\Mappers\TaakMapper.cs" />
     <Compile Include="Models\DAL\OpvangtehuisRepository.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Models\Domain\Planning.cs" />
     <Compile Include="Models\Domain\PlanningItem.cs" />
     <Compile Include="Models\Domain\Post.cs" />
+    <Compile Include="Models\Domain\Sanctie.cs" />
     <Compile Include="Models\Domain\Suggestie.cs" />
     <Compile Include="Models\Domain\Taak.cs" />
     <Compile Include="Models\Domain\Opvangtehuis.cs" />
@@ -354,6 +356,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Avatar\" />
+    <Folder Include="Content\Images\ToDoImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

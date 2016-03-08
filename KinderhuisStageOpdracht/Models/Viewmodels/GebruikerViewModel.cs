@@ -142,6 +142,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public string GeselecteerdOpvangtehuisId { get; set; }
 
+            [DataType(DataType.Upload)]
+            public HttpPostedFileBase ImageUpload { get; set; }
+
             public CreateOpvoederViewModel()
             {
             }
@@ -223,6 +226,10 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Display(Name = "Kies een opvangtehuis")]
             public List<string> Opvangtehuizen { get; set; }
+
+            [DataType(DataType.Upload)]
+            [Display(Name = "Kies een foto")]
+            public HttpPostedFileBase ImageUpload { get; set; }
 
             [Required]
             public string GeselecteerdOpvangtehuisId { get; set; }

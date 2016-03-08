@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlTypes;
 using System.Linq;
@@ -25,6 +26,10 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public virtual ICollection<Taak> Taken { get; set; }
         public virtual Opvangtehuis Opvangtehuis { get; set; }
+
+        [DataType(DataType.ImageUrl)]
+        public string ImageUrl { get; set; }
+
         /*private string _salt;
         public string Salt
         {

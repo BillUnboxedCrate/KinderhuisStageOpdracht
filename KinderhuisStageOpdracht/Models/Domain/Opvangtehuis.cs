@@ -20,14 +20,12 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public virtual ICollection<Klacht> Klachten { get; set; }
 
-        //public virtual ICollection<Gebruiker> Gebruikers { get; set; }
-
         public Opvangtehuis()
         {
             Suggesties = new List<Suggestie>();
             Menus = new List<Menu>();
             Klachten = new List<Klacht>();
-            //Gebruikers = new List<Gebruiker>();
+
         }
 
         public List<Suggestie> GetSuggesties()
@@ -84,6 +82,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Menus.Add(menu);
         }
 
+        public Menu FindMenuByDate(DateTime date)
+        {
+            return Menus.FirstOrDefault(m => m.BegindagWeek == date);
+        }
+
         public void AddMenu(Menu menu)
         {
             Menus.Add(menu);
@@ -129,11 +132,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return String.Format("{0}\n{1} {2}\n{3} {4}", Naam, Straat, StraatNummer, Postcode, Gemeente);
         }
 
-        /*
-        public List<Gebruiker> GetGebruikers()
-        {
-            return Gebruikers.OrderBy(g => g.Voornaam).ToList();
-        }
-        */
+       
     }
 }

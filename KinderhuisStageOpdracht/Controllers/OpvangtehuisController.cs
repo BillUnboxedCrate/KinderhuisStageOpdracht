@@ -25,6 +25,11 @@ namespace KinderhuisStageOpdracht.Controllers
         // GET: Opvangtehuis
         public ActionResult Suggesties()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var slvm = new OpvangtehuisViewModel.SuggestieListViewModel();
 
@@ -39,6 +44,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateSuggestie()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var csvm = new OpvangtehuisViewModel.CreateSuggestieViewModel();
             return View(csvm);
         }
@@ -71,6 +81,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult DeleteSuggestie(int id)
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var s = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis.FindSuggestieById(id);
             var svm = new OpvangtehuisViewModel.SuggestieViewModel(s.TimeStamp, s.Genre, s.Client.GiveFullName(), s.Beschrijving, s.Id);
 
@@ -99,6 +114,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult MenuIndex()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var mlvm = new OpvangtehuisViewModel.MenuListViewModel();
 
@@ -114,6 +134,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateMenu()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var mvm = new OpvangtehuisViewModel.MenuViewModel();
             return View(mvm);
         }
@@ -155,23 +180,37 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     if (model.Id <= 0)
                     {
-                        var menu = new Menu(model.BeginWeek);
-
-                        menu.AddMenuItem("Maandag", model.MaandagViewModel.Hoofdgerecht, model.MaandagViewModel.Voorgerecht,
-                            model.MaandagViewModel.Dessert);
-                        menu.AddMenuItem("Dinsdag", model.DinsdagViewModel.Hoofdgerecht, model.DinsdagViewModel.Voorgerecht,
-                            model.DinsdagViewModel.Dessert);
-                        menu.AddMenuItem("Woensdag", model.WoensdagViewModel.Hoofdgerecht,
-                            model.WoensdagViewModel.Voorgerecht, model.WoensdagViewModel.Dessert);
-                        menu.AddMenuItem("Donderdag", model.DonderdagViewModel.Hoofdgerecht,
-                            model.DonderdagViewModel.Voorgerecht, model.DonderdagViewModel.Dessert);
-                        menu.AddMenuItem("Vrijdag", model.VrijdagViewModel.Hoofdgerecht, model.VrijdagViewModel.Voorgerecht,
-                            model.VrijdagViewModel.Dessert);
-
                         var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-                        opvangtehuis.AddMenu(menu);
+                        if (opvangtehuis.FindMenuByDate(model.BeginWeek) == null)
+                        {
 
-                        this.AddNotification("De menu is aangemaakt", NotificationType.SUCCESS);
+
+                            var menu = new Menu(model.BeginWeek);
+
+                            menu.AddMenuItem("Maandag", model.MaandagViewModel.Hoofdgerecht,
+                                model.MaandagViewModel.Voorgerecht,
+                                model.MaandagViewModel.Dessert);
+                            menu.AddMenuItem("Dinsdag", model.DinsdagViewModel.Hoofdgerecht,
+                                model.DinsdagViewModel.Voorgerecht,
+                                model.DinsdagViewModel.Dessert);
+                            menu.AddMenuItem("Woensdag", model.WoensdagViewModel.Hoofdgerecht,
+                                model.WoensdagViewModel.Voorgerecht, model.WoensdagViewModel.Dessert);
+                            menu.AddMenuItem("Donderdag", model.DonderdagViewModel.Hoofdgerecht,
+                                model.DonderdagViewModel.Voorgerecht, model.DonderdagViewModel.Dessert);
+                            menu.AddMenuItem("Vrijdag", model.VrijdagViewModel.Hoofdgerecht,
+                                model.VrijdagViewModel.Voorgerecht,
+                                model.VrijdagViewModel.Dessert);
+
+                            //var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                            opvangtehuis.AddMenu(menu);
+
+                            this.AddNotification("De menu is aangemaakt", NotificationType.SUCCESS);
+                        }
+                        else
+                        {
+                            this.AddNotification("Er is al reeds een menu op deze dag", NotificationType.ERROR);
+                            return RedirectToAction("CreateMenu");
+                        }
                     }
                     else
                     {
@@ -227,6 +266,11 @@ namespace KinderhuisStageOpdracht.Controllers
         //Extreem slordige code, moet later herwerkt worden
         public ActionResult EditMenu(int id)
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
 
             var menu = opvangtehuis.Menus.FirstOrDefault(m => m.Id == id);
@@ -279,6 +323,11 @@ namespace KinderhuisStageOpdracht.Controllers
         //Reformat needed
         public ActionResult WeekMenu()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
 
             var menu = opvangtehuis.Menus.FirstOrDefault(m => m.Week == GetWeekVanHetJaar(DateTime.Today));

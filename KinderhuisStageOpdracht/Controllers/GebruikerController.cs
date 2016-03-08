@@ -27,7 +27,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult ClientIndex()
         {
-            if (Session["gebruiker"] == null)
+            if (Session["gebruiker"] == null || !Request.IsAuthenticated)
             {
                 return View("Error");
             }
@@ -52,7 +52,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult OpvoederIndex()
         {
-            if (Session["gebruiker"] == null)
+            if (Session["gebruiker"] == null || !Request.IsAuthenticated)
             {
                 return View("Error");
             }
@@ -78,7 +78,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult AdminIndex()
         {
-            if (Session["gebruiker"] == null)
+            if (Session["gebruiker"] == null || !Request.IsAuthenticated)
             {
                 return View("Error");
             }
@@ -118,6 +118,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateOpvoeder()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var covm = new GebruikerViewModel.CreateOpvoederViewModel
             {
                 Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList()
@@ -132,6 +137,12 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 try
                 {
+                    if (_gebruikerRepository.FindByUsername(model.GebruikersNaam) != null)
+                    {
+                        this.AddNotification("Er is al reeds iemand met deze gebruikersnaam", NotificationType.ERROR);
+                        return RedirectToAction("CreateOpvoeder");
+                    }
+
                     var crypto = new SimpleCrypto.PBKDF2();
                     var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
 
@@ -160,6 +171,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateClient()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var ccvm = new GebruikerViewModel.CreateClientViewModel();
 
             if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
@@ -183,6 +199,12 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     if (model.GeselecteerdOpvangtehuisId != null)
                     {
+
+                        if (_gebruikerRepository.FindByUsername(model.GebruikersNaam) != null)
+                        {
+                            this.AddNotification("Er is al reeds iemand met deze gebruikersnaam", NotificationType.ERROR);
+                            return RedirectToAction("CreateClient");
+                        }
 
                         var crypto = new SimpleCrypto.PBKDF2();
                         var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
@@ -221,6 +243,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Details(int id)
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var gebruiker = _gebruikerRepository.FindById(id);
             GebruikerViewModel.DetailViewModel dvm = null;
 
@@ -241,6 +268,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Delete(int id)
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var gebruiker = _gebruikerRepository.FindById(id);
             GebruikerViewModel.DetailViewModel dvm = null;
 
@@ -273,6 +305,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Edit(int id)
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var gebruiker = _gebruikerRepository.FindById(id);
 
 
@@ -327,6 +364,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult ForumIndex()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var flvm = new GebruikerViewModel.ForumListViewModel();
 
             var opvoeder = (Opvoeder)_gebruikerRepository.FindById((int)Session["gebruiker"]);
@@ -342,6 +384,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Forum(int id)
         {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+
             var plvm = new GebruikerViewModel.PostsListViewModel();
 
             if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder)

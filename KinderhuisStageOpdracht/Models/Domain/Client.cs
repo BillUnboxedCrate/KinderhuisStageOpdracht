@@ -10,13 +10,16 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public virtual ICollection<Planning> Plannings { get; set; }
         public virtual ICollection<KamerToDo> KamerToDos { get; set; }
 
-        public virtual ICollection<Forum> Forums { get; set; } 
+        public virtual ICollection<Forum> Forums { get; set; }
+
+        public virtual ICollection<Sanctie> Sancties { get; set; } 
 
         public Client()
         {
             Plannings = new List<Planning>();
             KamerToDos = new List<KamerToDo>();
             Forums = new List<Forum>();
+            Sancties = new List<Sanctie>();
         }
 
         public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum)
@@ -39,6 +42,18 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public void AddForum(Forum forum)
         {
             Forums.Add(forum);
+        }
+
+        public void AddSanctie(Sanctie sanctie)
+        {
+            Sancties.Add(sanctie);
+        }
+
+        public void AddSanctie(bool verboden, string genre, string rede, DateTime datum)
+        {
+            var sanctie = new Sanctie(verboden, genre, rede, datum);
+
+            Sancties.Add(sanctie);
         }
     }
 }
