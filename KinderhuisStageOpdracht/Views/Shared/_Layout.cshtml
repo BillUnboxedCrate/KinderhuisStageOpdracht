@@ -104,6 +104,20 @@
             });
         });
 
+        $(function () {
+            $(".datepickersanctie").datepicker({
+                dayNames: ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],
+                dayNamesMin: ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+                monthNamesShort: ["Jan", "Feb", "Maa", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: false,
+                dateFormat: "dd/mm/yy",
+                shortYearCutoff: 50,
+                yearRange: "c-100:c+nn"
+            }).datepicker("setDate", new Date());
+        });
+
         var d = new Date();
         var year = d.getFullYear() - 18;
 
@@ -132,6 +146,14 @@
                 var day = date.getDay();
                 return [(day === 1)];
             }
+        });
+
+
+        $(function () {
+            $(".spinner").spinner({
+                min: 1,
+                step: 1
+            });
         });
     </script>
 

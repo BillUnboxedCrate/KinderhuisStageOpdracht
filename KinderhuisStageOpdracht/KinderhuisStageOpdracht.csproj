@@ -353,6 +353,7 @@
     <Content Include="Views\Gebruiker\Forum.cshtml" />
     <Content Include="Views\Opvangtehuis\WeekMenu.cshtml" />
     <Content Include="Views\Opvangtehuis\DeleteSuggestie.cshtml" />
+    <Content Include="Views\Gebruiker\CreateSanctie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

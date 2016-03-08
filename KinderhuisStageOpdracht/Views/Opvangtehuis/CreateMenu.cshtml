@@ -8,6 +8,7 @@
 
 @using (Html.BeginForm("CreateMenu", "Opvangtehuis", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
     <div class="form-group">
         @Html.LabelFor(m => m.BeginWeek, new { @class = "col-md-2 control-label" })

@@ -125,7 +125,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         //    [Display(Name = "Dessert")]
         //    public string Dessert { get; set; }
         //}
-
+        #region MenuViewModel
         public class MenuViewModel
         {
             public int Id { get; set; }
@@ -242,5 +242,10 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Dessert")]
             public string Dessert { get; set; }
         }
+        #endregion
+
+        
+    
+    
     }
 }

@@ -49,9 +49,9 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Sancties.Add(sanctie);
         }
 
-        public void AddSanctie(bool verboden, string genre, string rede, DateTime datum)
+        public void AddSanctie(string genre, string rede, DateTime datum, int aantalDagen)
         {
-            var sanctie = new Sanctie(verboden, genre, rede, datum);
+            var sanctie = new Sanctie(genre, rede, datum, aantalDagen);
 
             Sancties.Add(sanctie);
         }

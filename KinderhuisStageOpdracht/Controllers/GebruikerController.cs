@@ -131,6 +131,7 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateOpvoeder(GebruikerViewModel.CreateOpvoederViewModel model)
         {
             if (ModelState.IsValid)
@@ -191,6 +192,7 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateClient(GebruikerViewModel.CreateClientViewModel model)
         {
             if (ModelState.IsValid)
@@ -255,6 +257,15 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
                     gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis());
+
+                if (gebruiker is Client)
+                {
+                    var client = (Client)gebruiker;
+                    foreach (var s in client.Sancties)
+                    {
+                        dvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Genre, s.Rede, s.BeginDatum, s.EindDatum));
+                    }
+                }
             }
 
             return View("Details", dvm);
@@ -329,6 +340,7 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(GebruikerViewModel.EditViewModel model)
         {
             if (ModelState.IsValid)
@@ -345,7 +357,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                     this.AddNotification("De gebruiker is aangepast", NotificationType.SUCCESS);
 
-                    if (_gebruikerRepository.FindById((int) Session["gebruiker"]) is Admin)
+                    if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
                     {
                         return RedirectToAction("AdminIndex");
                     }
@@ -416,6 +428,35 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             return View(plvm);
+        }
+
+        public ActionResult CreateSanctie(int id)
+        {
+            var svm = new GebruikerViewModel.SanctieViewModel(id, _gebruikerRepository.FindById(id).GiveFullName());
+            return View(svm);
+        }
+
+        [HttpPost]
+        public ActionResult CreateSanctie(GebruikerViewModel.SanctieViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var gebruiker = (Client)_gebruikerRepository.FindById(model.Id);
+                    gebruiker.AddSanctie("test", model.Rede, model.Date, model.AantalDagen);
+                    _gebruikerRepository.SaveChanges();
+
+                    this.AddNotification("Een sanctie is toegevoegd", NotificationType.SUCCESS);
+                    return RedirectToAction("OpvoederIndex");
+                }
+                catch (ApplicationException e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                }
+            }
+
+            return RedirectToAction("CreateSanctie");
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using KinderhuisStageOpdracht.Models.Domain;
 
 namespace KinderhuisStageOpdracht.Models.Viewmodels
@@ -28,7 +29,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Email { get; set; }
             public string Opvangtehuis { get; set; }
 
-            public OpvoederViewModel() { }
+            public OpvoederViewModel()
+            {
+            }
 
             public OpvoederViewModel(int id, string naam, string email)
             {
@@ -68,7 +71,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Email { get; set; }
             public string Opvangtehuis { get; set; }
 
-            public ClientViewModel() { }
+            public ClientViewModel()
+            {
+            }
 
             public ClientViewModel(int id, string naam, string email)
             {
@@ -134,7 +139,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [DataType(DataType.Password)]
             [Display(Name = "Bevestig wachtwoord")]
-            [Compare("Wachtwoord", ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
+            [System.ComponentModel.DataAnnotations.Compare("Wachtwoord",
+                ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
             public string BevestigWachtwoord { get; set; }
 
             [Display(Name = "Kies een opvangtehuis")]
@@ -143,6 +149,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string GeselecteerdOpvangtehuisId { get; set; }
 
             [DataType(DataType.Upload)]
+            [Display(Name = "Kies een foto")]
             public HttpPostedFileBase ImageUpload { get; set; }
 
             public CreateOpvoederViewModel()
@@ -177,6 +184,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             [Display(Name = "Gebruikers naam")]
             public string GebruikersNaam { get; set; }
+
             //public string Wachtwoord { get; set; }
 
             [Required]
@@ -221,7 +229,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [DataType(DataType.Password)]
             [Display(Name = "Bevestig wachtwoord")]
-            [Compare("Wachtwoord", ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
+            [System.ComponentModel.DataAnnotations.Compare("Wachtwoord",
+                ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
             public string BevestigWachtwoord { get; set; }
 
             [Display(Name = "Kies een opvangtehuis")]
@@ -282,6 +291,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [EmailAddress]
             [Display(Name = "Email adres")]
             public string Email { get; set; }
+
             //public string Wachtwoord { get; set; }
 
             [Display(Name = "Kies een opvangtehuis")]
@@ -318,6 +328,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public DetailViewModel()
             {
+                Sancties = new List<SanctieViewModel>();
             }
 
             public DetailViewModel(int id, string naam, string voornaam, DateTime? geboortedatum, string gebruikersnaam,
@@ -330,7 +341,16 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 GebruikersNaam = gebruikersnaam;
                 Email = email;
                 Opvangtehuis = opvangtehuis;
+                Sancties = new List<SanctieViewModel>();
             }
+
+            public List<SanctieViewModel> Sancties { get; set; }
+
+            public void AddSanctie(SanctieViewModel svm)
+            {
+                Sancties.Add(svm);
+            }
+
         }
 
         public class EditViewModel
@@ -358,6 +378,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [EmailAddress]
             [Display(Name = "Email adres")]
             public string Email { get; set; }
+
             //public string Wachtwoord { get; set; }
 
             [Display(Name = "Kies een opvangtehuis")]
@@ -417,7 +438,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Id { get; set; }
             public string Client { get; set; }
 
-            public ForumViewModel() { }
+            public ForumViewModel()
+            {
+            }
 
             public ForumViewModel(int id)
             {
@@ -456,6 +479,58 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 SendBy = sendby;
                 TimeStamp = timestamp;
                 Boodschap = boodschap;
+            }
+        }
+
+        public class SanctieViewModel
+        {
+            public int Id { get; set; }
+
+
+            public string Client { get; set; }
+
+            [Required]
+            [Display(Name = "Rede voor de sanctie")]
+            public string Rede { get; set; }
+
+            [Required]
+            [Display(Name = "Selecteer een datum")]
+            public DateTime Date { get; set; }
+
+            public DateTime EindDatum { get; set; }
+
+            [Required]
+            [Display(Name = "Aantal dagen")]
+            public int AantalDagen { get; set; }
+
+            public string GeselecteerdGenre { get; set; }
+
+            public ICollection<SelectListItem> Genres
+            {
+                get
+                {
+                    return new[]
+                    {
+                        new SelectListItem {Text = "Geen spelletjes", Value = "GeenSpellen"},
+                        new SelectListItem {Text = "Geen dessert", Value = "GeenDessert"},
+                        new SelectListItem {Text = "Niet buiten spelen", Value = "NietBuiten"}
+                    };
+                }
+            }
+            public SanctieViewModel() { }
+
+            public SanctieViewModel(int id, string client)
+            {
+                Id = id;
+                Client = client;
+            }
+
+            public SanctieViewModel(string genre, string rede, DateTime begindatum, DateTime eindatum)
+            {
+                Rede = rede;
+                GeselecteerdGenre = genre;
+                Date = begindatum;
+                EindDatum = eindatum;
             }
         }
     }

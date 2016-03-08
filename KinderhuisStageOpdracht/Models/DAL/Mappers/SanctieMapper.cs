@@ -16,7 +16,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
 
             //Property
             Property(s => s.Genre).IsRequired();
-            Property(s => s.Datum).IsRequired();
+            Property(s => s.BeginDatum).IsRequired();
 
             //Foreign Key
 

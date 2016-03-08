@@ -42,6 +42,7 @@ namespace KinderhuisStageOpdracht.Controllers
             return View(slvm);
         }
 
+
         public ActionResult CreateSuggestie()
         {
             if (!Request.IsAuthenticated)
@@ -54,6 +55,7 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateSuggestie(OpvangtehuisViewModel.CreateSuggestieViewModel model)
         {
             if (ModelState.IsValid)
@@ -172,6 +174,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         //Extreem slordige code, moet later herwerkt worden
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateMenu(OpvangtehuisViewModel.MenuViewModel model)
         {
             if (ModelState.IsValid)
@@ -376,6 +379,7 @@ namespace KinderhuisStageOpdracht.Controllers
             return View(mvm);
         }
 
+        #region helpers
         private int GetWeekVanHetJaar(DateTime datum)
         {
             var dfi = DateTimeFormatInfo.CurrentInfo;
@@ -383,5 +387,6 @@ namespace KinderhuisStageOpdracht.Controllers
 
             return cal.GetWeekOfYear(datum, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
         }
+        #endregion
     }
 }

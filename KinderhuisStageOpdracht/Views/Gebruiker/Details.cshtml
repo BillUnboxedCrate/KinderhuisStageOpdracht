@@ -38,5 +38,25 @@
     <tr>
         <td>@Html.LabelFor(m => m.Opvangtehuis)</td>
         <td>@Html.DisplayFor(m => m.Opvangtehuis)</td>
-    </tr>   
+    </tr>
 </table>
+@if (Model.Sancties.Count != 0) {
+    <table class="table">
+        <tr>
+            <th>Genre</th>
+            <th>Rede</th>
+            <th>Begindatum</th>
+            <th>Einddatum</th>
+        </tr>
+
+        @foreach (var o in Model.Sancties)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => o.GeselecteerdGenre)</td>
+                <td>@Html.DisplayFor(modelItem => o.Rede)</td>
+                <td>@Html.DisplayFor(modelItem => o.Date)</td>
+                <td>@Html.DisplayFor(modelItem => o.EindDatum)</td>
+            </tr>
+        }
+    </table>
+}
