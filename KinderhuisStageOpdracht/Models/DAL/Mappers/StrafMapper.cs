@@ -7,18 +7,18 @@ using KinderhuisStageOpdracht.Models.Domain;
 
 namespace KinderhuisStageOpdracht.Models.DAL.Mappers
 {
-    public class SanctieMapper : EntityTypeConfiguration<Sanctie>
+    public class StrafMapper : EntityTypeConfiguration<Straf>
     {
-        public SanctieMapper()
+        public StrafMapper()
         {
             //Primary Key
             HasKey(s => s.Id);
 
             //Property
-            Property(s => s.BeginDatum).IsRequired();
+            Property(s => s.Naam).IsRequired();
+            Property(s => s.ImageUrl).IsRequired();
 
             //Foreign Key
-            HasRequired(s => s.Straf).WithMany();
-        }
+        }   
     }
 }

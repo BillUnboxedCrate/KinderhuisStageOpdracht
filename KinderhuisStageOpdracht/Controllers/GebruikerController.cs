@@ -263,7 +263,7 @@ namespace KinderhuisStageOpdracht.Controllers
                     var client = (Client)gebruiker;
                     foreach (var s in client.Sancties)
                     {
-                        dvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Genre, s.Rede, s.BeginDatum, s.EindDatum));
+                        dvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum));
                     }
                 }
             }

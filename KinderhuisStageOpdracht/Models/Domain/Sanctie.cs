@@ -10,19 +10,21 @@ namespace KinderhuisStageOpdracht.Models.Domain
     public class Sanctie
     {
         public int Id { get; set; }
-        public string Genre { get; set; }
         public string Rede { get; set; }
+
         public DateTime BeginDatum { get; set; }
         public DateTime EindDatum { get; set; }
+
+        public virtual Straf Straf { get; set; }
+
         
         [NotMapped]
         public int AantalDagen { get; set; }
 
         public Sanctie() { }
 
-        public Sanctie(string genre, string rede, DateTime datum, int aantalDagen)
+        public Sanctie(string rede, DateTime datum, int aantalDagen)
         {
-            Genre = genre;
             Rede = rede;
             BeginDatum = datum;
             EindDatum = datum.AddDays(aantalDagen - 1);

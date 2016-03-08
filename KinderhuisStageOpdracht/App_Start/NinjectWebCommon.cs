@@ -68,6 +68,7 @@ namespace KinderhuisStageOpdracht.App_Start
             //Add repos here
             kernel.Bind<IGebruikerRepository>().To<GebruikerRepository>().InRequestScope();
             kernel.Bind<IOpvangtehuisRepository>().To<OpvangtehuisRepository>().InRequestScope();
+            kernel.Bind<IStrafRepository>().To<StrafRepository>().InRequestScope();
 
             kernel.Bind<ProjectContext>().ToSelf().InRequestScope();
         }        

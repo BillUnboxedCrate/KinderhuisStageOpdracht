@@ -12,7 +12,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
     public class ProjectContext:DbContext
     {
         public DbSet<Gebruiker> GebruikerSet { get; set; }
-        public DbSet<Opvangtehuis> OpvangtehuisSet { get; set; } 
+        public DbSet<Opvangtehuis> OpvangtehuisSet { get; set; }
+        public DbSet<Straf> StrafSet { get; set; } 
 
         public ProjectContext()
             : base("kinderhuisconnectionstring")
@@ -36,6 +37,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             modelBuilder.Configurations.Add(new OpvangtehuisMapper());
             modelBuilder.Configurations.Add(new KlachtMapper());
             modelBuilder.Configurations.Add(new SanctieMapper());
+            modelBuilder.Configurations.Add(new StrafMapper());
         }
     }
 }

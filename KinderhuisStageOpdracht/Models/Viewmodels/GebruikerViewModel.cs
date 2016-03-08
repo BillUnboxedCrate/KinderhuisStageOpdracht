@@ -368,7 +368,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             [DataType(DataType.Date)]
             [Display(Name = "Geboorte datum")]
-            [DisplayFormat(DataFormatString = "{0:d}")]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime GeboorteDatum { get; set; }
 
             [Required]
@@ -495,28 +495,17 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Required]
             [Display(Name = "Selecteer een datum")]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime Date { get; set; }
 
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime EindDatum { get; set; }
 
             [Required]
             [Display(Name = "Aantal dagen")]
             public int AantalDagen { get; set; }
 
-            public string GeselecteerdGenre { get; set; }
-
-            public ICollection<SelectListItem> Genres
-            {
-                get
-                {
-                    return new[]
-                    {
-                        new SelectListItem {Text = "Geen spelletjes", Value = "GeenSpellen"},
-                        new SelectListItem {Text = "Geen dessert", Value = "GeenDessert"},
-                        new SelectListItem {Text = "Niet buiten spelen", Value = "NietBuiten"}
-                    };
-                }
-            }
+            
             public SanctieViewModel() { }
 
             public SanctieViewModel(int id, string client)
@@ -525,10 +514,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Client = client;
             }
 
-            public SanctieViewModel(string genre, string rede, DateTime begindatum, DateTime eindatum)
+            public SanctieViewModel(string rede, DateTime begindatum, DateTime eindatum)
             {
                 Rede = rede;
-                GeselecteerdGenre = genre;
                 Date = begindatum;
                 EindDatum = eindatum;
             }

@@ -211,6 +211,7 @@
     <Compile Include="Models\DAL\Mappers\PlanningMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PostMapper.cs" />
     <Compile Include="Models\DAL\Mappers\SanctieMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\StrafMapper.cs" />
     <Compile Include="Models\DAL\Mappers\SuggestieMapper.cs" />
     <Compile Include="Models\DAL\Mappers\TaakMapper.cs" />
     <Compile Include="Models\DAL\OpvangtehuisRepository.cs" />
@@ -218,9 +219,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\DAL\ProjectInitializer.cs" />
+    <Compile Include="Models\DAL\StrafRepository.cs" />
     <Compile Include="Models\Domain\Forum.cs" />
     <Compile Include="Models\Domain\IGebruikerRepository.cs" />
     <Compile Include="Models\Domain\IOpvangtehuisRepository.cs" />
+    <Compile Include="Models\Domain\IStrafRepository.cs" />
     <Compile Include="Models\Domain\KamerToDo.cs" />
     <Compile Include="Models\Domain\KamerToDoItem.cs" />
     <Compile Include="Models\Domain\Klacht.cs" />
@@ -230,6 +233,7 @@
     <Compile Include="Models\Domain\PlanningItem.cs" />
     <Compile Include="Models\Domain\Post.cs" />
     <Compile Include="Models\Domain\Sanctie.cs" />
+    <Compile Include="Models\Domain\Straf.cs" />
     <Compile Include="Models\Domain\Suggestie.cs" />
     <Compile Include="Models\Domain\Taak.cs" />
     <Compile Include="Models\Domain\Opvangtehuis.cs" />
@@ -247,7 +251,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\cross.png" />
     <Content Include="Content\Images\login_screen.png" />
+    <Content Include="Content\Images\StrafImages\frisdrank.png" />
+    <Content Include="Content\Images\StrafImages\video_games.png" />
     <Content Include="Content\Styles.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
