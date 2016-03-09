@@ -56,6 +56,16 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Sancties.Add(sanctie);
         }
 
+        public List<Sanctie> GetAppliedSancties()
+        {
+            return Sancties.Where(s => s.EindDatum > DateTime.Today).OrderBy(s => s.BeginDatum).ToList();
+        }
+
+        public List<Sanctie> GetSancties()
+        {
+            return Sancties.OrderByDescending(s => s.BeginDatum).ToList();  
+        }
+
 
     }
 }

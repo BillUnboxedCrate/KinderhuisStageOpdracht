@@ -263,7 +263,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 if (gebruiker is Client)
                 {
                     var client = (Client)gebruiker;
-                    foreach (var s in client.Sancties)
+                    foreach (var s in client.GetSancties())
                     {
                         dvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam()));
                     }
@@ -468,7 +468,7 @@ namespace KinderhuisStageOpdracht.Controllers
             var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
             var slvm = new GebruikerViewModel.SanctieListViewModel();
 
-            foreach (var s in client.Sancties.OrderByDescending(o => o.BeginDatum))
+            foreach (var s in client.GetAppliedSancties())
             {
                 slvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam(), s.GetStrafImageUrl()));
             }

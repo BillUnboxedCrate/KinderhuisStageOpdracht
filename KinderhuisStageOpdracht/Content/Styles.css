@@ -183,3 +183,11 @@ input[type="text"], input[type="password"], textarea {
     font-size: 20pt;
     color: red;
 }
+
+#geenStraffen {
+    /*margin-right: auto;
+    margin-left: auto;*/
+    text-align: center;
+    color: green;
+    font-size: 20pt;
+}
