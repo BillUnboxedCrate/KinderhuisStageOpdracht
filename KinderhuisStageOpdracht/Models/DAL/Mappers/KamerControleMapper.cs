@@ -7,9 +7,9 @@ using KinderhuisStageOpdracht.Models.Domain;
 
 namespace KinderhuisStageOpdracht.Models.DAL.Mappers
 {
-    public class KamerToDoMapper : EntityTypeConfiguration<KamerToDo>
+    public class KamerControleMapper : EntityTypeConfiguration<KamerControle>
     {
-        public KamerToDoMapper()
+        public KamerControleMapper()
         {
             //Primary Key
             HasKey(ktd => ktd.Id);
@@ -20,7 +20,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //HasRequired(ktd => ktd.Client).WithRequiredPrincipal().Map(c => c.MapKey("ClientId"));
             //HasMany(ktd => ktd.KamerToDoItems).WithRequired().Map(ktd => ktd.MapKey("KamerToDoId")).WillCascadeOnDelete(true);
 
-            HasMany(ktd => ktd.KamerToDoItems).WithRequired().WillCascadeOnDelete(true);
+            HasMany(ktd => ktd.KamerControleItems).WithRequired().WillCascadeOnDelete(true);
         } 
     }
 }

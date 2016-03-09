@@ -316,6 +316,37 @@ namespace KinderhuisStageOpdracht.Models.DAL
             #endregion
             #endregion
 
+            #region Kamercontrole
+
+            var kamercontrole = new KamerControle(DateTime.Today);
+
+            var kamerControleItem1 = new KamerControleItem()
+            {
+                Titel = "Bed opmaken",
+                Beschrijving = "Het bed moet worden opgedekt",
+                ImageUrl = "~/Content/Images/KamerControleImages/bed_opmaken.png"
+            };
+
+            var kamerControleItem2 = new KamerControleItem()
+            {
+                Titel = "Kleren opruimen",
+                Beschrijving = "Kleren in de wasmand steken",
+                ImageUrl = "~/Content/Images/KamerControleImages/bed_opmaken.png"
+            };
+
+            var kamerControleItem3 = new KamerControleItem()
+            {
+                Titel = "Gordijnen openen",
+                Beschrijving = "De gordijnen openen",
+                ImageUrl = "~/Content/Images/KamerControleImages/bed_opmaken.png"
+            };
+
+            kamercontrole.AddKamerToDoItem(kamerControleItem1);
+            kamercontrole.AddKamerToDoItem(kamerControleItem2);
+            kamercontrole.AddKamerToDoItem(kamerControleItem3);
+
+            #endregion
+
             #region forum
             var forum1 = new Forum();
 

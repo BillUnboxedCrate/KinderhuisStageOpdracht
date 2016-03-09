@@ -17,12 +17,14 @@ namespace KinderhuisStageOpdracht.Controllers
         private readonly IGebruikerRepository _gebruikerRepository;
         private readonly IOpvangtehuisRepository _opvangtehuisRepository;
         private readonly IStrafRepository _strafRepository;
+        private readonly IKamerControleItemRepository _kamerControleItemRepository;
 
-        public GebruikerController(IGebruikerRepository gebruikerRepository, IOpvangtehuisRepository opvangtehuisRepository, IStrafRepository strafRepository)
+        public GebruikerController(IGebruikerRepository gebruikerRepository, IOpvangtehuisRepository opvangtehuisRepository, IStrafRepository strafRepository, IKamerControleItemRepository kamerControleItemRepository)
         {
             _gebruikerRepository = gebruikerRepository;
             _opvangtehuisRepository = opvangtehuisRepository;
             _strafRepository = strafRepository;
+            _kamerControleItemRepository = kamerControleItemRepository;
         }
 
         // GET: Gebruiker
@@ -474,6 +476,14 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             return View(slvm);
+        }
+
+        public ActionResult KamerControle()
+        {
+            var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
+            client.ViewKamerControle();
+
+            return View();
         }
     }
 }

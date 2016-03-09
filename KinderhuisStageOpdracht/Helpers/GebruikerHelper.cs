@@ -12,7 +12,9 @@ namespace KinderhuisStageOpdracht.Helpers
         public static string CreatePasswordHash(string pwd, string salt)
         {
             var saltAndPwd = String.Concat(pwd, salt);
+#pragma warning disable 618
             var hashedPwd = FormsAuthentication.HashPasswordForStoringInConfigFile(
+#pragma warning restore 618
                 saltAndPwd, "sha1");
             return hashedPwd;
         }

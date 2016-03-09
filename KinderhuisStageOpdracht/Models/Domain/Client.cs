@@ -8,16 +8,16 @@ namespace KinderhuisStageOpdracht.Models.Domain
     public class Client : Gebruiker
     {
         public virtual ICollection<Planning> Plannings { get; set; }
-        public virtual ICollection<KamerToDo> KamerToDos { get; set; }
+        public virtual ICollection<KamerControle> KamerControles { get; set; }
 
         public virtual ICollection<Forum> Forums { get; set; }
 
-        public virtual ICollection<Sanctie> Sancties { get; set; } 
+        public virtual ICollection<Sanctie> Sancties { get; set; }
 
         public Client()
         {
             Plannings = new List<Planning>();
-            KamerToDos = new List<KamerToDo>();
+            KamerControles = new List<KamerControle>();
             Forums = new List<Forum>();
             Sancties = new List<Sanctie>();
         }
@@ -34,9 +34,9 @@ namespace KinderhuisStageOpdracht.Models.Domain
             GeboorteDatum = geboortedatum;
         }
 
-        public void AddKamerToDo(KamerToDo toDo)
+        public void AddKamerControle(KamerControle kamerControle)
         {
-            KamerToDos.Add(toDo);
+            KamerControles.Add(kamerControle);
         }
 
         public void AddForum(Forum forum)
@@ -58,12 +58,32 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public List<Sanctie> GetAppliedSancties()
         {
-            return Sancties.Where(s => s.EindDatum > DateTime.Today).OrderBy(s => s.BeginDatum).ToList();
+            return Sancties.Where(s => s.EindDatum >= DateTime.Today).OrderBy(s => s.BeginDatum).ToList();
         }
 
         public List<Sanctie> GetSancties()
         {
-            return Sancties.OrderByDescending(s => s.BeginDatum).ToList();  
+            return Sancties.OrderByDescending(s => s.BeginDatum).ToList();
+        }
+
+        private bool DagelijkseKamerControleAlGemaakt()
+        {
+            if (KamerControles.FirstOrDefault(k => k.Datum == DateTime.Today) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public KamerControle ViewKamerControle()
+        {
+            if (DagelijkseKamerControleAlGemaakt())
+            {
+                var kamerControle = new KamerControle(DateTime.Today);
+                return kamerControle;
+            }
+
+            return KamerControles.FirstOrDefault(k => k.Datum == DateTime.Today);
         }
 
 

@@ -497,6 +497,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
         }
 
+        #region Sanctie
         public class SanctieViewModel
         {
             public int Id { get; set; }
@@ -562,6 +563,25 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             {
                 Straffen = straffen;
             }
+        }
+        #endregion
+
+        public class ListKamerControleItems 
+        {
+            public List<KamerControleItem> KamerControleItems { get; set; }
+
+            public ListKamerControleItems()
+            {
+                KamerControleItems = new List<KamerControleItem>( );
+            }
+        }
+
+        public class KamerControleItem
+        {
+            public string ImageUrl { get; set; }
+            public string Naam { get; set; }
+            public bool DoneClient { get; set; }
+            public bool DoneOpvoeder { get; set; }
         }
     }
 }

@@ -11,6 +11,7 @@
         <li>@Html.ActionLink("Toon lijst van menus", "MenuIndex", "Opvangtehuis")</li>
     </ul>
 </div>
+
 <h3>Cliënten</h3>
 @Html.ActionLink("Voeg cliënt toe", "CreateClient")
 <table class="table">
@@ -19,7 +20,7 @@
         <th>Email adres</th>
         <th>Acties</th>
     </tr>
-
+    
     @foreach (var o in Model.Clients)
     {
         <tr>
@@ -27,12 +28,13 @@
             <td>@Html.DisplayFor(modelItem => o.Email)</td>
 
             <td>
-                @Html.ActionLink("Details", "Details", new { id = o.Id })
+                @Html.ActionLink("Details", "Details", new {id = o.Id})
                 <span> | </span>
-                @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })
+                @Html.ActionLink("Aanpassen", "Edit", new {id = o.Id})
                 <span> | </span>
-                @Html.ActionLink("Straffen", "CreateSanctie", new { id = o.Id })
+                @Html.ActionLink("Straffen", "CreateSanctie", new {id = o.Id})
             </td>
+     
         </tr>
     }
 </table>

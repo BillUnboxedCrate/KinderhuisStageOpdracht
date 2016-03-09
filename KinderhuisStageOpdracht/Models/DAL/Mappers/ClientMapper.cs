@@ -22,7 +22,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //HasMany(c => c.KamerToDos).WithRequired().Map(c => c.MapKey("ClientId"));
 
             HasMany(c => c.Plannings).WithRequired();
-            HasMany(c => c.KamerToDos).WithRequired();
+            HasMany(c => c.KamerControles).WithRequired();
 
             HasMany(c => c.Forums).WithRequired();
 
