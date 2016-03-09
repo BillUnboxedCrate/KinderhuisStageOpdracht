@@ -136,7 +136,6 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2
             };
-            #endregion
 
             //Add admins
             context.GebruikerSet.Add(admin1);
@@ -150,6 +149,28 @@ namespace KinderhuisStageOpdracht.Models.DAL
             context.GebruikerSet.Add(client2);
             context.GebruikerSet.Add(client3);
             context.GebruikerSet.Add(client4);
+            #endregion
+
+            #region Straf
+
+            var straf1 = new Straf()
+            {
+                Naam = "Geen frisdrank",
+                ImageUrl = "~/Content/Images/StrafImages/frisdrank.png"
+            };
+
+            var straf2 = new Straf()
+            {
+                Naam = "Geen spelletjes",
+                ImageUrl = "~/Content/Images/StrafImages/video_games.png"
+            };
+
+            context.StrafSet.Add(straf1);
+            context.StrafSet.Add(straf2);
+
+            #endregion
+
+            
 
 
             #region menus

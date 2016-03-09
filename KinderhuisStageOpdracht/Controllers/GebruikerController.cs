@@ -16,11 +16,13 @@ namespace KinderhuisStageOpdracht.Controllers
     {
         private readonly IGebruikerRepository _gebruikerRepository;
         private readonly IOpvangtehuisRepository _opvangtehuisRepository;
+        private readonly IStrafRepository _strafRepository;
 
-        public GebruikerController(IGebruikerRepository gebruikerRepository, IOpvangtehuisRepository opvangtehuisRepository)
+        public GebruikerController(IGebruikerRepository gebruikerRepository, IOpvangtehuisRepository opvangtehuisRepository, IStrafRepository strafRepository)
         {
             _gebruikerRepository = gebruikerRepository;
             _opvangtehuisRepository = opvangtehuisRepository;
+            _strafRepository = strafRepository;
         }
 
         // GET: Gebruiker
@@ -263,7 +265,7 @@ namespace KinderhuisStageOpdracht.Controllers
                     var client = (Client)gebruiker;
                     foreach (var s in client.Sancties)
                     {
-                        dvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum));
+                        dvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam()));
                     }
                 }
             }
@@ -433,6 +435,7 @@ namespace KinderhuisStageOpdracht.Controllers
         public ActionResult CreateSanctie(int id)
         {
             var svm = new GebruikerViewModel.SanctieViewModel(id, _gebruikerRepository.FindById(id).GiveFullName());
+            svm.SetStraffen(_strafRepository.FindAll().Select(s => s.Naam).ToList());
             return View(svm);
         }
 
@@ -444,7 +447,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 try
                 {
                     var gebruiker = (Client)_gebruikerRepository.FindById(model.Id);
-                    gebruiker.AddSanctie("test", model.Rede, model.Date, model.AantalDagen);
+                    gebruiker.AddSanctie(model.Rede, model.Date, model.AantalDagen, _strafRepository.FindByNaam(model.GeselecteerdeStraf));
                     _gebruikerRepository.SaveChanges();
 
                     this.AddNotification("Een sanctie is toegevoegd", NotificationType.SUCCESS);
@@ -455,8 +458,22 @@ namespace KinderhuisStageOpdracht.Controllers
                     ModelState.AddModelError("", e.Message);
                 }
             }
-
+            this.AddNotification("De sanctie kan niet worden gemaakt", NotificationType.ERROR);
             return RedirectToAction("CreateSanctie");
+            
+        }
+
+        public ActionResult Sancties()
+        {
+            var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
+            var slvm = new GebruikerViewModel.SanctieListViewModel();
+
+            foreach (var s in client.Sancties.OrderByDescending(o => o.BeginDatum))
+            {
+                slvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam(), s.GetStrafImageUrl()));
+            }
+
+            return View(slvm);
         }
     }
 }

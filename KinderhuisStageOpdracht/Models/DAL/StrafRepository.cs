@@ -25,6 +25,16 @@ namespace KinderhuisStageOpdracht.Models.DAL
             return _context.StrafSet.FirstOrDefault(s => s.Id == id);
         }
 
+        public Straf FindByNaam(string naam)
+        {
+            return _context.StrafSet.FirstOrDefault(s => s.Naam == naam);
+        }
+
+        public void AddStraf(Straf straf)
+        {
+            _context.StrafSet.Add(straf);
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

@@ -14,9 +14,16 @@
     @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Client, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.Client, new {@class = "col-md-2 control-label"})
         <div class="col-md-10">
-            @Html.DisplayFor(m => m.Client, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.Client, new {@class = "form-control"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Straffen, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.GeselecteerdeStraf, new SelectList(Model.Straffen), new { @class = "form-control" })
         </div>
     </div>
 

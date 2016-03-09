@@ -482,10 +482,24 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
         }
 
+        public class SanctieListViewModel 
+        {
+            public List<SanctieViewModel> SanctieList { get; set; }
+
+            public SanctieListViewModel()
+            {
+                SanctieList = new List<SanctieViewModel>();
+            }
+
+            public void AddSanctie(SanctieViewModel sanctie)
+            {
+                SanctieList.Add(sanctie);
+            }
+        }
+
         public class SanctieViewModel
         {
             public int Id { get; set; }
-
 
             public string Client { get; set; }
 
@@ -505,8 +519,16 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Aantal dagen")]
             public int AantalDagen { get; set; }
 
-            
-            public SanctieViewModel() { }
+            [Display(Name = "Kies een straf")]
+            public List<string> Straffen { get; set; }
+            public string GeselecteerdeStraf { get; set; }
+
+            public string ImageUrl { get; set; }
+
+            public SanctieViewModel()
+            {
+                Straffen = new List<string>();
+            }
 
             public SanctieViewModel(int id, string client)
             {
@@ -514,11 +536,31 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Client = client;
             }
 
-            public SanctieViewModel(string rede, DateTime begindatum, DateTime eindatum)
+            public SanctieViewModel(string rede, DateTime begindatum, DateTime eindatum, string straf)
             {
                 Rede = rede;
                 Date = begindatum;
                 EindDatum = eindatum;
+                GeselecteerdeStraf = straf;
+            }
+
+            public SanctieViewModel(string rede, DateTime begindatum, DateTime eindatum, string straf, string imageUrl)
+            {
+                Rede = rede;
+                Date = begindatum;
+                EindDatum = eindatum;
+                GeselecteerdeStraf = straf;
+                ImageUrl = imageUrl;
+            }
+
+            public void AddStraf(string straf)
+            {
+                Straffen.Add(straf);
+            }
+
+            public void SetStraffen(List<string> straffen)
+            {
+                Straffen = straffen;
             }
         }
     }

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace KinderhuisStageOpdracht.Models.Domain
 {
-    interface IStrafRepository
+    public interface IStrafRepository
     {
         IQueryable<Straf> FindAll();
         Straf FindById(int id);
+        Straf FindByNaam(string naam);
 
         void SaveChanges();
 

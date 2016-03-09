@@ -251,8 +251,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\cross.png" />
     <Content Include="Content\Images\login_screen.png" />
+    <Content Include="Content\Images\StrafImages\cross.png" />
     <Content Include="Content\Images\StrafImages\frisdrank.png" />
     <Content Include="Content\Images\StrafImages\video_games.png" />
     <Content Include="Content\Styles.css" />
@@ -361,6 +361,7 @@
     <Content Include="Views\Opvangtehuis\WeekMenu.cshtml" />
     <Content Include="Views\Opvangtehuis\DeleteSuggestie.cshtml" />
     <Content Include="Views\Gebruiker\CreateSanctie.cshtml" />
+    <Content Include="Views\Gebruiker\Sancties.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

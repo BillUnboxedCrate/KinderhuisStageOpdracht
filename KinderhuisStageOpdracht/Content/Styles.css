@@ -10,7 +10,7 @@ body {
     border-radius: 5px;
     height: auto;
     width: 400px;
-    border: solid 1px; 
+    border: solid 1px;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -23,7 +23,6 @@ body {
 }
 
 #loginForm {
-    
 }
 
 .button-gray {
@@ -32,7 +31,6 @@ body {
     border: 1px solid rgb(139, 137, 137);
     border-radius: 5px;
     width: 100px;
-
     /*color: white;*/
 }
 
@@ -69,14 +67,14 @@ input[type="text"], input[type="password"], textarea {
     width: 100%;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
-    border-color: #000;
-    color: #000;
-    outline: none;
-}
+    input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+        border-color: #000;
+        color: #000;
+        outline: none;
+    }
 
 .text-danger {
-  font-style: italic;
+    font-style: italic;
     background: rgb(255, 76, 90);
     width: 100%;
     display: block;
@@ -85,71 +83,103 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     /*padding: 5px;*/
     box-sizing: border-box;
     margin-top: 3px;
-
 }
 
 .text-success {
-  color: #468847;
+    color: #468847;
 }
 
 .text-info {
-  color: #3a87ad;
+    color: #3a87ad;
 }
 
 .text-muted {
-  color: #999999;
+    color: #999999;
 }
 
 .text-primary {
-  color: #428bca;
+    color: #428bca;
 }
 
 .text-warning {
-  color: #c09853;
+    color: #c09853;
 }
 
 .category-menu {
-	margin:0;
-	padding:0;
+    margin: 0;
+    padding: 0;
 }
-.category-menu > li {
-	list-style: none;
-	display:inline-block;
-}
-.category-menu > li + li {
-	margin-left:10px;
-}
-.category-menu > li > a {
-	display:inline-block;
-	height:100px;
-	width:100px;
-	background: rgb(248, 248, 248);
-	display:table-cell;
-	vertical-align:middle;
-	text-align:center;
-	border-radius: 5px;
-}
+
+    .category-menu > li {
+        list-style: none;
+        display: inline-block;
+    }
+
+        .category-menu > li + li {
+            margin-left: 10px;
+        }
+
+        .category-menu > li > a {
+            display: inline-block;
+            height: 100px;
+            width: 100px;
+            background: rgb(248, 248, 248);
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            border-radius: 5px;
+        }
 
 .menuItemBox {
-    border: 1px solid black ;
+    border: 1px solid black;
     padding: 10px;
-    margin: 10px;   
+    margin: 10px;
 }
 
-.menuItemBox th td{
-    padding: 50px;
-}
+    .menuItemBox th td {
+        padding: 50px;
+    }
 
-#weekMenu, #weekMenu th, #weekMenu td{
-    border: 1px solid ;
+#weekMenu, #weekMenu th, #weekMenu td {
+    border: 1px solid;
     /*padding: 30px;*/
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
-#weekMenu th, #weekMenu td {
-    width: 400px;
-    height: 100px;
+    #weekMenu th, #weekMenu td {
+        width: 400px;
+        height: 100px;
+    }
+
+#sactieTable, #sactieTable th, #sactieTable td {
+    border: 1px solid;
+    /*padding: 30px;*/
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+    #sactieTable th, #sactieTable td {
+        padding: 20px;
+    }
+
+.firstColumn {
+    width: 300px;   
+}
+
+.secondColumn {
+    width: 500px;
+}
+
+.sanctieImage {
+    /*float: left;
+    width: 40px;
+    height: 40px;*/
+}
+
+#strafText {
+    font-size: 20pt;
+    color: red;
+}
