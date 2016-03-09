@@ -201,6 +201,7 @@
     <Compile Include="Models\DAL\Mappers\ClientMapper.cs" />
     <Compile Include="Models\DAL\Mappers\ForumMapper.cs" />
     <Compile Include="Models\DAL\Mappers\GebruikerMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\KamerControleItemMapper.cs" />
     <Compile Include="Models\DAL\Mappers\KamerControleOpdrachtMapper.cs" />
     <Compile Include="Models\DAL\Mappers\KamerControleMapper.cs" />
     <Compile Include="Models\DAL\Mappers\KlachtMapper.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Models\Domain\IOpvangtehuisRepository.cs" />
     <Compile Include="Models\Domain\IStrafRepository.cs" />
     <Compile Include="Models\Domain\KamerControle.cs" />
+    <Compile Include="Models\Domain\KamerControleItem.cs" />
     <Compile Include="Models\Domain\KamerControleOpdracht.cs" />
     <Compile Include="Models\Domain\Klacht.cs" />
     <Compile Include="Models\Domain\Menu.cs" />

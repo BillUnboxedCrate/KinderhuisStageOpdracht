@@ -566,17 +566,17 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         }
         #endregion
 
-        public class ListKamerControleItems 
+        public class ListKamerControleItemsViewmodel
         {
-            public List<KamerControleItem> KamerControleItems { get; set; }
+            public List<KamerControleItemViewModel> KamerControleItems { get; set; }
 
-            public ListKamerControleItems()
+            public ListKamerControleItemsViewmodel()
             {
-                KamerControleItems = new List<KamerControleItem>( );
+                KamerControleItems = new List<KamerControleItemViewModel>( );
             }
         }
 
-        public class KamerControleItem
+        public class KamerControleItemViewModel
         {
             public string ImageUrl { get; set; }
             public string Naam { get; set; }

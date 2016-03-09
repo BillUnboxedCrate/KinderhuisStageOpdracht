@@ -30,6 +30,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             modelBuilder.Configurations.Add(new PostMapper());
             modelBuilder.Configurations.Add(new KamerControleOpdrachtMapper());
             modelBuilder.Configurations.Add(new KamerControleMapper());
+            modelBuilder.Configurations.Add(new KamerControleItemMapper());
             modelBuilder.Configurations.Add(new MenuItemMapper());
             modelBuilder.Configurations.Add(new MenuMapper());
             modelBuilder.Configurations.Add(new PlanningItemMapper());

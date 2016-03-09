@@ -12,13 +12,15 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
         public KamerControleMapper()
         {
             //Primary Key
-            HasKey(ktd => ktd.Id);
+            HasKey(kc => kc.Id);
 
             //Properties
 
             //Foreign Key
             //HasRequired(ktd => ktd.Client).WithRequiredPrincipal().Map(c => c.MapKey("ClientId"));
             //HasMany(ktd => ktd.KamerToDoItems).WithRequired().Map(ktd => ktd.MapKey("KamerToDoId")).WillCascadeOnDelete(true);
+            
+            HasMany(kc => kc.KamerControleItems).WithRequired();
 
         } 
     }

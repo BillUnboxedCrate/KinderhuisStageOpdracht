@@ -12,11 +12,11 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
         public KamerControleOpdrachtMapper()
         {
             //Primary Key
-            HasKey(ktdi => ktdi.Id);
+            HasKey(kco => kco.Id);
 
             //Properties
-            Property(ktdi => ktdi.Titel).IsRequired().HasMaxLength(50);
-            Property(ktdi => ktdi.Beschrijving).IsRequired();
+            Property(kco => kco.Titel).IsRequired().HasMaxLength(50);
+            Property(kco => kco.Beschrijving).IsRequired();
 
             //Foreign Key
         }

@@ -8,14 +8,14 @@ namespace KinderhuisStageOpdracht.Models.Domain
     public class KamerControle
     {
         public int Id { get; set; }
-        //public virtual ICollection<KamerControleOpdracht> KamerControleItems { get; set; }
+        public virtual ICollection<KamerControleItem> KamerControleItems { get; set; }
         public bool AllesInOrde { get; set; }
 
         public DateTime Datum { get; set; }
 
         public KamerControle()
         {
-            //KamerControleItems = new List<KamerControleOpdracht>();
+            KamerControleItems = new List<KamerControleItem>();
         }
 
         public KamerControle(DateTime datum)
@@ -24,7 +24,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             //KamerControleItems = new List<KamerControleOpdracht>();
         }
 
-        public void AddKamerToDoItem(KamerControleOpdracht item)
+        public void AddKamerToDoItem(KamerControleItem item)
         {
             //KamerControleItems.Add(item);
         }
