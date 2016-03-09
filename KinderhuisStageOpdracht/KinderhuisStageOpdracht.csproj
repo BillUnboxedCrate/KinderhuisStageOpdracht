@@ -196,12 +196,12 @@
     <Compile Include="Models\DAL\GebruikerRepository.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\DAL\KamerControleItemRepository.cs" />
+    <Compile Include="Models\DAL\KamerControleOpdrachtRepository.cs" />
     <Compile Include="Models\DAL\Mappers\AdminMapper.cs" />
     <Compile Include="Models\DAL\Mappers\ClientMapper.cs" />
     <Compile Include="Models\DAL\Mappers\ForumMapper.cs" />
     <Compile Include="Models\DAL\Mappers\GebruikerMapper.cs" />
-    <Compile Include="Models\DAL\Mappers\KamerControleItemMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\KamerControleOpdrachtMapper.cs" />
     <Compile Include="Models\DAL\Mappers\KamerControleMapper.cs" />
     <Compile Include="Models\DAL\Mappers\KlachtMapper.cs" />
     <Compile Include="Models\DAL\Mappers\MenuItemMapper.cs" />
@@ -223,11 +223,11 @@
     <Compile Include="Models\DAL\StrafRepository.cs" />
     <Compile Include="Models\Domain\Forum.cs" />
     <Compile Include="Models\Domain\IGebruikerRepository.cs" />
-    <Compile Include="Models\Domain\IKamerControleItemRepository.cs" />
+    <Compile Include="Models\Domain\IKamerControleOpdrachtRepository.cs" />
     <Compile Include="Models\Domain\IOpvangtehuisRepository.cs" />
     <Compile Include="Models\Domain\IStrafRepository.cs" />
     <Compile Include="Models\Domain\KamerControle.cs" />
-    <Compile Include="Models\Domain\KamerControleItem.cs" />
+    <Compile Include="Models\Domain\KamerControleOpdracht.cs" />
     <Compile Include="Models\Domain\Klacht.cs" />
     <Compile Include="Models\Domain\Menu.cs" />
     <Compile Include="Models\Domain\MenuItem.cs" />

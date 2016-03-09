@@ -320,32 +320,36 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
             var kamercontrole = new KamerControle(DateTime.Today);
 
-            var kamerControleItem1 = new KamerControleItem()
+            #endregion
+
+            #region KamerControleOpdracht
+            var kamercontroleOpracht1 = new KamerControleOpdracht()
             {
                 Titel = "Bed opmaken",
                 Beschrijving = "Het bed moet worden opgedekt",
                 ImageUrl = "~/Content/Images/KamerControleImages/bed_opmaken.png"
             };
 
-            var kamerControleItem2 = new KamerControleItem()
+            var kamercontroleOpracht2 = new KamerControleOpdracht()
             {
                 Titel = "Kleren opruimen",
                 Beschrijving = "Kleren in de wasmand steken",
-                ImageUrl = "~/Content/Images/KamerControleImages/bed_opmaken.png"
+                ImageUrl = "~/Content/Images/KamerControleImages/was_opruimen.png"
             };
 
-            var kamerControleItem3 = new KamerControleItem()
+            var kamercontroleOpracht3 = new KamerControleOpdracht()
             {
                 Titel = "Gordijnen openen",
                 Beschrijving = "De gordijnen openen",
-                ImageUrl = "~/Content/Images/KamerControleImages/bed_opmaken.png"
+                ImageUrl = "~/Content/Images/KamerControleImages/gordijn_openen.jpg"
             };
 
-            kamercontrole.AddKamerToDoItem(kamerControleItem1);
-            kamercontrole.AddKamerToDoItem(kamerControleItem2);
-            kamercontrole.AddKamerToDoItem(kamerControleItem3);
-
+            context.KamerControleOpdrachtSet.Add(kamercontroleOpracht1);
+            context.KamerControleOpdrachtSet.Add(kamercontroleOpracht2);
+            context.KamerControleOpdrachtSet.Add(kamercontroleOpracht3);
             #endregion
+
+
 
             #region forum
             var forum1 = new Forum();

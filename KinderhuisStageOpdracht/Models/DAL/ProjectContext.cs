@@ -14,7 +14,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
         public DbSet<Gebruiker> GebruikerSet { get; set; }
         public DbSet<Opvangtehuis> OpvangtehuisSet { get; set; }
         public DbSet<Straf> StrafSet { get; set; }
-        public DbSet<KamerControleItem> KamerControleItemSet { get; set; } 
+        public DbSet<KamerControleOpdracht> KamerControleOpdrachtSet { get; set; } 
 
         public ProjectContext()
             : base("kinderhuisconnectionstring")
@@ -28,7 +28,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
             modelBuilder.Configurations.Add(new ForumMapper());
             modelBuilder.Configurations.Add(new PostMapper());
-            modelBuilder.Configurations.Add(new KamerControleItemMapper());
+            modelBuilder.Configurations.Add(new KamerControleOpdrachtMapper());
             modelBuilder.Configurations.Add(new KamerControleMapper());
             modelBuilder.Configurations.Add(new MenuItemMapper());
             modelBuilder.Configurations.Add(new MenuMapper());

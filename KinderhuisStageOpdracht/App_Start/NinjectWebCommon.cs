@@ -69,7 +69,7 @@ namespace KinderhuisStageOpdracht.App_Start
             kernel.Bind<IGebruikerRepository>().To<GebruikerRepository>().InRequestScope();
             kernel.Bind<IOpvangtehuisRepository>().To<OpvangtehuisRepository>().InRequestScope();
             kernel.Bind<IStrafRepository>().To<StrafRepository>().InRequestScope();
-            kernel.Bind<IKamerControleItemRepository>().To<KamerControleItemRepository>().InRequestScope();
+            kernel.Bind<IKamerControleOpdrachtRepository>().To<KamerControleOpdrachtRepository>().InRequestScope();
 
             kernel.Bind<ProjectContext>().ToSelf().InRequestScope();
         }        

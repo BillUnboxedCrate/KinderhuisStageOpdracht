@@ -10,7 +10,7 @@
   <Class Name="KinderhuisStageOpdracht.Models.Domain.Client">
     <Position X="7.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAgAAAAAgAAAAAAACAAEAAggA0AAAgA=</HashCode>
+      <HashCode>AAAAAAAAAAIAABAAAAAAgAAAAAAACAAAAIggA0AAAAA=</HashCode>
       <FileName>Models\Domain\Client.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -24,15 +24,15 @@
   <Class Name="KinderhuisStageOpdracht.Models.Domain.KamerControle">
     <Position X="7.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAACAAAAAAiACAAAAAA=</HashCode>
+      <HashCode>AAACAAAAIAAAAAAAAAAAAAAAAAACAAAAAAgACAAAAAA=</HashCode>
       <FileName>Models\Domain\KamerControle.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KinderhuisStageOpdracht.Models.Domain.KamerControleItem">
+  <Class Name="KinderhuisStageOpdracht.Models.Domain.KamerControleOpdracht">
     <Position X="7.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAGQAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAA=</HashCode>
-      <FileName>Models\Domain\KamerControleItem.cs</FileName>
+      <HashCode>AAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAA=</HashCode>
+      <FileName>Models\Domain\KamerControleOpdracht.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="KinderhuisStageOpdracht.Models.Domain.Menu">

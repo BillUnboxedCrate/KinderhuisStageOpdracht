@@ -17,9 +17,9 @@ namespace KinderhuisStageOpdracht.Controllers
         private readonly IGebruikerRepository _gebruikerRepository;
         private readonly IOpvangtehuisRepository _opvangtehuisRepository;
         private readonly IStrafRepository _strafRepository;
-        private readonly IKamerControleItemRepository _kamerControleItemRepository;
+        private readonly IKamerControleOpdrachtRepository _kamerControleItemRepository;
 
-        public GebruikerController(IGebruikerRepository gebruikerRepository, IOpvangtehuisRepository opvangtehuisRepository, IStrafRepository strafRepository, IKamerControleItemRepository kamerControleItemRepository)
+        public GebruikerController(IGebruikerRepository gebruikerRepository, IOpvangtehuisRepository opvangtehuisRepository, IStrafRepository strafRepository, IKamerControleOpdrachtRepository kamerControleItemRepository)
         {
             _gebruikerRepository = gebruikerRepository;
             _opvangtehuisRepository = opvangtehuisRepository;

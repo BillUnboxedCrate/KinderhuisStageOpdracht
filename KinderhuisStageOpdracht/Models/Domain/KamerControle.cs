@@ -8,38 +8,28 @@ namespace KinderhuisStageOpdracht.Models.Domain
     public class KamerControle
     {
         public int Id { get; set; }
-        //public Opvoeder Opvoeder { get; set; }
-        public virtual ICollection<KamerControleItem> KamerControleItems { get; set; }
+        //public virtual ICollection<KamerControleOpdracht> KamerControleItems { get; set; }
         public bool AllesInOrde { get; set; }
 
         public DateTime Datum { get; set; }
 
         public KamerControle()
         {
-            KamerControleItems = new List<KamerControleItem>();
+            //KamerControleItems = new List<KamerControleOpdracht>();
         }
 
         public KamerControle(DateTime datum)
         {
             Datum = datum;
-            KamerControleItems = new List<KamerControleItem>();
+            //KamerControleItems = new List<KamerControleOpdracht>();
         }
 
-        public void AddKamerToDoItem(KamerControleItem item)
+        public void AddKamerToDoItem(KamerControleOpdracht item)
         {
-            KamerControleItems.Add(item);
+            //KamerControleItems.Add(item);
         }
 
-        public void AddKamerToDoItem(string titel, string beschrijving)
-        {
-            var item = new KamerControleItem()
-            {
-                Titel = titel,
-                Beschrijving = beschrijving,
-            };
-
-            KamerControleItems.Add(item);
-        }
+       
 
     }
 }

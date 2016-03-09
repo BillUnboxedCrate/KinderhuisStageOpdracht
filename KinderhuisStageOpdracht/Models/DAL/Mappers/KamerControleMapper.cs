@@ -20,7 +20,6 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //HasRequired(ktd => ktd.Client).WithRequiredPrincipal().Map(c => c.MapKey("ClientId"));
             //HasMany(ktd => ktd.KamerToDoItems).WithRequired().Map(ktd => ktd.MapKey("KamerToDoId")).WillCascadeOnDelete(true);
 
-            HasMany(ktd => ktd.KamerControleItems).WithRequired().WillCascadeOnDelete(true);
         } 
     }
 }

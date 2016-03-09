@@ -7,9 +7,9 @@ using KinderhuisStageOpdracht.Models.Domain;
 
 namespace KinderhuisStageOpdracht.Models.DAL.Mappers
 {
-    public class KamerControleItemMapper: EntityTypeConfiguration<KamerControleItem>
+    public class KamerControleOpdrachtMapper: EntityTypeConfiguration<KamerControleOpdracht>
     {
-        public KamerControleItemMapper()
+        public KamerControleOpdrachtMapper()
         {
             //Primary Key
             HasKey(ktdi => ktdi.Id);
