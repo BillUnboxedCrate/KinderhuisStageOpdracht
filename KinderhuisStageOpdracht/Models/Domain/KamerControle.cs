@@ -10,6 +10,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public int Id { get; set; }
         public virtual ICollection<KamerControleItem> KamerControleItems { get; set; }
         public bool AllesInOrde { get; set; }
+        public bool AllesGedaan { get; set; }
 
         public DateTime Datum { get; set; }
 
@@ -22,6 +23,8 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             Datum = datum;
             KamerControleItems = new List<KamerControleItem>();
+            AllesGedaan = IsAllesGedaan();
+            AllesInOrde = IsAllesInOrde();
         }
 
         public void AddKamerControleItem(KamerControleItem item)
@@ -29,6 +32,31 @@ namespace KinderhuisStageOpdracht.Models.Domain
             KamerControleItems.Add(item);
         }
 
+        public bool IsAllesGedaan()
+        {
+            var counter = 0;
+            foreach (var i in KamerControleItems)
+            {
+                if (i.OpdrachtGedaan)
+                {
+                    counter++;
+                }
+            }
+            return KamerControleItems.Count == counter;
+        }
+
+        public bool IsAllesInOrde()
+        {
+            var counter = 0;
+            foreach (var i in KamerControleItems)
+            {
+                if (i.OpdrachtGedaan && i.OpdrachtGedaanControle)
+                {
+                    counter++;
+                }
+            }
+            return KamerControleItems.Count == counter;
+        }
        
 
     }

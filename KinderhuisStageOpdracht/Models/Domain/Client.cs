@@ -99,6 +99,16 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return kamerControle;
         }
 
+        public KamerControle GetKamerControleById(int id)
+        {
+            return KamerControles.FirstOrDefault(i => i.Id == id);
+        }
+
+        public List<KamerControle> GetKamerControles()
+        {
+            return KamerControles.OrderByDescending(k => k.Datum).ToList();
+        } 
+
 
     }
 }

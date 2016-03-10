@@ -599,9 +599,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 DoneClient = doneClient;
             }
 
-            public KamerControleItemViewModel(string imageUrl, string titel, string beschrijving, bool doneClient, bool doneOpvoeder)
+            public KamerControleItemViewModel(string titel, string beschrijving, bool doneClient, bool doneOpvoeder)
             {
-                ImageUrl = imageUrl;
                 Titel = titel;
                 Beschrijving = beschrijving;
                 DoneClient = doneClient;
@@ -612,10 +611,18 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
         public class KamerControleListIndexViewModel
         {
+            public int ClientId { get; set; }    
+
             public List<KamerControleIndexViewModel> List { get; set; }
 
             public KamerControleListIndexViewModel()
             {
+                List = new List<KamerControleIndexViewModel>();
+            }
+            
+            public KamerControleListIndexViewModel(int clientId)
+            {
+                ClientId = clientId;
                 List = new List<KamerControleIndexViewModel>();
             }
 
@@ -627,6 +634,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
         public class KamerControleIndexViewModel
         {
+            
+            public int Id { get; set; }
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime Datum { get; set; }
             public bool AllesGedaan { get; set; }
@@ -634,8 +643,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public KamerControleIndexViewModel() { }
 
-            public KamerControleIndexViewModel(DateTime datum, bool allesGedaan, bool inOrde)
+            public KamerControleIndexViewModel(int id, DateTime datum, bool allesGedaan, bool inOrde)
             {
+                Id = id;
                 Datum = datum;
                 AllesGedaan = allesGedaan;
                 InOrde = inOrde;

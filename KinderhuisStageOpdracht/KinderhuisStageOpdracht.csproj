@@ -320,6 +320,12 @@
     <Content Include="Views\Gebruiker\CreateOpvoeder.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Gebruiker\KamerControleIndex.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Gebruiker\KamerControleOpvoeder.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -370,7 +376,6 @@
     <Content Include="Views\Gebruiker\CreateSanctie.cshtml" />
     <Content Include="Views\Gebruiker\Sancties.cshtml" />
     <Content Include="Views\Gebruiker\KamerControle.cshtml" />
-    <Content Include="Views\Gebruiker\KamerControleIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -516,9 +516,52 @@ namespace KinderhuisStageOpdracht.Controllers
             _gebruikerRepository.SaveChanges();
 
             return RedirectToAction("KamerControle");
+        }
 
+        public ActionResult KamerControleIndex(int id)
+        {
+            var client = (Client)_gebruikerRepository.FindById(id);
+            Session["client"] = id;
+            var kclivm = new GebruikerViewModel.KamerControleListIndexViewModel(client.Id);
 
+            foreach (var i in client.GetKamerControles())
+            {
+                kclivm.AddKamerControleIndexItem(new GebruikerViewModel.KamerControleIndexViewModel(i.Id,i.Datum, i.IsAllesGedaan(),
+                    i.IsAllesInOrde()));
+            }
 
+            return View(kclivm);
+        }
+
+        public ActionResult KamerControleOpvoeder(int id)
+        {
+            var client = (Client)_gebruikerRepository.FindById((int)Session["client"]);
+            var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
+
+            foreach (var i in client.GetKamerControleById(id).KamerControleItems)
+            {
+                lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtTitel(), i.GetControleOpdrachtBeschrijving(), i.OpdrachtGedaan, i.OpdrachtGedaanControle));
+            }
+
+            return View(lkcivm);
+        }
+
+        [HttpPost]
+        public ActionResult KamerControleOpvoeder(GebruikerViewModel.ListKamerControleItemsViewmodel model)
+        {
+            var client = (Client)_gebruikerRepository.FindById((int)Session["client"]);
+            var kamercontrole = client.ViewKamerControle(_kamerControleItemRepository.FindAll().ToList());
+
+            foreach (var i in kamercontrole.KamerControleItems)
+            {
+                foreach (var ivm in model.KamerControleItems.Where(m => m.Titel == i.GetControleOpdrachtTitel()))
+                {
+                    i.OpdrachtGedaanControle = ivm.DoneOpvoeder;
+                }
+            }
+            _gebruikerRepository.SaveChanges();
+
+            return RedirectToAction("KamerControleOpvoeder");
         }
     }
 }
