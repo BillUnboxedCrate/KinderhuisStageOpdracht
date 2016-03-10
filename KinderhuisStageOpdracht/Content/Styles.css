@@ -218,6 +218,11 @@ input[type="text"], input[type="password"], textarea {
     font-size: 20pt;
 }
 
+.aanduidingsImage {
+    width: 25px;
+    height: auto;
+}
+
 /*Begin checkbox animated*/
 /*input[type=checkbox] {
   opacity: 0;

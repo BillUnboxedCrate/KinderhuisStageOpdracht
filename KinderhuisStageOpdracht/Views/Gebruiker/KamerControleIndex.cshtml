@@ -17,10 +17,26 @@
         <tr>
             <td>@Html.DisplayFor(modelItem => o.Datum)</td>
             <td>
-                @(o.AllesGedaan ? Html.Label("Ja") : Html.Label("Nee"))
+                @*@(o.AllesGedaan ? Html.Label("Ja") : Html.Label("Nee"))*@
+                @if (o.AllesGedaan)
+                {
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/vinkje.png")" alt="Ja" class="aanduidingsImage" />
+                }
+                else
+                {
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/cross.png")" alt="Nee" class="aanduidingsImage" />
+                }
             </td>
             <td>
-                @(o.InOrde ? Html.Label("Ja") : Html.Label("Nee"))
+                @*@(o.InOrde ? Html.Label("Ja") : Html.Label("Nee"))*@
+                @if (o.InOrde)
+                {
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/vinkje.png")" alt="Ja" class="aanduidingsImage" />
+                }
+                else
+                {
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/cross.png")" alt="Nee" class="aanduidingsImage" />
+                }
             </td>
             <td>
                 @Html.ActionLink("Bekijken", "KamerControleOpvoeder", new { id = o.Id})

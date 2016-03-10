@@ -255,12 +255,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Aanduidingen\cross.png" />
+    <Content Include="Content\Images\Aanduidingen\vinkje.png" />
     <Content Include="Content\Images\KamerControleImages\bed_opmaken.png" />
     <Content Include="Content\Images\KamerControleImages\gordijn_openen.jpg" />
     <Content Include="Content\Images\KamerControleImages\was_opruimen.png" />
     <Content Include="Content\Images\login_screen.png" />
-    <Content Include="Content\Images\StrafImages\cross.png" />
     <Content Include="Content\Images\StrafImages\frisdrank.png" />
+    <Content Include="Content\Images\StrafImages\pacman.png" />
     <Content Include="Content\Images\StrafImages\video_games.png" />
     <Content Include="Content\Styles.css" />
     <Content Include="Content\themes\base\accordion.css" />
