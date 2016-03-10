@@ -589,6 +589,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public bool DoneClient { get; set; }
             public bool DoneOpvoeder { get; set; }
 
+            public KamerControleItemViewModel() { }
+
             public KamerControleItemViewModel(string imageUrl, string titel, string beschrijving, bool doneClient)
             {
                 ImageUrl = imageUrl;

@@ -494,5 +494,31 @@ namespace KinderhuisStageOpdracht.Controllers
 
             return View(lkcivm);
         }
+
+        [HttpPost]
+        public ActionResult KamerControle(GebruikerViewModel.ListKamerControleItemsViewmodel model)
+        {
+            var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
+            var kamercontrole = client.ViewKamerControle(_kamerControleItemRepository.FindAll().ToList());
+
+            //for (int i = 0; i < model.KamerControleItems.Count; i++)
+            //{
+            //    kamercontrole.KamerControleItems.ElementAt(i).OpdrachtGedaan = model.KamerControleItems.ElementAt(i).DoneClient;
+            //}
+
+            foreach (var i in kamercontrole.KamerControleItems)
+            {
+                foreach (var ivm in model.KamerControleItems.Where(m => m.Titel == i.GetControleOpdrachtTitel()))
+                {
+                    i.OpdrachtGedaan = ivm.DoneClient;
+                }
+            }
+            _gebruikerRepository.SaveChanges();
+
+            return RedirectToAction("KamerControle");
+
+
+
+        }
     }
 }
