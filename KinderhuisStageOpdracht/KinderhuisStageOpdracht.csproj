@@ -369,6 +369,7 @@
     <Content Include="Views\Opvangtehuis\DeleteSuggestie.cshtml" />
     <Content Include="Views\Gebruiker\CreateSanctie.cshtml" />
     <Content Include="Views\Gebruiker\Sancties.cshtml" />
+    <Content Include="Views\Gebruiker\KamerControle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

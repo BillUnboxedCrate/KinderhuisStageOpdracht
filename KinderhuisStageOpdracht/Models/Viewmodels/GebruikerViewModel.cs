@@ -482,7 +482,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
         }
 
-        public class SanctieListViewModel 
+        public class SanctieListViewModel
         {
             public List<SanctieViewModel> SanctieList { get; set; }
 
@@ -572,16 +572,40 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public ListKamerControleItemsViewmodel()
             {
-                KamerControleItems = new List<KamerControleItemViewModel>( );
+                KamerControleItems = new List<KamerControleItemViewModel>();
+            }
+
+            public void AddKamerControleItem(KamerControleItemViewModel item)
+            {
+                KamerControleItems.Add(item);
             }
         }
 
         public class KamerControleItemViewModel
         {
             public string ImageUrl { get; set; }
-            public string Naam { get; set; }
+            public string Titel { get; set; }
+            public string Beschrijving { get; set; }
             public bool DoneClient { get; set; }
             public bool DoneOpvoeder { get; set; }
+
+            public KamerControleItemViewModel(string imageUrl, string titel, string beschrijving, bool doneClient)
+            {
+                ImageUrl = imageUrl;
+                Titel = titel;
+                Beschrijving = beschrijving;
+                DoneClient = doneClient;
+            }
+
+            public KamerControleItemViewModel(string imageUrl, string titel, string beschrijving, bool doneClient, bool doneOpvoeder)
+            {
+                ImageUrl = imageUrl;
+                Titel = titel;
+                Beschrijving = beschrijving;
+                DoneClient = doneClient;
+                DoneOpvoeder = doneOpvoeder;
+            }
+
         }
     }
 }

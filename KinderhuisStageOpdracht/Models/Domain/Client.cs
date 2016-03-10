@@ -75,15 +75,28 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return false;
         }
 
-        public KamerControle ViewKamerControle()
+        public KamerControle ViewKamerControle(List<KamerControleOpdracht> opdrachts)
         {
-            if (DagelijkseKamerControleAlGemaakt())
+            if (!DagelijkseKamerControleAlGemaakt())
             {
                 var kamerControle = new KamerControle(DateTime.Today);
-                return kamerControle;
+
+                return CreateKamerControleList(kamerControle, opdrachts);
+                ;
             }
 
             return KamerControles.FirstOrDefault(k => k.Datum == DateTime.Today);
+        }
+
+        private KamerControle CreateKamerControleList(KamerControle kamerControle, List<KamerControleOpdracht> opdrachts)
+        {
+            foreach (var o in opdrachts)
+            {
+                kamerControle.AddKamerControleItem(new KamerControleItem(o));               
+            }
+            AddKamerControle(kamerControle);
+
+            return kamerControle;
         }
 
 

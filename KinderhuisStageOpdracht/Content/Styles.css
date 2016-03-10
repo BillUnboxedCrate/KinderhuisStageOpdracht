@@ -166,7 +166,7 @@ input[type="text"], input[type="password"], textarea {
     }
 
 .firstColumn {
-    width: 300px;   
+    width: 300px;
 }
 
 .secondColumn {
@@ -177,6 +177,32 @@ input[type="text"], input[type="password"], textarea {
     /*float: left;
     width: 40px;
     height: 40px;*/
+}
+
+.kamerControleImage {
+    width: 140px;
+    height: auto;
+}
+
+#kamercontroleTable, #kamercontroleTable th, #kamercontroleTable td {
+    border: 1px solid;
+    /*padding: 30px;*/
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #kamercontroleTable th, #kamercontroleTable td {
+        padding: 20px;
+        width: 300px;
+    }
+
+    #kamercontroleTable td {
+        height: 250px;
+    }
+
+#kamercontroleTitel {
+    font-size: 20pt;
 }
 
 #strafText {

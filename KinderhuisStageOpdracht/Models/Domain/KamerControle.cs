@@ -21,12 +21,12 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public KamerControle(DateTime datum)
         {
             Datum = datum;
-            //KamerControleItems = new List<KamerControleOpdracht>();
+            KamerControleItems = new List<KamerControleItem>();
         }
 
-        public void AddKamerToDoItem(KamerControleItem item)
+        public void AddKamerControleItem(KamerControleItem item)
         {
-            //KamerControleItems.Add(item);
+            KamerControleItems.Add(item);
         }
 
        

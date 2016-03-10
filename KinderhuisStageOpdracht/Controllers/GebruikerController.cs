@@ -462,7 +462,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
             this.AddNotification("De sanctie kan niet worden gemaakt", NotificationType.ERROR);
             return RedirectToAction("CreateSanctie");
-            
+
         }
 
         public ActionResult Sancties()
@@ -481,9 +481,18 @@ namespace KinderhuisStageOpdracht.Controllers
         public ActionResult KamerControle()
         {
             var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
-            client.ViewKamerControle();
+            var kamercontrole = client.ViewKamerControle(_kamerControleItemRepository.FindAll().ToList());
 
-            return View();
+            _gebruikerRepository.SaveChanges();
+
+            var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
+
+            foreach (var i in kamercontrole.KamerControleItems)
+            {
+                lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtImageUrl(), i.GetControleOpdrachtTitel(), i.GetControleOpdrachtBeschrijving(), i.OpdrachtGedaan));
+            }
+
+            return View(lkcivm);
         }
     }
 }

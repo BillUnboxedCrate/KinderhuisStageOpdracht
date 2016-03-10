@@ -14,5 +14,30 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public bool OpdrachtGedaan { get; set; }
         public bool OpdrachtGedaanControle { get; set; }
+
+        public KamerControleItem() { }
+
+        public KamerControleItem(KamerControleOpdracht kamerControleOpdracht)
+        {
+            KamerControleOpdracht = kamerControleOpdracht;
+            OpdrachtGedaan = false;
+            OpdrachtGedaanControle = false;
+        }
+
+        public string GetControleOpdrachtImageUrl()
+        {
+            return KamerControleOpdracht.ImageUrl;
+        }
+
+        public string GetControleOpdrachtTitel()
+        {
+            return KamerControleOpdracht.Titel;
+        }
+
+        public string GetControleOpdrachtBeschrijving()
+        {
+            return KamerControleOpdracht.Beschrijving;
+        }
     }
+
 }

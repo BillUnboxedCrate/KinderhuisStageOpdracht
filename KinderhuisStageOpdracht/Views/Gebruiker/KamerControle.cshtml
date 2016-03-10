@@ -1,0 +1,28 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.ListKamerControleItemsViewmodel
+@{
+    ViewBag.Title = "KamerControle";
+}
+
+<h2>KamerControle</h2>
+<table id="kamercontroleTable">
+    <tr>
+        <th>Taak</th>
+        <th>Kleine beschrijving</th>
+        <th>Heb ik dit gedaan</th>
+    </tr>
+
+    @foreach (var o in Model.KamerControleItems)
+    {
+        <tr>
+            <td>
+                <div id="kamercontroleTitel">@Html.DisplayFor(modelItem => o.Titel)</div>
+                <img src="@Url.Content(o.ImageUrl)" class="kamerControleImage" />
+            </td>
+
+            <td>@Html.DisplayFor(modelItem => o.Beschrijving)</td>
+
+            <td>@Html.CheckBoxFor(modelItem => o.DoneClient)</td>
+        </tr>
+    }
+</table>
+
