@@ -609,5 +609,37 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
 
         }
+
+        public class KamerControleListIndexViewModel
+        {
+            public List<KamerControleIndexViewModel> List { get; set; }
+
+            public KamerControleListIndexViewModel()
+            {
+                List = new List<KamerControleIndexViewModel>();
+            }
+
+            public void AddKamerControleIndexItem(KamerControleIndexViewModel item)
+            {
+                List.Add(item);
+            }
+        }
+
+        public class KamerControleIndexViewModel
+        {
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+            public DateTime Datum { get; set; }
+            public bool AllesGedaan { get; set; }
+            public bool InOrde { get; set; }
+
+            public KamerControleIndexViewModel() { }
+
+            public KamerControleIndexViewModel(DateTime datum, bool allesGedaan, bool inOrde)
+            {
+                Datum = datum;
+                AllesGedaan = allesGedaan;
+                InOrde = inOrde;
+            }
+        }
     }
 }

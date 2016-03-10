@@ -203,6 +203,12 @@ namespace KinderhuisStageOpdracht.Controllers
                             menu.AddMenuItem("Vrijdag", model.VrijdagViewModel.Hoofdgerecht,
                                 model.VrijdagViewModel.Voorgerecht,
                                 model.VrijdagViewModel.Dessert);
+                            menu.AddMenuItem("Zaterdag", model.VrijdagViewModel.Hoofdgerecht,
+                                model.VrijdagViewModel.Voorgerecht,
+                                model.VrijdagViewModel.Dessert);
+                            menu.AddMenuItem("Zondag", model.VrijdagViewModel.Hoofdgerecht,
+                                model.VrijdagViewModel.Voorgerecht,
+                                model.VrijdagViewModel.Dessert);
 
                             //var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
                             opvangtehuis.AddMenu(menu);
@@ -249,6 +255,16 @@ namespace KinderhuisStageOpdracht.Controllers
                         menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Hoofdgerecht = model.VrijdagViewModel.Hoofdgerecht;
                         menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Voorgerecht = model.VrijdagViewModel.Hoofdgerecht;
                         menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Dessert = model.VrijdagViewModel.Hoofdgerecht;
+
+                        //Zaterdag
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Hoofdgerecht = model.VrijdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Voorgerecht = model.VrijdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Dessert = model.VrijdagViewModel.Hoofdgerecht;
+
+                        //Zondag
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Hoofdgerecht = model.VrijdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Voorgerecht = model.VrijdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Dessert = model.VrijdagViewModel.Hoofdgerecht;
 
                         this.AddNotification("De menu is gewijzigd", NotificationType.SUCCESS);
 
@@ -317,6 +333,22 @@ namespace KinderhuisStageOpdracht.Controllers
                     Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Hoofdgerecht,
                     Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Voorgerecht,
                     Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Dessert
+                },
+
+                ZaterdagViewModel = new OpvangtehuisViewModel.CreateMenuItemZaterdagViewModel()
+                {
+                    Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Dag,
+                    Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Hoofdgerecht,
+                    Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Voorgerecht,
+                    Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Dessert
+                },
+
+                ZondagViewModel = new OpvangtehuisViewModel.CreateMenuItemZondagViewModel()
+                {
+                    Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Dag,
+                    Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Hoofdgerecht,
+                    Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Voorgerecht,
+                    Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Dessert
                 }
             };
 
@@ -373,6 +405,20 @@ namespace KinderhuisStageOpdracht.Controllers
                     Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Hoofdgerecht,
                     Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Voorgerecht,
                     Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Dessert
+                },
+                ZaterdagViewModel = new OpvangtehuisViewModel.CreateMenuItemZaterdagViewModel()
+                {
+                    Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Dag,
+                    Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Hoofdgerecht,
+                    Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Voorgerecht,
+                    Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Dessert
+                },
+                ZondagViewModel = new OpvangtehuisViewModel.CreateMenuItemZondagViewModel()
+                {
+                    Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Dag,
+                    Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Hoofdgerecht,
+                    Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Voorgerecht,
+                    Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Dessert
                 }
             };
 

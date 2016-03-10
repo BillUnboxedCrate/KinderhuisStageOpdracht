@@ -16,7 +16,9 @@ namespace KinderhuisStageOpdracht.Models.DAL
             Dinsdag,
             Woensdag,
             Donderdag,
-            Vrijdag
+            Vrijdag,
+            Zaterdag,
+            Zondag
         }
 
         protected override void Seed(ProjectContext context)
@@ -226,6 +228,26 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
             var menuitem6 = new MenuItem()
             {
+                Datum = new DateTime(2016, 2, 20),
+                Dag = Dagen.Zaterdag.ToString(),
+                Voorgerecht = "Soep",
+                Hoofdgerecht = "Eten",
+                Dessert = "Dessert"
+            };
+
+            var menuitem7 = new MenuItem()
+            {
+                Datum = new DateTime(2016, 2, 21),
+                Dag = Dagen.Zondag.ToString(),
+                Voorgerecht = "Soep",
+                Hoofdgerecht = "Eten",
+                Dessert = "Dessert"
+            };
+
+
+
+            var menuitem8 = new MenuItem()
+            {
                 Datum = new DateTime(2016, 2, 22),
                 Dag = Dagen.Maandag.ToString(),
                 Voorgerecht = "Soep",
@@ -233,7 +255,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Dessert = "Dessert"
             };
 
-            var menuitem7 = new MenuItem()
+            var menuitem9 = new MenuItem()
             {
                 Datum = new DateTime(2016, 2, 23),
                 Dag = Dagen.Dinsdag.ToString(),
@@ -242,7 +264,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Dessert = "Dessert"
             };
 
-            var menuitem8 = new MenuItem()
+            var menuitem10 = new MenuItem()
             {
                 Datum = new DateTime(2016, 2, 24),
                 Dag = Dagen.Woensdag.ToString(),
@@ -251,7 +273,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Dessert = "Dessert"
             };
 
-            var menuitem9 = new MenuItem()
+            var menuitem11 = new MenuItem()
             {
                 Datum = new DateTime(2016, 2, 25),
                 Dag = Dagen.Donderdag.ToString(),
@@ -260,10 +282,28 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Dessert = "Dessert"
             };
 
-            var menuitem10 = new MenuItem()
+            var menuitem12 = new MenuItem()
             {
                 Datum = new DateTime(2016, 2, 26),
                 Dag = Dagen.Vrijdag.ToString(),
+                Voorgerecht = "Soep",
+                Hoofdgerecht = "Eten",
+                Dessert = "Dessert"
+            };
+
+            var menuitem13 = new MenuItem()
+            {
+                Datum = new DateTime(2016, 2, 27),
+                Dag = Dagen.Zaterdag.ToString(),
+                Voorgerecht = "Soep",
+                Hoofdgerecht = "Eten",
+                Dessert = "Dessert"
+            };
+
+            var menuitem14 = new MenuItem()
+            {
+                Datum = new DateTime(2016, 2, 28),
+                Dag = Dagen.Zondag.ToString(),
                 Voorgerecht = "Soep",
                 Hoofdgerecht = "Eten",
                 Dessert = "Dessert"
@@ -381,12 +421,16 @@ namespace KinderhuisStageOpdracht.Models.DAL
             menu1.MenuItems.Add(menuitem3);
             menu1.MenuItems.Add(menuitem4);
             menu1.MenuItems.Add(menuitem5);
+            menu1.MenuItems.Add(menuitem6);
+            menu1.MenuItems.Add(menuitem7);
 
-            menu2.MenuItems.Add(menuitem6);
-            menu2.MenuItems.Add(menuitem7);
             menu2.MenuItems.Add(menuitem8);
             menu2.MenuItems.Add(menuitem9);
             menu2.MenuItems.Add(menuitem10);
+            menu2.MenuItems.Add(menuitem11);
+            menu2.MenuItems.Add(menuitem12);
+            menu2.MenuItems.Add(menuitem13);
+            menu2.MenuItems.Add(menuitem14);
 
             opvangtehuis1.Menus.Add(menu1);
             opvangtehuis1.Menus.Add(menu2);

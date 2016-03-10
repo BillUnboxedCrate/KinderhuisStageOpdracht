@@ -84,7 +84,7 @@ namespace KinderhuisStageOpdracht.Controllers
                     if(IsValid(model.Password, model.Gebruikersnaam))
                     {
                         Session["gebruiker"] = gebruiker.Id;
-                        FormsAuthentication.SetAuthCookie(model.Gebruikersnaam, false);
+                        FormsAuthentication.SetAuthCookie(gebruiker.GiveFullName(), false);
                         if (Request.IsAuthenticated)
                         {
                             System.Diagnostics.Debug.WriteLine("Secure Logged in!");  

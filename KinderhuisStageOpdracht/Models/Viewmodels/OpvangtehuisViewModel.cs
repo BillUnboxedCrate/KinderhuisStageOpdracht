@@ -155,97 +155,280 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public CreateMenuItemWoensdagViewModel WoensdagViewModel { get; set; }
             public CreateMenuItemDonderdagViewModel DonderdagViewModel { get; set; }
             public CreateMenuItemVrijdagViewModel VrijdagViewModel { get; set; }
-            
+            public CreateMenuItemZaterdagViewModel ZaterdagViewModel { get; set; }
+            public CreateMenuItemZondagViewModel ZondagViewModel { get; set; }
+
         }
 
         public class CreateMenuItemMaandagViewModel
         {
             public string Dag { get; set; }
 
-            [Required]
+            private string _voorgerecht;
             [Display(Name = "Voorgerecht")]
-            public string Voorgerecht { get; set; }
+            public string Voorgerecht
+            {
+                get { return _voorgerecht; }
+                set
+                {
+                    _voorgerecht = value ?? "Nog niets";
+                }
+            }
 
-            [Required]
+            private string _hoofdgerecht;
             [Display(Name = "Hoofdgerecht")]
-            public string Hoofdgerecht { get; set; }
+            public string Hoofdgerecht
+            {
+                get { return _hoofdgerecht; }
+                set
+                {
+                    _hoofdgerecht = value ?? "Nog niets";
+                }
+            }
 
-            [Required]
+            private string _dessert;
             [Display(Name = "Dessert")]
-            public string Dessert { get; set; }
+            public string Dessert
+            {
+                get { return _dessert; }
+                set
+                {
+                    _dessert = value ?? "Nog niets";
+                }
+            }
         }
 
         public class CreateMenuItemDinsdagViewModel
         {
             public string Dag { get; set; }
 
-            [Required]
+            private string _voorgerecht;
             [Display(Name = "Voorgerecht")]
-            public string Voorgerecht { get; set; }
+            public string Voorgerecht
+            {
+                get { return _voorgerecht; }
+                set
+                {
+                    _voorgerecht = value ?? "Nog niets";
+                }
+            }
 
-            [Required]
+            private string _hoofdgerecht;
             [Display(Name = "Hoofdgerecht")]
-            public string Hoofdgerecht { get; set; }
+            public string Hoofdgerecht
+            {
+                get { return _hoofdgerecht; }
+                set
+                {
+                    _hoofdgerecht = value ?? "Nog niets";
+                }
+            }
 
-            [Required]
+            private string _dessert;
             [Display(Name = "Dessert")]
-            public string Dessert { get; set; }
+            public string Dessert
+            {
+                get { return _dessert; }
+                set
+                {
+                    _dessert = value ?? "Nog niets";
+                }
+            }
         }
 
         public class CreateMenuItemWoensdagViewModel
         {
             public string Dag { get; set; }
 
-            [Required]
+            private string _voorgerecht;
             [Display(Name = "Voorgerecht")]
-            public string Voorgerecht { get; set; }
+            public string Voorgerecht
+            {
+                get { return _voorgerecht; }
+                set
+                {
+                    _voorgerecht = value ?? "Nog niets";
+                }
+            }
 
-            [Required]
+            private string _hoofdgerecht;
             [Display(Name = "Hoofdgerecht")]
-            public string Hoofdgerecht { get; set; }
+            public string Hoofdgerecht
+            {
+                get { return _hoofdgerecht; }
+                set
+                {
+                    _hoofdgerecht = value ?? "Nog niets";
+                }
+            }
 
-            [Required]
+            private string _dessert;
             [Display(Name = "Dessert")]
-            public string Dessert { get; set; }
+            public string Dessert
+            {
+                get { return _dessert; }
+                set
+                {
+                    _dessert = value ?? "Nog niets";
+                }
+            }
         }
 
         public class CreateMenuItemDonderdagViewModel
         {
             public string Dag { get; set; }
 
-            [Required]
+            private string _voorgerecht;
             [Display(Name = "Voorgerecht")]
-            public string Voorgerecht { get; set; }
+            public string Voorgerecht
+            {
+                get { return _voorgerecht; }
+                set
+                {
+                    _voorgerecht = value ?? "Nog niets";
+                }
+            }
 
-            [Required]
+            private string _hoofdgerecht;
             [Display(Name = "Hoofdgerecht")]
-            public string Hoofdgerecht { get; set; }
+            public string Hoofdgerecht
+            {
+                get { return _hoofdgerecht; }
+                set
+                {
+                    _hoofdgerecht = value ?? "Nog niets";
+                }
+            }
 
-            [Required]
+            private string _dessert;
             [Display(Name = "Dessert")]
-            public string Dessert { get; set; }
+            public string Dessert
+            {
+                get { return _dessert; }
+                set
+                {
+                    _dessert = value ?? "Nog niets";
+                }
+            }
         }
 
         public class CreateMenuItemVrijdagViewModel
         {
             public string Dag { get; set; }
 
-            [Required]
+            private string _voorgerecht;
             [Display(Name = "Voorgerecht")]
-            public string Voorgerecht { get; set; }
+            public string Voorgerecht
+            {
+                get { return _voorgerecht; }
+                set
+                {
+                    _voorgerecht = value ?? "Nog niets";
+                }
+            }
 
-            [Required]
+            private string _hoofdgerecht;
             [Display(Name = "Hoofdgerecht")]
-            public string Hoofdgerecht { get; set; }
+            public string Hoofdgerecht
+            {
+                get { return _hoofdgerecht; }
+                set
+                {
+                    _hoofdgerecht = value ?? "Nog niets";
+                }
+            }
 
-            [Required]
+            private string _dessert;
             [Display(Name = "Dessert")]
-            public string Dessert { get; set; }
+            public string Dessert
+            {
+                get { return _dessert; }
+                set
+                {
+                    _dessert = value ?? "Nog niets";
+                }
+            }
+        }
+
+        public class CreateMenuItemZaterdagViewModel
+        {
+            public string Dag { get; set; }
+
+            private string _voorgerecht;
+            [Display(Name = "Voorgerecht")]
+            public string Voorgerecht
+            {
+                get { return _voorgerecht; }
+                set
+                {
+                    _voorgerecht = value ?? "Nog niets";
+                }
+            }
+
+            private string _hoofdgerecht;
+            [Display(Name = "Hoofdgerecht")]
+            public string Hoofdgerecht
+            {
+                get { return _hoofdgerecht; }
+                set
+                {
+                    _hoofdgerecht = value ?? "Nog niets";
+                }
+            }
+
+            private string _dessert;
+            [Display(Name = "Dessert")]
+            public string Dessert
+            {
+                get { return _dessert; }
+                set
+                {
+                    _dessert = value ?? "Nog niets";
+                }
+            }
+        }
+
+        public class CreateMenuItemZondagViewModel
+        {
+            public string Dag { get; set; }
+
+            private string _voorgerecht;
+            [Display(Name = "Voorgerecht")]
+            public string Voorgerecht
+            {
+                get { return _voorgerecht; }
+                set
+                {
+                    _voorgerecht = value ?? "Nog niets";
+                }
+            }
+
+            private string _hoofdgerecht;
+            [Display(Name = "Hoofdgerecht")]
+            public string Hoofdgerecht
+            {
+                get { return _hoofdgerecht; }
+                set
+                {
+                    _hoofdgerecht = value ?? "Nog niets";
+                }
+            }
+
+            private string _dessert;
+            [Display(Name = "Dessert")]
+            public string Dessert
+            {
+                get { return _dessert; }
+                set
+                {
+                    _dessert = value ?? "Nog niets";
+                }
+            }
         }
         #endregion
 
-        
-    
-    
+
+
+
     }
 }
