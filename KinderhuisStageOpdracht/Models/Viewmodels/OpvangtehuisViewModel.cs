@@ -131,6 +131,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Id { get; set; }
             public int Week { get; set; }
 
+            public string Boodschap { get; set; }
+
             [Display(Name = "Begin van de week")]
             [DataType(DataType.Date)]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
@@ -141,6 +143,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public DateTime EindeWeek { get; set; }
 
             public MenuViewModel() { }
+
+            public MenuViewModel(string boodschap)
+            {
+                Boodschap = boodschap;
+            }
 
             public MenuViewModel(int id, int week, DateTime beginweek, DateTime eindeweek)
             {

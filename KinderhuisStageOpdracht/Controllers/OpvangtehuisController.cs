@@ -186,8 +186,6 @@ namespace KinderhuisStageOpdracht.Controllers
                         var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
                         if (opvangtehuis.FindMenuByDate(model.BeginWeek) == null)
                         {
-
-
                             var menu = new Menu(model.BeginWeek);
 
                             menu.AddMenuItem("Maandag", model.MaandagViewModel.Hoofdgerecht,
@@ -366,6 +364,11 @@ namespace KinderhuisStageOpdracht.Controllers
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
 
             var menu = opvangtehuis.Menus.FirstOrDefault(m => m.Week == GetWeekVanHetJaar(DateTime.Today));
+
+            if (menu == null)
+            {
+                return View(new OpvangtehuisViewModel.MenuViewModel("Er is nog geen menu gemaakt deze week"));
+            }
 
             var mvm = new OpvangtehuisViewModel.MenuViewModel
             {

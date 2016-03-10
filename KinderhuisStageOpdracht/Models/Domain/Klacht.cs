@@ -13,9 +13,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public DateTime TimeStamp { get; set; }
         public virtual Client Client { get; set; }
 
-        public Klacht()
-        {
-            
-        }
+        public Klacht(){ }
     }
 }
