@@ -4,7 +4,7 @@
 }
 
 <h2>KamerControleIndex</h2>
-@Html.ActionLink("Maak de dagelijkse kamercontrole aan", "KamerControleOpvoeder", new { id = Model.ClientId })
+@Html.ActionLink("Maak de dagelijkse kamercontrole aan, als er al reeds één is gemaakt zal deze naar de kamercontrole van vandaag verwijzen", "KamerControleOpvoeder", new { id = Model.ClientId })
 <table class="table">
     <tr>
         <th>Datum</th>

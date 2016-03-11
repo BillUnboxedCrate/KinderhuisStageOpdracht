@@ -167,9 +167,23 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 ImageUrl = "~/Content/Images/StrafImages/video_games.png"
             };
 
-            context.StrafSet.Add(straf1);
-            context.StrafSet.Add(straf2);
+            var straf3 = new Straf()
+            {
+                Naam = "Geen frisdrank",
+                ImageUrl = "~/Content/Images/StrafImages/frisdrank.png"
+            };
 
+            var straf4 = new Straf()
+            {
+                Naam = "Geen spelletjes",
+                ImageUrl = "~/Content/Images/StrafImages/video_games.png"
+            };
+
+            opvangtehuis1.Straffen.Add(straf1);
+            opvangtehuis1.Straffen.Add(straf2);
+
+            opvangtehuis2.Straffen.Add(straf3);
+            opvangtehuis2.Straffen.Add(straf4);
             #endregion
 
             
@@ -384,9 +398,35 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 ImageUrl = "~/Content/Images/KamerControleImages/gordijn_openen.jpg"
             };
 
-            context.KamerControleOpdrachtSet.Add(kamercontroleOpracht1);
-            context.KamerControleOpdrachtSet.Add(kamercontroleOpracht2);
-            context.KamerControleOpdrachtSet.Add(kamercontroleOpracht3);
+            var kamercontroleOpracht4 = new KamerControleOpdracht()
+            {
+                Titel = "Bed opmaken",
+                Beschrijving = "Het bed moet worden opgedekt",
+                ImageUrl = "~/Content/Images/KamerControleImages/bed_opmaken.png"
+            };
+
+            var kamercontroleOpracht5 = new KamerControleOpdracht()
+            {
+                Titel = "Kleren opruimen",
+                Beschrijving = "Kleren in de wasmand steken",
+                ImageUrl = "~/Content/Images/KamerControleImages/was_opruimen.png"
+            };
+
+            var kamercontroleOpracht6 = new KamerControleOpdracht()
+            {
+                Titel = "Gordijnen openen",
+                Beschrijving = "De gordijnen openen",
+                ImageUrl = "~/Content/Images/KamerControleImages/gordijn_openen.jpg"
+            };
+
+            opvangtehuis1.Opdrachten.Add(kamercontroleOpracht1);
+            opvangtehuis1.Opdrachten.Add(kamercontroleOpracht2);
+            opvangtehuis1.Opdrachten.Add(kamercontroleOpracht3);
+
+            opvangtehuis2.Opdrachten.Add(kamercontroleOpracht4);
+            opvangtehuis2.Opdrachten.Add(kamercontroleOpracht5);
+            opvangtehuis2.Opdrachten.Add(kamercontroleOpracht6);
+            
             #endregion
 
 

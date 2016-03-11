@@ -11,5 +11,14 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public string Titel { get; set; }
         public string Beschrijving { get; set; }
         public string ImageUrl { get; set; }
+
+        public KamerControleOpdracht() { }
+
+        public KamerControleOpdracht(string titel, string beschrijving, string imageUrl)
+        {
+            Titel = titel;
+            Beschrijving = beschrijving;
+            ImageUrl = imageUrl;
+        }
     }
 }

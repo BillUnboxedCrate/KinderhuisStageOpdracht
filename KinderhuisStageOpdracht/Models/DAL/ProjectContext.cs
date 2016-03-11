@@ -9,17 +9,15 @@ using KinderhuisStageOpdracht.Models.Domain;
 namespace KinderhuisStageOpdracht.Models.DAL
 {
     [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
-    public class ProjectContext:DbContext
+    public class ProjectContext : DbContext
     {
         public DbSet<Gebruiker> GebruikerSet { get; set; }
         public DbSet<Opvangtehuis> OpvangtehuisSet { get; set; }
-        public DbSet<Straf> StrafSet { get; set; }
-        public DbSet<KamerControleOpdracht> KamerControleOpdrachtSet { get; set; } 
 
         public ProjectContext()
             : base("kinderhuisconnectionstring")
         {
-            
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

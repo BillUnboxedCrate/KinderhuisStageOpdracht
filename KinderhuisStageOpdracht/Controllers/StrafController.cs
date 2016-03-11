@@ -11,18 +11,19 @@ namespace KinderhuisStageOpdracht.Controllers
 {
     public class StrafController : Controller
     {
-        private readonly IStrafRepository _strafRepository;
+        private readonly IGebruikerRepository _gebruikerRepository;
 
-        public StrafController(IStrafRepository strafRepository)
+        public StrafController(IGebruikerRepository gebruikerRepository)
         {
-            _strafRepository = strafRepository;
+            _gebruikerRepository = gebruikerRepository;
         }
 
         // GET: Klacht
         public ActionResult Index()
         {
+            var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var silvm = new StrafViewModel.StrafListIndexViewModel();
-            foreach (var s in _strafRepository.FindAll())
+            foreach (var s in opvangtehuis.GetStraffen())
             {
                 silvm.AddStrafIndexViewModel(new StrafViewModel.StrafIndexViewModel(s.Id, s.Naam));
             }
@@ -37,10 +38,11 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult CreateStraf(StrafViewModel.StrafIndexViewModel model)
         {
+            var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             if (ModelState.IsValid)
             {
-                _strafRepository.AddStraf(new Straf(model.Naam, "~/Content/Images/Aanduidingen/vraagteken.png"));
-                _strafRepository.SaveChanges();
+                opvangtehuis.AddStraf(new Straf(model.Naam, "~/Content/Images/Aanduidingen/vraagteken.png"));
+                _gebruikerRepository.SaveChanges();
 
                 this.AddNotification("Straf toegevoegd", NotificationType.SUCCESS);
                 return RedirectToAction("Index");

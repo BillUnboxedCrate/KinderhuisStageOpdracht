@@ -18,6 +18,9 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public virtual ICollection<Suggestie> Suggesties { get; set; }
         public virtual ICollection<Menu> Menus { get; set; }
 
+        public virtual ICollection<KamerControleOpdracht> Opdrachten { get; set; }
+        public virtual ICollection<Straf> Straffen { get; set; } 
+
         public virtual ICollection<Klacht> Klachten { get; set; }
 
         public Opvangtehuis()
@@ -25,6 +28,8 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Suggesties = new List<Suggestie>();
             Menus = new List<Menu>();
             Klachten = new List<Klacht>();
+            Straffen = new List<Straf>();
+            Opdrachten = new List<KamerControleOpdracht>();
 
         }
 
@@ -120,6 +125,41 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
             Klachten.Add(klacht);
         }
+
+        public void AddStraf(Straf straf)
+        {
+            Straffen.Add(straf);
+        }
+
+        public void AddStraf(string naam, string imageUrl)
+        {
+            Straffen.Add(new Straf(naam, imageUrl));
+        }
+
+        public List<Straf> GetStraffen()
+        {
+            return Straffen.OrderBy(s => s.Id).ToList();
+        }
+
+        public Straf FindStrafByName(string name)
+        {
+            return Straffen.FirstOrDefault(s => s.Naam == name);
+        }
+
+        public void AddOpdrachten(KamerControleOpdracht opdracht)
+        {
+            Opdrachten.Add(opdracht);
+        }
+
+        public void AddOpdrachten(string titel, string beschrijving, string imageUrl)
+        {
+            Opdrachten.Add(new KamerControleOpdracht(titel, beschrijving, imageUrl));
+        }
+
+        public List<KamerControleOpdracht> GetKamerControleOpdrachten()
+        {
+            return Opdrachten.OrderBy(k => k.Titel).ToList();
+        } 
 
         public Menu GetMenuVanDeWeek()
         {

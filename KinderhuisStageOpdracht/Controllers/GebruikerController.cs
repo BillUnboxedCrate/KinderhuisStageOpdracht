@@ -16,15 +16,11 @@ namespace KinderhuisStageOpdracht.Controllers
     {
         private readonly IGebruikerRepository _gebruikerRepository;
         private readonly IOpvangtehuisRepository _opvangtehuisRepository;
-        private readonly IStrafRepository _strafRepository;
-        private readonly IKamerControleOpdrachtRepository _kamerControleItemRepository;
 
-        public GebruikerController(IGebruikerRepository gebruikerRepository, IOpvangtehuisRepository opvangtehuisRepository, IStrafRepository strafRepository, IKamerControleOpdrachtRepository kamerControleItemRepository)
+        public GebruikerController(IGebruikerRepository gebruikerRepository, IOpvangtehuisRepository opvangtehuisRepository)
         {
             _gebruikerRepository = gebruikerRepository;
             _opvangtehuisRepository = opvangtehuisRepository;
-            _strafRepository = strafRepository;
-            _kamerControleItemRepository = kamerControleItemRepository;
         }
 
         // GET: Gebruiker
@@ -436,8 +432,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateSanctie(int id)
         {
+            var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var svm = new GebruikerViewModel.SanctieViewModel(id, _gebruikerRepository.FindById(id).GiveFullName());
-            svm.SetStraffen(_strafRepository.FindAll().Select(s => s.Naam).ToList());
+            svm.SetStraffen(opvangtehuis.GetStraffen().Select(s => s.Naam).ToList());
             return View(svm);
         }
 
@@ -449,7 +446,8 @@ namespace KinderhuisStageOpdracht.Controllers
                 try
                 {
                     var gebruiker = (Client)_gebruikerRepository.FindById(model.Id);
-                    gebruiker.AddSanctie(model.Rede, model.Date, model.AantalDagen, _strafRepository.FindByNaam(model.GeselecteerdeStraf));
+                    var opvangtehuis = _gebruikerRepository.FindById(gebruiker.Id).Opvangtehuis;
+                    gebruiker.AddSanctie(model.Rede, model.Date, model.AantalDagen, opvangtehuis.FindStrafByName(model.GeselecteerdeStraf));
                     _gebruikerRepository.SaveChanges();
 
                     this.AddNotification("Een sanctie is toegevoegd", NotificationType.SUCCESS);
@@ -517,8 +515,9 @@ namespace KinderhuisStageOpdracht.Controllers
         public ActionResult KamerControleOpvoeder(int id)
         {
             var client = (Client)_gebruikerRepository.FindById((int)Session["client"]);
+            var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
             var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
-            var kamercontrole = client.ViewKamerControle(_kamerControleItemRepository.FindAll().ToList());
+            var kamercontrole = client.ViewKamerControle(opvangtehuis.GetKamerControleOpdrachten());
 
             foreach (var i in kamercontrole.KamerControleItems)
             {
@@ -532,7 +531,8 @@ namespace KinderhuisStageOpdracht.Controllers
         public ActionResult KamerControleOpvoeder(GebruikerViewModel.ListKamerControleItemsViewmodel model)
         {
             var client = (Client)_gebruikerRepository.FindById((int)Session["client"]);
-            var kamercontrole = client.ViewKamerControle(_kamerControleItemRepository.FindAll().ToList());
+            var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
+            var kamercontrole = client.ViewKamerControle(opvangtehuis.GetKamerControleOpdrachten());
 
             foreach (var i in kamercontrole.KamerControleItems)
             {
