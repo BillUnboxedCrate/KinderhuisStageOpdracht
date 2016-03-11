@@ -12,15 +12,14 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public virtual KamerControleOpdracht KamerControleOpdracht { get; set; }
 
-        public bool OpdrachtGedaan { get; set; }
         public bool OpdrachtGedaanControle { get; set; }
+        public string Uitleg { get; set; }
 
         public KamerControleItem() { }
 
         public KamerControleItem(KamerControleOpdracht kamerControleOpdracht)
         {
             KamerControleOpdracht = kamerControleOpdracht;
-            OpdrachtGedaan = false;
             OpdrachtGedaanControle = false;
         }
 

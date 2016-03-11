@@ -481,42 +481,24 @@ namespace KinderhuisStageOpdracht.Controllers
         public ActionResult KamerControle()
         {
             var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
-            var kamercontrole = client.ViewKamerControle(_kamerControleItemRepository.FindAll().ToList());
+            var kamercontrole = client.GetTodaysKamerControle();
+            var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
+
+            if (kamercontrole == null)
+            {
+                return View(lkcivm);
+            }
 
             _gebruikerRepository.SaveChanges();
 
-            var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
-
             foreach (var i in kamercontrole.KamerControleItems)
             {
-                lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtImageUrl(), i.GetControleOpdrachtTitel(), i.GetControleOpdrachtBeschrijving(), i.OpdrachtGedaan));
+                lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtImageUrl(), i.GetControleOpdrachtTitel(), i.GetControleOpdrachtBeschrijving(), i.OpdrachtGedaanControle));
             }
 
             return View(lkcivm);
         }
 
-        [HttpPost]
-        public ActionResult KamerControle(GebruikerViewModel.ListKamerControleItemsViewmodel model)
-        {
-            var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
-            var kamercontrole = client.ViewKamerControle(_kamerControleItemRepository.FindAll().ToList());
-
-            //for (int i = 0; i < model.KamerControleItems.Count; i++)
-            //{
-            //    kamercontrole.KamerControleItems.ElementAt(i).OpdrachtGedaan = model.KamerControleItems.ElementAt(i).DoneClient;
-            //}
-
-            foreach (var i in kamercontrole.KamerControleItems)
-            {
-                foreach (var ivm in model.KamerControleItems.Where(m => m.Titel == i.GetControleOpdrachtTitel()))
-                {
-                    i.OpdrachtGedaan = ivm.DoneClient;
-                }
-            }
-            _gebruikerRepository.SaveChanges();
-
-            return RedirectToAction("KamerControle");
-        }
 
         public ActionResult KamerControleIndex(int id)
         {
@@ -526,8 +508,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
             foreach (var i in client.GetKamerControles())
             {
-                kclivm.AddKamerControleIndexItem(new GebruikerViewModel.KamerControleIndexViewModel(i.Id,i.Datum, i.IsAllesGedaan(),
-                    i.IsAllesInOrde()));
+                kclivm.AddKamerControleIndexItem(new GebruikerViewModel.KamerControleIndexViewModel(i.Id, i.Datum, i.IsAllesInOrde()));
             }
 
             return View(kclivm);
@@ -537,10 +518,11 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             var client = (Client)_gebruikerRepository.FindById((int)Session["client"]);
             var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
+            var kamercontrole = client.ViewKamerControle(_kamerControleItemRepository.FindAll().ToList());
 
-            foreach (var i in client.GetKamerControleById(id).KamerControleItems)
+            foreach (var i in kamercontrole.KamerControleItems)
             {
-                lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtTitel(), i.GetControleOpdrachtBeschrijving(), i.OpdrachtGedaan, i.OpdrachtGedaanControle));
+                lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtTitel(), i.GetControleOpdrachtBeschrijving(), i.OpdrachtGedaanControle, i.Uitleg));
             }
 
             return View(lkcivm);

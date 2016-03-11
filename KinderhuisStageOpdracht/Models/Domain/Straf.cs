@@ -10,5 +10,13 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public int Id { get; set; }
         public string Naam { get; set; }
         public string ImageUrl { get; set; }
+
+        public Straf() { }
+
+        public Straf(string naam, string imageUrl)
+        {
+            Naam = naam;
+            ImageUrl = imageUrl;
+        }
     }
 }

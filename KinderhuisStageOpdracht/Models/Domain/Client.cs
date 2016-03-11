@@ -75,6 +75,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return false;
         }
 
+        public KamerControle GetTodaysKamerControle()
+        {
+            return KamerControles.FirstOrDefault(k => k.Datum == DateTime.Today);
+        }
+
         public KamerControle ViewKamerControle(List<KamerControleOpdracht> opdrachts)
         {
             if (!DagelijkseKamerControleAlGemaakt())

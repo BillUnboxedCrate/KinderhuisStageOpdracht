@@ -4,10 +4,10 @@
 }
 
 <h2>KamerControleIndex</h2>
+@Html.ActionLink("Maak de dagelijkse kamercontrole aan", "KamerControleOpvoeder", new { id = Model.ClientId })
 <table class="table">
     <tr>
         <th>Datum</th>
-        <th>Alles gedaan</th>
         <th>Alles In orde</th>
         <th>Bekijken</th>
     </tr>
@@ -15,18 +15,7 @@
     @foreach (var o in Model.List)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Datum)</td>
-            <td>
-                @*@(o.AllesGedaan ? Html.Label("Ja") : Html.Label("Nee"))*@
-                @if (o.AllesGedaan)
-                {
-                    <img src="@Url.Content("~/Content/Images/Aanduidingen/vinkje.png")" alt="Ja" class="aanduidingsImage" />
-                }
-                else
-                {
-                    <img src="@Url.Content("~/Content/Images/Aanduidingen/cross.png")" alt="Nee" class="aanduidingsImage" />
-                }
-            </td>
+            <td>@Html.DisplayFor(modelItem => o.Datum)</td>          
             <td>
                 @*@(o.InOrde ? Html.Label("Ja") : Html.Label("Nee"))*@
                 @if (o.InOrde)
@@ -39,7 +28,7 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Bekijken", "KamerControleOpvoeder", new { id = o.Id})
+                @Html.ActionLink("Bekijken", "KamerControleOpvoeder", new {id = o.Id})
             </td>
         </tr>
     }

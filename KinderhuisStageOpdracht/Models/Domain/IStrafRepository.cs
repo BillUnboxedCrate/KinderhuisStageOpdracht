@@ -11,6 +11,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         IQueryable<Straf> FindAll();
         Straf FindById(int id);
         Straf FindByNaam(string naam);
+        void AddStraf(Straf straf);
 
         void SaveChanges();
 

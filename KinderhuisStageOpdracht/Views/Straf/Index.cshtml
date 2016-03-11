@@ -1,0 +1,22 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.StrafViewModel.StrafListIndexViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Voeg nog straf toe", "CreateStraf")
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Naam</th>
+    </tr>
+
+    @foreach (var o in Model.List)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => o.Id)</td>
+            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
+        </tr>
+    }
+</table>
+

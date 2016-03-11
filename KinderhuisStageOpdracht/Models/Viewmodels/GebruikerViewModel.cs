@@ -586,25 +586,24 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string ImageUrl { get; set; }
             public string Titel { get; set; }
             public string Beschrijving { get; set; }
-            public bool DoneClient { get; set; }
             public bool DoneOpvoeder { get; set; }
+            public string Uitleg { get; set; }
 
             public KamerControleItemViewModel() { }
 
-            public KamerControleItemViewModel(string imageUrl, string titel, string beschrijving, bool doneClient)
+            public KamerControleItemViewModel(string imageUrl, string titel, string beschrijving, bool doneOpvoeder)
             {
                 ImageUrl = imageUrl;
                 Titel = titel;
                 Beschrijving = beschrijving;
-                DoneClient = doneClient;
             }
 
-            public KamerControleItemViewModel(string titel, string beschrijving, bool doneClient, bool doneOpvoeder)
+            public KamerControleItemViewModel(string titel, string beschrijving, bool doneOpvoeder, string uitleg)
             {
                 Titel = titel;
                 Beschrijving = beschrijving;
-                DoneClient = doneClient;
                 DoneOpvoeder = doneOpvoeder;
+                Uitleg = uitleg;
             }
 
         }
@@ -643,11 +642,10 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public KamerControleIndexViewModel() { }
 
-            public KamerControleIndexViewModel(int id, DateTime datum, bool allesGedaan, bool inOrde)
+            public KamerControleIndexViewModel(int id, DateTime datum, bool inOrde)
             {
                 Id = id;
                 Datum = datum;
-                AllesGedaan = allesGedaan;
                 InOrde = inOrde;
             }
         }

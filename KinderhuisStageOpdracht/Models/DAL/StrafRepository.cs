@@ -17,7 +17,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
         public IQueryable<Straf> FindAll()
         {
-            return _context.StrafSet.OrderBy(s => s.Naam);
+            return _context.StrafSet.OrderBy(s => s.Id);
         }
 
         public Straf FindById(int id)
