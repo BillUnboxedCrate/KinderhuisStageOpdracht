@@ -39,11 +39,56 @@ namespace KinderhuisStageOpdracht.Models.Domain
             KamerControles.Add(kamerControle);
         }
 
-        public void AddForum(Forum forum)
+        private bool DagelijkseKamerControleAlGemaakt()
         {
-            Forums.Add(forum);
+            if (KamerControles.FirstOrDefault(k => k.Datum == DateTime.Today) != null)
+            {
+                return true;
+            }
+            return false;
         }
 
+        //Kamercontrole
+        public KamerControle GetTodaysKamerControle()
+        {
+            return KamerControles.FirstOrDefault(k => k.Datum == DateTime.Today);
+        }
+
+        public KamerControle ViewKamerControle(List<KamerControleOpdracht> opdrachts)
+        {
+            if (!DagelijkseKamerControleAlGemaakt())
+            {
+                var kamerControle = new KamerControle(DateTime.Today);
+
+                return CreateKamerControleList(kamerControle, opdrachts);
+            }
+
+            return KamerControles.FirstOrDefault(k => k.Datum == DateTime.Today);
+        }
+
+        private KamerControle CreateKamerControleList(KamerControle kamerControle, List<KamerControleOpdracht> opdrachts)
+        {
+            foreach (var o in opdrachts)
+            {
+                kamerControle.AddKamerControleItem(new KamerControleItem(o));
+            }
+            AddKamerControle(kamerControle);
+
+            return kamerControle;
+        }
+
+        public KamerControle GetKamerControleById(int id)
+        {
+            return KamerControles.FirstOrDefault(i => i.Id == id);
+        }
+
+        public List<KamerControle> GetKamerControles()
+        {
+            return KamerControles.OrderByDescending(k => k.Datum).ToList();
+        }
+
+
+        //Sancties
         public void AddSanctie(Sanctie sanctie)
         {
             Sancties.Add(sanctie);
@@ -66,54 +111,30 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return Sancties.OrderByDescending(s => s.BeginDatum).ToList();
         }
 
-        private bool DagelijkseKamerControleAlGemaakt()
+
+        //Forum/Messaging/Blog/etc
+        private bool IsForumAlGemaakt(int clientId, int opvoederId)
         {
-            if (KamerControles.FirstOrDefault(k => k.Datum == DateTime.Today) != null)
+            var forum = Forums.FirstOrDefault(f => f.Client.Id == clientId && f.Opvoeder.Id == opvoederId);
+            
+            return forum != null;
+        }
+
+        public void AddForum(Forum forum)
+        {
+            Forums.Add(forum);
+        }
+
+        public Forum GetForum(Opvoeder opvoeder, Client client)
+        {
+            if (!IsForumAlGemaakt(client.Id, opvoeder.Id))
             {
-                return true;
+                var forum = new Forum(opvoeder, client);
+                Forums.Add(forum);
+                opvoeder.AddForum(forum);
+                return forum;
             }
-            return false;
+            return Forums.FirstOrDefault(f => f.Client == client && f.Opvoeder == opvoeder);
         }
-
-        public KamerControle GetTodaysKamerControle()
-        {
-            return KamerControles.FirstOrDefault(k => k.Datum == DateTime.Today);
-        }
-
-        public KamerControle ViewKamerControle(List<KamerControleOpdracht> opdrachts)
-        {
-            if (!DagelijkseKamerControleAlGemaakt())
-            {
-                var kamerControle = new KamerControle(DateTime.Today);
-
-                return CreateKamerControleList(kamerControle, opdrachts);
-                ;
-            }
-
-            return KamerControles.FirstOrDefault(k => k.Datum == DateTime.Today);
-        }
-
-        private KamerControle CreateKamerControleList(KamerControle kamerControle, List<KamerControleOpdracht> opdrachts)
-        {
-            foreach (var o in opdrachts)
-            {
-                kamerControle.AddKamerControleItem(new KamerControleItem(o));               
-            }
-            AddKamerControle(kamerControle);
-
-            return kamerControle;
-        }
-
-        public KamerControle GetKamerControleById(int id)
-        {
-            return KamerControles.FirstOrDefault(i => i.Id == id);
-        }
-
-        public List<KamerControle> GetKamerControles()
-        {
-            return KamerControles.OrderByDescending(k => k.Datum).ToList();
-        } 
-
-
     }
 }

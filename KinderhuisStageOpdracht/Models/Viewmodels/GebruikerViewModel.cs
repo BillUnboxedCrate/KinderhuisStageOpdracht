@@ -10,6 +10,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 {
     public class GebruikerViewModel
     {
+        //Gebruikers
+        #region Gebruiker
         public class OpvoederEnClientListViewModel
         {
             public OpvoederListViewModel Olmv { get; set; }
@@ -413,46 +415,16 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             {
                 Opvangtehuizen = opvangtehuizen;
             }
-
-
         }
+        #endregion
 
-        public class ForumListViewModel
-        {
-            public List<ForumViewModel> List { get; set; }
-
-            public ForumListViewModel()
-            {
-                List = new List<ForumViewModel>();
-            }
-
-
-            public void AddForum(ForumViewModel forum)
-            {
-                List.Add(forum);
-            }
-        }
-
+        //Forum
+        #region Forum
         public class ForumViewModel
-        {
-            public int Id { get; set; }
-            public string Client { get; set; }
-
-            public ForumViewModel()
-            {
-            }
-
-            public ForumViewModel(int id)
-            {
-                Id = id;
-            }
-        }
-
-        public class PostsListViewModel
         {
             public List<PostViewModel> List { get; set; }
 
-            public PostsListViewModel()
+            public ForumViewModel()
             {
                 List = new List<PostViewModel>();
             }
@@ -468,20 +440,26 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Id { get; set; }
             public string SendBy { get; set; }
             public DateTime TimeStamp { get; set; }
+            public bool Mine { get; set; }
+
+            [Required]
             public string Boodschap { get; set; }
 
-            public PostViewModel()
-            {
-            }
+            public PostViewModel(){ }
 
-            public PostViewModel(string sendby, DateTime timestamp, string boodschap)
+            public PostViewModel(string sendby, DateTime timestamp, string boodschap, bool mine)
             {
                 SendBy = sendby;
                 TimeStamp = timestamp;
                 Boodschap = boodschap;
+                Mine = mine;
             }
         }
+        #endregion
 
+
+        //Sancties
+        #region Sanctie
         public class SanctieListViewModel
         {
             public List<SanctieViewModel> SanctieList { get; set; }
@@ -497,7 +475,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
         }
 
-        #region Sanctie
+
         public class SanctieViewModel
         {
             public int Id { get; set; }
@@ -566,6 +544,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         }
         #endregion
 
+
+        //Kamercontrole
+        #region Kamercontrole
         public class ListKamerControleItemsViewmodel
         {
             public List<KamerControleItemViewModel> KamerControleItems { get; set; }
@@ -610,7 +591,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
         public class KamerControleListIndexViewModel
         {
-            public int ClientId { get; set; }    
+            public int ClientId { get; set; }
 
             public List<KamerControleIndexViewModel> List { get; set; }
 
@@ -618,7 +599,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             {
                 List = new List<KamerControleIndexViewModel>();
             }
-            
+
             public KamerControleListIndexViewModel(int clientId)
             {
                 ClientId = clientId;
@@ -633,7 +614,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
         public class KamerControleIndexViewModel
         {
-            
+
             public int Id { get; set; }
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime Datum { get; set; }
@@ -649,5 +630,6 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 InOrde = inOrde;
             }
         }
+        #endregion
     }
 }

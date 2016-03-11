@@ -11,5 +11,14 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public string Boodschap { get; set; }
         public virtual Gebruiker Gebruiker { get; set; }
         public DateTime TimeStamp { get; set; }
+
+        public Post() { }
+
+        public Post(string boodschap, Gebruiker gebruiker)
+        {
+            Boodschap = boodschap;
+            Gebruiker = gebruiker;
+            TimeStamp = DateTime.Now;
+        }
     }
 }

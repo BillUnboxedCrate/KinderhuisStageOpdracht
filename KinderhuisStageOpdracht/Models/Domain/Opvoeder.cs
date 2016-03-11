@@ -26,7 +26,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
             GeboorteDatum = geboortedatum;
         }
 
-        
         public void AddForum(Forum forum)
         {
             Forums.Add(forum);

@@ -374,62 +374,6 @@ namespace KinderhuisStageOpdracht.Controllers
 
         }
 
-        public ActionResult ForumIndex()
-        {
-            if (!Request.IsAuthenticated)
-            {
-                return View("Error");
-            }
-
-            var flvm = new GebruikerViewModel.ForumListViewModel();
-
-            var opvoeder = (Opvoeder)_gebruikerRepository.FindById((int)Session["gebruiker"]);
-
-            foreach (var f in opvoeder.Forums)
-            {
-                var fvm = new GebruikerViewModel.ForumViewModel(f.Id);
-                flvm.AddForum(fvm);
-            }
-
-            return View(flvm);
-        }
-
-        public ActionResult Forum(int id)
-        {
-            if (!Request.IsAuthenticated)
-            {
-                return View("Error");
-            }
-
-            var plvm = new GebruikerViewModel.PostsListViewModel();
-
-            if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder)
-            {
-                var opvoeder = (Opvoeder)_gebruikerRepository.FindById((int)Session["gebruiker"]);
-                var forum = opvoeder.Forums.FirstOrDefault(f => f.Id == id);
-
-                foreach (var p in forum.Posts)
-                {
-                    var pvm = new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap);
-                    plvm.AddPost(pvm);
-                }
-
-            }
-            else
-            {
-                var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
-                var forum = client.Forums.FirstOrDefault(f => f.Id == id);
-
-                foreach (var p in forum.Posts)
-                {
-                    var pvm = new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap);
-                    plvm.AddPost(pvm);
-                }
-            }
-
-            return View(plvm);
-        }
-
         public ActionResult CreateSanctie(int id)
         {
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
@@ -544,6 +488,47 @@ namespace KinderhuisStageOpdracht.Controllers
             _gebruikerRepository.SaveChanges();
 
             return RedirectToAction("KamerControleOpvoeder");
+        }
+
+       
+        public ActionResult Forum(int id)
+        {
+            if (!Request.IsAuthenticated)
+            {
+                return View("Error");
+            }
+            Client client;
+            Opvoeder opvoeder;
+
+            var gebruiker = _gebruikerRepository.FindById((int) Session["gebruiker"]);
+
+            if (gebruiker is Client)
+            {
+                client = (Client) gebruiker;
+                opvoeder = (Opvoeder) _gebruikerRepository.FindById(id); 
+            }
+            else
+            {
+                opvoeder = (Opvoeder)gebruiker;
+                client = (Client) _gebruikerRepository.FindById(id);
+            }
+
+            var fvm = new GebruikerViewModel.ForumViewModel();
+            var forum = client.GetForum(opvoeder, client);
+
+            foreach (var p in forum.Posts)
+            {
+                var mine = p.Gebruiker == gebruiker;
+                fvm.AddPost(new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap, mine));
+            }
+
+            return View(fvm);
+        }
+
+        [HttpPost]
+        public ActionResult Forum(GebruikerViewModel.PostViewModel model)
+        {
+            return null;
         }
     }
 }

@@ -370,7 +370,6 @@
     <Content Include="Views\Opvangtehuis\CreateMenu.cshtml" />
     <Content Include="Views\Opvangtehuis\MenuIndex.cshtml" />
     <Content Include="Views\Opvangtehuis\AddMenuItemPartial.cshtml" />
-    <Content Include="Views\Gebruiker\ForumIndex.cshtml" />
     <Content Include="Views\Gebruiker\Forum.cshtml" />
     <Content Include="Views\Opvangtehuis\WeekMenu.cshtml" />
     <Content Include="Views\Opvangtehuis\DeleteSuggestie.cshtml" />

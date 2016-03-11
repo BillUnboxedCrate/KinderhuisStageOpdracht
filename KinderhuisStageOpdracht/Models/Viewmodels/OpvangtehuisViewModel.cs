@@ -9,6 +9,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 {
     public class OpvangtehuisViewModel
     {
+        //Suggesties
+        #region Suggestie
         public class SuggestieListViewModel
         {
             public List<SuggestieViewModel> Suggesties { get; set; }
@@ -68,12 +70,17 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                     return new[]
                     {   
                         new SelectListItem {Text = "Suggestie voor eten", Value = "Eten"},
-                        new SelectListItem {Text = "Suggestie voor een activiteit", Value = "Activiteit"}
+                        new SelectListItem {Text = "Suggestie voor een activiteit", Value = "Activiteit"},
+                        new SelectListItem {Text = "Suggestie voor een film", Value = "Film"}
                     };
                 }
             }
         }
+        #endregion
 
+
+        //Menus
+        #region MenuViewModel
         public class MenuListViewModel
         {
             public List<MenuViewModel> Menus { get; set; }
@@ -125,7 +132,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         //    [Display(Name = "Dessert")]
         //    public string Dessert { get; set; }
         //}
-        #region MenuViewModel
+
         public class MenuViewModel
         {
             public int Id { get; set; }
@@ -433,9 +440,5 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
         }
         #endregion
-
-
-
-
     }
 }
