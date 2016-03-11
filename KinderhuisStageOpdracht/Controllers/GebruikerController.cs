@@ -490,7 +490,7 @@ namespace KinderhuisStageOpdracht.Controllers
             return RedirectToAction("KamerControleOpvoeder");
         }
 
-       
+
         public ActionResult Forum(int id)
         {
             if (!Request.IsAuthenticated)
@@ -500,21 +500,22 @@ namespace KinderhuisStageOpdracht.Controllers
             Client client;
             Opvoeder opvoeder;
 
-            var gebruiker = _gebruikerRepository.FindById((int) Session["gebruiker"]);
+            var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
 
             if (gebruiker is Client)
             {
-                client = (Client) gebruiker;
-                opvoeder = (Opvoeder) _gebruikerRepository.FindById(id); 
+                client = (Client)gebruiker;
+                opvoeder = (Opvoeder)_gebruikerRepository.FindById(id);
             }
             else
             {
                 opvoeder = (Opvoeder)gebruiker;
-                client = (Client) _gebruikerRepository.FindById(id);
+                client = (Client)_gebruikerRepository.FindById(id);
             }
 
-            var fvm = new GebruikerViewModel.ForumViewModel();
+            
             var forum = client.GetForum(opvoeder, client);
+            var fvm = new GebruikerViewModel.ForumViewModel(forum.Id);
 
             foreach (var p in forum.Posts)
             {
@@ -526,9 +527,29 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         [HttpPost]
-        public ActionResult Forum(GebruikerViewModel.PostViewModel model)
+        public ActionResult Forum(GebruikerViewModel.ForumViewModel model)
         {
-            return null;
+            if (ModelState.IsValid)
+            {
+                var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
+
+                if (gebruiker is Client)
+                {
+                    var client = (Client)gebruiker;
+                    client.GetForumById(model.ForumId).AddPost(new Post(model.Post, client));
+                }
+                else
+                {
+                    var opvoeder = (Opvoeder)gebruiker;
+                    opvoeder.GetForumById(model.ForumId).AddPost(new Post(model.Post, opvoeder));
+                }
+
+                _gebruikerRepository.SaveChanges();
+
+                this.AddNotification("Uw boodschap is gepost", NotificationType.SUCCESS);
+                return RedirectToAction("Forum");
+            }
+            return View();
         }
     }
 }

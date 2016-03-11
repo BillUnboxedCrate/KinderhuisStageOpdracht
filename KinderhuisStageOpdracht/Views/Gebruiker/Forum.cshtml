@@ -3,25 +3,43 @@
     ViewBag.Title = "Forum";
 }
 
-<h2>Forum</h2>
 
-@foreach (var p in Model.List)
+<div id="forum">
+    <h2>Forum</h2>
+    @foreach (var p in Model.List)
+    {
+        if (p.Mine)
+        {
+            <div id="myPost">
+                @Html.DisplayFor(modelItem => p.Boodschap)<br />
+                <span class="postinfo">@Html.DisplayFor(modelItem => p.SendBy) - @Html.DisplayFor(modelItem => p.TimeStamp)</span>
+            </div>
+        }
+        else
+        {
+            <div id="otherPost">
+                @Html.DisplayFor(modelItem => p.Boodschap)<br />
+                <span class="postinfo">@Html.DisplayFor(modelItem => p.TimeStamp) - @Html.DisplayFor(modelItem => p.SendBy)</span>
+            </div>
+        }
+    }
+</div>
+
+@using (Html.BeginForm("Forum", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    if (p.Mine)
-    {
-        <div>
-            @Html.DisplayFor(modelItem => p.Boodschap)
-            @Html.DisplayFor(modelItem => p.SendBy)
-            @Html.DisplayFor(modelItem => p.TimeStamp)
+    <div id="postBlock">
+
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.ForumId)
+
+        @Html.TextAreaFor(model => model.Post)
+
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Versturen" />
         </div>
-    }
-    else
-    {
-        <div>
-            @Html.DisplayFor(modelItem => p.Boodschap)
-            @Html.DisplayFor(modelItem => p.SendBy)
-            @Html.DisplayFor(modelItem => p.TimeStamp)
-        </div>
-    }
+    </div>
 }
+
+
 

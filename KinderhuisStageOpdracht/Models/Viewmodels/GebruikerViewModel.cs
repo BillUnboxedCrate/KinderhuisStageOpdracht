@@ -422,10 +422,18 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         #region Forum
         public class ForumViewModel
         {
+            public int ForumId { get; set; }
             public List<PostViewModel> List { get; set; }
+            public string Post { get; set; }
 
             public ForumViewModel()
             {
+                List = new List<PostViewModel>();
+            }
+
+            public ForumViewModel(int id)
+            {
+                ForumId = id;
                 List = new List<PostViewModel>();
             }
 
@@ -441,8 +449,6 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string SendBy { get; set; }
             public DateTime TimeStamp { get; set; }
             public bool Mine { get; set; }
-
-            [Required]
             public string Boodschap { get; set; }
 
             public PostViewModel(){ }
@@ -455,6 +461,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Mine = mine;
             }
         }
+
         #endregion
 
 

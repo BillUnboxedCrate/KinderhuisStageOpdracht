@@ -120,6 +120,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return forum != null;
         }
 
+        public Forum GetForumById(int id)
+        {
+            return Forums.FirstOrDefault(f => f.Id == id);
+        }
+
         public void AddForum(Forum forum)
         {
             Forums.Add(forum);

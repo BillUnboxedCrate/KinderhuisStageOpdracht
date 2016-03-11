@@ -26,6 +26,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
             GeboorteDatum = geboortedatum;
         }
 
+        public Forum GetForumById(int id)
+        {
+            return Forums.FirstOrDefault(f => f.Id == id);
+        }   
+
         public void AddForum(Forum forum)
         {
             Forums.Add(forum);

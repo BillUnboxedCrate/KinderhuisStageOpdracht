@@ -223,6 +223,39 @@ input[type="text"], input[type="password"], textarea {
     height: auto;
 }
 
+#forum {
+    overflow: auto;
+    width: 950px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #forum div {
+        border: 1px solid black;
+        padding: 10px;
+        width: 500px;
+        margin-bottom: 10px;
+    }
+
+#postBlock {
+    text-align: center;
+}
+
+#myPost {
+    float: left;
+    text-align: left;
+}
+
+#otherPost {
+    float: right;
+    text-align: right;
+}
+
+.postinfo {
+    font-weight: bold;
+}
+
 /*Begin checkbox animated*/
 /*input[type=checkbox] {
   opacity: 0;
