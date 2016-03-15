@@ -23,24 +23,21 @@
             </div>
         }
     }
-</div>
 
-@using (Html.BeginForm("Forum", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
     <div id="postBlock">
+        @using (Html.BeginForm("Forum", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.ForumId)
 
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(model => model.ForumId)
+            @Html.TextAreaFor(model => model.Post)
 
-        @Html.TextAreaFor(model => model.Post)
-
-
-        <div class="form-group">
-            <input type="submit" class="btn btn-default" value="Versturen" />
-        </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-default" value="Versturen" />
+            </div>
+        }
     </div>
-}
-
+</div>
 
 @(Model.TypeGebruiker == "client" ? Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker") : Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker"))
 

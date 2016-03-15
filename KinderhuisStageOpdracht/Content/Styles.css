@@ -241,11 +241,11 @@ input[type="text"], input[type="password"], textarea {
     width: 950px;
     text-align: center;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;    
 }
 
     #forum div {
-        border: 1px solid black;
+        border: 1px solid transparent;
         border-radius: 15px;
         padding: 10px;
         width: 500px;
@@ -253,17 +253,20 @@ input[type="text"], input[type="password"], textarea {
     }
 
 #postBlock {
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #myPost {
     float: left;
     text-align: left;
+    background-color: rgb(229, 247, 253);
 }
 
 #otherPost {
     float: right;
     text-align: right;
+    background-color: rgb(199, 237, 252);
 }
 
 .postinfo {
