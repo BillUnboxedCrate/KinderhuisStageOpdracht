@@ -256,6 +256,23 @@ input[type="text"], input[type="password"], textarea {
     font-weight: bold;
 }
 
+#klachttable {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#klachttable thead > tr > th,
+#klachttable tbody > tr > th,
+#klachttable tfoot > tr > th,
+#klachttable thead > tr > td,
+#klachttable tbody > tr > td,
+#klachttable tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.428571429;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+
 /*Begin checkbox animated*/
 /*input[type=checkbox] {
   opacity: 0;

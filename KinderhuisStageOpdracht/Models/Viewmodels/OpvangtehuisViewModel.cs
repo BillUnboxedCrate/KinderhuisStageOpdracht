@@ -30,7 +30,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         {
             public int Id { get; set; }
 
-            [Display(Name = "Aangemaakt op")]
+            [Display(Name = "Doorgestuurd op")]
             [DataType(DataType.DateTime)]
             [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
             public DateTime TimeStamp { get; set; }
@@ -440,5 +440,45 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
         }
         #endregion
+
+        //Klachten
+        public class ListKlachtViewModel
+        {
+            public List<KlachtViewModel> List { get; set; }
+
+            public ListKlachtViewModel()
+            {
+                List = new List<KlachtViewModel>();
+            }
+
+            public void AddKlacht(KlachtViewModel klacht)
+            {
+                List.Add(klacht);
+            }
+        }
+
+        public class KlachtViewModel
+        {
+            [Required]
+            [Display(Name = "Omschrijving")]
+            public string Omschrijving { get; set; }
+
+            [Display(Name = "Opgegeven door")]
+            public string Client { get; set; }
+
+            [Display(Name = "Doorgestuurd op")]
+            [DataType(DataType.DateTime)]
+            [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
+            public DateTime TimeStamp { get; set; }
+
+            public KlachtViewModel() { }
+
+            public KlachtViewModel(string omschrijving, string client, DateTime timestamp)
+            {
+                Omschrijving = omschrijving;
+                Client = client;
+                TimeStamp = timestamp;
+            }
+        }
     }
 }

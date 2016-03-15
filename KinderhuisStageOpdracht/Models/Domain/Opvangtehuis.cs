@@ -19,7 +19,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public virtual ICollection<Menu> Menus { get; set; }
 
         public virtual ICollection<KamerControleOpdracht> Opdrachten { get; set; }
-        public virtual ICollection<Straf> Straffen { get; set; } 
+        public virtual ICollection<Straf> Straffen { get; set; }
 
         public virtual ICollection<Klacht> Klachten { get; set; }
 
@@ -33,16 +33,13 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         }
 
+
+        //Suggesties
         public List<Suggestie> GetSuggesties()
         {
             return Suggesties.OrderByDescending(s => s.TimeStamp).ToList();
 
         }
-
-        public List<Menu> GetMenus()
-        {
-            return Menus.OrderByDescending(m => m.BegindagWeek).ToList();
-        } 
 
         public void AddSuggestie(Suggestie suggestie)
         {
@@ -78,6 +75,13 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Suggesties.Remove(suggestie);
         }
 
+
+        //Menus
+        public List<Menu> GetMenus()
+        {
+            return Menus.OrderByDescending(m => m.BegindagWeek).ToList();
+        }
+
         public void AddMenu(DateTime begindag)
         {
             var menu = new Menu
@@ -108,24 +112,31 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Menus.Remove(menu);
         }
 
+        public Menu GetMenuVanDeWeek()
+        {
+            var menu = Menus.FirstOrDefault(m => m.BegindagWeek <= DateTime.Today || m.EinddagWeek >= DateTime.Today);
+            return menu;
+        }
+
+        //Klachten
+        public List<Klacht> GetKlachten()
+        {
+            return Klachten.OrderByDescending(k => k.TimeStamp).ToList();
+        }
+
         public void AddKlacht(Klacht klacht)
         {
             Klachten.Add(klacht);
         }
 
-        public void AddKlacht(string title, string beschrijving, Client client)
+        public void AddKlacht(string omschrijving, Client client)
         {
-            var klacht = new Klacht()
-            {
-                Beschrijving = beschrijving,
-                Client = client,
-                Titel = title,
-                TimeStamp = DateTime.Now
-            };
-
+            var klacht = new Klacht(omschrijving, client);
             Klachten.Add(klacht);
         }
 
+
+        //Straffen
         public void AddStraf(Straf straf)
         {
             Straffen.Add(straf);
@@ -146,6 +157,8 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return Straffen.FirstOrDefault(s => s.Naam == name);
         }
 
+
+        //Kamercontrole oprachten
         public void AddOpdrachten(KamerControleOpdracht opdracht)
         {
             Opdrachten.Add(opdracht);
@@ -159,19 +172,14 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public List<KamerControleOpdracht> GetKamerControleOpdrachten()
         {
             return Opdrachten.OrderBy(k => k.Titel).ToList();
-        } 
-
-        public Menu GetMenuVanDeWeek()
-        {
-            var menu = Menus.FirstOrDefault(m => m.BegindagWeek <= DateTime.Today || m.EinddagWeek >= DateTime.Today);
-            return menu;
         }
+
 
         public override string ToString()
         {
             return String.Format("{0}\n{1} {2}\n{3} {4}", Naam, Straat, StraatNummer, Postcode, Gemeente);
         }
 
-       
+
     }
 }

@@ -428,6 +428,51 @@ namespace KinderhuisStageOpdracht.Controllers
             return View(mvm);
         }
 
+
+        public ActionResult KlachtIndex()
+        {
+            var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+            var lkvm = new OpvangtehuisViewModel.ListKlachtViewModel();
+
+            foreach (var klacht in opvangtehuis.GetKlachten())
+            {
+                lkvm.AddKlacht(new OpvangtehuisViewModel.KlachtViewModel(klacht.Omschrijving, klacht.Client.GiveFullName(), klacht.TimeStamp));
+            }
+
+            return View(lkvm);
+        }
+
+        public ActionResult Klacht()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Klacht(OpvangtehuisViewModel.KlachtViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                    opvangtehuis.AddKlacht(model.Omschrijving,
+                        (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]));
+
+                    _opvangtehuisRepository.SaveChanges();
+
+                    this.AddNotification("Uw suggestie wordt doorgegeven", NotificationType.SUCCESS);
+                    return RedirectToAction("ClientIndex", "Gebruiker");
+                }
+                catch (ApplicationException e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                }
+            }
+            return View();
+        }
+
+
         #region helpers
         private int GetWeekVanHetJaar(DateTime datum)
         {

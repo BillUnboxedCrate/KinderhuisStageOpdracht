@@ -27,7 +27,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         public class OpvoederViewModel
         {
             public int Id { get; set; }
-            public string Naam { get; set; }
+            public string FullName { get; set; }
+            public string Voornaam { get; set; }
             public string Email { get; set; }
             public string Opvangtehuis { get; set; }
 
@@ -35,17 +36,17 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             {
             }
 
-            public OpvoederViewModel(int id, string naam, string email)
+            public OpvoederViewModel(int id, string voornaam, string fullname)
             {
                 Id = id;
-                Naam = naam;
-                Email = email;
+                Voornaam = voornaam;
+                FullName = fullname;
             }
 
-            public OpvoederViewModel(int id, string naam, string email, string opvangtehuis)
+            public OpvoederViewModel(int id, string fullname, string email, string opvangtehuis)
             {
                 Id = id;
-                Naam = naam;
+                FullName = fullname;
                 Email = email;
                 Opvangtehuis = opvangtehuis;
             }
@@ -69,7 +70,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         public class ClientViewModel
         {
             public int Id { get; set; }
-            public string Naam { get; set; }
+            public string FullName { get; set; }
+            public string Voornaam { get; set; }
             public string Email { get; set; }
             public string Opvangtehuis { get; set; }
 
@@ -77,17 +79,17 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             {
             }
 
-            public ClientViewModel(int id, string naam, string email)
+            public ClientViewModel(int id, string fullname, string voornaam)
             {
                 Id = id;
-                Naam = naam;
-                Email = email;
+                Voornaam = voornaam;
+                FullName = fullname;
             }
 
-            public ClientViewModel(int id, string naam, string email, string opvangtehuis)
+            public ClientViewModel(int id, string fullname, string email, string opvangtehuis)
             {
                 Id = id;
-                Naam = naam;
+                FullName = fullname;
                 Email = email;
                 Opvangtehuis = opvangtehuis;
             }

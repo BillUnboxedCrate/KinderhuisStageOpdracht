@@ -187,6 +187,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GebruikerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlanningController.cs" />
     <Compile Include="Controllers\StrafController.cs" />
     <Compile Include="Controllers\OpvangtehuisController.cs" />
     <Compile Include="Extensions\NotificationExtensions.cs" />
@@ -377,11 +378,13 @@
     <Content Include="Views\Gebruiker\KamerControle.cshtml" />
     <Content Include="Views\Straf\Index.cshtml" />
     <Content Include="Views\Straf\CreateStraf.cshtml" />
-    <Content Include="Views\Gebruiker\_Post.cshtml" />
+    <Content Include="Views\Opvangtehuis\Klacht.cshtml" />
+    <Content Include="Views\Opvangtehuis\KlachtIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Avatar\" />
+    <Folder Include="Views\Planning\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

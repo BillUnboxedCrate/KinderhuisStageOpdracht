@@ -9,6 +9,7 @@
     <ul class="category-menu">
         <li>@Html.ActionLink("Toon lijst van gegeven suggesties", "Suggesties", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Toon lijst van menus", "MenuIndex", "Opvangtehuis")</li>
+        <li>@Html.ActionLink("Toon de lijst van klachten", "KlachtIndex", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Toon de lijst van straffen", "Index", "Straf")</li>
     </ul>
 </div>
@@ -24,7 +25,7 @@
     @foreach (var o in Model.Clients)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
+            <td>@Html.DisplayFor(modelItem => o.FullName)</td>
 
             <td>
                 @Html.ActionLink("Details", "Details", new {id = o.Id})
@@ -35,7 +36,7 @@
                 <span> | </span>
                 @Html.ActionLink("Kamercontrole", "KamerControleIndex", new { id = o.Id })
                 <span> | </span>
-                @Html.ActionLink("Zeg iets tegen de cliënt", "Forum", new { id = o.Id })
+                @Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })
             </td>
      
         </tr>

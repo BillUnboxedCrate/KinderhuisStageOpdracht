@@ -42,7 +42,7 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var gebruiker in opvoeders)
             {
                 var o = (Opvoeder)gebruiker;
-                var opvoedervm = new GebruikerViewModel.OpvoederViewModel(o.Id, o.GiveFullName(), o.Email);
+                var opvoedervm = new GebruikerViewModel.OpvoederViewModel(o.Id, o.Voornaam, o.GiveFullName());
                 clientlistvm.AddOpvoeder(opvoedervm);
             }
 
@@ -67,7 +67,7 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var gebruiker in clients)
             {
                 var c = (Client)gebruiker;
-                var clientvm = new GebruikerViewModel.ClientViewModel(c.Id, c.GiveFullName(), c.Email);
+                var clientvm = new GebruikerViewModel.ClientViewModel(c.Id, c.GiveFullName(), c.Voornaam);
 
                 clientlistvm.AddClient(clientvm);
             }
@@ -551,5 +551,9 @@ namespace KinderhuisStageOpdracht.Controllers
             }
             return View();
         }
+
+
+
+
     }
 }

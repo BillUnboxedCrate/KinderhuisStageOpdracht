@@ -21,7 +21,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             //HasMany(c => c.Plannings).WithRequired().Map(c => c.MapKey("ClientId"));
             //HasMany(c => c.KamerToDos).WithRequired().Map(c => c.MapKey("ClientId"));
 
-            HasMany(c => c.Plannings).WithRequired();
+            HasOptional(c => c.Planning).WithRequired();
             HasMany(c => c.KamerControles).WithRequired();
 
             HasMany(c => c.Forums).WithRequired();

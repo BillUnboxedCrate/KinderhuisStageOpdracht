@@ -20,7 +20,7 @@
     @foreach (var o in Model.Olmv.Opvoeders)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
+            <td>@Html.DisplayFor(modelItem => o.FullName)</td>
             <td>@Html.DisplayFor(modelItem => o.Opvangtehuis)</td>
             <td>@Html.DisplayFor(modelItem => o.Email)</td>
 
@@ -48,7 +48,7 @@
     @foreach (var o in Model.Clvm.Clients)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
+            <td>@Html.DisplayFor(modelItem => o.FullName)</td>
             <td>@Html.DisplayFor(modelItem => o.Opvangtehuis)</td>
             <td>@Html.DisplayFor(modelItem => o.Email)</td>
 

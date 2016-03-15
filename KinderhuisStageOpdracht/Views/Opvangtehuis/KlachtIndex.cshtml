@@ -1,0 +1,26 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.OpvangtehuisViewModel.ListKlachtViewModel
+@{
+    ViewBag.Title = "KlachtIndex";
+}
+
+<h2>KlachtIndex</h2>
+
+<table id="klachttable">
+    <tr>
+        <th>Doorgestuurd door</th>
+        <th>Doorgestuurd op</th>
+        <th>Omschrijving</th>
+    </tr>
+
+    @foreach (var m in Model.List)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => m.Client)</td>
+            <td>@Html.DisplayFor(modelItem => m.TimeStamp)</td>
+            <td>@Html.DisplayFor(modelItem => m.Omschrijving)</td>
+        </tr>
+    }
+
+
+</table>
+

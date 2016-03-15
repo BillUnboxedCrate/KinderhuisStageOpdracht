@@ -7,29 +7,29 @@
 <h2>CliëntIndex</h2>
 <ul class="category-menu">
     <li>@Html.ActionLink("Suggestie", "CreateSuggestie", "Opvangtehuis")</li>
+    <li>@Html.ActionLink("Klacht", "Klacht", "Opvangtehuis")</li>
     <li>@Html.ActionLink("De menu", "WeekMenu", "Opvangtehuis")</li>
     <li>@Html.ActionLink("Sancties", "Sancties", "Gebruiker")</li>
     <li>@Html.ActionLink("KamerControle", "KamerControle", "Gebruiker")</li>
+
 </ul>
 
 <h3>Opvoeders</h3>
 <table class="table">
     <tr>
         <th>Naam</th>
-        <th>Email adres</th>
         <th>Acties</th>
     </tr>
 
     @foreach (var o in Model.Opvoeders)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
-            <td>@Html.DisplayFor(modelItem => o.Email)</td>
+            <td>@Html.DisplayFor(modelItem => o.FullName)</td>
 
             <td>
                 @Html.ActionLink("Details", "Details", new { id = o.Id })
                 <span> | </span>
-                @Html.ActionLink("Zeg iets tegen deze opvoeder", "Forum", new { id = o.Id })
+                @Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })
             </td>
         </tr>
     }
