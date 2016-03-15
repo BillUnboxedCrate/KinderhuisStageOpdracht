@@ -284,7 +284,16 @@ input[type="text"], input[type="password"], textarea {
     padding: 20px;
 }
 
-
+footer {
+    margin-left: auto;
+    margin-right: auto;
+    border-top: solid 1px lightgrey;
+    width: 60%;
+    position: absolute;
+    bottom: 0;
+    padding-top: 10px;
+    height: 60px; /* Height of the footer */
+}
 
 .omschrijvingColumn {
     width: 65%;

@@ -4,8 +4,16 @@
 }
 
 <h2>Index</h2>
-@Html.ActionLink("Voeg nog straf toe", "CreateStraf")
-<table class="table">
+<p>Lijst van straffen | @Html.ActionLink("Voeg nog straf toe", "CreateStraf")</p>
+<ol>
+    @foreach (var o in Model.List)
+    {
+        <li>@Html.DisplayFor(modelItem => o.Naam)</li>
+    }
+</ol>
+
+
+@*<table class="table">
     <tr>
         <th>Naam</th>
     </tr>
@@ -16,5 +24,6 @@
             <td>@Html.DisplayFor(modelItem => o.Naam)</td>
         </tr>
     }
-</table>
+</table>*@
+
 @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
