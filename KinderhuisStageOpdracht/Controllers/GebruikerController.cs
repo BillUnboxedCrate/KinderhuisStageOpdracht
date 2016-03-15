@@ -252,11 +252,12 @@ namespace KinderhuisStageOpdracht.Controllers
 
             var gebruiker = _gebruikerRepository.FindById(id);
             GebruikerViewModel.DetailViewModel dvm = null;
-
+            
             if (gebruiker != null)
             {
+                var type = _gebruikerRepository.FindById((int) Session["gebruiker"]).GetType().Name;
                 dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis());
+                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis(), type);
 
                 if (gebruiker is Client)
                 {
@@ -289,8 +290,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
             if (gebruiker != null)
             {
+                string type = gebruiker.GetType().ToString();
                 dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis());
+                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis(), type);
             }
             return View(dvm);
         }
@@ -322,10 +324,10 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             var gebruiker = _gebruikerRepository.FindById(id);
-
+            var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
 
             var evm = new GebruikerViewModel.EditViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuisnaam());
+                gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuisnaam(), type);
 
             if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
             {
@@ -458,7 +460,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KamerControleOpvoeder(int id)
         {
-            var client = (Client)_gebruikerRepository.FindById((int)Session["client"]);
+            var client = (Client)_gebruikerRepository.FindById(id);
             var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
             var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
             var kamercontrole = client.ViewKamerControle(opvangtehuis.GetKamerControleOpdrachten());
@@ -499,6 +501,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
             Client client;
             Opvoeder opvoeder;
+            string type;
 
             var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
 
@@ -506,16 +509,20 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 client = (Client)gebruiker;
                 opvoeder = (Opvoeder)_gebruikerRepository.FindById(id);
+                type = "client";
             }
             else
             {
                 opvoeder = (Opvoeder)gebruiker;
                 client = (Client)_gebruikerRepository.FindById(id);
+                type = "Opvoeder";
+
             }
+
 
             
             var forum = client.GetForum(opvoeder, client);
-            var fvm = new GebruikerViewModel.ForumViewModel(forum.Id);
+            var fvm = new GebruikerViewModel.ForumViewModel(forum.Id, type);
 
             foreach (var p in forum.Posts)
             {

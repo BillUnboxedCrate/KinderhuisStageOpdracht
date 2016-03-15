@@ -5,7 +5,6 @@
 
 <h2>WeekMenu</h2>
 
-
 @if (Model.Boodschap == null)
 {
     <table id="weekMenu" border="1">
@@ -53,5 +52,8 @@
 }
 else
 {
-    @Html.Label(Model.Boodschap)
+    <div class="nogNietAanwezig">
+        @Html.Label(Model.Boodschap)
+    </div>
 }
+@Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")

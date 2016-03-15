@@ -201,6 +201,19 @@ input[type="text"], input[type="password"], textarea {
         height: 250px;
     }
 
+#kamercontroleTableOpvoeder, #kamercontroleTableOpvoeder th, #kamercontroleTableOpvoeder td {
+    border: 1px solid;
+    /*padding: 30px;*/
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #kamercontroleTableOpvoeder th, #kamercontroleTableOpvoeder td {
+        padding: 20px;
+        width: 300px;
+    }
+
 #kamercontroleTitel {
     font-size: 20pt;
 }
@@ -233,6 +246,7 @@ input[type="text"], input[type="password"], textarea {
 
     #forum div {
         border: 1px solid black;
+        border-radius: 15px;
         padding: 10px;
         width: 500px;
         margin-bottom: 10px;
@@ -256,21 +270,24 @@ input[type="text"], input[type="password"], textarea {
     font-weight: bold;
 }
 
-#klachttable {
-  width: 100%;
-  margin-bottom: 20px;
+.suggestieColumns {
+    width: 14%;
 }
 
-#klachttable thead > tr > th,
-#klachttable tbody > tr > th,
-#klachttable tfoot > tr > th,
-#klachttable thead > tr > td,
-#klachttable tbody > tr > td,
-#klachttable tfoot > tr > td {
-  padding: 8px;
-  line-height: 1.428571429;
-  vertical-align: top;
-  border-top: 1px solid #dddddd;
+.nogNietAanwezig {
+    font-size: 16pt;
+    border: 1px solid black;
+    text-align: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+
+
+.omschrijvingColumn {
+    width: 65%;
 }
 
 /*Begin checkbox animated*/

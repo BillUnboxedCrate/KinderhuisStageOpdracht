@@ -5,11 +5,11 @@
 
 <h2>KlachtIndex</h2>
 
-<table id="klachttable">
+<table class="table">
     <tr>
         <th>Doorgestuurd door</th>
         <th>Doorgestuurd op</th>
-        <th>Omschrijving</th>
+        <th class="omschrijvingColumn">Omschrijving</th>
     </tr>
 
     @foreach (var m in Model.List)
@@ -17,10 +17,9 @@
         <tr>
             <td>@Html.DisplayFor(modelItem => m.Client)</td>
             <td>@Html.DisplayFor(modelItem => m.TimeStamp)</td>
-            <td>@Html.DisplayFor(modelItem => m.Omschrijving)</td>
+            <td class="omschrijvingColumn">@Html.DisplayFor(modelItem => m.Omschrijving)</td>
         </tr>
     }
-
-
 </table>
+@Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
 

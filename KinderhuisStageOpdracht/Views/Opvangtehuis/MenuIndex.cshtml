@@ -20,9 +20,10 @@
             <td>@Html.DisplayFor(modelItem => m.BeginWeek)</td>
             <td>@Html.DisplayFor(modelItem => m.EindeWeek)</td>
             <td>
-                @Html.ActionLink("Aanpassen", "EditMenu", new { id = m.Id })
+                @Html.ActionLink("Aanpassen", "EditMenu", new {id = m.Id})
             </td>
         </tr>
     }
 </table>
+@Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
 

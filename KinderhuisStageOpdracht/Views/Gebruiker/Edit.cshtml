@@ -62,3 +62,6 @@
         </div>
     </div>
 }
+
+
+@(Model.TypeGebruiker.Contains("Opvoeder") ? Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker") : Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker"))

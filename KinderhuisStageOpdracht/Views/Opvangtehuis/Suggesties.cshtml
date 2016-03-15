@@ -6,21 +6,19 @@
 <h2>Index</h2>
 <table class="table">
     <tr>
-        <th>Genre</th>
-        <th>Cliënt</th>
-        <th>Wanneer</th>
+        <th class="suggestieColumns">Genre</th>
+        <th class="suggestieColumns">Cliënt</th>
+        <th class="suggestieColumns">Wanneer</th>
         <th>Suggestie</th>
-        <th>Actie</th>
 
     </tr>
     @foreach (var o in Model.Suggesties)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Genre)</td>
-            <td>@Html.DisplayFor(modelItem => o.Client)</td>
-            <td>@Html.DisplayFor(modelItem => o.TimeStamp)</td>
-            <td>@Html.DisplayFor(modelItem => o.Beschrijving)</td>
-            <td>@Html.ActionLink("Verwijderen", "DeleteSuggestie", new { id = o.Id })</td>
+            <td class="suggestieColumns">@Html.DisplayFor(modelItem => o.Genre)</td>
+            <td class="suggestieColumns">@Html.DisplayFor(modelItem => o.Client)</td>
+            <td class="suggestieColumns">@Html.DisplayFor(modelItem => o.TimeStamp)</td>
+            <td class="omschrijvingColumn">@Html.DisplayFor(modelItem => o.Beschrijving)</td>
         </tr>
     }
 </table>

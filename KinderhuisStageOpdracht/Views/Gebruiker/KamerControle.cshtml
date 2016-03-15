@@ -3,14 +3,15 @@
     ViewBag.Title = "KamerControle";
 }
 
-
+<h2>KamerControle</h2>
 @if (Model.KamerControleItems.Count == 0)
 {
-    @Html.Label("De opvoeder moet de kamer nog controleren")
+    <div class="nogNietAanwezig">
+        @Html.Label("De opvoeder moet je kamer nog controleren")
+    </div>
 }
 else
 {
-    <h2>KamerControle</h2>
     <table id="kamercontroleTable">
         <tr>
             <th>Taak</th>
@@ -44,3 +45,4 @@ else
         }
     </table>
 }
+@Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")

@@ -40,6 +40,20 @@
         <td>@Html.DisplayFor(m => m.Opvangtehuis)</td>
     </tr>
 </table>
+
+@if (Model.TypeGebruiker.Contains("Opvoeder"))
+{
+    @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
+}
+else if (Model.TypeGebruiker.Contains("Admin"))
+{
+    @Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker")
+}
+else
+{
+    @Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")
+}
+
 @if (Model.Sancties.Count != 0) {
     <table class="table">
         <tr>
@@ -60,3 +74,4 @@
         }
     </table>
 }
+

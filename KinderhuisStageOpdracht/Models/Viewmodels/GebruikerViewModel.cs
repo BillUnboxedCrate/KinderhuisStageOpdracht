@@ -330,13 +330,15 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Opvangtehuis")]
             public string Opvangtehuis { get; set; }
 
+            public string TypeGebruiker { get; set; }
+
             public DetailViewModel()
             {
                 Sancties = new List<SanctieViewModel>();
             }
 
             public DetailViewModel(int id, string naam, string voornaam, DateTime? geboortedatum, string gebruikersnaam,
-                string email, string opvangtehuis)
+                string email, string opvangtehuis, string typeGebruiker)
             {
                 Id = id;
                 Naam = naam;
@@ -345,6 +347,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 GebruikersNaam = gebruikersnaam;
                 Email = email;
                 Opvangtehuis = opvangtehuis;
+                TypeGebruiker = typeGebruiker;
                 Sancties = new List<SanctieViewModel>();
             }
 
@@ -360,6 +363,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         public class EditViewModel
         {
             public int Id { get; set; }
+            public string TypeGebruiker { get; set; }
 
             [Required]
             [Display(Name = "Naam")]
@@ -396,7 +400,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
 
             public EditViewModel(int id, string naam, string voornaam, DateTime geboortedatum, string gebruikersnaam,
-                string email, string opvangtehuis)
+                string email, string opvangtehuis, string typegebruiker)
             {
                 Id = id;
                 Naam = naam;
@@ -405,6 +409,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 GebruikersNaam = gebruikersnaam;
                 Email = email;
                 GeselecteerdOpvangtehuisId = opvangtehuis;
+                TypeGebruiker = typegebruiker;
                 Opvangtehuizen = new List<string>();
             }
 
@@ -427,15 +432,17 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int ForumId { get; set; }
             public List<PostViewModel> List { get; set; }
             public string Post { get; set; }
+            public string TypeGebruiker { get; set; }
 
             public ForumViewModel()
             {
                 List = new List<PostViewModel>();
             }
 
-            public ForumViewModel(int id)
+            public ForumViewModel(int id, string type)
             {
                 ForumId = id;
+                TypeGebruiker = type;
                 List = new List<PostViewModel>();
             }
 
