@@ -4,55 +4,57 @@
 }
 
 <h2>Details</h2>
-<table>
+<table id="detailTable">
     <tr>
-        <td>@Html.LabelFor(m => m.Id)</td>
+        <th>@Html.LabelFor(m => m.Id)</th>
         <td>@Html.DisplayFor(m => m.Id)</td>
     </tr>
 
     <tr>
-        <td>@Html.LabelFor(m => m.Voornaam)</td>
+        <th>@Html.LabelFor(m => m.Voornaam)</th>
         <td>@Html.DisplayFor(m => m.Voornaam)</td>
     </tr>
 
     <tr>
-        <td>@Html.LabelFor(m => m.Naam)</td>
+        <th>@Html.LabelFor(m => m.Naam)</th>
         <td>@Html.DisplayFor(m => m.Naam)</td>
     </tr>
 
     <tr>
-        <td>@Html.LabelFor(m => m.GebruikersNaam)</td>
+        <th>@Html.LabelFor(m => m.GebruikersNaam)</th>
         <td>@Html.DisplayFor(m => m.GebruikersNaam)</td>
     </tr>
 
     <tr>
-        <td>@Html.LabelFor(m => m.Email)</td>
+        <th>@Html.LabelFor(m => m.Email)</th>
         <td>@Html.DisplayFor(m => m.Email)</td>
     </tr>
 
     <tr>
-        <td>@Html.LabelFor(m => m.GeboorteDatum)</td>
+        <th>@Html.LabelFor(m => m.GeboorteDatum)</th>
         <td>@Html.DisplayFor(m => m.GeboorteDatum)</td>
     </tr>
 
     <tr>
-        <td>@Html.LabelFor(m => m.Opvangtehuis)</td>
+        <th>@Html.LabelFor(m => m.Opvangtehuis)</th>
         <td>@Html.DisplayFor(m => m.Opvangtehuis)</td>
     </tr>
 </table>
 
-@if (Model.TypeGebruiker.Contains("Opvoeder"))
-{
-    @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
-}
-else if (Model.TypeGebruiker.Contains("Admin"))
-{
-    @Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker")
-}
-else
-{
-    @Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")
-}
+<div class="terugButton">
+    @if (Model.TypeGebruiker.Contains("Opvoeder"))
+    {
+        @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
+    }
+    else if (Model.TypeGebruiker.Contains("Admin"))
+    {
+        @Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker")
+    }
+    else
+    {
+        @Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")
+    }
+</div>
 
 @if (Model.Sancties.Count != 0) {
     <table class="table">

@@ -11,7 +11,7 @@
         <th>Doorgestuurd op</th>
         <th class="omschrijvingColumn">Omschrijving</th>
     </tr>
-    
+
     @foreach (var m in Model.List)
     {
         <tr>
@@ -21,5 +21,7 @@
         </tr>
     }
 </table>
-@Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
 
+<div class="terugButton">
+    @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
+</div>

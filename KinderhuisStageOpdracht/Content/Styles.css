@@ -3,6 +3,20 @@
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
+    background-color: #38A65B;
+    height: 100%;
+}
+html {
+    height: 100%;
+}
+
+.body-content {
+    background-color: #38A65B;
+    height: 100%;
+}
+
+.navbar {
+    background-color: #286366;
 }
 
 #loginContainer {
@@ -108,6 +122,9 @@ input[type="text"], input[type="password"], textarea {
 .category-menu {
     margin: 0;
     padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
     .category-menu > li {
@@ -127,7 +144,15 @@ input[type="text"], input[type="password"], textarea {
             display: table-cell;
             vertical-align: middle;
             text-align: center;
+            border: solid 5px;
             border-radius: 5px;
+            color: black;
+            border-color: #348CFF;
+            text-decoration: none;
+        }
+
+        .category-menu > li > a:hover {
+           border-color: #1042B0;
         }
 
 .menuItemBox {
@@ -288,18 +313,53 @@ input[type="text"], input[type="password"], textarea {
 }
 
 footer {
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
     border-top: solid 1px lightgrey;
-    width: 60%;
+    background-color: #286366;
+    width: 100%;
     position: absolute;
     bottom: 0;
     padding-top: 10px;
-    height: 60px; /* Height of the footer */
+    height: 5%; /* Height of the footer */
+    color: white;
 }
 
 .omschrijvingColumn {
     width: 65%;
+}
+
+#detailTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#detailTable, #detailTable td, #detailTable th{
+    /*border: 1px solid black;*/
+    padding: 5px;
+}
+
+#detailTable th {
+    width: 150px;
+}
+
+.terugButton {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.terugButton  a{
+    padding: 7px;
+    border: 3px solid black;
+    background-color: #2DE5AC;
+    text-decoration: none;
+    color: black;
+    
+}
+
+.terugButton  a:hover{
+    padding: 7px;
+    border: 3px solid white;
+    background-color: #E75928;
 }
 
 /*Begin checkbox animated*/
