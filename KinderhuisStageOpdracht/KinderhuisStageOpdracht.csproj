@@ -383,7 +383,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\Avatar\" />
+    <Folder Include="Content\Images\ProfielAfbeelding\" />
     <Folder Include="Views\Planning\" />
   </ItemGroup>
   <ItemGroup>

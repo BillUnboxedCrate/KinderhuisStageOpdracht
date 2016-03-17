@@ -4,7 +4,7 @@
     ViewBag.Title = "View";
 }
 
-@using (Html.BeginForm("CreateOpvoeder", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("CreateOpvoeder", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <h2>Maak een nieuwe opvoeder aan.</h2>

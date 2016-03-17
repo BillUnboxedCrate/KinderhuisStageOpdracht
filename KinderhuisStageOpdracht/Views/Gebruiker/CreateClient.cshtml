@@ -4,7 +4,7 @@
     ViewBag.Title = "View";
 }
 
-@using (Html.BeginForm("CreateClient", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("CreateClient", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <h2>Maak een nieuwe cliënt aan.</h2>
@@ -42,16 +42,16 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Opvangtehuizen, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.Opvangtehuizen, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.GeselecteerdOpvangtehuisId, new SelectList(Model.Opvangtehuizen), new {@class = "form-control"})
+            @Html.DropDownListFor(m => m.GeselecteerdOpvangtehuisId, new SelectList(Model.Opvangtehuizen), new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.ImageUpload, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ImageUpload, new {type = "file" })
+            @Html.TextBoxFor(m => m.ImageUpload, new { @class = "form-control", @type = "file" })
             @Html.ValidationMessageFor(m => m.ImageUpload, "", new { @class = "text-danger" })
         </div>
     </div>

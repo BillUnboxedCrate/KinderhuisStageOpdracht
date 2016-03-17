@@ -3,27 +3,28 @@
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
-    background-color: #38A65B;
     height: 100%;
-    margin-bottom: 40px;
 }
 
 html {
-    margin-bottom: 0;
 }
 
 .body-content {
-    background-color: #38A65B;
     height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.form {
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
-.form{
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;   
-}
+    .form th {
+        width: 100px;
+    }
 
 .navbar {
     background-color: #286366;
@@ -290,6 +291,12 @@ input[type="text"], input[type="password"], textarea {
 #postBlock {
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+}
+
+textarea {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #myPost {
@@ -377,10 +384,10 @@ footer {
     text-align: center;
 }
 
-.buttontable td{
-    padding: 10px;
-    margin-top: 20px;
-} 
+    .buttontable td {
+        padding: 10px;
+        margin-top: 20px;
+    }
 
 .button {
     padding: 7px;
@@ -390,11 +397,11 @@ footer {
     color: black;
 }
 
-.button:hover {
-    padding: 7px;
-    border: 3px solid white;
-    background-color: #E75928;
-}
+    .button:hover {
+        padding: 7px;
+        border: 3px solid white;
+        background-color: #E75928;
+    }
 
 /*Begin checkbox animated*/
 /*input[type=checkbox] {

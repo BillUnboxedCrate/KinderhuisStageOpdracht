@@ -14,7 +14,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Forums = new List<Forum>();
         }
 
-        public Opvoeder(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum)
+        public Opvoeder(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum, string imageUrl)
         {
             Naam = naam;
             Voornaam = voornaam;
@@ -24,6 +24,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Wachtwoord = wachtwoord;
             Salt = salt;
             GeboorteDatum = geboortedatum;
+            ImageUrl = imageUrl;
         }
 
         public Forum GetForumById(int id)

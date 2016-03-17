@@ -240,8 +240,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Kies een opvangtehuis")]
             public List<string> Opvangtehuizen { get; set; }
 
-            [DataType(DataType.Upload)]
             [Display(Name = "Kies een foto")]
+            [DataType(DataType.Upload)]
             public HttpPostedFileBase ImageUpload { get; set; }
 
             [Required]
@@ -460,7 +460,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public bool Mine { get; set; }
             public string Boodschap { get; set; }
 
-            public PostViewModel(){ }
+            public PostViewModel() { }
 
             public PostViewModel(string sendby, DateTime timestamp, string boodschap, bool mine)
             {

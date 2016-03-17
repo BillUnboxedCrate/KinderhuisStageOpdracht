@@ -22,7 +22,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Sancties = new List<Sanctie>();
         }
 
-        public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum)
+        public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum, string imageUrl)
         {
             Naam = naam;
             Voornaam = voornaam;
@@ -32,6 +32,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Wachtwoord = wachtwoord;
             Salt = salt;
             GeboorteDatum = geboortedatum;
+            ImageUrl = imageUrl;
         }
 
         public void AddKamerControle(KamerControle kamerControle)

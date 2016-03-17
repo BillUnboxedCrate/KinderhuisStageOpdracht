@@ -11,24 +11,24 @@
     <table class="form">
         <tr>
             <th>
-                @Html.LabelFor(m => m.Beschrijving, new { @class = "" })
+                @Html.LabelFor(m => m.Beschrijving, new { @class = "control-label" })
             </th>
             <td>
-                @Html.TextAreaFor(m => m.Beschrijving, new { @class = "" })
+                @Html.TextAreaFor(m => m.Beschrijving, new { @class = "form-control", @cols = 40, @rows = 5 })
                 @Html.ValidationMessageFor(m => m.Beschrijving, "", new { @class = "text-danger" })
             </td>
         </tr>
 
         <tr>
             <th>
-                @Html.LabelFor(m => m.Genres, new { @class = "" })
+                @Html.LabelFor(m => m.Genres, new { @class = "control-label" })
             </th>
             <td>
-                @Html.DropDownListFor(m => m.GeselecteerdGenre, Model.Genres, new { @class = "" })
+                @Html.DropDownListFor(m => m.GeselecteerdGenre, Model.Genres, new { @class = "form-control" })
             </td>
         </tr>
     </table>
-
+    <br/>
     <table class="form">
         <tr>
             <td>

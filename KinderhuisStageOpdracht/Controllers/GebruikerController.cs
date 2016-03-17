@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -149,7 +150,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                     var opvoeder = new Opvoeder(model.Naam, model.Voornaam,
                         _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                        model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum);
+                        model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum, ImageUploadProfielAfbeelding(model.ImageUpload));
 
                     _gebruikerRepository.AddOpvoeder(opvoeder);
                     _gebruikerRepository.SaveChanges();
@@ -213,7 +214,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                         var client = new Client(model.Naam, model.Voornaam,
                             _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                            model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum);
+                            model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum, ImageUploadProfielAfbeelding(model.ImageUpload));
 
                         _gebruikerRepository.AddClient(client);
                         _gebruikerRepository.SaveChanges();
@@ -559,7 +560,22 @@ namespace KinderhuisStageOpdracht.Controllers
             return View();
         }
 
+        #region helper
 
+        public string ImageUploadProfielAfbeelding(HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                var pic = System.IO.Path.GetFileName(file.FileName);
+                var path = System.IO.Path.Combine(Server.MapPath("~/Content/Images/ProfielAfbeelding"), pic);
+
+                file.SaveAs(path);
+
+                return path;
+            }
+            return "~/Content/Images/Aanduidingen/vraagteken.png";  
+        }
+        #endregion
 
 
     }
