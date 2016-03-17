@@ -17,13 +17,16 @@ html {
 }
 
 .form {
-    text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
     .form th {
-        width: 100px;
+        width: 150px;
+    }
+
+    .form td {
+        width: 250px;
     }
 
 .navbar {
@@ -361,6 +364,7 @@ footer {
 
 .terugButton {
     margin-top: 20px;
+    margin-bottom: 40px;
     text-align: center;
 }
 
@@ -403,6 +407,9 @@ footer {
         background-color: #E75928;
     }
 
+    #menuDate {
+        text-align: center;
+    }
 /*Begin checkbox animated*/
 /*input[type=checkbox] {
   opacity: 0;

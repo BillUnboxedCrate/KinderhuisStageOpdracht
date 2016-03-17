@@ -10,17 +10,17 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
-    <div class="form">
-        @Html.LabelFor(m => m.BeginWeek)
+    <div id="menuDate">
+        @Html.LabelFor(m => m.BeginWeek, new { @class = "control-label" })
         <div>
             @if (Model.Id <= 0)
             {
-                @Html.TextBoxFor(m => m.BeginWeek, new { @class = "datepickermonday", @readonly = true, @Value = Model.BeginWeek.ToString("dd/MM/yyyy") })
+                @Html.TextBoxFor(m => m.BeginWeek, new { @class = "datepickermonday form-control", @readonly = true, @Value = Model.BeginWeek.ToString("dd/MM/yyyy") })
                 @Html.ValidationMessageFor(m => m.BeginWeek, "", new { @class = "text-danger" })
             }
             else
             {
-                @Html.TextBoxFor(m => m.BeginWeek, new { @class = "datepickermondayedit", @readonly = true, @Value = Model.BeginWeek.ToString("dd/MM/yyyy") })
+                @Html.TextBoxFor(m => m.BeginWeek, new { @class = "datepickermondayedit form-control", @readonly = true, @Value = Model.BeginWeek.ToString("dd/MM/yyyy") })
                 @Html.ValidationMessageFor(m => m.BeginWeek, "", new { @class = "text-danger" })
             }
 

@@ -38,9 +38,14 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult CreateStraf(StrafViewModel.StrafIndexViewModel model)
         {
-            var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+            if (!ImageIsValidType(model.ImageUpload))
+            {
+                ModelState.AddModelError("ImageUpload", "Dit is geen foto");
+            }
+
             if (ModelState.IsValid)
             {
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
                 opvangtehuis.AddStraf(new Straf(model.Naam, "~/Content/Images/Aanduidingen/vraagteken.png"));
                 _gebruikerRepository.SaveChanges();
 
@@ -49,7 +54,40 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             return View();
-            
+
         }
+
+        #region helper
+        public string ImageUploadStrafAfbeeling(HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                var pic = System.IO.Path.GetFileName(file.FileName);
+                var path = System.IO.Path.Combine(Server.MapPath("~/Content/Images/StrafImages"), pic);
+
+                file.SaveAs(path);
+
+                return path;
+            }
+            return "~/Content/Images/Aanduidingen/vraagteken.png";
+        }
+
+        public bool ImageIsValidType(HttpPostedFileBase file)
+        {
+            var validImageTypes = new[]
+            {
+                "image/gif",
+                "image/jpeg",
+                "image/pjpeg",
+                "image/png"
+            };
+
+            if (validImageTypes.Contains(file.ContentType))
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
     }
 }

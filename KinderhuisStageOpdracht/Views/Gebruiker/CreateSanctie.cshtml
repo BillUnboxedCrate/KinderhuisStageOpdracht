@@ -3,60 +3,73 @@
     ViewBag.Title = "CreateSanctie";
 }
 
-<h2>CreateSanctie</h2>
-
-@using (Html.BeginForm("CreateSanctie", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("CreateSanctie", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
     <h2>Maak een sanctie aan</h2>
     <hr />
     @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
+    <table class="form">
+        <tr>
+            <th>
+                @Html.LabelFor(m => m.Client, new { @class = "control-label" })
+            </th>
+            <td>
+                @Html.DisplayFor(m => m.Client, new { @class = "form-control" })
+            </td>
+        </tr>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Client, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.DisplayFor(m => m.Client, new {@class = "form-control"})
-        </div>
-    </div>
+        <tr>
+            <th>
+                @Html.LabelFor(m => m.Straffen, new { @class = "control-label" })
+            </th>
+            <td>
+                @Html.DropDownListFor(m => m.GeselecteerdeStraf, new SelectList(Model.Straffen), new { @class = "form-control" })
+            </td>
+        </tr>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Straffen, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.GeselecteerdeStraf, new SelectList(Model.Straffen), new { @class = "form-control" })
-        </div>
-    </div>
+        <tr>
+            <th>
+                @Html.LabelFor(m => m.Date, new { @class = "control-label" })
+            </th>
+            <td>
+                @Html.TextBoxFor(m => m.Date, new { @class = "form-control datepickersanctie", @readonly = true, @Value = Model.Date.ToString("dd/MM/yyyy") })
+                @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
+            </td>
+        </tr>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Date, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Date, new {@class = "form-control datepickersanctie", @readonly = true, @Value = Model.Date.ToString("dd/MM/yyyy")})
-            @Html.ValidationMessageFor(m => m.Date, "", new {@class = "text-danger"})
-        </div>
-    </div>
+        <tr>
+            <th>
+                @Html.LabelFor(m => m.AantalDagen, new { @class = "control-label" })
+            </th>
+            <td>
+                @Html.TextBoxFor(m => m.AantalDagen, new { @class = "form-control", @Value = 1, @type = "number", @min = 1 })
+                @Html.ValidationMessageFor(m => m.AantalDagen, "", new { @class = "text-danger" })
+            </td>
+        </tr>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.AantalDagen, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.AantalDagen, new { @class = "form-control", @Value = 1, @type = "number", @min = 1})
-            @Html.ValidationMessageFor(m => m.AantalDagen, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        <tr>
+            <th>
+                @Html.LabelFor(m => m.Rede, new { @class = "control-label" })
+            </th>
+            <td>
+                @Html.TextAreaFor(m => m.Rede, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Rede, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+    </table>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Rede, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(m => m.Rede, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Rede, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Geef sanctie" />
-        </div>
-    </div>
+    <table class="buttontable">
+        <tr>
+            <td>
+                <input type="submit" class="button" value="Geef sanctie" />
+            </td>
+            <td>
+                <span class="terugButton">
+                    @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
+                </span>
+            </td>
+        </tr>
+    </table>
 }
-<div class="terugButton">
-    @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
-</div>

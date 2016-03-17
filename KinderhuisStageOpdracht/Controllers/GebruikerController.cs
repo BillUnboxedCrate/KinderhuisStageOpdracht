@@ -135,6 +135,11 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateOpvoeder(GebruikerViewModel.CreateOpvoederViewModel model)
         {
+            if (!ImageIsValidType(model.ImageUpload))
+            {
+                ModelState.AddModelError("ImageUpload", "Dit is geen foto");
+            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -144,6 +149,8 @@ namespace KinderhuisStageOpdracht.Controllers
                         this.AddNotification("Er is al reeds iemand met deze gebruikersnaam", NotificationType.ERROR);
                         return RedirectToAction("CreateOpvoeder");
                     }
+
+
 
                     var crypto = new SimpleCrypto.PBKDF2();
                     var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
@@ -196,6 +203,11 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateClient(GebruikerViewModel.CreateClientViewModel model)
         {
+            if (!ImageIsValidType(model.ImageUpload))
+            {
+                ModelState.AddModelError("ImageUpload", "Dit is geen foto");
+            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -253,10 +265,10 @@ namespace KinderhuisStageOpdracht.Controllers
 
             var gebruiker = _gebruikerRepository.FindById(id);
             GebruikerViewModel.DetailViewModel dvm = null;
-            
+
             if (gebruiker != null)
             {
-                var type = _gebruikerRepository.FindById((int) Session["gebruiker"]).GetType().Name;
+                var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
                 dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
                     gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis(), type);
 
@@ -428,20 +440,27 @@ namespace KinderhuisStageOpdracht.Controllers
             var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
             var kamercontrole = client.GetTodaysKamerControle();
             var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
+            var kclivm = new GebruikerViewModel.KamerControleListIndexViewModel(client.Id);
 
-            if (kamercontrole == null)
+            if (kamercontrole != null)
             {
-                return View(lkcivm);
+                //Kamercontrole items
+                foreach (var i in kamercontrole.KamerControleItems)
+                {
+                    lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtImageUrl(), i.GetControleOpdrachtTitel(), i.GetControleOpdrachtBeschrijving(), i.OpdrachtGedaanControle, i.Uitleg));
+                }
             }
 
-            _gebruikerRepository.SaveChanges();
-
-            foreach (var i in kamercontrole.KamerControleItems)
+            //Overzicht van de kamercontroles
+            foreach (var i in client.GetKamerControles())
             {
-                lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtImageUrl(), i.GetControleOpdrachtTitel(), i.GetControleOpdrachtBeschrijving(), i.OpdrachtGedaanControle));
+                kclivm.AddKamerControleIndexItem(new GebruikerViewModel.KamerControleIndexViewModel(i.Id, i.Datum, i.IsAllesInOrde()));
             }
 
-            return View(lkcivm);
+            var kccvm = new GebruikerViewModel.KamerControleClientViewModel(lkcivm, kclivm);
+
+
+            return View(kccvm);
         }
 
 
@@ -486,6 +505,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 foreach (var ivm in model.KamerControleItems.Where(m => m.Titel == i.GetControleOpdrachtTitel()))
                 {
                     i.OpdrachtGedaanControle = ivm.DoneOpvoeder;
+                    i.Uitleg = ivm.Uitleg;
                 }
             }
             _gebruikerRepository.SaveChanges();
@@ -521,7 +541,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
 
-            
+
             var forum = client.GetForum(opvoeder, client);
             var fvm = new GebruikerViewModel.ForumViewModel(forum.Id, type);
 
@@ -561,7 +581,6 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         #region helper
-
         public string ImageUploadProfielAfbeelding(HttpPostedFileBase file)
         {
             if (file != null)
@@ -573,7 +592,24 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 return path;
             }
-            return "~/Content/Images/Aanduidingen/vraagteken.png";  
+            return "~/Content/Images/Aanduidingen/vraagteken.png";
+        }
+
+        public bool ImageIsValidType(HttpPostedFileBase file)
+        {
+            var validImageTypes = new[]
+            {
+                "image/gif",
+                "image/jpeg",
+                "image/pjpeg",
+                "image/png"
+            };
+
+            if (validImageTypes.Contains(file.ContentType))
+            {
+                return true;
+            }
+            return false;
         }
         #endregion
 

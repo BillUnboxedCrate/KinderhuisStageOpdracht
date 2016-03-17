@@ -4,7 +4,7 @@
 }
 
 <h2>CreateStraf</h2>
-@using (Html.BeginForm("CreateStraf", "Straf", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("CreateStraf", "Straf", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     <div class="form-group">

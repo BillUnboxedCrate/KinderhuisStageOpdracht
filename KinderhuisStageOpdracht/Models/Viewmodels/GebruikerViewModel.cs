@@ -563,6 +563,22 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
         //Kamercontrole
         #region Kamercontrole
+
+        public class KamerControleClientViewModel
+        {
+            public ListKamerControleItemsViewmodel ListKamerControleItemsViewmodel { get; set; }
+            public KamerControleListIndexViewModel KamerControleListIndexViewModel { get; set; }
+
+            public KamerControleClientViewModel() { }
+
+            public KamerControleClientViewModel(ListKamerControleItemsViewmodel model1,
+                KamerControleListIndexViewModel model2)
+            {
+                ListKamerControleItemsViewmodel = model1;
+                KamerControleListIndexViewModel = model2;
+            }
+        }
+
         public class ListKamerControleItemsViewmodel
         {
             public List<KamerControleItemViewModel> KamerControleItems { get; set; }
@@ -588,11 +604,13 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public KamerControleItemViewModel() { }
 
-            public KamerControleItemViewModel(string imageUrl, string titel, string beschrijving, bool doneOpvoeder)
+            public KamerControleItemViewModel(string imageUrl, string titel, string beschrijving, bool doneOpvoeder, string uitleg)
             {
                 ImageUrl = imageUrl;
                 Titel = titel;
                 Beschrijving = beschrijving;
+                DoneOpvoeder = doneOpvoeder;
+                Uitleg = uitleg;
             }
 
             public KamerControleItemViewModel(string titel, string beschrijving, bool doneOpvoeder, string uitleg)

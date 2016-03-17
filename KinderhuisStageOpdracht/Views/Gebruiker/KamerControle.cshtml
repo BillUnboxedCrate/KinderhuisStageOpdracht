@@ -1,10 +1,10 @@
-﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.ListKamerControleItemsViewmodel
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.KamerControleClientViewModel
 @{
     ViewBag.Title = "KamerControle";
 }
 
 <h2>KamerControle</h2>
-@if (Model.KamerControleItems.Count == 0)
+@if (Model.ListKamerControleItemsViewmodel.KamerControleItems.Count == 0)
 {
     <div class="nogNietAanwezig">
         @Html.Label("De opvoeder moet je kamer nog controleren")
@@ -17,21 +17,21 @@ else
             <th>Taak</th>
             <th>Kleine beschrijving</th>
             <th>Is dit gebeurd</th>
-            <th>Uitleg</th>
+            <th>Opmerking</th>
         </tr>
 
-        @for (int i = 0; i < Model.KamerControleItems.Count(); i++)
+        @for (int i = 0; i < Model.ListKamerControleItemsViewmodel.KamerControleItems.Count(); i++)
         {
             <tr>
                 <td>
-                    <div id="kamercontroleTitel">@Html.DisplayFor(modelItem => Model.KamerControleItems[i].Titel)</div>
-                    @Html.HiddenFor(modelItem => Model.KamerControleItems[i].Titel)
-                    <img src="@Url.Content(@Model.KamerControleItems[i].ImageUrl)" class="kamerControleImage" />
+                    <div id="kamercontroleTitel">@Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Titel)</div>
+                    @Html.HiddenFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Titel)
+                    <img src="@Url.Content(@Model.ListKamerControleItemsViewmodel.KamerControleItems[i].ImageUrl)" class="kamerControleImage" />
                 </td>
-                <td>@Html.DisplayFor(modelItem => Model.KamerControleItems[i].Beschrijving)</td>
+                <td>@Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Beschrijving)</td>
                 <td>
                     @*@(o.InOrde ? Html.Label("Ja") : Html.Label("Nee"))*@
-                    @if (@Model.KamerControleItems[i].DoneOpvoeder)
+                    @if (@Model.ListKamerControleItemsViewmodel.KamerControleItems[i].DoneOpvoeder)
                     {
                         <img src="@Url.Content("~/Content/Images/Aanduidingen/vinkje.png")" alt="Ja" class="aanduidingsImage" />
                     }
@@ -40,11 +40,38 @@ else
                         <img src="@Url.Content("~/Content/Images/Aanduidingen/cross.png")" alt="Nee" class="aanduidingsImage" />
                     }
                 </td>
-                <td>@Html.DisplayFor(modelItem => Model.KamerControleItems[i].Uitleg)</td>
+                <td>@Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Uitleg)</td>
             </tr>
         }
     </table>
 }
+
 <div class="terugButton">
     @Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")
 </div>
+
+
+<table class="table">
+    <tr>
+        <th>Datum</th>
+        <th>Alles In orde</th>
+    </tr>
+
+    @foreach (var o in Model.KamerControleListIndexViewModel.List)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => o.Datum)</td>
+            <td>
+                @*@(o.InOrde ? Html.Label("Ja") : Html.Label("Nee"))*@
+                @if (o.InOrde)
+                {
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/vinkje.png")" alt="Ja" class="aanduidingsImage" />
+                }
+                else
+                {
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/cross.png")" alt="Nee" class="aanduidingsImage" />
+                }
+            </td>
+        </tr>
+    }
+</table>
