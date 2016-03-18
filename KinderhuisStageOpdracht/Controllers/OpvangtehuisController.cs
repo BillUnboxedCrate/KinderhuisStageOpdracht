@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Net.Configuration;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using KinderhuisStageOpdracht.Extensions;
 using KinderhuisStageOpdracht.Models.Domain;
 using KinderhuisStageOpdracht.Models.Viewmodels;
@@ -25,7 +27,11 @@ namespace KinderhuisStageOpdracht.Controllers
         // GET: Opvangtehuis
         public ActionResult Suggesties()
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -46,7 +52,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateSuggestie()
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -60,7 +70,11 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateSuggestie(OpvangtehuisViewModel.CreateSuggestieViewModel model)
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -86,7 +100,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult DeleteSuggestie(int id)
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -102,7 +120,10 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteSuggestion(int id)
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
             try
             {
                 var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
@@ -121,7 +142,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult MenuIndex()
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -142,7 +167,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateMenu()
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -184,7 +213,17 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateMenu(OpvangtehuisViewModel.MenuViewModel model)
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
+            if (model.BeginWeek.DayOfWeek != DayOfWeek.Monday)
+            {
+                ModelState.AddModelError("", "De dag die gekozen is, is geen maandag");
+                this.AddNotification("De dag die gekozen is, is geen maandag", NotificationType.ERROR);
+            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -284,14 +323,18 @@ namespace KinderhuisStageOpdracht.Controllers
                     ModelState.AddModelError("", e.Message);
                 }
             }
-            this.AddNotification("Er was ergens een fout", NotificationType.ERROR);
-            return View();
+
+            return RedirectToAction("CreateMenu");
         }
 
         //Extreem slordige code, moet later herwerkt worden
         public ActionResult EditMenu(int id)
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -365,7 +408,11 @@ namespace KinderhuisStageOpdracht.Controllers
         //Reformat needed
         public ActionResult WeekMenu()
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -441,7 +488,10 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KlachtIndex()
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
 
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var lkvm = new OpvangtehuisViewModel.ListKlachtViewModel();
@@ -456,14 +506,22 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Klacht()
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             return View();
         }
 
         [HttpPost]
         public ActionResult Klacht(OpvangtehuisViewModel.KlachtViewModel model)
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -497,8 +555,15 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult UserStillLoggedIn()
         {
+            //string szCookieHeader = Request.Headers["gebruiker"];
+            //if ((null != szCookieHeader) && (szCookieHeader.IndexOf("ASP.NET_SessionId") >= 0))
+            //{
+            //    return RedirectToAction("LogOff", "Account");
+            //} 
+
             if (Session["gebruiker"] == null)
             {
+                FormsAuthentication.SignOut();
                 return RedirectToAction("Login", "Account");
             }
             return null;

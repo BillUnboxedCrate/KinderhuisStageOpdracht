@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using KinderhuisStageOpdracht.Extensions;
 using KinderhuisStageOpdracht.Models.Domain;
 using KinderhuisStageOpdracht.Models.Viewmodels;
@@ -21,7 +22,11 @@ namespace KinderhuisStageOpdracht.Controllers
         // GET: Klacht
         public ActionResult Index()
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var silvm = new StrafViewModel.StrafListIndexViewModel();
             foreach (var s in opvangtehuis.GetStraffen())
@@ -33,14 +38,22 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateStraf()
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             return View();
         }
 
         [HttpPost]
         public ActionResult CreateStraf(StrafViewModel.StrafIndexViewModel model)
         {
-            UserStillLoggedIn();
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             if (!ImageIsValidType(model.ImageUpload))
             {
                 ModelState.AddModelError("ImageUpload", "Dit is geen foto");
@@ -96,6 +109,7 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             if (Session["gebruiker"] == null)
             {
+                FormsAuthentication.SignOut();
                 return RedirectToAction("Login", "Account");
             }
             return null;
