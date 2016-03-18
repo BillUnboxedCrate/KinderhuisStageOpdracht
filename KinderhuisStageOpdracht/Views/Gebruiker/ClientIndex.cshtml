@@ -17,6 +17,7 @@
 <h3>Opvoeders</h3>
 <table class="table">
     <tr>
+        @*<th>Afbeelding</th>*@
         <th>Naam</th>
         <th>Acties</th>
     </tr>
@@ -24,12 +25,15 @@
     @foreach (var o in Model.Opvoeders)
     {
         <tr>
+            @*<td>
+                <img src="@Url.Content(o.ImageUrl)" class="indexAfbeelding" />
+            </td>*@
             <td>@Html.DisplayFor(modelItem => o.FullName)</td>
 
             <td>
-                @Html.ActionLink("Details", "Details", new { id = o.Id })
+                @Html.ActionLink("Details", "Details", new {id = o.Id})
                 <span> | </span>
-                @Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })
+                @Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new {id = o.Id})
             </td>
         </tr>
     }

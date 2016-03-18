@@ -31,16 +31,18 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Voornaam { get; set; }
             public string Email { get; set; }
             public string Opvangtehuis { get; set; }
+            public string ImageUrl { get; set; }
 
             public OpvoederViewModel()
             {
             }
 
-            public OpvoederViewModel(int id, string voornaam, string fullname)
+            public OpvoederViewModel(string voornaam, string fullname, string imageUrl)
             {
-                Id = id;
+                //Id = id;
                 Voornaam = voornaam;
                 FullName = fullname;
+                ImageUrl = imageUrl;
             }
 
             public OpvoederViewModel(int id, string fullname, string email, string opvangtehuis)
@@ -74,16 +76,18 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Voornaam { get; set; }
             public string Email { get; set; }
             public string Opvangtehuis { get; set; }
+            public string ImageUrl { get; set; }
 
             public ClientViewModel()
             {
             }
 
-            public ClientViewModel(int id, string fullname, string voornaam)
+            public ClientViewModel(string fullname, string voornaam, string imageUrl)
             {
-                Id = id;
+                //Id = id;
                 Voornaam = voornaam;
                 FullName = fullname;
+                ImageUrl = imageUrl;
             }
 
             public ClientViewModel(int id, string fullname, string email, string opvangtehuis)
@@ -330,6 +334,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Opvangtehuis")]
             public string Opvangtehuis { get; set; }
 
+            public string ImageUrl { get; set; }
+
             public string TypeGebruiker { get; set; }
 
             public DetailViewModel()
@@ -338,7 +344,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
 
             public DetailViewModel(int id, string naam, string voornaam, DateTime? geboortedatum, string gebruikersnaam,
-                string email, string opvangtehuis, string typeGebruiker)
+                string email, string opvangtehuis, string typeGebruiker, string imageUrl)
             {
                 Id = id;
                 Naam = naam;
@@ -348,6 +354,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Email = email;
                 Opvangtehuis = opvangtehuis;
                 TypeGebruiker = typeGebruiker;
+                ImageUrl = imageUrl;
                 Sancties = new List<SanctieViewModel>();
             }
 

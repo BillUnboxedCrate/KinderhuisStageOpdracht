@@ -49,7 +49,7 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var gebruiker in opvoeders)
             {
                 var o = (Opvoeder)gebruiker;
-                var opvoedervm = new GebruikerViewModel.OpvoederViewModel(o.Id, o.Voornaam, o.GiveFullName());
+                var opvoedervm = new GebruikerViewModel.OpvoederViewModel(o.Voornaam, o.GiveFullName(), o.ImageUrl);
                 clientlistvm.AddOpvoeder(opvoedervm);
             }
 
@@ -79,7 +79,7 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var gebruiker in clients)
             {
                 var c = (Client)gebruiker;
-                var clientvm = new GebruikerViewModel.ClientViewModel(c.Id, c.GiveFullName(), c.Voornaam);
+                var clientvm = new GebruikerViewModel.ClientViewModel(c.GiveFullName(), c.Voornaam, c.ImageUrl);
 
                 clientlistvm.AddClient(clientvm);
             }
@@ -311,7 +311,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
                 dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis(), type);
+                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
 
                 if (gebruiker is Client)
                 {
@@ -351,7 +351,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 string type = gebruiker.GetType().ToString();
                 dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis(), type);
+                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
             }
             return View(dvm);
         }

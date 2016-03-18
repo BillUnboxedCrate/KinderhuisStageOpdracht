@@ -416,6 +416,17 @@ footer {
     margin-right: auto;
 }
 
+.profileImage {
+    height: auto;
+    width: 200px;
+    float: left;
+}
+
+.indexAfbeelding {
+    height: auto;
+    width: 20px;
+}
+
 
 /*Begin checkbox animated*/
 /*input[type=checkbox] {

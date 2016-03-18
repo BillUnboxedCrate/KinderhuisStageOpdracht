@@ -63,7 +63,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "bram.baert@hotmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1
+                Opvangtehuis = opvangtehuis1,
+                ImageUrl = "~/Content/Images/Aanduidingen/vraagteken.png"
 
             };
 
@@ -77,7 +78,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1
+                Opvangtehuis = opvangtehuis1,
+                ImageUrl = "~/Content/Images/ProfielAfbeelding/tomds.jpg"
             };
 
             var opvoeder2 = new Opvoeder()
@@ -89,7 +91,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "yannickbraeckman@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis2
+                Opvangtehuis = opvangtehuis2,
+                ImageUrl = "~/Content/Images/Aanduidingen/vraagteken.png"
             };
 
             //Clients
@@ -102,7 +105,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "brikke.bauwens@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1
+                Opvangtehuis = opvangtehuis1,
+                ImageUrl = "~/Content/Images/Aanduidingen/vraagteken.png"
             };
 
             var client2 = new Client()
@@ -113,7 +117,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Gebruikersnaam = "RoyHollanders",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1
+                Opvangtehuis = opvangtehuis1,
+                ImageUrl = "~/Content/Images/Aanduidingen/vraagteken.png"
             };
 
             var client3 = new Client()
@@ -125,7 +130,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Email = "doglife3@runescape.ayy",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1
+                Opvangtehuis = opvangtehuis1,
+                ImageUrl = "~/Content/Images/Aanduidingen/vraagteken.png"
             };
 
             var client4 = new Client()
@@ -136,7 +142,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Gebruikersnaam = "SeanBraeckman",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis2
+                Opvangtehuis = opvangtehuis2,
+                ImageUrl = "~/Content/Images/Aanduidingen/vraagteken.png"
             };
 
             //Add admins
