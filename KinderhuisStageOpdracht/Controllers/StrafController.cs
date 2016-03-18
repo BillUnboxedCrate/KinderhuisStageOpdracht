@@ -21,6 +21,7 @@ namespace KinderhuisStageOpdracht.Controllers
         // GET: Klacht
         public ActionResult Index()
         {
+            UserStillLoggedIn();
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var silvm = new StrafViewModel.StrafListIndexViewModel();
             foreach (var s in opvangtehuis.GetStraffen())
@@ -32,12 +33,14 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateStraf()
         {
+            UserStillLoggedIn();
             return View();
         }
 
         [HttpPost]
         public ActionResult CreateStraf(StrafViewModel.StrafIndexViewModel model)
         {
+            UserStillLoggedIn();
             if (!ImageIsValidType(model.ImageUpload))
             {
                 ModelState.AddModelError("ImageUpload", "Dit is geen foto");
@@ -87,6 +90,15 @@ namespace KinderhuisStageOpdracht.Controllers
                 return true;
             }
             return false;
+        }
+
+        public ActionResult UserStillLoggedIn()
+        {
+            if (Session["gebruiker"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            return null;
         }
         #endregion
     }

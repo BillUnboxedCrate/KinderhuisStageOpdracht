@@ -35,15 +35,15 @@
     <div class="container body-content">
         @Html.Partial("_Notifications")
         @RenderBody()
-        
-       
+
+
     </div>
 
     <footer>
         <p>&copy; @DateTime.Now.Year - Bram Baert</p>
     </footer>
 
-@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryui")
     @*<script>
@@ -145,7 +145,7 @@
             showButtonPanel: false,
             dateFormat: "dd/mm/yy",
             yearRange: "-nn:+nn",
-            beforeShowDay: function(date) {
+            beforeShowDay: function (date) {
                 var day = date.getDay();
                 return [(day === 1)];
             }

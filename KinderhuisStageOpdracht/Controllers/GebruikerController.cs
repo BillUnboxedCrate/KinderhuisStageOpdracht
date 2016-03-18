@@ -28,6 +28,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult ClientIndex()
         {
+            UserStillLoggedIn();
             if (Session["gebruiker"] == null || !Request.IsAuthenticated)
             {
                 return View("Error");
@@ -53,6 +54,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult OpvoederIndex()
         {
+            UserStillLoggedIn();
             if (Session["gebruiker"] == null || !Request.IsAuthenticated)
             {
                 return View("Error");
@@ -79,6 +81,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult AdminIndex()
         {
+            UserStillLoggedIn();
             if (Session["gebruiker"] == null || !Request.IsAuthenticated)
             {
                 return View("Error");
@@ -119,6 +122,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateOpvoeder()
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -135,6 +139,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateOpvoeder(GebruikerViewModel.CreateOpvoederViewModel model)
         {
+            UserStillLoggedIn();
             if (!ImageIsValidType(model.ImageUpload))
             {
                 ModelState.AddModelError("ImageUpload", "Dit is geen foto");
@@ -180,6 +185,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateClient()
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -203,6 +209,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateClient(GebruikerViewModel.CreateClientViewModel model)
         {
+            UserStillLoggedIn();
             if (!ImageIsValidType(model.ImageUpload))
             {
                 ModelState.AddModelError("ImageUpload", "Dit is geen foto");
@@ -258,6 +265,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Details(int id)
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -293,6 +301,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Delete(int id)
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -314,6 +323,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            UserStillLoggedIn();
             try
             {
                 _gebruikerRepository.DeleteGebruiker(id);
@@ -331,6 +341,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Edit(int id)
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -358,6 +369,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(GebruikerViewModel.EditViewModel model)
         {
+            UserStillLoggedIn();
             if (ModelState.IsValid)
             {
                 try
@@ -391,6 +403,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateSanctie(int id)
         {
+            UserStillLoggedIn();
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var svm = new GebruikerViewModel.SanctieViewModel(id, _gebruikerRepository.FindById(id).GiveFullName());
             svm.SetStraffen(opvangtehuis.GetStraffen().Select(s => s.Naam).ToList());
@@ -400,6 +413,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult CreateSanctie(GebruikerViewModel.SanctieViewModel model)
         {
+            UserStillLoggedIn();
             if (ModelState.IsValid)
             {
                 try
@@ -424,6 +438,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Sancties()
         {
+            UserStillLoggedIn();
             var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
             var slvm = new GebruikerViewModel.SanctieListViewModel();
 
@@ -437,6 +452,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KamerControle()
         {
+            UserStillLoggedIn();
             var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
             var kamercontrole = client.GetTodaysKamerControle();
             var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
@@ -466,6 +482,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KamerControleIndex(int id)
         {
+            UserStillLoggedIn();
             var client = (Client)_gebruikerRepository.FindById(id);
             Session["client"] = id;
             var kclivm = new GebruikerViewModel.KamerControleListIndexViewModel(client.Id);
@@ -480,6 +497,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KamerControleOpvoeder(int id)
         {
+            UserStillLoggedIn();
             var client = (Client)_gebruikerRepository.FindById(id);
             var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
             var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
@@ -496,6 +514,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult KamerControleOpvoeder(GebruikerViewModel.ListKamerControleItemsViewmodel model)
         {
+            UserStillLoggedIn();
             var client = (Client)_gebruikerRepository.FindById((int)Session["client"]);
             var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
             var kamercontrole = client.ViewKamerControle(opvangtehuis.GetKamerControleOpdrachten());
@@ -516,10 +535,12 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Forum(int id)
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
             }
+
             Client client;
             Opvoeder opvoeder;
             string type;
@@ -540,8 +561,6 @@ namespace KinderhuisStageOpdracht.Controllers
 
             }
 
-
-
             var forum = client.GetForum(opvoeder, client);
             var fvm = new GebruikerViewModel.ForumViewModel(forum.Id, type);
 
@@ -557,6 +576,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult Forum(GebruikerViewModel.ForumViewModel model)
         {
+            UserStillLoggedIn();
             if (ModelState.IsValid)
             {
                 var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
@@ -610,6 +630,15 @@ namespace KinderhuisStageOpdracht.Controllers
                 return true;
             }
             return false;
+        }
+
+        public ActionResult UserStillLoggedIn()
+        {
+            if (Session["gebruiker"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            return null;
         }
         #endregion
 

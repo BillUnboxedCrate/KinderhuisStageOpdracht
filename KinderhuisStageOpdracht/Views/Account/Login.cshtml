@@ -19,14 +19,14 @@
                         @*<h4>Meld je aan</h4>*@
                         <hr/>
                         @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-                        <div class="form-group">
+                        <div class="">
                             @Html.LabelFor(m => m.Gebruikersnaam, new {@class = "col-md-2 control-label"})
                             <div class="col-md-10">
                                 @Html.TextBoxFor(m => m.Gebruikersnaam, new {@class = "form-control"})<br/>
                                 @Html.ValidationMessageFor(m => m.Gebruikersnaam, "", new {@class = "text-danger"})
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="">
                             @Html.LabelFor(m => m.Password, new {@class = "col-md-2 control-label"})
                             <div class="col-md-10">
                                 @Html.PasswordFor(m => m.Password, new {@class = "form-control"})<br/>
@@ -42,7 +42,7 @@
                                 </div>
                             </div>*@
                         <br/>
-                        <div class="form-group">
+                        <div class="">
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" value="Log in" class="button-gray"/>
                             </div>

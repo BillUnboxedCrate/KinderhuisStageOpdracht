@@ -25,6 +25,7 @@ namespace KinderhuisStageOpdracht.Controllers
         // GET: Opvangtehuis
         public ActionResult Suggesties()
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -45,6 +46,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateSuggestie()
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -58,6 +60,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateSuggestie(OpvangtehuisViewModel.CreateSuggestieViewModel model)
         {
+            UserStillLoggedIn();
             if (ModelState.IsValid)
             {
                 try
@@ -83,6 +86,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult DeleteSuggestie(int id)
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -98,6 +102,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteSuggestion(int id)
         {
+            UserStillLoggedIn();
             try
             {
                 var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
@@ -116,6 +121,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult MenuIndex()
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -136,6 +142,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateMenu()
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -177,6 +184,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateMenu(OpvangtehuisViewModel.MenuViewModel model)
         {
+            UserStillLoggedIn();
             if (ModelState.IsValid)
             {
                 try
@@ -283,6 +291,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //Extreem slordige code, moet later herwerkt worden
         public ActionResult EditMenu(int id)
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -356,6 +365,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //Reformat needed
         public ActionResult WeekMenu()
         {
+            UserStillLoggedIn();
             if (!Request.IsAuthenticated)
             {
                 return View("Error");
@@ -431,6 +441,8 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KlachtIndex()
         {
+            UserStillLoggedIn();
+
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var lkvm = new OpvangtehuisViewModel.ListKlachtViewModel();
 
@@ -444,13 +456,14 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Klacht()
         {
-
+            UserStillLoggedIn();
             return View();
         }
 
         [HttpPost]
         public ActionResult Klacht(OpvangtehuisViewModel.KlachtViewModel model)
         {
+            UserStillLoggedIn();
             if (ModelState.IsValid)
             {
                 try
@@ -480,6 +493,15 @@ namespace KinderhuisStageOpdracht.Controllers
             var cal = dfi.Calendar;
 
             return cal.GetWeekOfYear(datum, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
+        }
+
+        public ActionResult UserStillLoggedIn()
+        {
+            if (Session["gebruiker"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            return null;
         }
         #endregion
     }

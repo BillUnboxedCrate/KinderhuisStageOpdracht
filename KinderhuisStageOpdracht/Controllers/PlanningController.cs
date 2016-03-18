@@ -13,5 +13,17 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             return View();
         }
+
+
+        #region helpers
+        public ActionResult UserStillLoggedIn()
+        {
+            if (Session["gebruiker"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            return null;
+        }
+        #endregion
     }
 }

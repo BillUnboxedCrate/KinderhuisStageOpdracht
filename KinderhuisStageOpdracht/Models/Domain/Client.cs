@@ -85,7 +85,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public List<KamerControle> GetKamerControles()
         {
-            return KamerControles.OrderByDescending(k => k.Datum).ToList();
+            return KamerControles.OrderByDescending(k => k.Datum).Take(7).ToList();
         }
 
 

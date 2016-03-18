@@ -50,6 +50,10 @@ html {
     font-size: medium;
 }
 
+#loginContainer [type="text"], input[type="password"]{
+    width: 300px;
+}
+
 #loginForm {
 }
 
@@ -92,7 +96,6 @@ input[type="text"], input[type="password"], textarea {
     border: 1px solid rgb(194, 194, 194);
     padding: 10px 10px;
     border-radius: 3px;
-    width: 100%;
 }
 
     input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
@@ -407,9 +410,13 @@ footer {
         background-color: #E75928;
     }
 
-    #menuDate {
-        text-align: center;
-    }
+#menuDate {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 /*Begin checkbox animated*/
 /*input[type=checkbox] {
   opacity: 0;
