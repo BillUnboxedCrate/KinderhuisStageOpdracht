@@ -402,7 +402,7 @@ namespace KinderhuisStageOpdracht.Controllers
             var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
 
             var evm = new GebruikerViewModel.EditViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuisnaam(), type);
+                gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuisnaam(), type, gebruiker.ImageUrl);
 
             if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
             {
@@ -432,7 +432,7 @@ namespace KinderhuisStageOpdracht.Controllers
                     var gebruiker = _gebruikerRepository.FindById(model.Id);
                     gebruiker.EditGebruiker(model.Naam, model.Voornaam,
                         _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                        model.Email, model.GeboorteDatum);
+                        model.Email, model.GeboorteDatum, ImageUploadProfielAfbeelding(model.Image));
 
                     _gebruikerRepository.UpdateGebruiker(gebruiker);
                     _gebruikerRepository.SaveChanges();

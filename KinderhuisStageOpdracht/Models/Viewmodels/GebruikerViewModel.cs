@@ -338,6 +338,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Opvangtehuis")]
             public string Opvangtehuis { get; set; }
 
+            [Display(Name = "Kies een foto")]
+            [DataType(DataType.Upload)]
+            public HttpPostedFileBase Image { get; set; }
+
+
             public string ImageUrl { get; set; }
 
             public string TypeGebruiker { get; set; }
@@ -401,6 +406,10 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Email adres")]
             public string Email { get; set; }
 
+            public string ImageUrl { get; set; }
+
+            public HttpPostedFileBase Image { get; set; }
+
             //public string Wachtwoord { get; set; }
 
             [Display(Name = "Kies een opvangtehuis")]
@@ -414,7 +423,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
 
             public EditViewModel(int id, string naam, string voornaam, DateTime geboortedatum, string gebruikersnaam,
-                string email, string opvangtehuis, string typegebruiker)
+                string email, string opvangtehuis, string typegebruiker, string imageUrl)
             {
                 Id = id;
                 Naam = naam;
@@ -424,8 +433,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Email = email;
                 GeselecteerdOpvangtehuisId = opvangtehuis;
                 TypeGebruiker = typegebruiker;
+                ImageUrl = imageUrl;
                 Opvangtehuizen = new List<string>();
             }
+
+
 
             public void AddOpvangtehuis(string opvangtehuis)
             {

@@ -82,7 +82,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         }
 
         public void EditGebruiker(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam,
-            string email, DateTime geboortedatum)
+            string email, DateTime geboortedatum, string imageUrl)
         {
             Naam = naam;
             Voornaam = voornaam;
@@ -90,6 +90,12 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Gebruikersnaam = gebruikersnaam;
             Email = email;
             GeboorteDatum = geboortedatum;
+
+            if (imageUrl != "~/Content/Images/Aanduidingen/vraagteken.png")
+            {
+                ImageUrl = imageUrl; 
+            }
+            
         }
     }
 }

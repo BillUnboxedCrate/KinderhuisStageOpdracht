@@ -4,7 +4,7 @@
     ViewBag.Title = "View";
 }
 
-@using (Html.BeginForm("Edit", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Edit", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <h2>Pas de gegevens aan.</h2>
@@ -49,10 +49,18 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.GebruikersNaam, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.GebruikersNaam, new {@class = "col-md-2 control-label"})
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.GebruikersNaam, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.GebruikersNaam, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(m => m.GebruikersNaam, new {@class = "form-control"})
+            @Html.ValidationMessageFor(m => m.GebruikersNaam, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <img src="@Url.Content(Model.ImageUrl)" class="profileImage" />
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Image, new { type = "file" })
+            @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
         </div>
     </div>
 
