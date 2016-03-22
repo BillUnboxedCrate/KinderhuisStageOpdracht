@@ -83,7 +83,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 file.SaveAs(path);
 
-                return path;
+                return "~/Content/Images/StrafImages/" + pic;
             }
             return "~/Content/Images/Aanduidingen/vraagteken.png";
         }
@@ -92,7 +92,7 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             var validImageTypes = new[]
             {
-                "image/gif",
+                "image/jpg",
                 "image/jpeg",
                 "image/pjpeg",
                 "image/png"

@@ -161,7 +161,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 return UserStillLoggedIn();
             }
 
-            if (!ImageIsValidType(model.ImageUpload))
+            if (!ImageIsValidType(model.ImageUpload) && model.ImageUpload == null)
             {
                 ModelState.AddModelError("ImageUpload", "Dit is geen foto");
             }
@@ -183,7 +183,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                     var opvoeder = new Opvoeder(model.Naam, model.Voornaam,
                         _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                        model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum, ImageUploadProfielAfbeelding(model.ImageUpload));
+                        model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum, ImageUploadProfielAfbeelding(model.ImageUpload), model.IsStagair);
 
                     _gebruikerRepository.AddOpvoeder(opvoeder);
                     _gebruikerRepository.SaveChanges();
@@ -312,6 +312,12 @@ namespace KinderhuisStageOpdracht.Controllers
                 var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
                 dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
                     gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
+
+                if (gebruiker is Opvoeder)
+                {
+                    Opvoeder opvoeder = (Opvoeder) gebruiker;
+                    dvm.IsStagair = opvoeder.IsStagair;
+                }
 
                 if (gebruiker is Client)
                 {
@@ -691,11 +697,11 @@ namespace KinderhuisStageOpdracht.Controllers
             if (file != null)
             {
                 var pic = System.IO.Path.GetFileName(file.FileName);
-                var path = System.IO.Path.Combine(Server.MapPath("~/Content/Images/ProfielAfbeelding"), pic);
+                var path = System.IO.Path.Combine(Server.MapPath("/Content/Images/ProfielAfbeelding"), pic);
 
                 file.SaveAs(path);
 
-                return path;
+                return "~/Content/Images/ProfielAfbeelding/" + pic;
             }
             return "~/Content/Images/Aanduidingen/vraagteken.png";
         }
@@ -704,7 +710,7 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             var validImageTypes = new[]
             {
-                "image/gif",
+                "image/jpg",
                 "image/jpeg",
                 "image/pjpeg",
                 "image/png"

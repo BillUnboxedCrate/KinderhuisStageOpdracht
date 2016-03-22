@@ -158,7 +158,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [DataType(DataType.Upload)]
             [Display(Name = "Kies een foto")]
+            [Required]
             public HttpPostedFileBase ImageUpload { get; set; }
+
+            [Display(Name = "Is deze persoon een stagair")]
+            public bool IsStagair { get; set; }
 
             public CreateOpvoederViewModel()
             {
@@ -338,6 +342,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public string TypeGebruiker { get; set; }
 
+            public bool IsStagair { get; set; }
+
             public DetailViewModel()
             {
                 Sancties = new List<SanctieViewModel>();
@@ -355,6 +361,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Opvangtehuis = opvangtehuis;
                 TypeGebruiker = typeGebruiker;
                 ImageUrl = imageUrl;
+                IsStagair = false;
                 Sancties = new List<SanctieViewModel>();
             }
 

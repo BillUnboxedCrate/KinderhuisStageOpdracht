@@ -31,6 +31,14 @@
         <td>@Html.DisplayFor(m => m.GeboorteDatum)</td>
     </tr>
 
+    @if (Model.TypeGebruiker.Contains("Opvoeder") || Model.IsStagair)
+    {
+        <tr>
+            <th>Extra info</th>
+            <td>Stagair</td>
+        </tr>
+    }
+
     <tr>
         <th>@Html.LabelFor(m => m.Opvangtehuis)</th>
         <td>@Html.DisplayFor(m => m.Opvangtehuis)</td>

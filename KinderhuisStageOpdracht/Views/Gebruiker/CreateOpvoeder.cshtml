@@ -49,10 +49,17 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.ImageUpload, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.ImageUpload, new {@class = "col-md-2 control-label"})
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ImageUpload, new { type = "file" })
-            @Html.ValidationMessageFor(m => m.ImageUpload, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(m => m.ImageUpload, new {type = "file"})
+            @Html.ValidationMessageFor(m => m.ImageUpload, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.IsStagair, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.IsStagair)
         </div>
     </div>
 
