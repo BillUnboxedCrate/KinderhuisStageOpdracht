@@ -458,6 +458,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult GestrafteOverzicht()
         {
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             List<Gebruiker> clients = _gebruikerRepository.FindAllClients().Where(c => c.Opvangtehuis.Id == opvangtehuis.Id).ToList();
             var slvm = new GebruikerViewModel.SanctieListViewModel();
