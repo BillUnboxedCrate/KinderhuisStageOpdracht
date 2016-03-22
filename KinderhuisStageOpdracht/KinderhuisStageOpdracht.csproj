@@ -380,6 +380,7 @@
     <Content Include="Views\Straf\CreateStraf.cshtml" />
     <Content Include="Views\Opvangtehuis\Klacht.cshtml" />
     <Content Include="Views\Opvangtehuis\KlachtIndex.cshtml" />
+    <Content Include="Views\Gebruiker\GestrafteOverzicht.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

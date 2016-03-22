@@ -37,9 +37,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             {
             }
 
-            public OpvoederViewModel(string voornaam, string fullname, string imageUrl)
+            public OpvoederViewModel(int id, string voornaam, string fullname, string imageUrl, bool nothing)
             {
-                //Id = id;
+                Id = id;
                 Voornaam = voornaam;
                 FullName = fullname;
                 ImageUrl = imageUrl;
@@ -82,9 +82,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             {
             }
 
-            public ClientViewModel(string fullname, string voornaam, string imageUrl)
+            public ClientViewModel(int id, string fullname, string voornaam, string imageUrl, bool nothing)
             {
-                //Id = id;
+                Id = id;
                 Voornaam = voornaam;
                 FullName = fullname;
                 ImageUrl = imageUrl;
@@ -557,8 +557,18 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Client = client;
             }
 
+
             public SanctieViewModel(string rede, DateTime begindatum, DateTime eindatum, string straf)
             {
+                Rede = rede;
+                Date = begindatum;
+                EindDatum = eindatum;
+                GeselecteerdeStraf = straf;
+            }
+
+            public SanctieViewModel(string client, string rede, DateTime begindatum, DateTime eindatum, string straf)
+            {
+                Client = client;
                 Rede = rede;
                 Date = begindatum;
                 EindDatum = eindatum;

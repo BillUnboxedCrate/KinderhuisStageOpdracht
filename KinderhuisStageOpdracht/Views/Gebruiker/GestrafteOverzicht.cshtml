@@ -1,0 +1,29 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.SanctieListViewModel
+@{
+    ViewBag.Title = "GestrafteOverzicht";
+}
+
+<h2>GestrafteOverzicht</h2>
+<table class="table">
+    <tr>
+        <th>Persoon</th>
+        <th>Straf</th>
+        <th>Van</th>
+        <th>Tot</th>
+
+    </tr>
+    @foreach (var o in Model.SanctieList)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => o.Client)</td>
+            <td>@Html.DisplayFor(modelItem => o.GeselecteerdeStraf)</td>
+            <td>@Html.DisplayFor(modelItem => o.Date)</td>
+            <td>@Html.DisplayFor(modelItem => o.EindDatum)</td>
+        </tr>
+    }
+</table>
+
+<span class="terugButton">
+    @Html.ActionLink("Terug naar index", "OpvoederIndex")
+</span>
+

@@ -49,7 +49,7 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var gebruiker in opvoeders)
             {
                 var o = (Opvoeder)gebruiker;
-                var opvoedervm = new GebruikerViewModel.OpvoederViewModel(o.Voornaam, o.GiveFullName(), o.ImageUrl);
+                var opvoedervm = new GebruikerViewModel.OpvoederViewModel(o.Id, o.Voornaam, o.GiveFullName(), o.ImageUrl, false);
                 clientlistvm.AddOpvoeder(opvoedervm);
             }
 
@@ -79,7 +79,7 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var gebruiker in clients)
             {
                 var c = (Client)gebruiker;
-                var clientvm = new GebruikerViewModel.ClientViewModel(c.GiveFullName(), c.Voornaam, c.ImageUrl);
+                var clientvm = new GebruikerViewModel.ClientViewModel(c.Id, c.GiveFullName(), c.Voornaam, c.ImageUrl, false);
 
                 clientlistvm.AddClient(clientvm);
             }
@@ -456,6 +456,24 @@ namespace KinderhuisStageOpdracht.Controllers
 
         }
 
+        public ActionResult GestrafteOverzicht()
+        {
+            var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+            List<Gebruiker> clients = _gebruikerRepository.FindAllClients().Where(c => c.Opvangtehuis.Id == opvangtehuis.Id).ToList();
+            var slvm = new GebruikerViewModel.SanctieListViewModel();
+
+            foreach (var client in clients)
+            {
+                var c = (Client) client;
+                foreach (var s in c.GetAppliedSancties())
+                {
+                    slvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(c.GiveFullName(), s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam()));
+                }
+
+            }
+            return View(slvm);
+        }
+
         public ActionResult CreateSanctie(int id)
         {
             if (UserStillLoggedIn() != null)
@@ -703,7 +721,8 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 return "~/Content/Images/ProfielAfbeelding/" + pic;
             }
-            return "~/Content/Images/Aanduidingen/vraagteken.png";
+            return "~/Content/Images/Aanduidingen/vraagteken.png" +
+                   "";
         }
 
         public bool ImageIsValidType(HttpPostedFileBase file)
