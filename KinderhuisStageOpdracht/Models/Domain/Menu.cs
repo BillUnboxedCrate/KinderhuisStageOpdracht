@@ -33,7 +33,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             MenuItems.Add(item);
         }
 
-        public void AddMenuItem(string dag, string dessert, string hoofdgerecht, string voorgerecht)
+        public void AddMenuItem(string dag, string hoofdgerecht, string voorgerecht, string dessert)
         {
             var item = new MenuItem()
             {
@@ -48,7 +48,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public DateTime GetEindeVanDeWeekDatum()
         {
-            return BegindagWeek.AddDays(4);
+            return BegindagWeek.AddDays(6);
         }
 
         private int GetWeekVanHetJaar()
