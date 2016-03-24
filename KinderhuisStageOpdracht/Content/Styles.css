@@ -50,9 +50,9 @@ html {
     font-size: medium;
 }
 
-#loginContainer [type="text"], input[type="password"]{
-    width: 300px;
-}
+    #loginContainer [type="text"], input[type="password"] {
+        width: 300px;
+    }
 
 #loginForm {
 }
@@ -427,6 +427,42 @@ footer {
     width: 20px;
 }
 
+.suggestionImage {
+    width: 100px;
+    height: auto;
+}
+
+.suggestieform {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .suggestieform td {
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px; 
+    }
+
+    .suggestieform textarea {
+        width: 378px;
+    }
+
+label > input { /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+}
+
+    label > input + img { /* IMAGE STYLES */
+        cursor: pointer;
+        border: 2px solid transparent;
+        border-radius: 5px;
+    }
+
+    label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
+        border: 4px solid #f00;
+        border-radius: 5px;
+    }
 
 /*Begin checkbox animated*/
 /*input[type=checkbox] {

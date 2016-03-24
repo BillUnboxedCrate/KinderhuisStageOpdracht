@@ -8,27 +8,41 @@
 {
     <h2 class="form">@ViewBag.Title</h2>
     @Html.AntiForgeryToken()
-    <table class="form">
+    <table class="suggestieform">
         <tr>
-            <th>
-                @Html.LabelFor(m => m.Beschrijving, new { @class = "control-label" })
-            </th>
-            <td>
-                @Html.TextAreaFor(m => m.Beschrijving, new { @class = "form-control", @cols = 40, @rows = 5 })
-                @Html.ValidationMessageFor(m => m.Beschrijving, "", new { @class = "text-danger" })
+            <td colspan="3">    
+                @Html.LabelFor(m => m.Beschrijving, new { @class = "control-label" })<br/>
+                @Html.TextAreaFor(m => m.Beschrijving, new {@class = "form-control", @cols = 40, @rows = 5})
+                @Html.ValidationMessageFor(m => m.Beschrijving, "", new {@class = "text-danger"})
             </td>
         </tr>
 
         <tr>
-            <th>
-                @Html.LabelFor(m => m.Genres, new { @class = "control-label" })
-            </th>
             <td>
-                @Html.DropDownListFor(m => m.GeselecteerdGenre, Model.Genres, new { @class = "form-control" })
+                @*@Html.DropDownListFor(m => m.GeselecteerdGenre, Model.Genres, new { @class = "form-control" })*@
+
+                <label>
+                    @Html.RadioButtonFor(m => m.GeselecteerdGenre, "Eten", new { @checked = true })
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/eten.png")" class="suggestionImage" />
+                </label>
             </td>
+            <td>
+                <label>
+                    @Html.RadioButtonFor(m => m.GeselecteerdGenre, "Activitiet")
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/activiteit.png")" class="suggestionImage" />
+                </label>
+            </td>
+            <td>
+                <label>
+                    @Html.RadioButtonFor(m => m.GeselecteerdGenre, "Film")
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/film.png")" class="suggestionImage" />
+                </label>
+            </td>
+
+
         </tr>
     </table>
-    <br/>
+    <br />
     <table class="buttontable">
         <tr>
             <td>
