@@ -257,6 +257,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\Aanduidingen\activiteit.png" />
+    <Content Include="Content\Images\Aanduidingen\algemeen.png" />
     <Content Include="Content\Images\Aanduidingen\cross.png" />
     <Content Include="Content\Images\Aanduidingen\eten.png" />
     <Content Include="Content\Images\Aanduidingen\film.png" />
@@ -325,9 +326,6 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Gebruiker\CreateOpvoeder.cshtml">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="Views\Gebruiker\KamerControleIndex.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Gebruiker\KamerControleOpvoeder.cshtml">

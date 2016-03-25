@@ -1,4 +1,5 @@
-﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.KamerControleClientViewModel
+﻿@using System.Web.UI.WebControls
+@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.KamerControleClientViewModel
 @{
     ViewBag.Title = "KamerControle";
 }
@@ -12,25 +13,42 @@
 }
 else
 {
-    <table id="kamercontroleTable">
-        <tr>
-            <th>Taak</th>
-            <th>Kleine beschrijving</th>
-            <th>Is dit gebeurd</th>
-            <th>Opmerking</th>
-        </tr>
+    @*<table id="kamercontroleTable">
+            <tr>
+                <th>Taak</th>
+                <th>Kleine beschrijving</th>
+                <th>Is dit gebeurd</th>
+                <th>Opmerking</th>
+            </tr>
 
+            @for (int i = 0; i < Model.ListKamerControleItemsViewmodel.KamerControleItems.Count(); i++)
+            {
+                <tr>
+                    <td>
+                        <div id="kamercontroleTitel">@Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Titel)</div>
+                        @Html.HiddenFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Titel)
+                        <img src="@Url.Content(@Model.ListKamerControleItemsViewmodel.KamerControleItems[i].ImageUrl)" class="kamerControleImage"/>
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Beschrijving)</td>
+                    <td>
+                        @if (@Model.ListKamerControleItemsViewmodel.KamerControleItems[i].DoneOpvoeder)
+                        {
+                            <img src="@Url.Content("~/Content/Images/Aanduidingen/vinkje.png")" alt="Ja" class="aanduidingsImage"/>
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/Content/Images/Aanduidingen/cross.png")" alt="Nee" class="aanduidingsImage"/>
+                        }
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Uitleg)</td>
+                </tr>
+            }
+        </table>*@
+    <div class="kamerControleCardSystem">
         @for (int i = 0; i < Model.ListKamerControleItemsViewmodel.KamerControleItems.Count(); i++)
         {
-            <tr>
-                <td>
-                    <div id="kamercontroleTitel">@Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Titel)</div>
-                    @Html.HiddenFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Titel)
-                    <img src="@Url.Content(@Model.ListKamerControleItemsViewmodel.KamerControleItems[i].ImageUrl)" class="kamerControleImage" />
-                </td>
-                <td>@Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Beschrijving)</td>
-                <td>
-                    @*@(o.InOrde ? Html.Label("Ja") : Html.Label("Nee"))*@
+            <div class="kamerControleCard">
+                <div class="doneContainer">
                     @if (@Model.ListKamerControleItemsViewmodel.KamerControleItems[i].DoneOpvoeder)
                     {
                         <img src="@Url.Content("~/Content/Images/Aanduidingen/vinkje.png")" alt="Ja" class="aanduidingsImage" />
@@ -39,11 +57,24 @@ else
                     {
                         <img src="@Url.Content("~/Content/Images/Aanduidingen/cross.png")" alt="Nee" class="aanduidingsImage" />
                     }
-                </td>
-                <td>@Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Uitleg)</td>
-            </tr>
+                </div>
+
+                <div class="kamercontroleTitel">@Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Titel)</div>
+
+                <div class="kamerControleCardImageBlock">
+                    <img src="@Url.Content(@Model.ListKamerControleItemsViewmodel.KamerControleItems[i].ImageUrl)" alt="Image" class="kamerControleImage" />
+                </div>
+                <div class="kamerControleCardUitlegBlock">
+                    @Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Uitleg)
+                </div>
+
+            </div>
+            @*@Html.HiddenFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Titel)*@
+
+
         }
-    </table>
+    </div>
+
 }
 
 <div class="terugButton">
@@ -60,7 +91,10 @@ else
     @foreach (var o in Model.KamerControleListIndexViewModel.List)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.Datum)</td>
+            <td>
+                @Html.DisplayFor(modelItem => o.DatumDay) -
+                @Html.DisplayFor(modelItem => o.Datum)
+            </td>
             <td>
                 @*@(o.InOrde ? Html.Label("Ja") : Html.Label("Nee"))*@
                 @if (o.InOrde)

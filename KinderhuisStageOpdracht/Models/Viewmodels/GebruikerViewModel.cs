@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -689,6 +690,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Id { get; set; }
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime Datum { get; set; }
+            public string DatumDay { get; set; }
             public bool AllesGedaan { get; set; }
             public bool InOrde { get; set; }
 
@@ -699,6 +701,14 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Id = id;
                 Datum = datum;
                 InOrde = inOrde;
+                DatumDay = GetDayOfWeek(datum);
+            }
+
+            private string GetDayOfWeek(DateTime date)
+            {
+                var culture = new CultureInfo("nl-NL");
+                var dag = culture.DateTimeFormat.GetDayName(date.DayOfWeek);
+                return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dag);
             }
         }
         #endregion

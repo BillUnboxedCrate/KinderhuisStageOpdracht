@@ -584,26 +584,6 @@ namespace KinderhuisStageOpdracht.Controllers
             return View(kccvm);
         }
 
-
-        public ActionResult KamerControleIndex(int id)
-        {
-            if (UserStillLoggedIn() != null)
-            {
-                return UserStillLoggedIn();
-            }
-
-            var client = (Client)_gebruikerRepository.FindById(id);
-
-            var kclivm = new GebruikerViewModel.KamerControleListIndexViewModel(client.Id);
-
-            foreach (var i in client.GetKamerControles())
-            {
-                kclivm.AddKamerControleIndexItem(new GebruikerViewModel.KamerControleIndexViewModel(i.Id, i.Datum, i.IsAllesInOrde()));
-            }
-
-            return View(kclivm);
-        }
-
         public ActionResult KamerControleOpvoeder(int id)
         {
             if (UserStillLoggedIn() != null)

@@ -221,10 +221,7 @@ input[type="text"], input[type="password"], textarea {
     height: 40px;*/
 }
 
-.kamerControleImage {
-    width: 140px;
-    height: auto;
-}
+
 
 #kamercontroleTable, #kamercontroleTable th, #kamercontroleTable td {
     border: 1px solid;
@@ -256,9 +253,6 @@ input[type="text"], input[type="password"], textarea {
         width: 300px;
     }
 
-#kamercontroleTitel {
-    font-size: 20pt;
-}
 
 #strafText {
     font-size: 20pt;
@@ -468,6 +462,17 @@ label > input { /* HIDE RADIO */
         border-radius: 5px;
     }
 
+/*label .hovertext {
+    position: relative;
+    bottom: 30px;
+    left: 0px;
+    visibility: hidden;
+}
+
+label:hover .hovertext {
+    visibility: visible;
+}*/
+
 
 .clientIndexTable {
     margin-left: auto;
@@ -505,12 +510,63 @@ label > input { /* HIDE RADIO */
     margin: 20px;
 }
 
-.opvoederOverview img{
-    width: 300px;
-    height: auto;
-    border: 1px solid black;
+    .opvoederOverview img {
+        width: 300px;
+        height: auto;
+        border: 1px solid black;
+    }
+
+
+.kamercontroleTitel {
+    font-size: 20pt;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    height: 40px;
 }
 
+.kamerControleCard {
+    vertical-align: top;
+    display: inline-block;
+    border: 1px solid black;
+    width: 300px;
+    height: 450px;
+    margin: 10px;
+}
+
+.doneContainer {
+    height: 27px;
+    width: 27px;
+    float: right;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.kamerControleImage {
+    width: 170px;
+    height: auto;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.kamerControleCardImageBlock {
+    border-bottom: 1px solid black;
+    height: 250px;
+    position: relative;
+}
+
+.kamerControleCardUitlegBlock {
+    border: 1px solid black;
+    height: 160px;
+    text-align: left;
+}
+
+.kamerControleCardSystem {
+    text-align: center;
+}
 
 
 

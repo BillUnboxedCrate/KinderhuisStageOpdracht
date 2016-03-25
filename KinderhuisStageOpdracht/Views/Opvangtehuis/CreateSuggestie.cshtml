@@ -10,7 +10,7 @@
     @Html.AntiForgeryToken()
     <table class="suggestieform">
         <tr>
-            <td colspan="3">    
+            <td colspan="4">    
                 @Html.LabelFor(m => m.Beschrijving, new { @class = "control-label" })<br/>
                 @Html.TextAreaFor(m => m.Beschrijving, new {@class = "form-control", @cols = 40, @rows = 5})
                 @Html.ValidationMessageFor(m => m.Beschrijving, "", new {@class = "text-danger"})
@@ -23,19 +23,25 @@
 
                 <label>
                     @Html.RadioButtonFor(m => m.GeselecteerdGenre, "Eten", new { @checked = true })
-                    <img src="@Url.Content("~/Content/Images/Aanduidingen/eten.png")" alt="Een suggestie over het eten doen" class="suggestionImage" />
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/eten.png")" alt="Een suggestie over het eten doen" title="Een suggestie over het eten doen" class="suggestionImage" />
                 </label>
             </td>
             <td>
                 <label>
                     @Html.RadioButtonFor(m => m.GeselecteerdGenre, "Activitiet")
-                    <img src="@Url.Content("~/Content/Images/Aanduidingen/activiteit.png")" alt="Een suggestie over een activiteit doen" class="suggestionImage" />
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/activiteit.png")" alt="Een suggestie over een activiteit doen" title="Een suggestie over een activiteit doen" class="suggestionImage" />
                 </label>
             </td>
             <td>
                 <label>
                     @Html.RadioButtonFor(m => m.GeselecteerdGenre, "Film")
-                    <img src="@Url.Content("~/Content/Images/Aanduidingen/film.png")" alt="Een suggestie over een film doen" class="suggestionImage" />
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/film.png")" alt="Een suggestie over een film doen" title="Een suggestie over een film doen" class="suggestionImage" />
+                </label>
+            </td>
+            <td>
+                <label>
+                    @Html.RadioButtonFor(m => m.GeselecteerdGenre, "Algemeen")
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/algemeen.png")" alt="Een algemene suggestie doen" title="Een algemene suggestie doen" class="suggestionImage" />
                 </label>
             </td>
 
