@@ -618,6 +618,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         public class ListKamerControleItemsViewmodel
         {
             public List<KamerControleItemViewModel> KamerControleItems { get; set; }
+            public KamerControleListIndexViewModel KamerControleListIndexViewModel { get; set; }
 
             public ListKamerControleItemsViewmodel()
             {

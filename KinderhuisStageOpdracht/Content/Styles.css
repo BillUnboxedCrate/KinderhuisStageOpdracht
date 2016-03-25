@@ -300,6 +300,10 @@ input[type="text"], input[type="password"], textarea {
     text-align: center;
 }
 
+    #postBlock textarea {
+        width: 350px;
+    }
+
 textarea {
     margin-left: auto;
     margin-right: auto;
@@ -441,7 +445,7 @@ footer {
     .suggestieform td {
         padding-bottom: 20px;
         padding-left: 20px;
-        padding-right: 20px; 
+        padding-right: 20px;
     }
 
     .suggestieform textarea {
@@ -463,6 +467,53 @@ label > input { /* HIDE RADIO */
         border: 4px solid #f00;
         border-radius: 5px;
     }
+
+
+.clientIndexTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .clientIndexTable td {
+        padding: 15px;
+    }
+
+    .clientIndexTable a {
+        font-size: 20pt;
+        display: inline-block;
+        height: 200px;
+        width: 200px;
+        background: rgb(248, 248, 248);
+        vertical-align: middle;
+        text-align: center;
+        border: solid 5px;
+        color: black;
+        border-color: #348CFF;
+        text-decoration: none;
+        display: table-cell;
+    }
+
+        .clientIndexTable a:hover {
+            border-color: #1042B0;
+        }
+
+
+.opvoederOverview {
+    width: 275px;
+    height: auto;
+    display: inline-block;
+    margin: 20px;
+}
+
+.opvoederOverview img{
+    width: 300px;
+    height: auto;
+    border: 1px solid black;
+}
+
+
+
+
 
 /*Begin checkbox animated*/
 /*input[type=checkbox] {

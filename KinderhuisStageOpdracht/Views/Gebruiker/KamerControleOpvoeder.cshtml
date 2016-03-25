@@ -5,6 +5,7 @@
 @using (Html.BeginForm("KamerControleOpvoeder", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <h2>KamerControle</h2>
+    @Html.HiddenFor(model => model.KamerControleListIndexViewModel.ClientId)
     <table id="kamercontroleTableOpvoeder">
         <tr>
             <th>Taak</th>
@@ -12,7 +13,7 @@
             <th>Is dit werkelijk gebeurt</th>
             <td>Uitleg</td>
         </tr>
-       
+
         @for (int i = 0; i < Model.KamerControleItems.Count(); i++)
         {
             <tr>
@@ -31,14 +32,45 @@
             </tr>
         }
     </table>
-    <br/>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Opslaan" />
-        </div>
-    </div>
+    <br />
+    <table class="buttontable">
+        <tr>
+            <td><input type="submit" class="button" value="Opslaan" /></td>
+            <td>
+                <span class="terugButton">
+                    @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
+                </span>
+            </td>
+        </tr>
+    </table>
+
+
+
+
+    <table class="table">
+        <tr>
+            <th>Datum</th>
+            <th>Alles In orde</th>
+            <th>Bekijken</th>
+        </tr>
+
+        @foreach (var o in Model.KamerControleListIndexViewModel.List)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => o.Datum)</td>
+                <td>
+                    @*@(o.InOrde ? Html.Label("Ja") : Html.Label("Nee"))*@
+                    @if (o.InOrde)
+                    {
+                        <img src="@Url.Content("~/Content/Images/Aanduidingen/vinkje.png")" alt="Ja" class="aanduidingsImage" />
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("~/Content/Images/Aanduidingen/cross.png")" alt="Nee" class="aanduidingsImage" />
+                    }
+                </td>
+            </tr>
+        }
+    </table>
 }
 
-<div class="terugButton">
-    @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
-</div>

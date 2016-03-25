@@ -38,6 +38,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             modelBuilder.Configurations.Add(new KlachtMapper());
             modelBuilder.Configurations.Add(new SanctieMapper());
             modelBuilder.Configurations.Add(new StrafMapper());
+            modelBuilder.Configurations.Add(new TimeTrackMapper());
         }
     }
 }

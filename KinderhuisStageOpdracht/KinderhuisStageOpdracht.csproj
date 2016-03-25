@@ -217,6 +217,7 @@
     <Compile Include="Models\DAL\Mappers\StrafMapper.cs" />
     <Compile Include="Models\DAL\Mappers\SuggestieMapper.cs" />
     <Compile Include="Models\DAL\Mappers\TaakMapper.cs" />
+    <Compile Include="Models\DAL\Mappers\TimeTrackMapper.cs" />
     <Compile Include="Models\DAL\OpvangtehuisRepository.cs" />
     <Compile Include="Models\DAL\ProjectContext.cs">
       <SubType>Code</SubType>
@@ -239,6 +240,7 @@
     <Compile Include="Models\Domain\Suggestie.cs" />
     <Compile Include="Models\Domain\Taak.cs" />
     <Compile Include="Models\Domain\Opvangtehuis.cs" />
+    <Compile Include="Models\Domain\TimeTrack.cs" />
     <Compile Include="Models\Viewmodels\AccountViewModels.cs" />
     <Compile Include="Models\Domain\Admin.cs" />
     <Compile Include="Models\Domain\Client.cs" />
@@ -384,9 +386,12 @@
     <Content Include="Views\Opvangtehuis\Klacht.cshtml" />
     <Content Include="Views\Opvangtehuis\KlachtIndex.cshtml" />
     <Content Include="Views\Gebruiker\GestrafteOverzicht.cshtml" />
+    <Content Include="Views\Gebruiker\OpvoederOverzicht.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Avatars\" />
+    <Folder Include="Content\Images\Backgrounds\" />
     <Folder Include="Content\Images\ProfielAfbeelding\" />
     <Folder Include="Views\Planning\" />
   </ItemGroup>

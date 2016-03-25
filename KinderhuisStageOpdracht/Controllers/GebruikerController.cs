@@ -38,6 +38,17 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 return View("Error");
             }
+
+            return View();
+        }
+
+        public ActionResult OpvoederOverzicht()
+        {
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             var id = (int)Session["gebruiker"];
             var client = (Client)_gebruikerRepository.FindById(id);
             System.Diagnostics.Debug.WriteLine(client.GetType());
@@ -315,7 +326,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 if (gebruiker is Opvoeder)
                 {
-                    Opvoeder opvoeder = (Opvoeder) gebruiker;
+                    Opvoeder opvoeder = (Opvoeder)gebruiker;
                     dvm.IsStagair = opvoeder.IsStagair;
                 }
 
@@ -469,7 +480,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
             foreach (var client in clients)
             {
-                var c = (Client) client;
+                var c = (Client)client;
                 foreach (var s in c.GetAppliedSancties())
                 {
                     slvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(c.GiveFullName(), s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam()));
@@ -582,7 +593,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             var client = (Client)_gebruikerRepository.FindById(id);
-            Session["client"] = id;
+
             var kclivm = new GebruikerViewModel.KamerControleListIndexViewModel(client.Id);
 
             foreach (var i in client.GetKamerControles())
@@ -601,14 +612,25 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             var client = (Client)_gebruikerRepository.FindById(id);
+            //Session["client"] = id;
             var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
             var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
+            var kclivm = new GebruikerViewModel.KamerControleListIndexViewModel(client.Id);
             var kamercontrole = client.ViewKamerControle(opvangtehuis.GetKamerControleOpdrachten());
 
             foreach (var i in kamercontrole.KamerControleItems)
             {
                 lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtTitel(), i.GetControleOpdrachtBeschrijving(), i.OpdrachtGedaanControle, i.Uitleg));
             }
+
+            foreach (var i in client.GetKamerControles())
+            {
+                kclivm.AddKamerControleIndexItem(new GebruikerViewModel.KamerControleIndexViewModel(i.Id, i.Datum, i.IsAllesInOrde()));
+            }
+
+            lkcivm.KamerControleListIndexViewModel = kclivm;
+
+            _gebruikerRepository.SaveChanges();
 
             return View(lkcivm);
         }
@@ -621,7 +643,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 return UserStillLoggedIn();
             }
 
-            var client = (Client)_gebruikerRepository.FindById((int)Session["client"]);
+            var client = (Client)_gebruikerRepository.FindById(model.KamerControleListIndexViewModel.ClientId);
             var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
             var kamercontrole = client.ViewKamerControle(opvangtehuis.GetKamerControleOpdrachten());
 

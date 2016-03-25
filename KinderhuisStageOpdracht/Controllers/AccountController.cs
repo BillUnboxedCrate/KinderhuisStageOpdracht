@@ -105,6 +105,9 @@ namespace KinderhuisStageOpdracht.Controllers
                         }
                         if (gebruiker is Client)
                         {
+                            var client = (Client) gebruiker;
+                            client.AddTimeTrack();
+                            _gebruikerRepository.SaveChanges();
                             System.Diagnostics.Debug.WriteLine("Type client");
                             //return RedirectToAction("ClientIndex", "Gebruiker", new { id = gebruiker.Id });
                             return RedirectToAction("ClientIndex", "Gebruiker");

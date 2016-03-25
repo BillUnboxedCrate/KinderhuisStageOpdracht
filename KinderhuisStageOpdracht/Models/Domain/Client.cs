@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -15,11 +16,20 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public virtual ICollection<Sanctie> Sancties { get; set; }
 
+        public virtual ICollection<TimeTrack> TimeTrackList { get; set; }
+
+        [DataType(DataType.ImageUrl)]
+        public string BackgroundUrl { get; set; }
+
+        [DataType(DataType.ImageUrl)]
+        public string AvatarUrl { get; set; }
+
         public Client()
         {
             KamerControles = new List<KamerControle>();
             Forums = new List<Forum>();
             Sancties = new List<Sanctie>();
+            TimeTrackList = new List<TimeTrack>();
         }
 
         public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum, string imageUrl)
@@ -117,7 +127,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         private bool IsForumAlGemaakt(int clientId, int opvoederId)
         {
             var forum = Forums.FirstOrDefault(f => f.Client.Id == clientId && f.Opvoeder.Id == opvoederId);
-            
+
             return forum != null;
         }
 
@@ -142,5 +152,28 @@ namespace KinderhuisStageOpdracht.Models.Domain
             }
             return Forums.FirstOrDefault(f => f.Client == client && f.Opvoeder == opvoeder);
         }
+
+        //TimeTracking
+        /*public void GetCurrentTracking()
+        {
+            TimeTrackList.FirstOrDefault()
+        }*/
+
+        public void AddTimeTrack()
+        {
+            var timetrack = new TimeTrack();
+            LoginTrack(timetrack);
+            TimeTrackList.Add(timetrack);
+        }
+
+        private void LoginTrack(TimeTrack timeTrack)
+        {
+            timeTrack.Aanmelden = DateTime.Now;
+        }
+
+        /*public void LogOffTrack(TimeTrack timeTrack, bool sessionVerlopen)
+        {
+            timeTrack.Afmelden = sessionVerlopen == false ? DateTime.Now : timeTrack.Aanmelden.AddMinutes(20);
+        }*/
     }
 }

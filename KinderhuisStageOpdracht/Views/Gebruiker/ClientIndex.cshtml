@@ -1,42 +1,30 @@
-﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.OpvoederListViewModel
-
-@{
+﻿@{
     ViewBag.Title = "ClientIndex";
 }
 
 <h2>CliëntIndex</h2>
-<ul class="category-menu">
+@*<ul class="category-menu">
     <li>@Html.ActionLink("Suggestie", "CreateSuggestie", "Opvangtehuis")</li>
     <li>@Html.ActionLink("Klacht", "Klacht", "Opvangtehuis")</li>
     <li>@Html.ActionLink("De menu", "WeekMenu", "Opvangtehuis")</li>
     <li>@Html.ActionLink("Sancties", "Sancties", "Gebruiker")</li>
     <li>@Html.ActionLink("Kamer Controle", "KamerControle", "Gebruiker")</li>
+    <li>@Html.ActionLink("Iets zeggen tegen?", "OpvoederOverzicht", "Gebruiker")</li>
+</ul>*@
 
-</ul>
-
-<h3>Opvoeders</h3>
-<table class="table">
+<table class="clientIndexTable">
     <tr>
-        @*<th>Afbeelding</th>*@
-        <th>Naam</th>
-        <th>Acties</th>
+        <td>@Html.ActionLink("Suggestie", "CreateSuggestie", "Opvangtehuis")</td>
+        <td>@Html.ActionLink("Klacht", "Klacht", "Opvangtehuis")</td>
+        <td>@Html.ActionLink("De menu", "WeekMenu", "Opvangtehuis")</td>
     </tr>
 
-    @foreach (var o in Model.Opvoeders)
-    {
-        <tr>
-            @*<td>
-                <img src="@Url.Content(o.ImageUrl)" class="indexAfbeelding" />
-            </td>*@
-            <td>@Html.DisplayFor(modelItem => o.FullName)</td>
-
-            <td>
-                @Html.ActionLink("Details", "Details", new {id = o.Id})
-                <span> | </span>
-                @Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new {id = o.Id})
-            </td>
-        </tr>
-    }
+    <tr>
+        <td>@Html.ActionLink("Sancties", "Sancties", "Gebruiker")</td>
+        <td>@Html.ActionLink("Kamer Controle", "KamerControle", "Gebruiker")</td>
+        <td>@Html.ActionLink("Iets zeggen tegen?", "OpvoederOverzicht", "Gebruiker")</td>
+    </tr>
 </table>
+
 
 

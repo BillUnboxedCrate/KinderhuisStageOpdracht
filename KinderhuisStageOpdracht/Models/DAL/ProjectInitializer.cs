@@ -82,6 +82,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 ImageUrl = "~/Content/Images/ProfielAfbeelding/tomds.jpg"
             };
 
+            
+
             var opvoeder2 = new Opvoeder()
             {
                 Naam = "Braeckman",
@@ -93,6 +95,32 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "~/Content/Images/Aanduidingen/vraagteken.png"
+            };
+
+            var opvoeder3 = new Opvoeder()
+            {
+                Naam = "Achternaam",
+                Voornaam = "Sandra",
+                GeboorteDatum = new DateTime(1990, 11, 11),
+                Gebruikersnaam = "Sandra",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Email = "tomdesaeger@gmail.com",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
+                Opvangtehuis = opvangtehuis1,
+                ImageUrl = "~/Content/Images/ProfielAfbeelding/Sandra.jpg"
+            };
+
+            var opvoeder4 = new Opvoeder()
+            {
+                Naam = "Achternaam",
+                Voornaam = "Julie",
+                GeboorteDatum = new DateTime(1990, 11, 11),
+                Gebruikersnaam = "Julie",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Email = "tomdesaeger@gmail.com",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
+                Opvangtehuis = opvangtehuis1,
+                ImageUrl = "~/Content/Images/ProfielAfbeelding/Julie.jpg"
             };
 
             //Clients
@@ -150,7 +178,11 @@ namespace KinderhuisStageOpdracht.Models.DAL
             context.GebruikerSet.Add(admin1);
 
             //Add opvoerders
+            //In opvangtehuis 1
             context.GebruikerSet.Add(opvoeder1);
+            context.GebruikerSet.Add(opvoeder3);
+            context.GebruikerSet.Add(opvoeder4);
+            //In opvangtehuis 2
             context.GebruikerSet.Add(opvoeder2);
 
             //Add clients

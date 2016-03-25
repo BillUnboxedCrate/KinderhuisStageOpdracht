@@ -27,6 +27,7 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
             HasMany(c => c.Forums).WithRequired();
 
             HasMany(c => c.Sancties).WithRequired();
+            HasMany(c => c.TimeTrackList).WithRequired();
 
         }
     }
