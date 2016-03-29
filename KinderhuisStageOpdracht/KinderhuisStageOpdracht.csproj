@@ -263,6 +263,7 @@
     <Content Include="Content\Images\Aanduidingen\eten.png" />
     <Content Include="Content\Images\Aanduidingen\film.png" />
     <Content Include="Content\Images\Aanduidingen\google.png" />
+    <Content Include="Content\Images\Aanduidingen\settings.png" />
     <Content Include="Content\Images\Aanduidingen\vinkje.png" />
     <Content Include="Content\Images\Aanduidingen\vraagteken.png" />
     <Content Include="Content\Images\KamerControleImages\bed_opmaken.png" />

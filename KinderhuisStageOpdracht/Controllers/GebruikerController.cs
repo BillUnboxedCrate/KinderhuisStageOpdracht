@@ -745,7 +745,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 if (model.AvatarUpload != null)
                 {
-                    client.AddImage(ImageUploadAvatarAfbeelding(model.AvatarUpload));
+                    client.AddImage(ImageUploadProfielAfbeelding(model.AvatarUpload));
                 }
 
                 if (model.BackgroundUpload != null)
@@ -812,21 +812,6 @@ namespace KinderhuisStageOpdracht.Controllers
                 file.SaveAs(path);
 
                 return "~/Content/Images/ProfielAfbeelding/" + pic;
-            }
-            return "~/Content/Images/Aanduidingen/vraagteken.png" +
-                   "";
-        }
-
-        public string ImageUploadAvatarAfbeelding(HttpPostedFileBase file)
-        {
-            if (file != null)
-            {
-                var pic = System.IO.Path.GetFileName(file.FileName);
-                var path = System.IO.Path.Combine(Server.MapPath("/Content/Images/Avatars"), pic);
-
-                file.SaveAs(path);
-
-                return "~/Content/Images/Avatars/" + pic;
             }
             return "~/Content/Images/Aanduidingen/vraagteken.png" +
                    "";
