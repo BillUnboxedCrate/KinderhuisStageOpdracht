@@ -716,6 +716,41 @@ namespace KinderhuisStageOpdracht.Controllers
             return View();
         }
 
+        public ActionResult Instellingen()
+        {
+            var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
+            var ivm = new GebruikerViewModel.InstellingenViewModel(client.BackgroundUrl, client.AvatarUrl);
+
+            return View(ivm);
+        }
+
+        public ActionResult WachtwoordAanpassen()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult WachtwoordAanpassen(GebruikerViewModel.WachtwoordChangeViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
+                if (IsValid(model.Wachtwoord, gebruiker.Gebruikersnaam))
+                {
+                    var crypto = new SimpleCrypto.PBKDF2();
+                    var encrytwachtwoord = crypto.Compute(model.NieuwWachtwoord);
+
+                    gebruiker.WachtwoordAanpassen(encrytwachtwoord, crypto.Salt);
+                    _gebruikerRepository.SaveChanges();
+
+                    this.AddNotification("Je wachtwoord is aangepast", NotificationType.SUCCESS);
+                    return RedirectToAction("Instellingen");
+                }
+                ModelState.AddModelError("Wachtwoord", "Het wachtwoord dat is ingegeven is niet correct");
+            }
+            return View();
+        }
+
         #region helper
         public string ImageUploadProfielAfbeelding(HttpPostedFileBase file)
         {
@@ -757,6 +792,23 @@ namespace KinderhuisStageOpdracht.Controllers
                 return RedirectToAction("Login", "Account");
             }
             return null;
+        }
+
+        public bool IsValid(string password, string username)
+        {
+            var crypto = new SimpleCrypto.PBKDF2();
+            bool isValid = false;
+
+            var gebruiker = _gebruikerRepository.FindByUsername(username);
+            if (gebruiker != null)
+            {
+                if (gebruiker.Wachtwoord == crypto.Compute(password, gebruiker.Salt))
+                {
+                    isValid = true;
+                }
+            }
+
+            return isValid;
         }
         #endregion
 

@@ -261,6 +261,7 @@
     <Content Include="Content\Images\Aanduidingen\cross.png" />
     <Content Include="Content\Images\Aanduidingen\eten.png" />
     <Content Include="Content\Images\Aanduidingen\film.png" />
+    <Content Include="Content\Images\Aanduidingen\google.png" />
     <Content Include="Content\Images\Aanduidingen\vinkje.png" />
     <Content Include="Content\Images\Aanduidingen\vraagteken.png" />
     <Content Include="Content\Images\KamerControleImages\bed_opmaken.png" />
@@ -385,6 +386,8 @@
     <Content Include="Views\Opvangtehuis\KlachtIndex.cshtml" />
     <Content Include="Views\Gebruiker\GestrafteOverzicht.cshtml" />
     <Content Include="Views\Gebruiker\OpvoederOverzicht.cshtml" />
+    <Content Include="Views\Gebruiker\WachtwoordAanpassen.cshtml" />
+    <Content Include="Views\Gebruiker\Instellingen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

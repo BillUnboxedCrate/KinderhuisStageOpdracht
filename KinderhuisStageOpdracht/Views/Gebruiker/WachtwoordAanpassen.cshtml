@@ -1,0 +1,44 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.WachtwoordChangeViewModel
+@{
+    ViewBag.Title = "WachtwoordAanpassen";
+}
+
+<h2>WachtwoordAanpassen</h2>
+@using (Html.BeginForm("WachtwoordAanpassen", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form"}))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
+   
+    <div class="form-group">
+        @Html.LabelFor(m => m.Wachtwoord, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Wachtwoord, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Wachtwoord, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.NieuwWachtwoord, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.NieuwWachtwoord, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.NieuwWachtwoord, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BevestigNieuwWachtwoord, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.BevestigNieuwWachtwoord, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.BevestigNieuwWachtwoord, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Voeg opvoeder toe" />
+        </div>
+    </div>
+}
+
+

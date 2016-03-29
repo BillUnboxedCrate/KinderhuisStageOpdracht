@@ -97,5 +97,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
             }
             
         }
+
+        public void WachtwoordAanpassen(string nieuwWachtwoord, string salt)
+        {
+            Wachtwoord = nieuwWachtwoord;
+            Salt = salt;
+        }
     }
 }

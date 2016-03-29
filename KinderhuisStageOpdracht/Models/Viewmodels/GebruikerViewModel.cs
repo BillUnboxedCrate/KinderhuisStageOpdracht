@@ -235,7 +235,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} karakters lang zijn.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} karakters lang zijn.", MinimumLength = 4)]
             [DataType(DataType.Password)]
             [Display(Name = "Wachtwoord")]
             public string Wachtwoord { get; set; }
@@ -711,6 +711,48 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dag);
             }
         }
+        #endregion
+
+        #region Instellingen
+        public class InstellingenViewModel
+        {
+            public string BackgroundUrl { get; set; }
+            [DataType(DataType.Upload)]
+            public HttpPostedFileBase BackgroundUpload { get; set; }
+
+            public string AvatarUrl { get; set; }
+            [DataType(DataType.Upload)]
+            public HttpPostedFileBase AvatarUpload { get; set; }
+
+            public InstellingenViewModel() { }
+
+            public InstellingenViewModel(string backgroundUrl, string avatarUrl)
+            {
+                BackgroundUrl = backgroundUrl;
+                AvatarUrl = avatarUrl;
+            }
+        }
+
+        public class WachtwoordChangeViewModel
+        {
+            [Required]
+            [Display(Name = "Wachtwoord")]
+            [DataType(DataType.Password)]
+            public string Wachtwoord { get; set; }
+            
+            [Required]
+            [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} karakters lang zijn.", MinimumLength = 4)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Nieuw Wachtwoord")]
+            public string NieuwWachtwoord { get; set; }
+
+            [DataType(DataType.Password)]
+            [Display(Name = "Bevestig wachtwoord")]
+            [System.ComponentModel.DataAnnotations.Compare("NieuwWachtwoord",
+                ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
+            public string BevestigNieuwWachtwoord { get; set; }
+        }
+
         #endregion
     }
 }

@@ -24,6 +24,19 @@
         <td>@Html.ActionLink("Kamer Controle", "KamerControle", "Gebruiker")</td>
         <td>@Html.ActionLink("Iets zeggen tegen?", "OpvoederOverzicht", "Gebruiker")</td>
     </tr>
+
+    <tr>
+        <td>
+            <a href="http://www.google.be">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/google.png")" alt="Google"/>
+            </a>
+        </td>
+        <td>
+            <a href="@Url.Action("Instellingen")">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/settings.png")" alt="Instellingen" />
+            </a>
+        </td>
+    </tr>
 </table>
 
 

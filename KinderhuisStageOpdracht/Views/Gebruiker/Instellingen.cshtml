@@ -1,0 +1,30 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.InstellingenViewModel
+@{
+    ViewBag.Title = "Customize";
+}
+
+<h2>Customize</h2>
+
+@if (Model.AvatarUrl != null)
+{
+    <img src="@Url.Content(Model.AvatarUrl)" alt="Avatar" />
+}
+else
+{
+    <img src="@Url.Content("~/Content/Images/Aanduidingen/vraagteken.png")" alt="Avatar" />
+}
+
+
+@if (Model.BackgroundUrl != null)
+{
+    <img src="@Url.Content(Model.BackgroundUrl)" alt="Achtergrond" />
+}
+else
+{
+    <img src="@Url.Content("~/Content/Images/Aanduidingen/vraagteken.png")" alt="Achtergrond" />
+}
+
+<td>@Html.ActionLink("Wachtwoord aanpassen", "WachtwoordAanpassen", "Gebruiker")</td>
+
+
+
