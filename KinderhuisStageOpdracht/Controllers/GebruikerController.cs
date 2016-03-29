@@ -724,6 +724,30 @@ namespace KinderhuisStageOpdracht.Controllers
             return View(ivm);
         }
 
+        [HttpPost]
+        public ActionResult Instellingen(GebruikerViewModel.InstellingenViewModel model)
+        {
+            var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
+            if (ModelState.IsValid)
+            {
+                if (model.AvatarUpload != null)
+                {
+                    client.AddAvatar(ImageUploadAvatarAfbeelding(model.AvatarUpload));
+                }
+
+                if (model.BackgroundUpload != null)
+                {
+                    client.AddBackground(ImageUploadBackgroundAfbeelding(model.BackgroundUpload));
+                }
+                _gebruikerRepository.SaveChanges();
+                this.AddNotification("De veranderingen zijn opgeslagen.", NotificationType.SUCCESS);
+
+            }
+          
+            var ivm = new GebruikerViewModel.InstellingenViewModel(client.BackgroundUrl, client.AvatarUrl);
+            return View(ivm);
+        }
+
         public ActionResult WachtwoordAanpassen()
         {
             return View();
@@ -762,6 +786,36 @@ namespace KinderhuisStageOpdracht.Controllers
                 file.SaveAs(path);
 
                 return "~/Content/Images/ProfielAfbeelding/" + pic;
+            }
+            return "~/Content/Images/Aanduidingen/vraagteken.png" +
+                   "";
+        }
+
+        public string ImageUploadAvatarAfbeelding(HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                var pic = System.IO.Path.GetFileName(file.FileName);
+                var path = System.IO.Path.Combine(Server.MapPath("/Content/Images/Avatars"), pic);
+
+                file.SaveAs(path);
+
+                return "~/Content/Images/Avatars/" + pic;
+            }
+            return "~/Content/Images/Aanduidingen/vraagteken.png" +
+                   "";
+        }
+
+        public string ImageUploadBackgroundAfbeelding(HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                var pic = System.IO.Path.GetFileName(file.FileName);
+                var path = System.IO.Path.Combine(Server.MapPath("/Content/Images/Backgrounds"), pic);
+
+                file.SaveAs(path);
+
+                return "~/Content/Images/Backgrounds/" + pic;
             }
             return "~/Content/Images/Aanduidingen/vraagteken.png" +
                    "";

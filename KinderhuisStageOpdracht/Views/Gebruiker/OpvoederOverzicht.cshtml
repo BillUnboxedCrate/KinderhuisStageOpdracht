@@ -1,0 +1,25 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.OpvoederListViewModel
+@{
+    ViewBag.Title = "OpvoederOverzicht";
+}
+
+<h2>OpvoederOverzicht</h2>
+<h3>Opvoeders</h3>
+<div class="terugButton">
+    @Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")
+</div>
+
+@foreach (var o in Model.Opvoeders)
+{
+    <div class="opvoederOverview">
+        <a href="@Url.Action("Forum", new { id = o.Id })">
+            <img src="@Url.Content(o.ImageUrl)" />
+        </a>
+    </div>
+    @*@Html.DisplayFor(modelItem => o.FullName)
+
+
+        @Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })*@
+}
+
+

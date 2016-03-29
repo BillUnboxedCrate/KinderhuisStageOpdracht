@@ -4,12 +4,12 @@
 }
 
 <h2>WachtwoordAanpassen</h2>
-@using (Html.BeginForm("WachtwoordAanpassen", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form"}))
+@using (Html.BeginForm("WachtwoordAanpassen", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <hr />
     @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
-   
+
     <div class="form-group">
         @Html.LabelFor(m => m.Wachtwoord, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.NieuwWachtwoord, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.NieuwWachtwoord, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.NieuwWachtwoord, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.NieuwWachtwoord, "", new { @class = "text-danger" })
@@ -34,11 +34,16 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Voeg opvoeder toe" />
-        </div>
-    </div>
+    <table class="buttontable">
+        <tr>
+            <td><input type="submit" class="button" value="Opslaan" /></td>
+            <td>
+                <span class="terugButton">
+                    @Html.ActionLink("Terug", "Instellingen", "Gebruiker")
+                </span>
+            </td>
+    </table>
+
 }
 
 

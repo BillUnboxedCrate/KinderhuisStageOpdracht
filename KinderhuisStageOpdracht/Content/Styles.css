@@ -568,6 +568,22 @@ label:hover .hovertext {
     text-align: center;
 }
 
+#backgroundImageShow {
+    width: 500px;
+    height: auto;
+}
+
+#avatarImageShow {
+    width: 200px;
+    height: auto;
+}
+
+#instellingen {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 
 

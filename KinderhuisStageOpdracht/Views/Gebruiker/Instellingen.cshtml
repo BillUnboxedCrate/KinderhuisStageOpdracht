@@ -3,28 +3,60 @@
     ViewBag.Title = "Customize";
 }
 
-<h2>Customize</h2>
-
-@if (Model.AvatarUrl != null)
+<h2>Instellingen</h2>
+@using (Html.BeginForm("Instellingen", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
-    <img src="@Url.Content(Model.AvatarUrl)" alt="Avatar" />
+    <div id="instellingen">
+        @Html.AntiForgeryToken()
+        @if (Model.AvatarUrl != null)
+        {
+            <img src="@Url.Content(Model.AvatarUrl)" alt="Avatar" id="avatarImageShow"/>
+        }
+        else
+        {
+            <img src="@Url.Content("~/Content/Images/Aanduidingen/vraagteken.png")" alt="Avatar"/>
+        }
+
+        <br/>
+        <br/>
+        <div>
+            @Html.TextBoxFor(m => m.AvatarUpload, new {type = "file"})
+            @Html.ValidationMessageFor(m => m.AvatarUpload, "", new {@class = "text-danger"})
+        </div>
+        <br/>
+
+        @if (Model.BackgroundUrl != null)
+        {
+            <img src="@Url.Content(Model.BackgroundUrl)" alt="Achtergrond" id="backgroundImageShow"/>
+        }
+        else
+        {
+            <img src="@Url.Content("~/Content/Images/Aanduidingen/vraagteken.png")" alt="Achtergrond"/>
+        }
+        <br/>
+        <br/>
+        <div>
+            @Html.TextBoxFor(m => m.BackgroundUpload, new {type = "file"})
+            @Html.ValidationMessageFor(m => m.BackgroundUpload, "", new {@class = "text-danger"})
+        </div>
+    </div>
+    <br/>
+    
+    <table class="buttontable">
+        <tr>
+            <td><input type="submit" class="button" value="Opslaan" /></td>
+            <td>
+                <span class="terugButton">
+                    @Html.ActionLink("Wachtwoord aanpassen", "WachtwoordAanpassen", "Gebruiker")
+                </span>
+            </td>
+            <td>
+                <span class="terugButton">
+                    @Html.ActionLink("Terug", "ClientIndex", "Gebruiker")
+                </span>
+            </td>
+        </tr>
+    </table>
+
 }
-else
-{
-    <img src="@Url.Content("~/Content/Images/Aanduidingen/vraagteken.png")" alt="Avatar" />
-}
-
-
-@if (Model.BackgroundUrl != null)
-{
-    <img src="@Url.Content(Model.BackgroundUrl)" alt="Achtergrond" />
-}
-else
-{
-    <img src="@Url.Content("~/Content/Images/Aanduidingen/vraagteken.png")" alt="Achtergrond" />
-}
-
-<td>@Html.ActionLink("Wachtwoord aanpassen", "WachtwoordAanpassen", "Gebruiker")</td>
-
-
 

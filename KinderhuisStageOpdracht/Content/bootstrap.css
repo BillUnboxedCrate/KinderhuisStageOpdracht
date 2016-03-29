@@ -1672,7 +1672,6 @@ input[type="checkbox"] {
 }
 
 input[type="file"] {
-  display: block;
 }
 
 select[multiple],

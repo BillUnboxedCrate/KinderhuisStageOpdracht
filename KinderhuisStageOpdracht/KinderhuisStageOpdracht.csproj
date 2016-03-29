@@ -332,6 +332,9 @@
     <Content Include="Views\Gebruiker\KamerControleOpvoeder.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Gebruiker\OpvoederOverzicht.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -385,7 +388,6 @@
     <Content Include="Views\Opvangtehuis\Klacht.cshtml" />
     <Content Include="Views\Opvangtehuis\KlachtIndex.cshtml" />
     <Content Include="Views\Gebruiker\GestrafteOverzicht.cshtml" />
-    <Content Include="Views\Gebruiker\OpvoederOverzicht.cshtml" />
     <Content Include="Views\Gebruiker\WachtwoordAanpassen.cshtml" />
     <Content Include="Views\Gebruiker\Instellingen.cshtml" />
   </ItemGroup>

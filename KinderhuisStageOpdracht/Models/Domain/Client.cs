@@ -153,6 +153,17 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return Forums.FirstOrDefault(f => f.Client == client && f.Opvoeder == opvoeder);
         }
 
+        //Instellingen
+        public void AddBackground(string backgroundUrl)
+        {
+            BackgroundUrl = backgroundUrl;
+        }
+
+        public void AddAvatar(string avatarUrl)
+        {
+            AvatarUrl = avatarUrl;
+        }
+
         //TimeTracking
         /*public void GetCurrentTracking()
         {
