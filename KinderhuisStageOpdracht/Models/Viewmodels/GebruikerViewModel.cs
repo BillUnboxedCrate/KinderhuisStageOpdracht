@@ -735,11 +735,13 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
         public class WachtwoordChangeViewModel
         {
+            public string GebruikerType { get; set; }
+
             [Required]
             [Display(Name = "Wachtwoord")]
             [DataType(DataType.Password)]
             public string Wachtwoord { get; set; }
-            
+
             [Required]
             [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} karakters lang zijn.", MinimumLength = 4)]
             [DataType(DataType.Password)]
@@ -751,6 +753,13 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [System.ComponentModel.DataAnnotations.Compare("NieuwWachtwoord",
                 ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
             public string BevestigNieuwWachtwoord { get; set; }
+
+            public WachtwoordChangeViewModel() { }
+
+            public WachtwoordChangeViewModel(string gebruikerType)
+            {
+                GebruikerType = gebruikerType;
+            }
         }
 
         #endregion

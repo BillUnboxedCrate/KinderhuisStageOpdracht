@@ -39,7 +39,14 @@
             <td><input type="submit" class="button" value="Opslaan" /></td>
             <td>
                 <span class="terugButton">
-                    @Html.ActionLink("Terug", "Instellingen", "Gebruiker")
+                    @if (Model.GebruikerType.Contains("Client"))
+                    {
+                        @Html.ActionLink("Terug", "Instellingen", "Gebruiker")
+                    }
+                    else if (Model.GebruikerType.Contains("Opvoeder"))
+                    {
+                        @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
+                    }
                 </span>
             </td>
     </table>

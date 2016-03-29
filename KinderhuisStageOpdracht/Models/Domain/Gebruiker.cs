@@ -98,6 +98,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
             
         }
 
+        public void AddImage(string imageUrl)
+        {
+            ImageUrl = imageUrl;
+        }
+
         public void WachtwoordAanpassen(string nieuwWachtwoord, string salt)
         {
             Wachtwoord = nieuwWachtwoord;

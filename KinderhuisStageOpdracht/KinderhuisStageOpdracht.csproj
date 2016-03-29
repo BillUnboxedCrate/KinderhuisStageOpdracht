@@ -259,6 +259,7 @@
     <Content Include="Content\Images\Aanduidingen\activiteit.png" />
     <Content Include="Content\Images\Aanduidingen\algemeen.png" />
     <Content Include="Content\Images\Aanduidingen\cross.png" />
+    <Content Include="Content\Images\Aanduidingen\default.png" />
     <Content Include="Content\Images\Aanduidingen\eten.png" />
     <Content Include="Content\Images\Aanduidingen\film.png" />
     <Content Include="Content\Images\Aanduidingen\google.png" />

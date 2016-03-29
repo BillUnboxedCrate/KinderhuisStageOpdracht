@@ -21,9 +21,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
         [DataType(DataType.ImageUrl)]
         public string BackgroundUrl { get; set; }
 
-        [DataType(DataType.ImageUrl)]
-        public string AvatarUrl { get; set; }
-
         public Client()
         {
             KamerControles = new List<KamerControle>();
@@ -159,10 +156,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
             BackgroundUrl = backgroundUrl;
         }
 
-        public void AddAvatar(string avatarUrl)
-        {
-            AvatarUrl = avatarUrl;
-        }
 
         //TimeTracking
         /*public void GetCurrentTracking()
