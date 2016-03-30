@@ -13,9 +13,15 @@ namespace KinderhuisStageOpdracht.Models
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
+            userIdentity.AddClaim(new Claim("ClientBackgroundUrl", ClientBackgroundUrl));
+
             return userIdentity;
         }
+
+        public string ClientBackgroundUrl { get; set; }
     }
+
+
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

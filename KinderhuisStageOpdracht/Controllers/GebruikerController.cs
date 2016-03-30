@@ -755,6 +755,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 if (model.BackgroundUpload != null)
                 {
                     client.AddBackground(ImageUploadBackgroundAfbeelding(model.BackgroundUpload));
+                    Session["backgroundurl"] = client.BackgroundUrl;
                 }
                 _gebruikerRepository.SaveChanges();
                 this.AddNotification("De veranderingen zijn opgeslagen.", NotificationType.SUCCESS);
@@ -830,7 +831,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 file.SaveAs(path);
 
-                return "~/Content/Images/Backgrounds/" + pic;
+                return "/Content/Images/Backgrounds/" + pic;
             }
             return "~/Content/Images/Aanduidingen/vraagteken.png" +
                    "";

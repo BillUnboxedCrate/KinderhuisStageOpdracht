@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using KinderhuisStageOpdracht.Extensions;
 using KinderhuisStageOpdracht.Helpers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -107,6 +108,7 @@ namespace KinderhuisStageOpdracht.Controllers
                         {
                             var client = (Client) gebruiker;
                             client.AddTimeTrack();
+                            Session["backgroundurl"] = client.BackgroundUrl;
                             _gebruikerRepository.SaveChanges();
                             System.Diagnostics.Debug.WriteLine("Type client");
                             //return RedirectToAction("ClientIndex", "Gebruiker", new { id = gebruiker.Id });
