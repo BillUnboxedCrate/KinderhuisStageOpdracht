@@ -12,17 +12,19 @@
     </a>
 </div>
 
-@foreach (var o in Model.Opvoeders)
-{
-    <div class="opvoederOverview">
-        <a href="@Url.Action("Forum", new { id = o.Id })">
-            <img src="@Url.Content(o.ImageUrl)" />
-        </a>
-    </div>
-    @*@Html.DisplayFor(modelItem => o.FullName)
+<div class="opvoederoverviewtable">
+    @foreach (var o in Model.Opvoeders)
+    {
+        <div class="opvoederOverview">
+            <a href="@Url.Action("Forum", new {id = o.Id})">
+                <img src="@Url.Content(o.ImageUrl)" />
+            </a>
+        </div>
+
+        @*@Html.DisplayFor(modelItem => o.FullName)
 
 
-        @Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })*@
-}
+            @Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })*@
+    }
 
-
+</div>

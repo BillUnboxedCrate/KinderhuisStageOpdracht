@@ -503,7 +503,9 @@ label:hover .hovertext {
         .clientIndexTable a:hover {
             border-color: #1042B0;
         }
-
+.opvoederoverviewtable {
+    text-align: center;
+}
 
 .opvoederOverview {
     width: 275px;
@@ -517,6 +519,7 @@ label:hover .hovertext {
         height: auto;
         border: 1px solid black;
     }
+
 
 
 .kamercontroleTitel {

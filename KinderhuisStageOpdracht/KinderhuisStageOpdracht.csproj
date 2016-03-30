@@ -260,10 +260,15 @@
     <Content Include="Content\Images\Aanduidingen\accept.png" />
     <Content Include="Content\Images\Aanduidingen\activiteit.png" />
     <Content Include="Content\Images\Aanduidingen\algemeen.png" />
+    <Content Include="Content\Images\Aanduidingen\chat.png" />
+    <Content Include="Content\Images\Aanduidingen\checklist.png" />
     <Content Include="Content\Images\Aanduidingen\film.png" />
+    <Content Include="Content\Images\Aanduidingen\klacht.png" />
     <Content Include="Content\Images\Aanduidingen\menu.png" />
     <Content Include="Content\Images\Aanduidingen\opslaan.png" />
     <Content Include="Content\Images\Aanduidingen\password.png" />
+    <Content Include="Content\Images\Aanduidingen\sanctie.jpg" />
+    <Content Include="Content\Images\Aanduidingen\suggestie.png" />
     <Content Include="Content\Images\Aanduidingen\terug.png" />
     <Content Include="Content\Images\Aanduidingen\cross.png" />
     <Content Include="Content\Images\Aanduidingen\default.png" />
@@ -273,7 +278,7 @@
     <Content Include="Content\Images\Aanduidingen\versturen.png" />
     <Content Include="Content\Images\Aanduidingen\vinkje.png" />
     <Content Include="Content\Images\Aanduidingen\vraagteken.png" />
-    <Content Include="Content\Images\Backgrounds\serious-sam-hd-the-second-encounter.jpg" />
+    <Content Include="Content\Images\Aanduidingen\youtube.png" />
     <Content Include="Content\Images\KamerControleImages\bed_opmaken.png" />
     <Content Include="Content\Images\KamerControleImages\gordijn_openen.jpg" />
     <Content Include="Content\Images\KamerControleImages\was_opruimen.png" />
@@ -404,6 +409,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Avatars\" />
+    <Folder Include="Content\Images\Backgrounds\" />
     <Folder Include="Content\Images\ProfielAfbeelding\" />
     <Folder Include="Views\Planning\" />
   </ItemGroup>
