@@ -52,11 +52,15 @@
     <table class="buttontable">
         <tr>
             <td>
-                <input type="submit" class="button" value="Doe de suggestie" />
+                @*<input type="submit" class="button" value="Doe de suggestie"/>*@
+                <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" alt="Accepteren" title="Accpeteren"/>
             </td>
             <td>
-                <span class="terugButton">
-                    @Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")
+                <span>
+                    <a href="@Url.Action("ClientIndex", "Gebruiker")">
+                        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                    </a>
+                    @*@Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")*@
                 </span>
             </td>
         </tr>

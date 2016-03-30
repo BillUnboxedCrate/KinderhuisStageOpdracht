@@ -41,7 +41,10 @@ else
     </div>
 }
 
-<div class="terugButton">
-    @Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")
+<div class="imagebutton">
+    @*@Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")*@
+    <a href="@Url.Action("ClientIndex", "Gebruiker")">
+        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+    </a>
 </div>
 

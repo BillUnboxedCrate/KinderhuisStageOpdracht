@@ -34,15 +34,28 @@
             @Html.TextAreaFor(model => model.Post, new { @class = "form-control", @cols = 30, @rows = 5 })
 
             <div class="form-group">
-                <input type="submit" class="button" value="Versturen" />
+                @*<input type="submit" class="button" value="Versturen"/>*@
+                <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/versturen.png")" alt="ves"/>
             </div>
         </div>
     }
 
 </div>
 
-<div class="terugButton">
-    @(Model.TypeGebruiker == "client" ? Html.ActionLink("Terug naar index", "Opvoederoverzicht", "Gebruiker") : Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker"))
+<div class="imagebutton">
+    @*@(Model.TypeGebruiker == "client" ? Html.ActionLink("Terug naar index", "Opvoederoverzicht", "Gebruiker") : Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker"))*@
+    @if (Model.TypeGebruiker == "client")
+    {
+        <a href="@Url.Action("OpvoederOverzicht", "Gebruiker")">
+            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug"/>
+        </a>
+    }
+    else
+    {
+        <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+        </a>
+    }
 </div>
 
 

@@ -175,9 +175,13 @@ namespace KinderhuisStageOpdracht.Controllers
 
             if (model.ImageUpload != null)
             {
+
                 if (!ImageIsValidType(model.ImageUpload))
                 {
                     ModelState.AddModelError("ImageUpload", "Dit is geen foto");
+                }
+                else
+                {
                     imageUrl = ImageUploadProfielAfbeelding(model.ImageUpload);
                 }
             }

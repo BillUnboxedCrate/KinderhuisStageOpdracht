@@ -10,50 +10,59 @@
         @Html.AntiForgeryToken()
         @if (Model.AvatarUrl != null)
         {
-            <img src="@Url.Content(Model.AvatarUrl)" alt="Avatar" id="avatarImageShow"/>
+            <img src="@Url.Content(Model.AvatarUrl)" alt="Avatar" id="avatarImageShow" />
         }
         else
         {
-            <img src="@Url.Content("~/Content/Images/Aanduidingen/vraagteken.png")" alt="Avatar"/>
+            <img src="@Url.Content("~/Content/Images/Aanduidingen/vraagteken.png")" alt="Avatar" />
         }
 
-        <br/>
-        <br/>
+        <br />
+        <br />
         <div>
-            @Html.TextBoxFor(m => m.AvatarUpload, new {type = "file"})
-            @Html.ValidationMessageFor(m => m.AvatarUpload, "", new {@class = "text-danger"})
+            @Html.TextBoxFor(m => m.AvatarUpload, new { type = "file" })
+            @Html.ValidationMessageFor(m => m.AvatarUpload, "", new { @class = "text-danger" })
         </div>
-        <br/>
+        <br />
 
         @if (Model.BackgroundUrl != null)
         {
-            <img src="@Url.Content(Model.BackgroundUrl)" alt="Achtergrond" id="backgroundImageShow"/>
+            <img src="@Url.Content(Model.BackgroundUrl)" alt="Achtergrond" id="backgroundImageShow" />
         }
         else
         {
-            <img src="@Url.Content("~/Content/Images/Aanduidingen/vraagteken.png")" alt="Achtergrond"/>
+            <img src="@Url.Content("~/Content/Images/Aanduidingen/vraagteken.png")" alt="Achtergrond" />
         }
-        <br/>
-        <br/>
+        <br />
+        <br />
         <div>
-            @Html.TextBoxFor(m => m.BackgroundUpload, new {type = "file"})
-            @Html.ValidationMessageFor(m => m.BackgroundUpload, "", new {@class = "text-danger"})
+            @Html.TextBoxFor(m => m.BackgroundUpload, new { type = "file" })
+            @Html.ValidationMessageFor(m => m.BackgroundUpload, "", new { @class = "text-danger" })
         </div>
     </div>
-    <br/>
-    
+    <br />
+
     <table class="buttontable">
         <tr>
-            <td><input type="submit" class="button" value="Opslaan" /></td>
+            @*<td><input type="submit" class="button" value="Opslaan"/></td>*@
+            <td><input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/opslaan.png")" alt="Oplsaan" title="Opslaan"/></td>
             <td>
-                <span class="terugButton">
+                @*<span class="terugButton">
                     @Html.ActionLink("Wachtwoord aanpassen", "WachtwoordAanpassen", "Gebruiker")
-                </span>
+                </span>*@
+                <a href="@Url.Action("WachtwoordAanpassen", "Gebruiker")">
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/password.png")" alt="Wachtwoord aanpassen" title="Wachtwoord aanpassen" />
+                </a>
             </td>
             <td>
-                <span class="terugButton">
-                    @Html.ActionLink("Terug", "ClientIndex", "Gebruiker")
-                </span>
+                @*<span class="terugButton">
+                        @Html.ActionLink("Terug", "ClientIndex", "Gebruiker")
+                    </span>*@
+
+                <a href="@Url.Action("ClientIndex", "Gebruiker")">
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                </a>
+
             </td>
         </tr>
     </table>

@@ -16,7 +16,12 @@
     <tr>
         <td>@Html.ActionLink("Suggestie", "CreateSuggestie", "Opvangtehuis")</td>
         <td>@Html.ActionLink("Klacht", "Klacht", "Opvangtehuis")</td>
-        <td>@Html.ActionLink("De menu", "WeekMenu", "Opvangtehuis")</td>
+        <td>
+            @*@Html.ActionLink("De menu", "WeekMenu", "Opvangtehuis")*@
+            <a href="@Url.Action("WeekMenu", "Opvangtehuis")">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/menu.png")" alt="Instellingen" />
+            </a>
+        </td>
     </tr>
 
     <tr>
