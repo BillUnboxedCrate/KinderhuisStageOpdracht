@@ -615,6 +615,15 @@ label:hover .hovertext {
     margin-bottom: 20px;
 }
 
+#strafIndex {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#strafLijst ol {
+     list-style-position:inside;
+}
 
 
 

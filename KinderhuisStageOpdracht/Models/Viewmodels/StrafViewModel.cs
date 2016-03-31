@@ -11,6 +11,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         public class StrafListIndexViewModel
         {
             public List<StrafIndexViewModel> List { get; set; }
+            public StrafIndexViewModel StrafIndexViewModel { get; set; }
 
             public StrafListIndexViewModel()
             {

@@ -3,29 +3,72 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<p>Lijst van straffen | @Html.ActionLink("Voeg nog straf toe", "CreateStraf")</p>
-<ol>
-    @foreach (var o in Model.List)
+
+<div id="strafIndex">
+    @using (Html.BeginForm("Index", "Straf", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
-        <li>@Html.DisplayFor(modelItem => o.Naam)</li>
+        <div id="strafLijst">
+            <h2>Lijst van straffen @*| @Html.ActionLink("Voeg nog straf toe", "CreateStraf")*@</h2>
+            <ol>
+                @foreach (var o in Model.List)
+                {
+                    <li>@Html.DisplayFor(modelItem => o.Naam)</li>
+                }
+            </ol>
+        </div>
+
+        <div id="strafToevoegen">
+            @Html.AntiForgeryToken()
+            <h2>Straf toevoegen</h2>
+            <table class="form">
+                <tr>
+                    <th>
+                        @Html.LabelFor(m => m.StrafIndexViewModel.Naam, new { @class = "control-label" })
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(m => m.StrafIndexViewModel.Naam, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.StrafIndexViewModel.Naam, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.LabelFor(m => m.StrafIndexViewModel.ImageUpload, new { @class = "control-label" })
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(m => m.StrafIndexViewModel.ImageUpload, new { type = "file" })
+                        @Html.ValidationMessageFor(m => m.StrafIndexViewModel.ImageUpload, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <table class="buttontable">
+            <tr>
+                <td>
+                    <input type="submit" class="button" value="Voeg straf toe" />
+                </td>
+                <td>
+                    <span class="terugButton">
+                        @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
+                    </span>
+                </td>
+            </tr>
+        </table>
     }
-</ol>
-
-
-@*<table class="table">
-    <tr>
-        <th>Naam</th>
-    </tr>
-
-    @foreach (var o in Model.List)
-    {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => o.Naam)</td>
-        </tr>
-    }
-</table>*@
-
-<div class="terugButton">
-    @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
 </div>
+@*<table class="table">
+        <tr>
+            <th>Naam</th>
+        </tr>
+
+        @foreach (var o in Model.List)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => o.Naam)</td>
+            </tr>
+        }
+    </table>*@
+
+@*<div class="terugButton">
+    @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
+</div>*@

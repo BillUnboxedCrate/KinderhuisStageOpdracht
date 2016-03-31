@@ -167,28 +167,17 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateOpvoeder(GebruikerViewModel.CreateOpvoederViewModel model)
         {
-            string imageUrl = null;
             if (UserStillLoggedIn() != null)
             {
                 return UserStillLoggedIn();
             }
 
-            if (model.ImageUpload != null)
+            if (!ImageIsValidType(model.ImageUpload))
             {
+                ModelState.AddModelError("ImageUpload", "Dit is geen foto");
+            }
+          
 
-                if (!ImageIsValidType(model.ImageUpload))
-                {
-                    ModelState.AddModelError("ImageUpload", "Dit is geen foto");
-                }
-                else
-                {
-                    imageUrl = ImageUploadProfielAfbeelding(model.ImageUpload);
-                }
-            }
-            else
-            {
-                imageUrl = "~/Content/Images/Aanduidingen/default.png";
-            }
 
             if (ModelState.IsValid)
             {
@@ -205,7 +194,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                     var opvoeder = new Opvoeder(model.Naam, model.Voornaam,
                         _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                        model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum, imageUrl, model.IsStagair);
+                        model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum, ImageUploadProfielAfbeelding(model.ImageUpload), model.IsStagair);
 
                     _gebruikerRepository.AddOpvoeder(opvoeder);
                     _gebruikerRepository.SaveChanges();
@@ -686,7 +675,7 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var p in forum.Posts)
             {
                 var mine = p.Gebruiker == gebruiker;
-                fvm.AddPost(new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap, mine,p.Gebruiker.ImageUrl));
+                fvm.AddPost(new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap, mine, p.Gebruiker.ImageUrl));
             }
 
             return View(fvm);
@@ -818,8 +807,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 return "~/Content/Images/ProfielAfbeelding/" + pic;
             }
-            return "~/Content/Images/Aanduidingen/vraagteken.png" +
-                   "";
+            return "~/Content/Images/ProfielAfbeelding/default.png";
         }
 
         public string ImageUploadBackgroundAfbeelding(HttpPostedFileBase file)
@@ -833,8 +821,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 return "/Content/Images/Backgrounds/" + pic;
             }
-            return "~/Content/Images/Aanduidingen/vraagteken.png" +
-                   "";
+            return "~/Content/Images/Aanduidingen/vraagteken.png";
         }
 
         public bool ImageIsValidType(HttpPostedFileBase file)
@@ -847,7 +834,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 "image/png"
             };
 
-            if (validImageTypes.Contains(file.ContentType))
+            if (file == null || validImageTypes.Contains(file.ContentType))
             {
                 return true;
             }

@@ -4111,13 +4111,14 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 }
 
     .navbar-inverse .navbar-brand {
-        color: #999;
+        /*color: #999;*/
+        color: #fff;
     }
 
-        .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+        /*.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
             color: #fff;
             background-color: transparent;
-        }
+        }*/
 
     .navbar-inverse .navbar-text {
         color: #999;

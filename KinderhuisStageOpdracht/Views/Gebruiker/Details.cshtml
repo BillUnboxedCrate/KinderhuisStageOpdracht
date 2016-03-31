@@ -31,7 +31,7 @@
         <td>@Html.DisplayFor(m => m.GeboorteDatum)</td>
     </tr>
 
-    @if (Model.TypeGebruiker.Contains("Opvoeder") || Model.IsStagair)
+    @if (Model.TypeGebruiker.Contains("Opvoeder") && Model.IsStagair)
     {
         <tr>
             <th>Extra info</th>

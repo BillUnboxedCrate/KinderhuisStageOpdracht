@@ -159,7 +159,6 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [DataType(DataType.Upload)]
             [Display(Name = "Kies een foto")]
-            [Required]
             public HttpPostedFileBase ImageUpload { get; set; }
 
             [Display(Name = "Is deze persoon een stagair")]

@@ -95,13 +95,13 @@ namespace KinderhuisStageOpdracht.Controllers
                         if (gebruiker is Admin)
                         {
                             System.Diagnostics.Debug.WriteLine("Type admin");
-                            //return RedirectToAction("AdminIndex", "Gebruiker", new {id = gebruiker.Id});
+                            Session["backgroundurl"] = "";
                             return RedirectToAction("AdminIndex", "Gebruiker");
                         }
                         if (gebruiker is Opvoeder)
                         {
                             System.Diagnostics.Debug.WriteLine("Type opvoeder");
-                            //return RedirectToAction("OpvoederIndex", "Gebruiker", new { id = gebruiker.Id });
+                            Session["backgroundurl"] = "";
                             return RedirectToAction("OpvoederIndex", "Gebruiker");
                         }
                         if (gebruiker is Client)
@@ -509,6 +509,7 @@ namespace KinderhuisStageOpdracht.Controllers
             FormsAuthentication.SignOut();
             AuthenticationManager.SignOut();
             Session["gebruiker"] = "";
+            Session["backgroundurl"] = "";
             return RedirectToAction("Login", "Account");
         }
 

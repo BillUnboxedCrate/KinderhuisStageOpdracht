@@ -39,7 +39,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Wachtwoord = wachtwoord;
             Salt = salt;
             GeboorteDatum = geboortedatum;
-            ImageUrl = "~/Content/Images/Aanduidingen/default.png";
+            ImageUrl = "~/Content/Images/ProfielAfbeelding/defaultAvatar.png";
         }
 
         public void AddKamerControle(KamerControle kamerControle)

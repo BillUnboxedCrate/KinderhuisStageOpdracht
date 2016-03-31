@@ -271,7 +271,7 @@
     <Content Include="Content\Images\Aanduidingen\suggestie.png" />
     <Content Include="Content\Images\Aanduidingen\terug.png" />
     <Content Include="Content\Images\Aanduidingen\cross.png" />
-    <Content Include="Content\Images\Aanduidingen\default.png" />
+    <Content Include="Content\Images\ProfielAfbeelding\defaultAvatar.png" />
     <Content Include="Content\Images\Aanduidingen\eten.png" />
     <Content Include="Content\Images\Aanduidingen\google.png" />
     <Content Include="Content\Images\Aanduidingen\settings.png" />
@@ -279,6 +279,7 @@
     <Content Include="Content\Images\Aanduidingen\vinkje.png" />
     <Content Include="Content\Images\Aanduidingen\vraagteken.png" />
     <Content Include="Content\Images\Aanduidingen\youtube.png" />
+    <Content Include="Content\Images\ProfielAfbeelding\default.png" />
     <Content Include="Content\Images\KamerControleImages\bed_opmaken.png" />
     <Content Include="Content\Images\KamerControleImages\gordijn_openen.jpg" />
     <Content Include="Content\Images\KamerControleImages\was_opruimen.png" />
@@ -410,7 +411,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Avatars\" />
     <Folder Include="Content\Images\Backgrounds\" />
-    <Folder Include="Content\Images\ProfielAfbeelding\" />
     <Folder Include="Views\Planning\" />
   </ItemGroup>
   <ItemGroup>

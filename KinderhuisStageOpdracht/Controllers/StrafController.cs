@@ -36,6 +36,39 @@ namespace KinderhuisStageOpdracht.Controllers
             return View(silvm);
         }
 
+        [HttpPost]
+        public ActionResult Index(StrafViewModel.StrafListIndexViewModel model)
+        {
+            Opvangtehuis opvangtehuis;
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
+            if (!ImageIsValidType(model.StrafIndexViewModel.ImageUpload))
+            {
+                ModelState.AddModelError("ImageUpload", "Dit is geen foto");
+            }
+
+            if (ModelState.IsValid)
+            {
+                opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                opvangtehuis.AddStraf(new Straf(model.StrafIndexViewModel.Naam, ImageUploadStrafAfbeeling(model.StrafIndexViewModel.ImageUpload)));
+                _gebruikerRepository.SaveChanges();
+
+                this.AddNotification("Straf toegevoegd", NotificationType.SUCCESS);
+                return RedirectToAction("Index");
+            }
+
+            opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+            var silvm = new StrafViewModel.StrafListIndexViewModel();
+            foreach (var s in opvangtehuis.GetStraffen())
+            {
+                silvm.AddStrafIndexViewModel(new StrafViewModel.StrafIndexViewModel(s.Id, s.Naam));
+            }
+            return View(silvm);
+        }
+
         public ActionResult CreateStraf()
         {
             if (UserStillLoggedIn() != null)
@@ -90,6 +123,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public bool ImageIsValidType(HttpPostedFileBase file)
         {
+           
             var validImageTypes = new[]
             {
                 "image/jpg",
@@ -98,7 +132,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 "image/png"
             };
 
-            if (validImageTypes.Contains(file.ContentType))
+            if (file == null || validImageTypes.Contains(file.ContentType))
             {
                 return true;
             }

@@ -16,9 +16,11 @@
     @foreach (var o in Model.Opvoeders)
     {
         <div class="opvoederOverview">
+            <div>@Html.Label(o.FullName)</div>  
             <a href="@Url.Action("Forum", new {id = o.Id})">
-                <img src="@Url.Content(o.ImageUrl)" />
+                <img src="@Url.Content(o.ImageUrl)"/>
             </a>
+
         </div>
 
         @*@Html.DisplayFor(modelItem => o.FullName)
