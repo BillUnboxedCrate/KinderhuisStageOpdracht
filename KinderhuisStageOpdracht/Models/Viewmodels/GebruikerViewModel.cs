@@ -484,17 +484,19 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Id { get; set; }
             public string SendBy { get; set; }
             public DateTime TimeStamp { get; set; }
+            public string ImageUrl { get; set; }
             public bool Mine { get; set; }
             public string Boodschap { get; set; }
 
             public PostViewModel() { }
 
-            public PostViewModel(string sendby, DateTime timestamp, string boodschap, bool mine)
+            public PostViewModel(string sendby, DateTime timestamp, string boodschap, bool mine, string imageUrl)
             {
                 SendBy = sendby;
                 TimeStamp = timestamp;
                 Boodschap = boodschap;
                 Mine = mine;
+                ImageUrl = imageUrl;
             }
         }
 

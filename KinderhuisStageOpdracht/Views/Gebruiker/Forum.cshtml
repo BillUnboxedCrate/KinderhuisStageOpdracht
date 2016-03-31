@@ -11,14 +11,16 @@
         if (p.Mine)
         {
             <div id="myPost">
-                @Html.DisplayFor(modelItem => p.Boodschap)<br />
+                <img src="@Url.Content(p.ImageUrl)"/>
+                @Html.DisplayFor(modelItem => p.Boodschap)<br/>
                 <span class="postinfo">@Html.DisplayFor(modelItem => p.SendBy) - @Html.DisplayFor(modelItem => p.TimeStamp)</span>
             </div>
         }
         else
         {
             <div id="otherPost">
-                @Html.DisplayFor(modelItem => p.Boodschap)<br />
+                <img src="@Url.Content(p.ImageUrl)" />
+                @Html.DisplayFor(modelItem => p.Boodschap)<br/>
                 <span class="postinfo">@Html.DisplayFor(modelItem => p.TimeStamp) - @Html.DisplayFor(modelItem => p.SendBy)</span>
             </div>
         }

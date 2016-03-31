@@ -4,7 +4,7 @@
     ViewBag.Title = "View";
 }
 
-@using (Html.BeginForm("CreateClient", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("CreateClient", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h2>Maak een nieuwe cliënt aan.</h2>

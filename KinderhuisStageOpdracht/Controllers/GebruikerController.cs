@@ -276,11 +276,10 @@ namespace KinderhuisStageOpdracht.Controllers
 
                         var crypto = new SimpleCrypto.PBKDF2();
                         var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
-                        const string defaultImage = "~/Content/Images/Aanduidingen/default.png";
 
                         var client = new Client(model.Naam, model.Voornaam,
                             _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                            model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum, defaultImage);
+                            model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum);
 
                         _gebruikerRepository.AddClient(client);
                         _gebruikerRepository.SaveChanges();
@@ -687,7 +686,7 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var p in forum.Posts)
             {
                 var mine = p.Gebruiker == gebruiker;
-                fvm.AddPost(new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap, mine));
+                fvm.AddPost(new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap, mine,p.Gebruiker.ImageUrl));
             }
 
             return View(fvm);

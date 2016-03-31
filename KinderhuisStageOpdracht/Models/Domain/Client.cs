@@ -29,7 +29,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             TimeTrackList = new List<TimeTrack>();
         }
 
-        public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum, string imageUrl)
+        public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum)
         {
             Naam = naam;
             Voornaam = voornaam;
@@ -39,7 +39,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Wachtwoord = wachtwoord;
             Salt = salt;
             GeboorteDatum = geboortedatum;
-            ImageUrl = imageUrl;
+            ImageUrl = "~/Content/Images/Aanduidingen/default.png";
         }
 
         public void AddKamerControle(KamerControle kamerControle)
