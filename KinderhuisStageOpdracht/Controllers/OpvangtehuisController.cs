@@ -275,40 +275,40 @@ namespace KinderhuisStageOpdracht.Controllers
                         menu.AanpassenBeginDatum(model.BeginWeek);
 
                         //Maandag
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Hoofdgerecht = model.MaandagViewModel.Voorgerecht;
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Voorgerecht = model.MaandagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Voorgerecht = model.MaandagViewModel.Voorgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Hoofdgerecht = model.MaandagViewModel.Hoofdgerecht;
                         menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Dessert = model.MaandagViewModel.Dessert;
 
                         //Dinsdag
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Hoofdgerecht = model.DinsdagViewModel.Voorgerecht;
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Voorgerecht = model.DinsdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Voorgerecht = model.DinsdagViewModel.Voorgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Hoofdgerecht = model.DinsdagViewModel.Hoofdgerecht;
                         menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Dessert = model.DinsdagViewModel.Dessert;
 
 
                         //Woensdag
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Hoofdgerecht = model.WoensdagViewModel.Voorgerecht;
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Voorgerecht = model.WoensdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Voorgerecht = model.WoensdagViewModel.Voorgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Hoofdgerecht = model.WoensdagViewModel.Hoofdgerecht;
                         menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Dessert = model.WoensdagViewModel.Dessert;
 
 
                         //Donderdag
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Hoofdgerecht = model.DonderdagViewModel.Voorgerecht;
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Voorgerecht = model.DonderdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Voorgerecht = model.DonderdagViewModel.Voorgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Hoofdgerecht = model.DonderdagViewModel.Hoofdgerecht;
                         menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Dessert = model.DonderdagViewModel.Dessert;
 
                         //Vrijdag
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Hoofdgerecht = model.VrijdagViewModel.Voorgerecht;
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Voorgerecht = model.VrijdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Voorgerecht = model.VrijdagViewModel.Voorgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Hoofdgerecht = model.VrijdagViewModel.Hoofdgerecht;
                         menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Dessert = model.VrijdagViewModel.Dessert;
 
                         //Zaterdag
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Hoofdgerecht = model.ZaterdagViewModel.Voorgerecht;
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Voorgerecht = model.ZaterdagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Voorgerecht = model.ZaterdagViewModel.Voorgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Hoofdgerecht = model.ZaterdagViewModel.Hoofdgerecht;
                         menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Dessert = model.ZaterdagViewModel.Dessert;
 
                         //Zondag
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Hoofdgerecht = model.ZondagViewModel.Voorgerecht;
-                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Voorgerecht = model.ZondagViewModel.Hoofdgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Voorgerecht = model.ZondagViewModel.Voorgerecht;
+                        menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Hoofdgerecht = model.ZondagViewModel.Hoofdgerecht;
                         menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Dessert = model.ZondagViewModel.Dessert;
 
                         this.AddNotification("De menu is gewijzigd", NotificationType.SUCCESS);

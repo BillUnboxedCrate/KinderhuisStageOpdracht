@@ -718,7 +718,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 _gebruikerRepository.SaveChanges();
 
-                this.AddNotification("Uw boodschap is gepost", NotificationType.SUCCESS);
+                this.AddNotification("Je boodschap is gepost", NotificationType.SUCCESS);
                 return RedirectToAction("Forum");
             }
             return View();
