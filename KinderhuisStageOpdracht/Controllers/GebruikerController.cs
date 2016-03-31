@@ -391,7 +391,8 @@ namespace KinderhuisStageOpdracht.Controllers
 
             try
             {
-                _gebruikerRepository.DeleteGebruiker(id);
+                var gebruiker = _gebruikerRepository.FindById(id);
+                gebruiker.DeleteGebruiker();
                 _gebruikerRepository.SaveChanges();
 
                 this.AddNotification("De gebruiker is verwijderd", NotificationType.SUCCESS);

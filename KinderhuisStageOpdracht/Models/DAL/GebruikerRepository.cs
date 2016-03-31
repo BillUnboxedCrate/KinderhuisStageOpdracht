@@ -18,32 +18,32 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
         public IQueryable<Gebruiker> FindAll()
         {
-            return _context.GebruikerSet.OrderBy(g => g.Voornaam);
+            return _context.GebruikerSet.OrderBy(g => g.Voornaam).Where(g => g.Visable);
         }
 
         public Gebruiker FindById(int id)
         {
-            return _context.GebruikerSet.Find(id);
+            return _context.GebruikerSet.FirstOrDefault(g => g.Id == id && g.Visable);
         }
 
         public Gebruiker FindByUsername(string username)
         {
-            return _context.GebruikerSet.FirstOrDefault(g => g.Gebruikersnaam.ToLower() == username.ToLower());
+            return _context.GebruikerSet.FirstOrDefault(g => g.Gebruikersnaam.ToLower() == username.ToLower() && g.Visable);
         }
 
         public IQueryable<Gebruiker> FindAllAdmins()
         {
-            return _context.GebruikerSet.Where(g => g is Admin);
+            return _context.GebruikerSet.Where(g => g is Admin).Where(g => g.Visable);
         }
 
         public IQueryable<Gebruiker> FindAllOpvoeders()
         {
-            return _context.GebruikerSet.Where(g => g is Opvoeder);
+            return _context.GebruikerSet.Where(g => g is Opvoeder).Where(g => g.Visable);
         }
 
         public IQueryable<Gebruiker> FindAllClients()
         {
-            return _context.GebruikerSet.Where(g => g is Client);
+            return _context.GebruikerSet.Where(g => g is Client).Where(g => g.Visable);
         }
 
         public void AddOpvoeder(Opvoeder opvoeder)

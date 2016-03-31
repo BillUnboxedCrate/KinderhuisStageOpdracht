@@ -23,6 +23,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         [NotMapped]
         public string PlainWachtwoord { get; set; }
         public string Salt { get; set; }
+        public bool Visable { get; set; }
 
         public virtual ICollection<Taak> Taken { get; set; }
         public virtual Opvangtehuis Opvangtehuis { get; set; }
@@ -46,6 +47,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         protected Gebruiker()
         {
             Taken = new List<Taak>();
+            Visable = true;
             //Salt = GenerateSalt();
         }
 
@@ -96,6 +98,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
                 ImageUrl = imageUrl; 
             }
             
+        }
+
+        public void DeleteGebruiker()
+        {
+            Visable = false;
         }
 
         public void AddImage(string imageUrl)
