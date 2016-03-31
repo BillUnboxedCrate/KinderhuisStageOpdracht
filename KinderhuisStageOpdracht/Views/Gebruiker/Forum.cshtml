@@ -6,8 +6,10 @@
 
 <div id="forum">
     <h2>Forum</h2>
+    @Html.HiddenFor(model => model.ForumId)
+    @Html.HiddenFor(model => model.TypeGebruiker)
     @foreach (var p in Model.List)
-    {
+    {  
         if (p.Mine)
         {
             <div id="myPost">
@@ -30,10 +32,11 @@
     @using (Html.BeginForm("Forum", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         <div id="postBlock">
+           
             @Html.AntiForgeryToken()
             @Html.HiddenFor(model => model.ForumId)
 
-            @Html.TextAreaFor(model => model.Post, new { @class = "form-control", @cols = 30, @rows = 5 })
+            @Html.TextAreaFor(model => model.Post, new {@class = "form-control", @cols = 30, @rows = 5})
 
             <div class="form-group">
                 @*<input type="submit" class="button" value="Versturen"/>*@

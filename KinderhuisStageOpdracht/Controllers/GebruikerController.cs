@@ -670,6 +670,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             var forum = client.GetForum(opvoeder, client);
+            _gebruikerRepository.SaveChanges();
             var fvm = new GebruikerViewModel.ForumViewModel(forum.Id, type);
 
             foreach (var p in forum.Posts)

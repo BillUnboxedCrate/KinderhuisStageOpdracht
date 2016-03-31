@@ -2,7 +2,6 @@
     ViewBag.Title = "ClientIndex";
 }
 
-<h2>CliëntIndex</h2>
 @*<ul class="category-menu">
         <li>@Html.ActionLink("Suggestie", "CreateSuggestie", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Klacht", "Klacht", "Opvangtehuis")</li>
@@ -16,7 +15,7 @@
     <tr>
         @*<td>@Html.ActionLink("Suggestie", "CreateSuggestie", "Opvangtehuis")</td>*@
         <td>
-            <a href="@Url.Action("CreateSuggestie", "Opvangtehuis")">
+            <a href="@Url.Action("CreateSuggestie", "Opvangtehuis")" id="groenlink">
                 <img src="@Url.Content("~/Content/Images/Aanduidingen/suggestie.png")" alt="Een suggestie maken" title="Een suggestie maken" />
             </a>
         </td>
@@ -28,7 +27,7 @@
         </td>
         <td>
             @*@Html.ActionLink("De menu", "WeekMenu", "Opvangtehuis")*@
-            <a href="@Url.Action("WeekMenu", "Opvangtehuis")">
+            <a href="@Url.Action("WeekMenu", "Opvangtehuis")" id="orangelink">
                 <img src="@Url.Content("~/Content/Images/Aanduidingen/menu.png")" alt="Weekmenu" title="Weekmenu" />
             </a>
         </td>
@@ -37,19 +36,19 @@
     <tr>
         <td>
             @*@Html.ActionLink("Sancties", "Sancties", "Gebruiker")*@
-            <a href="@Url.Action("Sancties", "Gebruiker")">
+            <a href="@Url.Action("Sancties", "Gebruiker")" id="redlink">
                 <img src="@Url.Content("~/Content/Images/Aanduidingen/sanctie.jpg")" alt="Sancties" title="Sancties" />
             </a>
         </td>
         <td>
             @*@Html.ActionLink("Kamer Controle", "KamerControle", "Gebruiker")*@
-            <a href="@Url.Action("KamerControle", "Gebruiker")">
+            <a href="@Url.Action("KamerControle", "Gebruiker")" id="brownlink">
                 <img src="@Url.Content("~/Content/Images/Aanduidingen/checklist.png")" alt="Kamercontrole" title="Kamercontrole" />
             </a>
         </td>
         <td>
             @*@Html.ActionLink("Iets zeggen tegen?", "OpvoederOverzicht", "Gebruiker")*@
-            <a href="@Url.Action("OpvoederOverzicht", "Gebruiker")">
+            <a href="@Url.Action("OpvoederOverzicht", "Gebruiker")" id="cyanlink">
                 <img src="@Url.Content("~/Content/Images/Aanduidingen/chat.png")" alt="Iets zeggen tegen een opvoeder" title="Iets zeggen tegen een opvoeder" />
             </a>
         </td>
@@ -57,18 +56,18 @@
 
     <tr>
         <td>
-            <a href="http://www.google.be">
+            <a href="http://www.google.be" id="googlelink">
                 <img src="@Url.Content("~/Content/Images/Aanduidingen/google.png")" alt="Google" title="Google" />
             </a>
         </td>
         <td>
-            <a href="@Url.Action("Instellingen")">
+            <a href="@Url.Action("Instellingen")" id="graylink">
                 <img src="@Url.Content("~/Content/Images/Aanduidingen/settings.png")" alt="Instellingen" title="Instellingen" />
             </a>
         </td>
         <td>
-            <a href="http://www.youtube.be">
-                <img src="@Url.Content("~/Content/Images/Aanduidingen/youtube.png")" alt="Youtube" title="Youtube" />
+            <a href="http://www.youtube.be" id="youtubelink">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/youtube.png")" alt="YouTube" title="YouTube" />
             </a>
         </td>
     </tr>
