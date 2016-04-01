@@ -4,7 +4,7 @@
     ViewBag.Title = "CreateMenu";
 }
 
-@using (Html.BeginForm("CreateMenu", "Opvangtehuis", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("CreateMenu", "Opvangtehuis", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
@@ -255,6 +255,11 @@
             </td>
         </tr>
     </table>
+
+    <div>
+        @Html.TextBoxFor(m => m.MenuImageUpload, new { type = "file" })
+        @Html.ValidationMessageFor(m => m.MenuImageUpload, "", new { @class = "text-danger" })
+    </div>
 
     <table class="buttontable">
         <tr>

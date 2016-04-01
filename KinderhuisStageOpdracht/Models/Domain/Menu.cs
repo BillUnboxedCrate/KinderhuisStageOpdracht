@@ -12,6 +12,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public DateTime BegindagWeek { get; set; }
         public DateTime EinddagWeek { get; set; }
         public int Week { get; set; }
+        public string ImageUrl { get; set; }
         public virtual ICollection<MenuItem> MenuItems { get; set; }
 
         public Menu()

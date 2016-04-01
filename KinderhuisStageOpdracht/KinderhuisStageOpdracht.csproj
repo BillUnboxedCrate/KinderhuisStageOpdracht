@@ -411,6 +411,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Avatars\" />
     <Folder Include="Content\Images\Backgrounds\" />
+    <Folder Include="Content\Images\Menu\" />
     <Folder Include="Views\Planning\" />
   </ItemGroup>
   <ItemGroup>

@@ -230,10 +230,29 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     if (model.Id <= 0)
                     {
+                        
+
                         var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
                         if (opvangtehuis.FindMenuByDate(model.BeginWeek) == null)
                         {
                             var menu = new Menu(model.BeginWeek);
+
+                            if (model.MenuImageUpload != null)
+                            {
+                                if (ImageIsValidType(model.MenuImageUpload))
+                                {
+                                    menu.ImageUrl = ImageUploadMenuAfbeelding(model.MenuImageUpload);
+                                    opvangtehuis.AddMenu(menu);
+                                    _opvangtehuisRepository.SaveChanges();
+                                    this.AddNotification("De menu is aangemaakt", NotificationType.SUCCESS);
+                                }
+                                else
+                                {
+                                    this.AddNotification("Dit is geen foto", NotificationType.ERROR);
+                                    ModelState.AddModelError("MenuImageUpload", "Dit is geen foto");
+                                }
+                                
+                            }
 
                             menu.AddMenuItem("Maandag", model.MaandagViewModel.Hoofdgerecht,
                                 model.MaandagViewModel.Voorgerecht,
@@ -273,6 +292,23 @@ namespace KinderhuisStageOpdracht.Controllers
                         var menu = opvangtehuis.Menus.FirstOrDefault(m => m.Id == model.Id);
 
                         menu.AanpassenBeginDatum(model.BeginWeek);
+
+                        if (model.MenuImageUpload != null)
+                        {
+                            if (ImageIsValidType(model.MenuImageUpload))
+                            {
+                                menu.ImageUrl = ImageUploadMenuAfbeelding(model.MenuImageUpload);
+                                opvangtehuis.AddMenu(menu);
+                                _opvangtehuisRepository.SaveChanges();
+                                this.AddNotification("De menu is aangemaakt", NotificationType.SUCCESS);
+
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("MenuImageUpload", "Dit is geen foto");
+                            }
+
+                        }
 
                         //Maandag
                         menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Voorgerecht = model.MaandagViewModel.Voorgerecht;
@@ -349,6 +385,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 Id = id,
                 BeginWeek = menu.BegindagWeek,
                 Week = menu.Week,
+                MenuImageUrl = menu.ImageUrl,
                 MaandagViewModel = new OpvangtehuisViewModel.CreateMenuItemMaandagViewModel()
                 {
                     Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Dag,
@@ -431,6 +468,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 BeginWeek = menu.BegindagWeek,
                 Week = menu.Week,
+                MenuImageUrl = menu.ImageUrl,
                 MaandagViewModel = new OpvangtehuisViewModel.CreateMenuItemMaandagViewModel()
                 {
                     Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Dag,
@@ -568,6 +606,38 @@ namespace KinderhuisStageOpdracht.Controllers
             }
             return null;
         }
+        public bool ImageIsValidType(HttpPostedFileBase file)
+        {
+            var validImageTypes = new[]
+            {
+                "image/jpg",
+                "image/jpeg",
+                "image/pjpeg",
+                "image/png"
+            };
+
+            if (file == null || validImageTypes.Contains(file.ContentType))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public string ImageUploadMenuAfbeelding(HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                var pic = System.IO.Path.GetFileName(file.FileName);
+                var path = System.IO.Path.Combine(Server.MapPath("/Content/Images/Menu"), pic);
+
+                file.SaveAs(path);
+
+                return "/Content/Images/Menu/" + pic;
+            }
+            return null;
+        }
+
+        
         #endregion
     }
 }

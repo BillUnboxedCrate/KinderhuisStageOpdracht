@@ -62,19 +62,6 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Beschrijving { get; set; }
 
             public string GeselecteerdGenre { get; set; }
-
-            public ICollection<SelectListItem> Genres
-            {
-                get
-                {
-                    return new[]
-                    {   
-                        new SelectListItem {Text = "Suggestie voor eten", Value = "Eten"},
-                        new SelectListItem {Text = "Suggestie voor een activiteit", Value = "Activiteit"},
-                        new SelectListItem {Text = "Suggestie voor een film", Value = "Film"}
-                    };
-                }
-            }
         }
         #endregion
 
@@ -137,6 +124,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         {
             public int Id { get; set; }
             public int Week { get; set; }
+
+            public string MenuImageUrl { get; set; }
+            
+            [DataType(DataType.Upload)]
+            [Display(Name = "Kies een foto")]
+            public HttpPostedFileBase MenuImageUpload { get; set; } 
 
             public string Boodschap { get; set; }
 
