@@ -5,13 +5,17 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @*@Html.ActionLink("Hallo " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })*@
-            @Html.Label("Hallo " + User.Identity.GetUserName() + "!", new { @class = "navbar-brand" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Afmelden</a></li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <img src="@Session["profileimageurl"]" id="profilepicture" />
+            </li>
+            <li>
+                @*@Html.ActionLink("Hallo " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+                @*<img src="@Session["profileimageurl"]" id="profilepicture"/>*@
+                @Html.Label("Hallo " + User.Identity.GetUserName() + "!", new {@class = "navbar-brand"})
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Afmelden</a></li>
+        </ul>
     }
 }
 else

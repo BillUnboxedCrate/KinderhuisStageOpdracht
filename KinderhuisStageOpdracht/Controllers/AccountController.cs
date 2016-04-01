@@ -96,12 +96,14 @@ namespace KinderhuisStageOpdracht.Controllers
                         {
                             System.Diagnostics.Debug.WriteLine("Type admin");
                             Session["backgroundurl"] = "";
+                            Session["profileimageurl"] = "";
                             return RedirectToAction("AdminIndex", "Gebruiker");
                         }
                         if (gebruiker is Opvoeder)
                         {
                             System.Diagnostics.Debug.WriteLine("Type opvoeder");
                             Session["backgroundurl"] = "";
+                            Session["profileimageurl"] = "";
                             return RedirectToAction("OpvoederIndex", "Gebruiker");
                         }
                         if (gebruiker is Client)
@@ -109,6 +111,7 @@ namespace KinderhuisStageOpdracht.Controllers
                             var client = (Client) gebruiker;
                             client.AddTimeTrack();
                             Session["backgroundurl"] = client.BackgroundUrl;
+                            Session["profileimageurl"] = client.ImageUrl;
                             _gebruikerRepository.SaveChanges();
                             System.Diagnostics.Debug.WriteLine("Type client");
                             //return RedirectToAction("ClientIndex", "Gebruiker", new { id = gebruiker.Id });
@@ -510,6 +513,7 @@ namespace KinderhuisStageOpdracht.Controllers
             AuthenticationManager.SignOut();
             Session["gebruiker"] = "";
             Session["backgroundurl"] = "";
+            Session["profileimageurl"] = "";
             return RedirectToAction("Login", "Account");
         }
 

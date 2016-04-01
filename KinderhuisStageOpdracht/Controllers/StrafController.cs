@@ -116,9 +116,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 file.SaveAs(path);
 
-                return "~/Content/Images/StrafImages/" + pic;
+                return "/Content/Images/StrafImages/" + pic;
             }
-            return "~/Content/Images/Aanduidingen/vraagteken.png";
+            return "/Content/Images/Aanduidingen/vraagteken.png";
         }
 
         public bool ImageIsValidType(HttpPostedFileBase file)

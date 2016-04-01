@@ -64,7 +64,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Email = "bram.baert@hotmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
-                ImageUrl = "~/Content/Images/ProfielAfbeelding/default.png"
+                ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
 
             };
 
@@ -79,7 +79,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
-                ImageUrl = "~/Content/Images/ProfielAfbeelding/tomds.jpg"
+                ImageUrl = "/Content/Images/ProfielAfbeelding/tomds.jpg"
             };
 
             
@@ -94,7 +94,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Email = "yannickbraeckman@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
-                ImageUrl = "~/Content/Images/ProfielAfbeelding/default.png"
+                ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
             };
 
             var opvoeder3 = new Opvoeder()
@@ -107,7 +107,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
-                ImageUrl = "~/Content/Images/ProfielAfbeelding/Sandra.jpg"
+                ImageUrl = "/Content/Images/ProfielAfbeelding/Sandra.jpg"
             };
 
             var opvoeder4 = new Opvoeder()
@@ -120,7 +120,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
-                ImageUrl = "~/Content/Images/ProfielAfbeelding/Julie.jpg"
+                ImageUrl = "/Content/Images/ProfielAfbeelding/Julie.jpg"
             };
 
             //Clients
@@ -134,7 +134,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Email = "brikke.bauwens@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
-                ImageUrl = "~/Content/Images/ProfielAfbeelding/defaultAvatar.png"
+                ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"
             };
 
             var client2 = new Client()
@@ -146,7 +146,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
-                ImageUrl = "~/Content/Images/ProfielAfbeelding/defaultAvatar.png"
+                ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"
             };
 
             var client3 = new Client()
@@ -159,7 +159,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
-                ImageUrl = "~/Content/Images/ProfielAfbeelding/defaultAvatar.png"
+                ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"
             };
 
             var client4 = new Client()
@@ -171,7 +171,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
-                ImageUrl = "~/Content/Images/ProfielAfbeelding/defaultAvatar.png"
+                ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"
             };
 
             //Add admins
@@ -197,25 +197,25 @@ namespace KinderhuisStageOpdracht.Models.DAL
             var straf1 = new Straf()
             {
                 Naam = "Geen frisdrank",
-                ImageUrl = "~/Content/Images/StrafImages/frisdrank.png"
+                ImageUrl = "/Content/Images/StrafImages/frisdrank.png"
             };
 
             var straf2 = new Straf()
             {
                 Naam = "Geen spelletjes",
-                ImageUrl = "~/Content/Images/StrafImages/video_games.png"
+                ImageUrl = "/Content/Images/StrafImages/video_games.png"
             };
 
             var straf3 = new Straf()
             {
                 Naam = "Geen frisdrank",
-                ImageUrl = "~/Content/Images/StrafImages/frisdrank.png"
+                ImageUrl = "/Content/Images/StrafImages/frisdrank.png"
             };
 
             var straf4 = new Straf()
             {
                 Naam = "Geen spelletjes",
-                ImageUrl = "~/Content/Images/StrafImages/video_games.png"
+                ImageUrl = "/Content/Images/StrafImages/video_games.png"
             };
 
             opvangtehuis1.Straffen.Add(straf1);

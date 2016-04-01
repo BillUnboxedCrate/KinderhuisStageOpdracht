@@ -740,6 +740,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 if (model.AvatarUpload != null)
                 {
                     client.AddImage(ImageUploadProfielAfbeelding(model.AvatarUpload));
+                    Session["profileimageurl"] = client.ImageUrl;
                 }
 
                 if (model.BackgroundUpload != null)
@@ -806,9 +807,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 file.SaveAs(path);
 
-                return "~/Content/Images/ProfielAfbeelding/" + pic;
+                return "/Content/Images/ProfielAfbeelding/" + pic;
             }
-            return "~/Content/Images/ProfielAfbeelding/default.png";
+            return "/Content/Images/ProfielAfbeelding/default.png";
         }
 
         public string ImageUploadBackgroundAfbeelding(HttpPostedFileBase file)
@@ -822,7 +823,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 return "/Content/Images/Backgrounds/" + pic;
             }
-            return "~/Content/Images/Aanduidingen/vraagteken.png";
+            return "/Content/Images/Aanduidingen/vraagteken.png";
         }
 
         public bool ImageIsValidType(HttpPostedFileBase file)
