@@ -455,6 +455,7 @@ footer {
 .suggestionImage {
     width: 100px;
     height: auto;
+    border: 2px solid black;
 }
 
 .suggestieform {
@@ -690,6 +691,11 @@ label:hover .hovertext {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+#sendbutton {
+    width: 150px;
+    height: auto;
 }
 
 .imagebutton {

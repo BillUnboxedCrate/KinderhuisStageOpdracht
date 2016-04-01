@@ -159,7 +159,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
-                ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"
+                ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png",
+                BackgroundUrl = "/Content/Images/Backgrounds/foto-alta-risoluzione-91.jpg"
             };
 
             var client4 = new Client()
