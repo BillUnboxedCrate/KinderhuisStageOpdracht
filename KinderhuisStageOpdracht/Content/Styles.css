@@ -357,7 +357,7 @@ textarea {
 
 footer {
     text-align: center;
-    border-top: solid 1px lightgrey;
+    border-top: solid 1px black;
     background-color: #286366;
     width: 100%;
     position: fixed;
@@ -481,7 +481,7 @@ label > input { /* HIDE RADIO */
     }
 
     label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
-        border: 4px solid #f00;
+        border: 4px solid #228b22;
         border-radius: 5px;
     }
 
@@ -613,7 +613,7 @@ label:hover .hovertext {
 
     .opvoederOverview img {
         width: 300px;
-        height: auto;
+        height: 370px;
         border: 1px solid black;
     }
 
@@ -764,7 +764,7 @@ label:hover .hovertext {
     margin-bottom: 20px;
 }
 
-    .imagebutton img {
+    .imagebutton img, input[type="image"] {
         height: 75px;
         width: auto;
     }

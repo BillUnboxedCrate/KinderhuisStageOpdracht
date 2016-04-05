@@ -37,7 +37,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
             var opvangtehuis2 = new Opvangtehuis()
             {
-                Naam = "Kindertehuis Dageraad",
+                Naam = "Leefgroep De Hermelijn",
                 Gemeente = "Hamme",
                 Postcode = "9220",
                 Straat = "Jagerstraat",
@@ -69,21 +69,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             };
 
             //Opvoeders
-            var opvoeder1 = new Opvoeder()
-            {
-                Naam = "De Seager",
-                Voornaam = "Tom",
-                GeboorteDatum = new DateTime(1990, 11, 11),
-                Gebruikersnaam = "Opvoeder",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "tomdesaeger@gmail.com",
-                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1,
-                ImageUrl = "/Content/Images/ProfielAfbeelding/tomds.jpg"
-            };
-
-            
-
+            //Leefgroep kinderhuis
             var opvoeder2 = new Opvoeder()
             {
                 Naam = "Braeckman",
@@ -93,34 +79,128 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "yannickbraeckman@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis2,
+                Opvangtehuis = opvangtehuis1,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
             };
 
+
+            //Leefgroep Hermelijn
+            var opvoeder1 = new Opvoeder()
+            {
+                Naam = "De Seager",
+                Voornaam = "Tom",
+                GeboorteDatum = new DateTime(1990, 11, 11),
+                Gebruikersnaam = "Opvoeder",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Email = "tomdesaeger@gmail.com",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
+                Opvangtehuis = opvangtehuis2,
+                ImageUrl = "/Content/Images/ProfielAfbeelding/tomds.jpg"
+            };
+
+
             var opvoeder3 = new Opvoeder()
             {
-                Naam = "Achternaam",
+                Naam = "Michiels",
                 Voornaam = "Sandra",
                 GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Sandra",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1,
+                Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/Sandra.jpg"
             };
 
             var opvoeder4 = new Opvoeder()
             {
-                Naam = "Achternaam",
+                Naam = "Cattelain",
                 Voornaam = "Julie",
                 GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Julie",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1,
+                Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/Julie.jpg"
+            };
+
+            var opvoeder5 = new Opvoeder()
+            {
+                Naam = "Gysens",
+                Voornaam = "Anneliese",
+                GeboorteDatum = new DateTime(1990, 11, 11),
+                Gebruikersnaam = "Julie",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Email = "tomdesaeger@gmail.com",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
+                Opvangtehuis = opvangtehuis2,
+                ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
+            };
+
+            var opvoeder6 = new Opvoeder()
+            {
+                Naam = "Hamerlinck",
+                Voornaam = "Magda",
+                GeboorteDatum = new DateTime(1990, 11, 11),
+                Gebruikersnaam = "Julie",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Email = "tomdesaeger@gmail.com",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
+                Opvangtehuis = opvangtehuis2,
+                ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
+            };
+
+            var opvoeder7 = new Opvoeder()
+            {
+                Naam = "Jacobs",
+                Voornaam = "Candy",
+                GeboorteDatum = new DateTime(1990, 11, 11),
+                Gebruikersnaam = "Julie",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Email = "tomdesaeger@gmail.com",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
+                Opvangtehuis = opvangtehuis2,
+                ImageUrl = "/Content/Images/ProfielAfbeelding/Candy.jpg"
+            };
+
+            var opvoeder8 = new Opvoeder()
+            {
+                Naam = "Lejeune",
+                Voornaam = "Alexander",
+                GeboorteDatum = new DateTime(1990, 11, 11),
+                Gebruikersnaam = "Julie",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Email = "tomdesaeger@gmail.com",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
+                Opvangtehuis = opvangtehuis2,
+                ImageUrl = "/Content/Images/ProfielAfbeelding/alex.jpg"
+            };
+
+            var opvoeder9 = new Opvoeder()
+            {
+                Naam = "Spruyt",
+                Voornaam = "Martine",
+                GeboorteDatum = new DateTime(1990, 11, 11),
+                Gebruikersnaam = "Julie",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Email = "tomdesaeger@gmail.com",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
+                Opvangtehuis = opvangtehuis2,
+                ImageUrl = "/Content/Images/ProfielAfbeelding/Martine.jpg"
+            };
+
+            var opvoeder10 = new Opvoeder()
+            {
+                Naam = "Verstuyft",
+                Voornaam = "Tom",
+                GeboorteDatum = new DateTime(1990, 11, 11),
+                Gebruikersnaam = "Julie",
+                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Email = "tomdesaeger@gmail.com",
+                Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
+                Opvangtehuis = opvangtehuis2,
+                ImageUrl = "/Content/Images/ProfielAfbeelding/tomv.jpg"
             };
 
             //Clients
@@ -133,7 +213,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "brikke.bauwens@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1,
+                Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"
             };
 
@@ -145,7 +225,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Gebruikersnaam = "RoyHollanders",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1,
+                Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"
             };
 
@@ -158,7 +238,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Email = "doglife3@runescape.ayy",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis1,
+                Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png",
                 BackgroundUrl = "/Content/Images/Backgrounds/foto-alta-risoluzione-91.jpg"
             };
@@ -171,7 +251,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Gebruikersnaam = "SeanBraeckman",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
-                Opvangtehuis = opvangtehuis2,
+                Opvangtehuis = opvangtehuis1,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"
             };
 
@@ -180,17 +260,29 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
             //Add opvoerders
             //In opvangtehuis 1
+            context.GebruikerSet.Add(opvoeder2);
+
+            //In opvangtehuis 2
             context.GebruikerSet.Add(opvoeder1);
             context.GebruikerSet.Add(opvoeder3);
             context.GebruikerSet.Add(opvoeder4);
-            //In opvangtehuis 2
-            context.GebruikerSet.Add(opvoeder2);
+            context.GebruikerSet.Add(opvoeder5);
+            context.GebruikerSet.Add(opvoeder6);
+            context.GebruikerSet.Add(opvoeder7);
+            context.GebruikerSet.Add(opvoeder8);
+            context.GebruikerSet.Add(opvoeder9);
+            context.GebruikerSet.Add(opvoeder10);
 
-            //Add clients
+
+            //Add clients 
+            //In opvangtehuis 1
+            context.GebruikerSet.Add(client4);
+            
+            //In opvangtehuis 2
             context.GebruikerSet.Add(client1);
             context.GebruikerSet.Add(client2);
             context.GebruikerSet.Add(client3);
-            context.GebruikerSet.Add(client4);
+
             #endregion
 
             #region Straf
@@ -226,14 +318,14 @@ namespace KinderhuisStageOpdracht.Models.DAL
             opvangtehuis2.Straffen.Add(straf4);
             #endregion
 
-            
+
 
 
             #region menus
             var menu1 = new Menu(new DateTime(2016, 2, 29));
-            
+
             var menu2 = new Menu(new DateTime(2016, 2, 22));
-            
+
             #region menuitems
             var menuitem1 = new MenuItem()
             {
@@ -466,7 +558,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             opvangtehuis2.Opdrachten.Add(kamercontroleOpracht4);
             opvangtehuis2.Opdrachten.Add(kamercontroleOpracht5);
             opvangtehuis2.Opdrachten.Add(kamercontroleOpracht6);
-            
+
             #endregion
 
 

@@ -50,19 +50,21 @@
                 @*<span class="terugButton">
                     @Html.ActionLink("Wachtwoord aanpassen", "WachtwoordAanpassen", "Gebruiker")
                 </span>*@
-                <a href="@Url.Action("WachtwoordAanpassen", "Gebruiker")">
-                    <img src="@Url.Content("~/Content/Images/Aanduidingen/password.png")" alt="Wachtwoord aanpassen" title="Wachtwoord aanpassen" />
-                </a>
+                <span class="imagebutton">
+                    <a href="@Url.Action("WachtwoordAanpassen", "Gebruiker")">
+                        <img src="@Url.Content("~/Content/Images/Aanduidingen/password.png")" alt="Wachtwoord aanpassen" title="Wachtwoord aanpassen" />
+                    </a>
+                </span>
             </td>
             <td>
                 @*<span class="terugButton">
                         @Html.ActionLink("Terug", "ClientIndex", "Gebruiker")
                     </span>*@
-
-                <a href="@Url.Action("ClientIndex", "Gebruiker")">
-                    <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
-                </a>
-
+                <span class="imagebutton">
+                    <a href="@Url.Action("ClientIndex", "Gebruiker")">
+                        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                    </a>
+                </span>
             </td>
         </tr>
     </table>
