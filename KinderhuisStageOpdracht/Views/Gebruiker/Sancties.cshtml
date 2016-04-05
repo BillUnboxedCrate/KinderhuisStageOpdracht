@@ -7,36 +7,77 @@
 
 @if (Model.SanctieList.Count > 0)
 {
-    <table id="sactieTable">
-        <tr>
-            <th class="firstColumn">
-                <img src="@Url.Content("~/Content/Images/Aanduidingen/cross.png")" class="sanctieImage"/>
-                Straf
-            </th>
-            <th class="secondColumn">Rede</th>
-            <th>Van</th>
-            <th>Tot</th>
-        </tr>
+    @*<table id="sactieTable">
+            <tr>
+                <th class="firstColumn">
+                    <img src="@Url.Content("~/Content/Images/Aanduidingen/cross.png")" class="sanctieImage" />
+                    Straf
+                </th>
+                <th class="secondColumn">Rede</th>
+                <th>Van</th>
+                <th>Tot</th>
+            </tr>
 
+            @foreach (var o in Model.SanctieList)
+            {
+                <tr>
+                    <td class="firstColumn">
+                        <div>
+                            <img src="@Url.Content(o.ImageUrl)" class="sanctieImage" />
+                        </div>
+                        <div id="strafText">@Html.DisplayFor(modelItem => o.GeselecteerdeStraf)</div>
+                    </td>
+                    <td class="secondColumn">@Html.DisplayFor(modelItem => o.Rede)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => o.Date)<br />
+                        @Html.DisplayFor(modelItem => o.BeginDateDay)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => o.EindDatum)<br />
+                        @Html.DisplayFor(modelItem => o.EndDateDay)
+                    </td>
+                </tr>
+            }
+        </table>*@
+    <div class="SanctieCardSystem">
         @foreach (var o in Model.SanctieList)
         {
-            <tr>
-                <td class="firstColumn">
-                    <div><img src="@Url.Content(o.ImageUrl)" class="sanctieImage"/>
-                    </div>
-                    <div id="strafText">@Html.DisplayFor(modelItem => o.GeselecteerdeStraf)</div>
-                </td>
-                <td class="secondColumn">@Html.DisplayFor(modelItem => o.Rede)</td>
-                <td>@Html.DisplayFor(modelItem => o.Date)</td>
-                <td>@Html.DisplayFor(modelItem => o.EindDatum)</td>
-            </tr>
+
+        <div class="SanctieCard">
+            <div class="SanctieHeaderBlock">
+                <img src="@Url.Content(o.ImageUrl)" class="sanctieImage"/>
+            </div>
+
+            <div class="SanctieTitleBlock">
+                <div id="strafText">@Html.DisplayFor(modelItem => o.GeselecteerdeStraf)</div>
+            </div>
+
+            <div class="SanctieTimeBlock">
+                <table>
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => o.Date)</td>
+                        <td>@Html.DisplayFor(modelItem => o.EindDatum)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => o.BeginDateDay)</td>
+                        <td>@Html.DisplayFor(modelItem => o.EndDateDay)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="SanctieUitlegBlock">
+                @Html.DisplayFor(modelItem => o.Rede)
+            </div>
+
+        </div>
+
         }
-    </table>
+    </div>
 }
 else
 {
     <div id="geenStraffen">
-        <div><img src="@Url.Content("~/Content/Images/StrafImages/pacman.png")" class="sanctieImage" /></div>
+        <div><img src="@Url.Content("~/Content/Images/StrafImages/pacmansanctie.png")" class="sanctieImage" /></div>
         <div>Geen sancties, goed zo</div>
     </div>
 }

@@ -10,14 +10,6 @@
     @Html.AntiForgeryToken()
     <table class="suggestieform">
         <tr>
-            <td colspan="4">    
-                @Html.LabelFor(m => m.Beschrijving, new { @class = "control-label" })<br/>
-                @Html.TextAreaFor(m => m.Beschrijving, new {@class = "form-control", @cols = 40, @rows = 5})
-                @Html.ValidationMessageFor(m => m.Beschrijving, "", new {@class = "text-danger"})
-            </td>
-        </tr>
-
-        <tr>
             <td>
                 @*@Html.DropDownListFor(m => m.GeselecteerdGenre, Model.Genres, new { @class = "form-control" })*@
 
@@ -47,13 +39,22 @@
 
 
         </tr>
+        <tr>
+            <td colspan="4">
+                @Html.LabelFor(m => m.Beschrijving, new { @class = "control-label" })<br />
+                @Html.TextAreaFor(m => m.Beschrijving, new { @class = "form-control", @cols = 40, @rows = 5 })
+                @Html.ValidationMessageFor(m => m.Beschrijving, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+
     </table>
     <br />
     <table class="buttontable">
         <tr>
             <td>
                 @*<input type="submit" class="button" value="Doe de suggestie"/>*@
-                <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" alt="Accepteren" title="Accpeteren"/>
+                <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" alt="Accepteren" title="Accpeteren" />
             </td>
             <td>
                 <span>

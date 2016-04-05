@@ -3,16 +3,19 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                <img src="@Session["profileimageurl"]" id="profilepicture" />
-            </li>
+            @if (Session["profileimageurl"] != "")  
+            {
+                <li>
+                    <img src="@Session["profileimageurl"]" id="profilepicture" alt="Profielafbeelding"/>
+                </li>
+            }
             <li>
                 @*@Html.ActionLink("Hallo " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })*@
                 @*<img src="@Session["profileimageurl"]" id="profilepicture"/>*@
-                @Html.Label("Hallo " + User.Identity.GetUserName() + "!", new {@class = "navbar-brand"})
+                @Html.Label("Hallo " + User.Identity.GetUserName() + "!", new { @class = "navbar-brand" })
             </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Afmelden</a></li>
         </ul>
@@ -22,6 +25,6 @@ else
 {
     <ul class="nav navbar-nav navbar-right">
         @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
-            <li>@Html.ActionLink("Aanmelden", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-        </ul>
-    }
+        <li>@Html.ActionLink("Aanmelden", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

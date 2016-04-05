@@ -3,11 +3,11 @@
     ViewBag.Title = "Customize";
 }
 
-<h2>Instellingen</h2>
 @using (Html.BeginForm("Instellingen", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     <div id="instellingen">
         @Html.AntiForgeryToken()
+        <h2>Stel je profiel afbeelding in.</h2>
         @if (Model.AvatarUrl != null)
         {
             <img src="@Url.Content(Model.AvatarUrl)" alt="Avatar" id="avatarImageShow" />
@@ -24,7 +24,7 @@
             @Html.ValidationMessageFor(m => m.AvatarUpload, "", new { @class = "text-danger" })
         </div>
         <br />
-
+        <h2>Stel je achtergrond in.</h2>
         @if (Model.BackgroundUrl != null)
         {
             <img src="@Url.Content(Model.BackgroundUrl)" alt="Achtergrond" id="backgroundImageShow" />

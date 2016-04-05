@@ -267,6 +267,7 @@
     <Content Include="Content\Images\Aanduidingen\film.png" />
     <Content Include="Content\Images\Aanduidingen\klacht.png" />
     <Content Include="Content\Images\Aanduidingen\menu.png" />
+    <Content Include="Content\Images\StrafImages\pacmansanctie.png" />
     <Content Include="Content\Images\Aanduidingen\password.png" />
     <Content Include="Content\Images\Aanduidingen\sanctie.jpg" />
     <Content Include="Content\Images\Aanduidingen\suggestie.png" />

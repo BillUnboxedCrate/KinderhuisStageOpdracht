@@ -534,9 +534,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Selecteer een datum")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime Date { get; set; }
+            public string BeginDateDay { get; set; }
 
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime EindDatum { get; set; }
+            public string EndDateDay { get; set; }
 
             [Required]
             [Display(Name = "Aantal dagen")]
@@ -566,6 +568,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Date = begindatum;
                 EindDatum = eindatum;
                 GeselecteerdeStraf = straf;
+                BeginDateDay = GetDayOfWeek(Date);
+                EndDateDay = GetDayOfWeek(EindDatum);
             }
 
             public SanctieViewModel(string client, string rede, DateTime begindatum, DateTime eindatum, string straf)
@@ -575,6 +579,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Date = begindatum;
                 EindDatum = eindatum;
                 GeselecteerdeStraf = straf;
+                BeginDateDay = GetDayOfWeek(Date);
+                EndDateDay = GetDayOfWeek(EindDatum);
             }
 
             public SanctieViewModel(string rede, DateTime begindatum, DateTime eindatum, string straf, string imageUrl)
@@ -584,6 +590,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 EindDatum = eindatum;
                 GeselecteerdeStraf = straf;
                 ImageUrl = imageUrl;
+                BeginDateDay = GetDayOfWeek(Date);
+                EndDateDay = GetDayOfWeek(EindDatum);
             }
 
             public void AddStraf(string straf)
@@ -594,6 +602,13 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public void SetStraffen(List<string> straffen)
             {
                 Straffen = straffen;
+            }
+
+            private string GetDayOfWeek(DateTime date)
+            {
+                var culture = new CultureInfo("nl-NL");
+                var dag = culture.DateTimeFormat.GetDayName(date.DayOfWeek);
+                return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dag);
             }
         }
         #endregion

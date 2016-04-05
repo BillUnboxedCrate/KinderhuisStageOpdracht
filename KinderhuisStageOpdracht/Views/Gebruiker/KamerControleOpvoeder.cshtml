@@ -9,7 +9,6 @@
     <table id="kamercontroleTableOpvoeder">
         <tr>
             <th>Taak</th>
-            <th>Kleine beschrijving</th>
             <th>Is dit werkelijk gebeurt</th>
             <td>Uitleg</td>
         </tr>
@@ -22,9 +21,7 @@
                     @Html.HiddenFor(modelItem => Model.KamerControleItems[i].Titel)
                 </td>
 
-                <td>@Html.DisplayFor(modelItem => Model.KamerControleItems[i].Beschrijving)</td>
-
-                <td>@Html.EditorFor(modelItem => Model.KamerControleItems[i].DoneOpvoeder)</td>
+                <td>@Html.CheckBoxFor(modelItem => Model.KamerControleItems[i].DoneOpvoeder, new{@class = "bigcheckbox"})</td>
 
                 <td>
                     @Html.TextAreaFor(modelItem => Model.KamerControleItems[i].Uitleg)
@@ -51,7 +48,6 @@
         <tr>
             <th>Datum</th>
             <th>Alles In orde</th>
-            <th>Bekijken</th>
         </tr>
 
         @foreach (var o in Model.KamerControleListIndexViewModel.List)
