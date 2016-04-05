@@ -20,7 +20,7 @@
         <br />
         <br />
         <div>
-            @Html.TextBoxFor(m => m.AvatarUpload, new { type = "file" })
+            @Html.TextBoxFor(m => m.AvatarUpload, new { type = "file", @class = "form-control" })
             @Html.ValidationMessageFor(m => m.AvatarUpload, "", new { @class = "text-danger" })
         </div>
         <br />
@@ -36,7 +36,7 @@
         <br />
         <br />
         <div>
-            @Html.TextBoxFor(m => m.BackgroundUpload, new { type = "file" })
+            @Html.TextBoxFor(m => m.BackgroundUpload, new { type = "file" ,@class = "form-control"})
             @Html.ValidationMessageFor(m => m.BackgroundUpload, "", new { @class = "text-danger" })
         </div>
     </div>
