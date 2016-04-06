@@ -15,20 +15,19 @@
     <tr>
         @*<td>@Html.ActionLink("Suggestie", "CreateSuggestie", "Opvangtehuis")</td>*@
         <td>
-            <a href="@Url.Action("CreateSuggestie", "Opvangtehuis")" id="groenlink">
-                <img src="@Url.Content("~/Content/Images/Aanduidingen/suggestie.png")" alt="Een suggestie maken" title="Een suggestie maken" />
-            </a>
-        </td>
-        <td>
-            @*@Html.ActionLink("Klacht", "Klacht", "Opvangtehuis")*@
-            <a href="@Url.Action("Klacht", "Opvangtehuis")">
-                <img src="@Url.Content("~/Content/Images/Aanduidingen/klacht.png")" alt="Een klacht versturen" title="Een klacht versturen" />
+            <a href="http://www.google.be" id="googlelink">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/google.png")" alt="Google" title="Google" />
             </a>
         </td>
         <td>
             @*@Html.ActionLink("De menu", "WeekMenu", "Opvangtehuis")*@
             <a href="@Url.Action("WeekMenu", "Opvangtehuis")" id="orangelink">
                 <img src="@Url.Content("~/Content/Images/Aanduidingen/menu.png")" alt="Weekmenu" title="Weekmenu" />
+            </a>
+        </td>
+        <td>
+            <a href="http://www.youtube.be" id="youtubelink">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/youtube.png")" alt="YouTube" title="YouTube" />
             </a>
         </td>
     </tr>
@@ -56,8 +55,8 @@
 
     <tr>
         <td>
-            <a href="http://www.google.be" id="googlelink">
-                <img src="@Url.Content("~/Content/Images/Aanduidingen/google.png")" alt="Google" title="Google" />
+            <a href="@Url.Action("CreateSuggestie", "Opvangtehuis")" id="groenlink">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/suggestie.png")" alt="Een suggestie maken" title="Een suggestie maken" />
             </a>
         </td>
         <td>
@@ -66,8 +65,9 @@
             </a>
         </td>
         <td>
-            <a href="http://www.youtube.be" id="youtubelink">
-                <img src="@Url.Content("~/Content/Images/Aanduidingen/youtube.png")" alt="YouTube" title="YouTube" />
+            @*@Html.ActionLink("Klacht", "Klacht", "Opvangtehuis")*@
+            <a href="@Url.Action("Klacht", "Opvangtehuis")">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/klacht.png")" alt="Een klacht versturen" title="Een klacht versturen" />
             </a>
         </td>
     </tr>

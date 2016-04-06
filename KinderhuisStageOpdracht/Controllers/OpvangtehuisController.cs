@@ -588,6 +588,11 @@ namespace KinderhuisStageOpdracht.Controllers
                 return UserStillLoggedIn();
             }
 
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var kol = new OpvangtehuisViewModel.KamerOpdrachtListViewModel();
 
@@ -602,7 +607,33 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult KamerOpdracht(OpvangtehuisViewModel.KamerOpdrachtListViewModel model)
         {
-            return View();
+            Opvangtehuis opvangtehuis;
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
+            if (!ImageIsValidType(model.KamerOpracht.ImageUpload))
+            {
+                ModelState.AddModelError("ImageUpload", "Dit is geen foto");
+            }
+
+            if (ModelState.IsValid)
+            {
+                opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                opvangtehuis.AddOpdracht(new KamerControleOpdracht(model.KamerOpracht.Titel, ImageUploadKamerControleAfbeelding(model.KamerOpracht.ImageUpload)));
+                _opvangtehuisRepository.SaveChanges();
+
+                this.AddNotification("Straf toegevoegd", NotificationType.SUCCESS);
+            }
+
+            opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+            var kol = new OpvangtehuisViewModel.KamerOpdrachtListViewModel();
+            foreach (var opdrachten in opvangtehuis.GetKamerControleOpdrachten())
+            {
+                kol.AddItem(new OpvangtehuisViewModel.KamerOprachtViewModel(opdrachten.Titel, opdrachten.ImageUrl));
+            }
+            return View(kol);
         }
 
 
@@ -657,6 +688,20 @@ namespace KinderhuisStageOpdracht.Controllers
                 file.SaveAs(path);
 
                 return "/Content/Images/Menu/" + pic;
+            }
+            return null;
+        }
+
+        public string ImageUploadKamerControleAfbeelding(HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                var pic = System.IO.Path.GetFileName(file.FileName);
+                var path = System.IO.Path.Combine(Server.MapPath("/Content/Images/KamerControleImages"), pic);
+
+                file.SaveAs(path);
+
+                return "/Content/Images/KamerControleImages/" + pic;
             }
             return null;
         }

@@ -5,16 +5,24 @@
 }
 
 <h2>KamerOpdracht</h2>
-<ul>
+<div class="KamerOpdrachtCardSystem">
     @foreach (var o in Model.KamerOprachten)
     {
-        <li>
-            <img src="@Url.Content(o.ImageUrl)"/>
-            @Html.DisplayFor(modelItem => o.Titel)
-        </li>
+        <div class="KamerOpdrachtCard">
+            <div class="KamerOpdrachtCardTitelBlok">
+                @Html.DisplayFor(modelItem => o.Titel)
+            </div>
+            <div class="KamerOpdrachtCardImageBlok">
+                <img src="@Url.Content(o.ImageUrl)" />
+            </div>
+            <div class="KamerOpdrachtCardActionBlok">
+
+            </div>
+
+        </div>
 
     }
-</ul>
+</div>
 
 @using (Html.BeginForm("KamerOpdracht", "Opvangtehuis", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
@@ -24,22 +32,36 @@
         <table class="form">
             <tr>
                 <th>
-                    @Html.LabelFor(m => m.KamerOpracht.Titel, new { @class = "control-label" })
+                    @Html.LabelFor(m => m.KamerOpracht.Titel, new {@class = "control-label"})
                 </th>
                 <td>
-                    @Html.TextBoxFor(m => m.KamerOpracht.Titel, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.KamerOpracht.Titel, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.KamerOpracht.Titel, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.KamerOpracht.Titel, "", new {@class = "text-danger"})
                 </td>
             </tr>
             <tr>
                 <th>
-                    @Html.LabelFor(m => m.KamerOpracht.ImageUpload, new { @class = "control-label" })
+                    @Html.LabelFor(m => m.KamerOpracht.ImageUpload, new {@class = "control-label"})
                 </th>
                 <td>
-                    @Html.TextBoxFor(m => m.KamerOpracht.ImageUpload, new { type = "file" })
-                    @Html.ValidationMessageFor(m => m.KamerOpracht.ImageUpload, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.KamerOpracht.ImageUpload, new {type = "file", @class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.KamerOpracht.ImageUpload, "", new {@class = "text-danger"})
                 </td>
             </tr>
         </table>
     </div>
+
+    <table class="buttontable">
+        <tr>
+            <td>
+                <input type="submit" class="button" value="Toevoegen" />
+            </td>
+            <td>
+                <span class="terugButton">
+                    @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
+                </span>
+            </td>
+        </tr>
+    </table>
+
 }

@@ -159,7 +159,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
 
         //Kamercontrole oprachten
-        public void AddOpdrachten(KamerControleOpdracht opdracht)
+        public void AddOpdracht(KamerControleOpdracht opdracht)
         {
             Opdrachten.Add(opdracht);
         }
