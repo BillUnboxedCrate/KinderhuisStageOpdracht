@@ -164,14 +164,24 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Opdrachten.Add(opdracht);
         }
 
-        public void AddOpdrachten(string titel, string beschrijving, string imageUrl)
+        public KamerControleOpdracht FindOpdrachById(int id)
         {
-            Opdrachten.Add(new KamerControleOpdracht(titel, beschrijving, imageUrl));
+            return Opdrachten.FirstOrDefault(o => o.Id == id);
+        }
+
+        public void AddOpdrachten(string titel, string imageUrl)
+        {
+            Opdrachten.Add(new KamerControleOpdracht(titel, imageUrl));
         }
 
         public List<KamerControleOpdracht> GetKamerControleOpdrachten()
         {
             return Opdrachten.OrderBy(k => k.Titel).ToList();
+        }
+
+        public void RemoveOpdrachten(int id)
+        {
+            Opdrachten.Remove(FindOpdrachById(id));
         }
 
 

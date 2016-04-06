@@ -581,6 +581,30 @@ namespace KinderhuisStageOpdracht.Controllers
             return View();
         }
 
+        public ActionResult KamerOpdracht()
+        {
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+
+            var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+            var kol = new OpvangtehuisViewModel.KamerOpdrachtListViewModel();
+
+            foreach (var opdracht in opvangtehuis.GetKamerControleOpdrachten())
+            {
+                kol.AddItem(new OpvangtehuisViewModel.KamerOprachtViewModel(opdracht.Titel, opdracht.ImageUrl));
+            }
+
+            return View(kol);
+        }
+
+        [HttpPost]
+        public ActionResult KamerOpdracht(OpvangtehuisViewModel.KamerOpdrachtListViewModel model)
+        {
+            return View();
+        }
+
 
         #region helpers
         private int GetWeekVanHetJaar(DateTime datum)

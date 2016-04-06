@@ -176,7 +176,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 ModelState.AddModelError("ImageUpload", "Dit is geen foto");
             }
-          
+
 
 
             if (ModelState.IsValid)
@@ -564,7 +564,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 //Kamercontrole items
                 foreach (var i in kamercontrole.KamerControleItems)
                 {
-                    lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtImageUrl(), i.GetControleOpdrachtTitel(), i.GetControleOpdrachtBeschrijving(), i.OpdrachtGedaanControle, i.Uitleg));
+                    lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtImageUrl(), i.GetControleOpdrachtTitel(), i.OpdrachtGedaanControle, i.Uitleg));
                 }
             }
 
@@ -596,7 +596,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
             foreach (var i in kamercontrole.KamerControleItems)
             {
-                lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtTitel(), i.GetControleOpdrachtBeschrijving(), i.OpdrachtGedaanControle, i.Uitleg));
+                lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtTitel(), i.OpdrachtGedaanControle, i.Uitleg));
             }
 
             foreach (var i in client.GetKamerControles())

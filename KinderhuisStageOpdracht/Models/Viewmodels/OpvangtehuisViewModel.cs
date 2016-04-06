@@ -126,10 +126,10 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Week { get; set; }
 
             public string MenuImageUrl { get; set; }
-            
+
             [DataType(DataType.Upload)]
             [Display(Name = "Kies een foto")]
-            public HttpPostedFileBase MenuImageUpload { get; set; } 
+            public HttpPostedFileBase MenuImageUpload { get; set; }
 
             public string Boodschap { get; set; }
 
@@ -471,6 +471,43 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Omschrijving = omschrijving;
                 Client = client;
                 TimeStamp = timestamp;
+            }
+        }
+
+        public class KamerOpdrachtListViewModel
+        {
+            public List<KamerOprachtViewModel> KamerOprachten { get; set; }
+            public KamerOprachtViewModel KamerOpracht { get; set; }
+
+            public void AddItem(KamerOprachtViewModel item)
+            {
+                KamerOprachten.Add(item);
+            }
+
+            public KamerOpdrachtListViewModel()
+            {
+                KamerOprachten = new List<KamerOprachtViewModel>();
+            }
+        }
+
+        public class KamerOprachtViewModel
+        {
+            [Required]
+            public string Titel { get; set; }
+
+            [Required]
+            [DataType(DataType.Upload)]
+            [Display(Name = "Kies een foto")]
+            public HttpPostedFileBase ImageUpload { get; set; }
+
+            public string ImageUrl { get; set; }
+
+            public KamerOprachtViewModel() { }
+
+            public KamerOprachtViewModel(string titel, string imageurl)
+            {
+                Titel = titel;
+                ImageUrl = imageurl;
             }
         }
     }

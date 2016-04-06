@@ -1,0 +1,45 @@
+﻿@using KinderhuisStageOpdracht.Models.Viewmodels
+@model KinderhuisStageOpdracht.Models.Viewmodels.OpvangtehuisViewModel.KamerOpdrachtListViewModel
+@{
+    ViewBag.Title = "KamerOpdracht";
+}
+
+<h2>KamerOpdracht</h2>
+<ul>
+    @foreach (var o in Model.KamerOprachten)
+    {
+        <li>
+            <img src="@Url.Content(o.ImageUrl)"/>
+            @Html.DisplayFor(modelItem => o.Titel)
+        </li>
+
+    }
+</ul>
+
+@using (Html.BeginForm("KamerOpdracht", "Opvangtehuis", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    <div id="strafToevoegen">
+        @Html.AntiForgeryToken()
+        <h2>Kamercontrole opdracht toevoegen</h2>
+        <table class="form">
+            <tr>
+                <th>
+                    @Html.LabelFor(m => m.KamerOpracht.Titel, new { @class = "control-label" })
+                </th>
+                <td>
+                    @Html.TextBoxFor(m => m.KamerOpracht.Titel, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.KamerOpracht.Titel, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(m => m.KamerOpracht.ImageUpload, new { @class = "control-label" })
+                </th>
+                <td>
+                    @Html.TextBoxFor(m => m.KamerOpracht.ImageUpload, new { type = "file" })
+                    @Html.ValidationMessageFor(m => m.KamerOpracht.ImageUpload, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        </table>
+    </div>
+}

@@ -652,25 +652,22 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         {
             public string ImageUrl { get; set; }
             public string Titel { get; set; }
-            public string Beschrijving { get; set; }
             public bool DoneOpvoeder { get; set; }
             public string Uitleg { get; set; }
 
             public KamerControleItemViewModel() { }
 
-            public KamerControleItemViewModel(string imageUrl, string titel, string beschrijving, bool doneOpvoeder, string uitleg)
+            public KamerControleItemViewModel(string imageUrl, string titel, bool doneOpvoeder, string uitleg)
             {
                 ImageUrl = imageUrl;
                 Titel = titel;
-                Beschrijving = beschrijving;
                 DoneOpvoeder = doneOpvoeder;
                 Uitleg = uitleg;
             }
 
-            public KamerControleItemViewModel(string titel, string beschrijving, bool doneOpvoeder, string uitleg)
+            public KamerControleItemViewModel(string titel, bool doneOpvoeder, string uitleg)
             {
                 Titel = titel;
-                Beschrijving = beschrijving;
                 DoneOpvoeder = doneOpvoeder;
                 Uitleg = uitleg;
             }

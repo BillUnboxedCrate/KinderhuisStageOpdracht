@@ -69,43 +69,6 @@ namespace KinderhuisStageOpdracht.Controllers
             return View(silvm);
         }
 
-        public ActionResult CreateStraf()
-        {
-            if (UserStillLoggedIn() != null)
-            {
-                return UserStillLoggedIn();
-            }
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CreateStraf(StrafViewModel.StrafIndexViewModel model)
-        {
-            if (UserStillLoggedIn() != null)
-            {
-                return UserStillLoggedIn();
-            }
-
-            if (!ImageIsValidType(model.ImageUpload))
-            {
-                ModelState.AddModelError("ImageUpload", "Dit is geen foto");
-            }
-
-            if (ModelState.IsValid)
-            {
-                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-                opvangtehuis.AddStraf(new Straf(model.Naam, "~/Content/Images/Aanduidingen/vraagteken.png"));
-                _gebruikerRepository.SaveChanges();
-
-                this.AddNotification("Straf toegevoegd", NotificationType.SUCCESS);
-                return RedirectToAction("Index");
-            }
-
-            return View();
-
-        }
-
         #region helper
         public string ImageUploadStrafAfbeeling(HttpPostedFileBase file)
         {

@@ -32,11 +32,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             return KamerControleOpdracht.Titel;
         }
-
-        public string GetControleOpdrachtBeschrijving()
-        {
-            return KamerControleOpdracht.Beschrijving;
-        }
     }
 
 }

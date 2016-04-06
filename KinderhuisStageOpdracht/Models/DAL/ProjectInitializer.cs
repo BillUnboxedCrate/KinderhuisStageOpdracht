@@ -512,42 +512,36 @@ namespace KinderhuisStageOpdracht.Models.DAL
             var kamercontroleOpracht1 = new KamerControleOpdracht()
             {
                 Titel = "Bed opmaken",
-                Beschrijving = "Het bed moet worden opgedekt",
                 ImageUrl = "~/Content/Images/KamerControleImages/bed_opmaken.png"
             };
 
             var kamercontroleOpracht2 = new KamerControleOpdracht()
             {
                 Titel = "Kleren opruimen",
-                Beschrijving = "Kleren in de wasmand steken",
                 ImageUrl = "~/Content/Images/KamerControleImages/was_opruimen.png"
             };
 
             var kamercontroleOpracht3 = new KamerControleOpdracht()
             {
                 Titel = "Gordijnen openen",
-                Beschrijving = "De gordijnen openen",
                 ImageUrl = "~/Content/Images/KamerControleImages/gordijn_openen.jpg"
             };
 
             var kamercontroleOpracht4 = new KamerControleOpdracht()
             {
                 Titel = "Bed opmaken",
-                Beschrijving = "Het bed moet worden opgedekt",
                 ImageUrl = "~/Content/Images/KamerControleImages/bed_opmaken.png"
             };
 
             var kamercontroleOpracht5 = new KamerControleOpdracht()
             {
                 Titel = "Kleren opruimen",
-                Beschrijving = "Kleren in de wasmand steken",
                 ImageUrl = "~/Content/Images/KamerControleImages/was_opruimen.png"
             };
 
             var kamercontroleOpracht6 = new KamerControleOpdracht()
             {
                 Titel = "Gordijnen openen",
-                Beschrijving = "De gordijnen openen",
                 ImageUrl = "~/Content/Images/KamerControleImages/gordijn_openen.jpg"
             };
 
