@@ -587,8 +587,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             menu2.MenuItems.Add(menuitem13);
             menu2.MenuItems.Add(menuitem14);
 
-            opvangtehuis1.Menus.Add(menu1);
-            opvangtehuis1.Menus.Add(menu2);
+            opvangtehuis2.Menus.Add(menu1);
+            opvangtehuis2.Menus.Add(menu2);
 
 
             //Add taken
