@@ -130,7 +130,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Gysens",
                 Voornaam = "Anneliese",
                 GeboorteDatum = new DateTime(1990, 11, 11),
-                Gebruikersnaam = "Julie",
+                Gebruikersnaam = "Anneliese",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
@@ -143,7 +143,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Hamerlinck",
                 Voornaam = "Magda",
                 GeboorteDatum = new DateTime(1990, 11, 11),
-                Gebruikersnaam = "Julie",
+                Gebruikersnaam = "Magda",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
@@ -156,7 +156,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Jacobs",
                 Voornaam = "Candy",
                 GeboorteDatum = new DateTime(1990, 11, 11),
-                Gebruikersnaam = "Julie",
+                Gebruikersnaam = "Candy",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
@@ -169,7 +169,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Lejeune",
                 Voornaam = "Alexander",
                 GeboorteDatum = new DateTime(1990, 11, 11),
-                Gebruikersnaam = "Julie",
+                Gebruikersnaam = "Alexander",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
@@ -182,7 +182,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Spruyt",
                 Voornaam = "Martine",
                 GeboorteDatum = new DateTime(1990, 11, 11),
-                Gebruikersnaam = "Julie",
+                Gebruikersnaam = "Martine",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
@@ -195,7 +195,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Verstuyft",
                 Voornaam = "Tom",
                 GeboorteDatum = new DateTime(1990, 11, 11),
-                Gebruikersnaam = "Julie",
+                Gebruikersnaam = "Tom",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
@@ -277,7 +277,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             //Add clients 
             //In opvangtehuis 1
             context.GebruikerSet.Add(client4);
-            
+
             //In opvangtehuis 2
             context.GebruikerSet.Add(client1);
             context.GebruikerSet.Add(client2);
@@ -317,9 +317,6 @@ namespace KinderhuisStageOpdracht.Models.DAL
             opvangtehuis2.Straffen.Add(straf3);
             opvangtehuis2.Straffen.Add(straf4);
             #endregion
-
-
-
 
             #region menus
             var menu1 = new Menu(new DateTime(2016, 2, 29));
@@ -502,12 +499,6 @@ namespace KinderhuisStageOpdracht.Models.DAL
             #endregion
             #endregion
 
-            #region Kamercontrole
-
-            var kamercontrole = new KamerControle(DateTime.Today);
-
-            #endregion
-
             #region KamerControleOpdracht
             var kamercontroleOpracht1 = new KamerControleOpdracht()
             {
@@ -554,8 +545,6 @@ namespace KinderhuisStageOpdracht.Models.DAL
             opvangtehuis2.Opdrachten.Add(kamercontroleOpracht6);
 
             #endregion
-
-
 
             #region forum
             var forum1 = new Forum();
