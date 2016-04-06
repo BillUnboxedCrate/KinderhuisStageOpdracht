@@ -31,7 +31,7 @@ namespace KinderhuisStageOpdracht.Controllers
             var silvm = new StrafViewModel.StrafListIndexViewModel();
             foreach (var s in opvangtehuis.GetStraffen())
             {
-                silvm.AddStrafIndexViewModel(new StrafViewModel.StrafIndexViewModel(s.Id, s.Naam));
+                silvm.AddStrafIndexViewModel(new StrafViewModel.StrafIndexViewModel(s.Id, s.ImageUrl, s.Naam));
             }
             return View(silvm);
         }
@@ -64,7 +64,7 @@ namespace KinderhuisStageOpdracht.Controllers
             var silvm = new StrafViewModel.StrafListIndexViewModel();
             foreach (var s in opvangtehuis.GetStraffen())
             {
-                silvm.AddStrafIndexViewModel(new StrafViewModel.StrafIndexViewModel(s.Id, s.Naam));
+                silvm.AddStrafIndexViewModel(new StrafViewModel.StrafIndexViewModel(s.Id, s.ImageUrl, s.Naam));
             }
             return View(silvm);
         }
@@ -86,7 +86,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public bool ImageIsValidType(HttpPostedFileBase file)
         {
-           
+
             var validImageTypes = new[]
             {
                 "image/jpg",

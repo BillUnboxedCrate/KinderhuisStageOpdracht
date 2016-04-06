@@ -699,12 +699,12 @@ label:hover .hovertext {
     border-bottom: none;
     height: 110px;
     vertical-align: central;
-    position: relative; 
+    position: relative;
 }
 
 .SanctieTitleBlock {
     border-left: 1px solid black;
-    border-right: 1px solid black; 
+    border-right: 1px solid black;
     height: 40px;
 }
 
@@ -712,15 +712,15 @@ label:hover .hovertext {
     height: 49px;
 }
 
-.SanctieTimeBlock table{
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
+    .SanctieTimeBlock table {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-.SanctieTimeBlock td{
-    border: 1px solid black;
-}
+    .SanctieTimeBlock td {
+        border: 1px solid black;
+    }
 
 .SanctieUitlegBlock {
     border-left: 1px solid black;
@@ -784,13 +784,10 @@ label:hover .hovertext {
     }
 
 #strafIndex {
+    margin-top: 20px;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
-}
-
-#strafLijst ol {
-    list-style-position: inside;
 }
 
 #profilepicture {
@@ -822,27 +819,27 @@ label:hover .hovertext {
 
 .KamerOpdrachtCardTitelBlok {
     height: 45px;
-    font-size: 16pt;
+    font-size: 12pt;
     border-bottom: 1px solid black;
 }
 
-.KamerOpdrachtCardImageBlok{
+.KamerOpdrachtCardImageBlok {
     height: 185px;
     position: relative;
 }
 
-.KamerOpdrachtCardImageBlok img{
-    max-height: 150px;
-    max-width: 150px;
-    width: auto;
-    height: auto;
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid black;
-}
+    .KamerOpdrachtCardImageBlok img {
+        max-height: 150px;
+        max-width: 150px;
+        width: auto;
+        height: auto;
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid black;
+    }
 
 .KamerOpdrachtCardActionBlok {
     border-top: 1px solid black;

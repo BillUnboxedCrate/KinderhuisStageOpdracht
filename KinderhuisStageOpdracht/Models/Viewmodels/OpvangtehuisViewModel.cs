@@ -492,6 +492,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
         public class KamerOprachtViewModel
         {
+            public int Id { get; set; }
+
             [Required]
             public string Titel { get; set; }
 
@@ -504,8 +506,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public KamerOprachtViewModel() { }
 
-            public KamerOprachtViewModel(string titel, string imageurl)
+            public KamerOprachtViewModel(int id, string titel, string imageurl)
             {
+                Id = id;
                 Titel = titel;
                 ImageUrl = imageurl;
             }

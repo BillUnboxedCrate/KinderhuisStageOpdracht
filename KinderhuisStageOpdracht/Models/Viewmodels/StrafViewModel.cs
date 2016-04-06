@@ -36,11 +36,14 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Kies een foto")]
             public HttpPostedFileBase ImageUpload { get; set; }
 
+            public string ImageUrl { get; set; }
+
             public StrafIndexViewModel() { }
 
-            public StrafIndexViewModel(int id, string naam)
+            public StrafIndexViewModel(int id, string imageUrl, string naam)
             {
                 Id = id;
+                ImageUrl = imageUrl;
                 Naam = naam;
             }
         }

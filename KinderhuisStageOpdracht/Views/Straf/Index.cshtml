@@ -7,15 +7,24 @@
 <div id="strafIndex">
     @using (Html.BeginForm("Index", "Straf", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
-        <div id="strafLijst">
-            <h2>Lijst van straffen @*| @Html.ActionLink("Voeg nog straf toe", "CreateStraf")*@</h2>
-            <ol>
-                @foreach (var o in Model.List)
-                {
-                    <li>@Html.DisplayFor(modelItem => o.Naam)</li>
-                }
-            </ol>
-        </div>
+    <div class="KamerOpdrachtCardSystem">
+        @foreach (var o in Model.List)
+        {
+            <div class="KamerOpdrachtCard">
+                <div class="KamerOpdrachtCardTitelBlok">
+                    @Html.DisplayFor(modelItem => o.Naam)
+                </div>
+                <div class="KamerOpdrachtCardImageBlok">
+                    <img src="@Url.Content(o.ImageUrl)" />
+                </div>
+                <div class="KamerOpdrachtCardActionBlok">
+
+                </div>
+
+            </div>
+
+        }
+    </div>
 
         <div id="strafToevoegen">
             @Html.AntiForgeryToken()
@@ -35,7 +44,7 @@
                         @Html.LabelFor(m => m.StrafIndexViewModel.ImageUpload, new { @class = "control-label" })
                     </th>
                     <td>
-                        @Html.TextBoxFor(m => m.StrafIndexViewModel.ImageUpload, new { type = "file" })
+                        @Html.TextBoxFor(m => m.StrafIndexViewModel.ImageUpload, new { type = "file", @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.StrafIndexViewModel.ImageUpload, "", new { @class = "text-danger" })
                     </td>
                 </tr>
@@ -70,5 +79,5 @@
     </table>*@
 
 @*<div class="terugButton">
-    @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
-</div>*@
+        @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
+    </div>*@

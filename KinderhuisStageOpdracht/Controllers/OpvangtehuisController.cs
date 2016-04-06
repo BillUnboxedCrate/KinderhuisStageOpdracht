@@ -230,7 +230,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     if (model.Id <= 0)
                     {
-                        
+
 
                         var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
                         if (opvangtehuis.FindMenuByDate(model.BeginWeek) == null)
@@ -251,7 +251,7 @@ namespace KinderhuisStageOpdracht.Controllers
                                     this.AddNotification("Dit is geen foto", NotificationType.ERROR);
                                     ModelState.AddModelError("MenuImageUpload", "Dit is geen foto");
                                 }
-                                
+
                             }
 
                             menu.AddMenuItem("Maandag", model.MaandagViewModel.Hoofdgerecht,
@@ -598,7 +598,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
             foreach (var opdracht in opvangtehuis.GetKamerControleOpdrachten())
             {
-                kol.AddItem(new OpvangtehuisViewModel.KamerOprachtViewModel(opdracht.Titel, opdracht.ImageUrl));
+                kol.AddItem(new OpvangtehuisViewModel.KamerOprachtViewModel(opdracht.Id, opdracht.Titel, opdracht.ImageUrl));
             }
 
             return View(kol);
@@ -629,9 +629,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
             opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
             var kol = new OpvangtehuisViewModel.KamerOpdrachtListViewModel();
-            foreach (var opdrachten in opvangtehuis.GetKamerControleOpdrachten())
+            foreach (var opdracht in opvangtehuis.GetKamerControleOpdrachten())
             {
-                kol.AddItem(new OpvangtehuisViewModel.KamerOprachtViewModel(opdrachten.Titel, opdrachten.ImageUrl));
+                kol.AddItem(new OpvangtehuisViewModel.KamerOprachtViewModel(opdracht.Id, opdracht.Titel, opdracht.ImageUrl));
             }
             return View(kol);
         }
@@ -706,7 +706,7 @@ namespace KinderhuisStageOpdracht.Controllers
             return null;
         }
 
-        
+
         #endregion
     }
 }
