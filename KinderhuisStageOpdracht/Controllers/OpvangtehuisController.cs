@@ -98,26 +98,49 @@ namespace KinderhuisStageOpdracht.Controllers
 
         }
 
-        public ActionResult DeleteSuggestie(int id)
-        {
-            if (UserStillLoggedIn() != null)
-            {
-                return UserStillLoggedIn();
-            }
+        //public ActionResult DeleteSuggestie(int id)
+        //{
+        //    if (UserStillLoggedIn() != null)
+        //    {
+        //        return UserStillLoggedIn();
+        //    }
 
-            if (!Request.IsAuthenticated)
-            {
-                return View("Error");
-            }
+        //    if (!Request.IsAuthenticated)
+        //    {
+        //        return View("Error");
+        //    }
 
-            var s = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis.FindSuggestieById(id);
-            var svm = new OpvangtehuisViewModel.SuggestieViewModel(s.TimeStamp, s.Genre, s.Client.GiveFullName(), s.Beschrijving, s.Id);
+        //    var s = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis.FindSuggestieById(id);
+        //    var svm = new OpvangtehuisViewModel.SuggestieViewModel(s.TimeStamp, s.Genre, s.Client.GiveFullName(), s.Beschrijving, s.Id);
 
-            return View(svm);
-        }
+        //    return View(svm);
+        //}
 
-        [HttpPost, ActionName("DeleteSuggestie")]
-        [ValidateAntiForgeryToken]
+        //[HttpPost, ActionName("DeleteSuggestie")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteSuggestion(int id)
+        //{
+        //    if (UserStillLoggedIn() != null)
+        //    {
+        //        return UserStillLoggedIn();
+        //    }
+        //    try
+        //    {
+        //        var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+        //        opvangtehuis.DeleteSuggestie(id);
+        //        _opvangtehuisRepository.SaveChanges();
+
+        //        this.AddNotification("De suggestie is verwijderd", NotificationType.SUCCESS);
+        //        return RedirectToAction("Suggesties");
+        //    }
+        //    catch (ApplicationException e)
+        //    {
+        //        ModelState.AddModelError("", e.Message);
+        //    }
+        //    return View();
+        //}
+
+        [HttpPost]
         public ActionResult DeleteSuggestion(int id)
         {
             if (UserStillLoggedIn() != null)
@@ -137,7 +160,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 ModelState.AddModelError("", e.Message);
             }
-            return View();
+            return RedirectToAction("Suggesties");
         }
 
         public ActionResult MenuIndex()
@@ -536,10 +559,33 @@ namespace KinderhuisStageOpdracht.Controllers
 
             foreach (var klacht in opvangtehuis.GetKlachten())
             {
-                lkvm.AddKlacht(new OpvangtehuisViewModel.KlachtViewModel(klacht.Omschrijving, klacht.Client.GiveFullName(), klacht.TimeStamp));
+                lkvm.AddKlacht(new OpvangtehuisViewModel.KlachtViewModel(klacht.Id, klacht.Omschrijving, klacht.Client.GiveFullName(), klacht.TimeStamp));
             }
 
             return View(lkvm);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteKlacht(int id)
+        {
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+            try
+            {
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                opvangtehuis.DeleteKlacht(id);
+                _opvangtehuisRepository.SaveChanges();
+
+                this.AddNotification("De suggestie is verwijderd", NotificationType.SUCCESS);
+                return RedirectToAction("KlachtIndex");
+            }
+            catch (ApplicationException e)
+            {
+                ModelState.AddModelError("", e.Message);
+            }
+            return RedirectToAction("KlachtIndex");
         }
 
         public ActionResult Klacht()

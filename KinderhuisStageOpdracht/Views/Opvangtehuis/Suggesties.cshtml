@@ -10,6 +10,7 @@
         <th class="suggestieColumns">Cliënt</th>
         <th class="suggestieColumns">Wanneer</th>
         <th>Suggestie</th>
+        <th class="suggestieColumns">Actie</th>
 
     </tr>
     @foreach (var o in Model.Suggesties)
@@ -19,6 +20,12 @@
             <td class="suggestieColumns">@Html.DisplayFor(modelItem => o.Client)</td>
             <td class="suggestieColumns">@Html.DisplayFor(modelItem => o.TimeStamp)</td>
             <td class="omschrijvingColumn">@Html.DisplayFor(modelItem => o.Beschrijving)</td>
+            <td class="suggestieColumns">
+                @Ajax.ActionLink("Verwijderen", "DeleteSuggestion", "Opvangtehuis", new { id = o.Id }, new AjaxOptions()
+                {
+                    HttpMethod = "POST",
+                })
+            </td>
         </tr>
     }
 </table>

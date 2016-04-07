@@ -64,11 +64,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return Suggesties.FirstOrDefault(s => s.Id == id);
         }
 
-        public void DeleteSuggestion(Suggestie suggestie)
-        {
-            Suggesties.Remove(suggestie);
-        }
-
         public void DeleteSuggestie(int id)
         {
             var suggestie = Suggesties.FirstOrDefault(s => s.Id == id);
@@ -133,6 +128,12 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             var klacht = new Klacht(omschrijving, client);
             Klachten.Add(klacht);
+        }
+
+        public void DeleteKlacht(int id)
+        {
+            var klacht = Klachten.FirstOrDefault(k => k.Id == id);
+            Klachten.Remove(klacht);
         }
 
 

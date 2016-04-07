@@ -33,7 +33,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Doorgestuurd op")]
             [DataType(DataType.DateTime)]
             [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
-            public DateTime TimeStamp { get; set; }
+            public DateTime? TimeStamp { get; set; }
 
             [Display(Name = "Genre")]
             public string Genre { get; set; }
@@ -44,7 +44,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Suggestie")]
             public string Beschrijving { get; set; }
 
-            public SuggestieViewModel(DateTime timestamp, string genre, string client, string beschrijving, int id)
+            public SuggestieViewModel(DateTime? timestamp, string genre, string client, string beschrijving, int id)
             {
                 Id = id;
                 TimeStamp = timestamp;
@@ -452,6 +452,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
         public class KlachtViewModel
         {
+            public int Id { get; set; }
+
             [Required]
             [Display(Name = "Omschrijving")]
             public string Omschrijving { get; set; }
@@ -466,8 +468,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public KlachtViewModel() { }
 
-            public KlachtViewModel(string omschrijving, string client, DateTime timestamp)
+            public KlachtViewModel(int id, string omschrijving, string client, DateTime timestamp)
             {
+                Id = id;
                 Omschrijving = omschrijving;
                 Client = client;
                 TimeStamp = timestamp;
