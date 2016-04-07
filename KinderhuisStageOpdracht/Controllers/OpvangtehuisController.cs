@@ -25,6 +25,7 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         // GET: Opvangtehuis
+        [OutputCacheAttribute(VaryByParam = "*", Duration = 0, NoStore = true)]
         public ActionResult Suggesties()
         {
             if (UserStillLoggedIn() != null)
@@ -155,6 +156,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 this.AddNotification("De suggestie is verwijderd", NotificationType.SUCCESS);
                 return RedirectToAction("Suggesties");
+
             }
             catch (ApplicationException e)
             {

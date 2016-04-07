@@ -24,6 +24,7 @@
                 @Ajax.ActionLink("Verwijderen", "DeleteSuggestion", "Opvangtehuis", new { id = o.Id }, new AjaxOptions()
                 {
                     HttpMethod = "POST",
+                    OnComplete = "function() { window.location.reload(); }"
                 })
             </td>
         </tr>
