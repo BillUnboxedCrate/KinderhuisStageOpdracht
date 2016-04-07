@@ -670,6 +670,12 @@ label:hover .hovertext {
     text-align: left;
 }
 
+.kamerControleCardUitlegBlockEmpty {
+    height: 154px;
+    /*background: repeating-linear-gradient( 45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px );*/
+    background: repeating-linear-gradient( 45deg, lightgray, lightgray 10px, gray 10px, gray 20px );
+}
+
 .kamerControleCardSystem {
     text-align: center;
 }
@@ -701,12 +707,12 @@ label:hover .hovertext {
     border-bottom: none;
     height: 110px;
     vertical-align: central;
-    position: relative; 
+    position: relative;
 }
 
 .SanctieTitleBlock {
     border-left: 1px solid black;
-    border-right: 1px solid black; 
+    border-right: 1px solid black;
     height: 40px;
 }
 
@@ -714,15 +720,15 @@ label:hover .hovertext {
     height: 49px;
 }
 
-.SanctieTimeBlock table{
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
+    .SanctieTimeBlock table {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-.SanctieTimeBlock td{
-    border: 1px solid black;
-}
+    .SanctieTimeBlock td {
+        border: 1px solid black;
+    }
 
 .SanctieUitlegBlock {
     border-left: 1px solid black;
@@ -763,14 +769,20 @@ label:hover .hovertext {
 }
 
 .imagebutton {
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
+    height: 75px;
+    width: 75px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
     .imagebutton img, input[type="image"] {
+        /*border: 3px solid green;*/
+        /*border-radius: 60px;*/
         height: 75px;
-        width: auto;
+        width: 75px;
     }
 
     .imagebutton div {
@@ -825,23 +837,23 @@ label:hover .hovertext {
     border-bottom: 1px solid black;
 }
 
-.KamerOpdrachtCardImageBlok{
+.KamerOpdrachtCardImageBlok {
     height: 185px;
     position: relative;
 }
 
-.KamerOpdrachtCardImageBlok img{
-    max-height: 150px;
-    max-width: 150px;
-    width: auto;
-    height: auto;
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid black;
-}
+    .KamerOpdrachtCardImageBlok img {
+        max-height: 150px;
+        max-width: 150px;
+        width: auto;
+        height: auto;
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid black;
+    }
 
 .KamerOpdrachtCardActionBlok {
     border-top: 1px solid black;
