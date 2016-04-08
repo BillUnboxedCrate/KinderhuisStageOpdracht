@@ -154,7 +154,6 @@ namespace KinderhuisStageOpdracht.Controllers
                 opvangtehuis.DeleteSuggestie(id);
                 _opvangtehuisRepository.SaveChanges();
 
-                this.AddNotification("De suggestie is verwijderd", NotificationType.SUCCESS);
                 return RedirectToAction("Suggesties");
 
             }
@@ -188,6 +187,29 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             return View(mlvm);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteMenu(int id)
+        {
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+            try
+            {
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                opvangtehuis.DeleteMenu(id);
+                _opvangtehuisRepository.SaveChanges();
+
+                return RedirectToAction("Suggesties");
+
+            }
+            catch (ApplicationException e)
+            {
+                ModelState.AddModelError("", e.Message);
+            }
+            return RedirectToAction("Suggesties");
         }
 
         public ActionResult CreateMenu()
@@ -580,7 +602,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 opvangtehuis.DeleteKlacht(id);
                 _opvangtehuisRepository.SaveChanges();
 
-                this.AddNotification("De suggestie is verwijderd", NotificationType.SUCCESS);
+                this.AddNotification("De klacht is verwijderd", NotificationType.SUCCESS);
                 return RedirectToAction("KlachtIndex");
             }
             catch (ApplicationException e)

@@ -3,65 +3,63 @@
     ViewBag.Title = "Forum";
 }
 
-
-<div id="forum">
-    <h2>Forum</h2>
-    @Html.HiddenFor(model => model.ForumId)
-    @Html.HiddenFor(model => model.TypeGebruiker)
-    @foreach (var p in Model.List)
-    {  
-        if (p.Mine)
+<div class="formPage">
+    <div id="forum">
+        @Html.HiddenFor(model => model.ForumId)
+        @Html.HiddenFor(model => model.TypeGebruiker)
+        @foreach (var p in Model.List)
         {
-            <div id="myPost">
-                <img src="@Url.Content(p.ImageUrl)"/>
-                @Html.DisplayFor(modelItem => p.Boodschap)<br/>
-                <span class="postinfo">@Html.DisplayFor(modelItem => p.SendBy) - @Html.DisplayFor(modelItem => p.TimeStamp)</span>
+            if (p.Mine)
+            {
+                <div id="myPost">
+                    <img src="@Url.Content(p.ImageUrl)" />
+                    @Html.DisplayFor(modelItem => p.Boodschap)<br />
+                    <span class="postinfo">@Html.DisplayFor(modelItem => p.SendBy) - @Html.DisplayFor(modelItem => p.TimeStamp)</span>
+                </div>
+            }
+            else
+            {
+                <div id="otherPost">
+                    <img src="@Url.Content(p.ImageUrl)" />
+                    @Html.DisplayFor(modelItem => p.Boodschap)<br />
+                    <span class="postinfo">@Html.DisplayFor(modelItem => p.TimeStamp) - @Html.DisplayFor(modelItem => p.SendBy)</span>
+                </div>
+            }
+        }
+
+
+        @using (Html.BeginForm("Forum", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div id="postBlock">
+
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.ForumId)
+
+                @Html.TextAreaFor(model => model.Post, new { @class = "form-control", @cols = 30, @rows = 5 })
+
+                <div class="form-group">
+                    @*<input type="submit" class="button" value="Versturen"/>*@
+                    <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/versturen.png")" alt="versturen" id="sendbutton" />
+                </div>
             </div>
+        }
+
+    </div>
+
+    <div class="imagebutton">
+        @*@(Model.TypeGebruiker == "client" ? Html.ActionLink("Terug naar index", "Opvoederoverzicht", "Gebruiker") : Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker"))*@
+        @if (Model.TypeGebruiker == "client")
+        {
+            <a href="@Url.Action("OpvoederOverzicht", "Gebruiker")">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+            </a>
         }
         else
         {
-            <div id="otherPost">
-                <img src="@Url.Content(p.ImageUrl)" />
-                @Html.DisplayFor(modelItem => p.Boodschap)<br/>
-                <span class="postinfo">@Html.DisplayFor(modelItem => p.TimeStamp) - @Html.DisplayFor(modelItem => p.SendBy)</span>
-            </div>
+            <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+            </a>
         }
-    }
-
-
-    @using (Html.BeginForm("Forum", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-        <div id="postBlock">
-           
-            @Html.AntiForgeryToken()
-            @Html.HiddenFor(model => model.ForumId)
-
-            @Html.TextAreaFor(model => model.Post, new {@class = "form-control", @cols = 30, @rows = 5})
-
-            <div class="form-group">
-                @*<input type="submit" class="button" value="Versturen"/>*@
-                <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/versturen.png")" alt="versturen" id="sendbutton"/>
-            </div>
-        </div>
-    }
-
+    </div>
 </div>
-
-<div class="imagebutton">
-    @*@(Model.TypeGebruiker == "client" ? Html.ActionLink("Terug naar index", "Opvoederoverzicht", "Gebruiker") : Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker"))*@
-    @if (Model.TypeGebruiker == "client")
-    {
-        <a href="@Url.Action("OpvoederOverzicht", "Gebruiker")">
-            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug"/>
-        </a>
-    }
-    else
-    {
-        <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
-            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
-        </a>
-    }
-</div>
-
-
 

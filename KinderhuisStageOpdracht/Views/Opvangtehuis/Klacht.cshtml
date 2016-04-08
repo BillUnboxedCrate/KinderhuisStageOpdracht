@@ -3,7 +3,7 @@
     ViewBag.Title = "Klacht";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2 style="text-align: center">Heb je een klacht voor ons?</h2>
 @using (Html.BeginForm("Klacht", "Opvangtehuis", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()

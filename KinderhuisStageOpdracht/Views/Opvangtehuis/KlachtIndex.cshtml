@@ -23,7 +23,7 @@
                 @Ajax.ActionLink("Verwijderen", "DeleteKlacht", "Opvangtehuis", new { id = m.Id }, new AjaxOptions()
                 {
                     HttpMethod = "POST",
-                    OnComplete = "function() { $(this).parent().parent().remove() }"
+                    OnComplete = "window.location.reload()"
                 })
             </td>
         </tr>

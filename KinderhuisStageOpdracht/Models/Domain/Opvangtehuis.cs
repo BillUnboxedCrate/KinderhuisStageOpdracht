@@ -96,12 +96,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Menus.Add(menu);
         }
 
-        public void RemoveMenu(Menu menu)
-        {
-            Menus.Remove(menu);
-        }
-
-        public void RemoveMenu(int id)
+        public void DeleteMenu(int id)
         {
             var menu = Menus.FirstOrDefault(m => m.Id == id);
             Menus.Remove(menu);

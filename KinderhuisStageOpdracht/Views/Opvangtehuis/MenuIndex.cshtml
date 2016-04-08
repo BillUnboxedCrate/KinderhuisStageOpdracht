@@ -20,7 +20,12 @@
             <td>@Html.DisplayFor(modelItem => m.BeginWeek)</td>
             <td>@Html.DisplayFor(modelItem => m.EindeWeek)</td>
             <td>
-                @Html.ActionLink("Aanpassen", "EditMenu", new {id = m.Id})
+                @Html.ActionLink("Aanpassen", "EditMenu", new {id = m.Id}) |
+                @Ajax.ActionLink("Verwijderen", "DeleteMenu", "Opvangtehuis", new { id = m.Id }, new AjaxOptions()
+                {
+                    HttpMethod = "POST",
+                    OnComplete = "window.location.reload()"
+                })
             </td>
         </tr>
     }
