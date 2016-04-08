@@ -11,8 +11,6 @@
     <table class="suggestieform">
         <tr>
             <td>
-                @*@Html.DropDownListFor(m => m.GeselecteerdGenre, Model.Genres, new { @class = "form-control" })*@
-
                 <label>
                     @Html.RadioButtonFor(m => m.GeselecteerdGenre, "Eten", new { @checked = true })
                     <img src="@Url.Content("~/Content/Images/Aanduidingen/eten.png")" alt="Een suggestie over het eten doen" title="Een suggestie over het eten doen" class="suggestionImage" />
@@ -54,8 +52,7 @@
         <tr>
             <td>
                 <div class="imagebutton">
-                    @*<input type="submit" class="button" value="Doe de suggestie"/>*@
-                    <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" alt="Accepteren" title="Accpeteren"/>
+                    <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" alt="Accepteren" title="Accpeteren" />
                 </div>
             </td>
             <td>
@@ -63,7 +60,6 @@
                     <a href="@Url.Action("ClientIndex", "Gebruiker")">
                         <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
                     </a>
-                    @*@Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")*@
                 </div>
             </td>
         </tr>

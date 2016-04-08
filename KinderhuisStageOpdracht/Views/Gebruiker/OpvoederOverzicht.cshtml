@@ -4,7 +4,6 @@
 }
 
 <div class="imagebutton">
-    @*@Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")*@
     <a href="@Url.Action("ClientIndex", "Gebruiker")">
         <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug"/>
     </a>
@@ -20,11 +19,6 @@
             </a>
 
         </div>
-
-        @*@Html.DisplayFor(modelItem => o.FullName)
-
-
-            @Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })*@
     }
 
 </div>

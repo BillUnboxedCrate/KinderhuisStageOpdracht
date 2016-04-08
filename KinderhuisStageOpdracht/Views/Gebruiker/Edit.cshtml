@@ -35,7 +35,6 @@
     <div class="form-group">
         @Html.LabelFor(m => m.GeboorteDatum, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @*@Html.TextBoxFor(m => m.GeboorteDatum, new { @class = "form-control", @Value = Model.GeboorteDatum.ToString("d")})*@
             @Html.TextBoxFor(m => m.GeboorteDatum, new { @class = "form-control datepickeredit", @readonly = true, @Value = Model.GeboorteDatum.ToString("dd/MM/yyyy") })
             @Html.ValidationMessageFor(m => m.GeboorteDatum, "", new { @class = "text-danger"})
         </div>

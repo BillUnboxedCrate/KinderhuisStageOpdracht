@@ -9,7 +9,6 @@
     @Html.AntiForgeryToken()
     <h2>Maak een nieuwe cliënt aan.</h2>
     <hr />
-    @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
     <div class="form-group">
         @Html.LabelFor(m => m.Voornaam, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -35,7 +34,6 @@
     <div class="form-group">
         @Html.LabelFor(m => m.GeboorteDatum, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @*@Html.EditorFor(m => m.GeboorteDatum, new { htmlAttributes = new { @class = "form-control" } })*@
             @Html.TextBoxFor(m => m.GeboorteDatum, new { @class = "form-control datepicker", @readonly = true, @Value = Model.GeboorteDatum.ToString("dd/MM/yyyy") })
             @Html.ValidationMessageFor(m => m.GeboorteDatum, "", new { @class = "text-danger" })
         </div>

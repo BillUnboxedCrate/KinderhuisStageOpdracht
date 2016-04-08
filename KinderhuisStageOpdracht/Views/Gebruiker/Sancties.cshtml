@@ -6,38 +6,6 @@
 <div class="formPage">
     @if (Model.SanctieList.Count > 0)
     {
-        @*<table id="sactieTable">
-                <tr>
-                    <th class="firstColumn">
-                        <img src="@Url.Content("~/Content/Images/Aanduidingen/cross.png")" class="sanctieImage" />
-                        Straf
-                    </th>
-                    <th class="secondColumn">Rede</th>
-                    <th>Van</th>
-                    <th>Tot</th>
-                </tr>
-
-                @foreach (var o in Model.SanctieList)
-                {
-                    <tr>
-                        <td class="firstColumn">
-                            <div>
-                                <img src="@Url.Content(o.ImageUrl)" class="sanctieImage" />
-                            </div>
-                            <div id="strafText">@Html.DisplayFor(modelItem => o.GeselecteerdeStraf)</div>
-                        </td>
-                        <td class="secondColumn">@Html.DisplayFor(modelItem => o.Rede)</td>
-                        <td>
-                            @Html.DisplayFor(modelItem => o.Date)<br />
-                            @Html.DisplayFor(modelItem => o.BeginDateDay)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => o.EindDatum)<br />
-                            @Html.DisplayFor(modelItem => o.EndDateDay)
-                        </td>
-                    </tr>
-                }
-            </table>*@
         <div class="SanctieCardSystem">
             @foreach (var o in Model.SanctieList)
             {
@@ -82,7 +50,6 @@
     }
 
     <div class="imagebutton">
-        @*@Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")*@
         <a href="@Url.Action("ClientIndex", "Gebruiker")">
             <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
         </a>
