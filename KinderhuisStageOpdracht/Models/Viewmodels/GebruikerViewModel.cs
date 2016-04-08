@@ -526,7 +526,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public string Client { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Er moet een rede worden opgegeven.")]
             [Display(Name = "Rede voor de sanctie")]
             public string Rede { get; set; }
 

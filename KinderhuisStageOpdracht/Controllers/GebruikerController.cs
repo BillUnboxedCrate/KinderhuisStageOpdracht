@@ -506,13 +506,13 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 return UserStillLoggedIn();
             }
-
+            Opvangtehuis opvangtehuis;
             if (ModelState.IsValid)
             {
                 try
                 {
                     var gebruiker = (Client)_gebruikerRepository.FindById(model.Id);
-                    var opvangtehuis = _gebruikerRepository.FindById(gebruiker.Id).Opvangtehuis;
+                    opvangtehuis = _gebruikerRepository.FindById(gebruiker.Id).Opvangtehuis;
                     gebruiker.AddSanctie(model.Rede, model.Date, model.AantalDagen, opvangtehuis.FindStrafByName(model.GeselecteerdeStraf));
                     _gebruikerRepository.SaveChanges();
 
@@ -524,8 +524,11 @@ namespace KinderhuisStageOpdracht.Controllers
                     ModelState.AddModelError("", e.Message);
                 }
             }
-            this.AddNotification("De sanctie kan niet worden gemaakt", NotificationType.ERROR);
-            return RedirectToAction("CreateSanctie");
+
+            opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+            var svm = new GebruikerViewModel.SanctieViewModel(model.Id, _gebruikerRepository.FindById(model.Id).GiveFullName());
+            svm.SetStraffen(opvangtehuis.GetStraffen().Select(s => s.Naam).ToList());
+            return View(svm);
 
         }
 
@@ -608,6 +611,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
             _gebruikerRepository.SaveChanges();
 
+
             return View(lkcivm);
         }
 
@@ -632,7 +636,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 }
             }
             _gebruikerRepository.SaveChanges();
-
+            this.AddNotification("De wijzigingen zijn opgeslagen", NotificationType.SUCCESS);
             return RedirectToAction("KamerControleOpvoeder");
         }
 
