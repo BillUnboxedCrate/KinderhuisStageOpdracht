@@ -117,9 +117,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
             var opvoederlistvm = new GebruikerViewModel.OpvoederListViewModel();
             var clientlistvm = new GebruikerViewModel.ClientListViewModel();
+            var leefgroeplistvm = new GebruikerViewModel.LeefgroepListViewModel();
 
             List<Gebruiker> opvoeders = _gebruikerRepository.FindAllOpvoeders().ToList();
             List<Gebruiker> clients = _gebruikerRepository.FindAllClients().ToList();
+            List<Opvangtehuis> opvangtehuizen = _opvangtehuisRepository.FindAll().ToList();
 
             foreach (var gebruiker in opvoeders)
             {
@@ -139,7 +141,15 @@ namespace KinderhuisStageOpdracht.Controllers
                 clientlistvm.AddClient(clientvm);
             }
 
-            var oeclvm = new GebruikerViewModel.OpvoederEnClientListViewModel(opvoederlistvm, clientlistvm);
+            foreach (var opvangtehuis in opvangtehuizen)
+            {
+                leefgroeplistvm.AddLeefgroep(new GebruikerViewModel.LeefgroepViewModel(opvangtehuis.Id, opvangtehuis.Naam,
+                    opvangtehuis.ToString()));
+            }
+
+
+
+            var oeclvm = new GebruikerViewModel.OpvoederEnClientListViewModel(opvoederlistvm, clientlistvm, leefgroeplistvm);
 
             return View(oeclvm);
         }

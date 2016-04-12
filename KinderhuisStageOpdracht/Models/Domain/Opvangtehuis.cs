@@ -9,7 +9,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
     {
         public int Id { get; set; }
         public string Naam { get; set; }
-        public string Telefoonnummer { get; set; }
         public string Straat { get; set; }
         public string StraatNummer { get; set; }
         public string Gemeente { get; set; }

@@ -17,11 +17,43 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         {
             public OpvoederListViewModel Olmv { get; set; }
             public ClientListViewModel Clvm { get; set; }
+            public LeefgroepListViewModel Llvm { get; set; }
 
-            public OpvoederEnClientListViewModel(OpvoederListViewModel olvm, ClientListViewModel clvm)
+            public OpvoederEnClientListViewModel(OpvoederListViewModel olvm, ClientListViewModel clvm, LeefgroepListViewModel llvm)
             {
                 Olmv = olvm;
                 Clvm = clvm;
+                Llvm = llvm;
+            }
+        }
+
+        public class LeefgroepListViewModel
+        {
+            public List<LeefgroepViewModel> List { get; set; }
+
+            public LeefgroepListViewModel()
+            {
+                List = new List<LeefgroepViewModel>();
+            }
+
+            public void AddLeefgroep(LeefgroepViewModel item)
+            {
+               List.Add(item); 
+            }
+ 
+        }
+
+        public class LeefgroepViewModel
+        {
+            public int Id { get; set; }
+            public string Naam { get; set; }
+            public string Adres { get; set; }
+
+            public LeefgroepViewModel(int id, string naam, string adres)
+            {
+                Id = id;
+                Naam = naam;
+                Adres = adres;
             }
         }
 

@@ -32,17 +32,15 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Postcode = "9200",
                 Straat = "Leopold II laan",
                 StraatNummer = "6",
-                Telefoonnummer = "052/21 21 74"
             };
 
             var opvangtehuis2 = new Opvangtehuis()
             {
-                Naam = "Leefgroep De Hermelijn",
+                Naam = "De Hermelijn",
                 Gemeente = "Hamme",
                 Postcode = "9220",
                 Straat = "Jagerstraat",
                 StraatNummer = "32",
-                Telefoonnummer = "052/47 25 64"
             };
 
             //Add opvangtehuizen
