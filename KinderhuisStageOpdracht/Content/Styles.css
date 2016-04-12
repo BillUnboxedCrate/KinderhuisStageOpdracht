@@ -100,7 +100,8 @@ html {
     overflow: auto;
 }
 
-input[type="text"], input[type="password"], textarea {
+input[type="text"], input[type="password"], textarea, select {
+    width: 300px;
     border: 1px solid rgb(194, 194, 194);
     padding: 10px 10px;
     border-radius: 3px;
