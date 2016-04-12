@@ -158,10 +158,10 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
 
         //TimeTracking
-        /*public void GetCurrentTracking()
+        public List<TimeTrack> GetTimeTrackList()
         {
-            TimeTrackList.FirstOrDefault()
-        }*/
+            return TimeTrackList.OrderBy(t => t.Aanmelden).ToList();
+        } 
 
         public void AddTimeTrack()
         {

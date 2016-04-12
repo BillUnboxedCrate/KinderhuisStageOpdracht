@@ -328,9 +328,14 @@ namespace KinderhuisStageOpdracht.Controllers
                 if (gebruiker is Client)
                 {
                     var client = (Client)gebruiker;
-                    foreach (var s in client.GetSancties())
+                    foreach (var s in client.GetAppliedSancties())
                     {
                         dvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam()));
+                    }
+
+                    foreach (var track in client.GetTimeTrackList())
+                    {
+                        dvm.AddTimeTrack(new GebruikerViewModel.TimeTrackerViewModel(track.Aanmelden));
                     }
                 }
             }
@@ -800,6 +805,7 @@ namespace KinderhuisStageOpdracht.Controllers
             var wcvm = new GebruikerViewModel.WachtwoordChangeViewModel(gebruiker.GetType().Name);
             return View(wcvm);
         }
+
 
         #region helper
         public string ImageUploadProfielAfbeelding(HttpPostedFileBase file)

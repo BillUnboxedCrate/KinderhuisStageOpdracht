@@ -342,16 +342,18 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [DataType(DataType.Upload)]
             public HttpPostedFileBase Image { get; set; }
 
-
             public string ImageUrl { get; set; }
 
             public string TypeGebruiker { get; set; }
 
             public bool IsStagair { get; set; }
 
+            public List<TimeTrackerViewModel> TimeTrackerList { get; set; }
+
             public DetailViewModel()
             {
                 Sancties = new List<SanctieViewModel>();
+                TimeTrackerList = new List<TimeTrackerViewModel>();
             }
 
             public DetailViewModel(int id, string naam, string voornaam, DateTime? geboortedatum, string gebruikersnaam,
@@ -368,6 +370,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 ImageUrl = imageUrl;
                 IsStagair = false;
                 Sancties = new List<SanctieViewModel>();
+                TimeTrackerList = new List<TimeTrackerViewModel>();
             }
 
             public List<SanctieViewModel> Sancties { get; set; }
@@ -377,7 +380,24 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Sancties.Add(svm);
             }
 
+            public void AddTimeTrack(TimeTrackerViewModel item)
+            {
+                TimeTrackerList.Add(item);
+            }
+
         }
+
+        #region TimeTracker
+        public class TimeTrackerViewModel
+        {
+            public DateTime TimeTrackTime { get; set; }
+
+            public TimeTrackerViewModel(DateTime timeTrackTime)
+            {
+                TimeTrackTime = timeTrackTime;
+            }
+        }
+        #endregion
 
         public class EditViewModel
         {
@@ -774,7 +794,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 GebruikerType = gebruikerType;
             }
         }
-
         #endregion
+
+
     }
 }

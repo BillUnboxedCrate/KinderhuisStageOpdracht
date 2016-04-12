@@ -81,3 +81,19 @@
     </table>
 }
 
+@if (Model.TimeTrackerList.Count != 0)
+{
+    <table class="table">
+        <tr>
+            <th>Aangemeld op</th>
+        </tr>
+        @foreach (var t in Model.TimeTrackerList)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => t.TimeTrackTime)</td>
+            </tr>
+        }
+       
+    </table>
+}
+
