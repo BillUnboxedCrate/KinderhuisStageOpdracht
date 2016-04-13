@@ -777,8 +777,8 @@ namespace KinderhuisStageOpdracht.Controllers
                 return UserStillLoggedIn();
             }
 
-            var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
-            var ivm = new GebruikerViewModel.InstellingenViewModel(client.BackgroundUrl, client.ImageUrl);
+            var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
+            var ivm = new GebruikerViewModel.InstellingenViewModel(gebruiker.GetType().Name, gebruiker.BackgroundUrl, gebruiker.ImageUrl);
 
             return View(ivm);
         }
@@ -791,26 +791,26 @@ namespace KinderhuisStageOpdracht.Controllers
                 return UserStillLoggedIn();
             }
 
-            var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
+            var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
             if (ModelState.IsValid)
             {
                 if (model.AvatarUpload != null)
                 {
-                    client.AddImage(ImageUploadProfielAfbeelding(model.AvatarUpload));
-                    Session["profileimageurl"] = client.ImageUrl;
+                    gebruiker.AddImage(ImageUploadProfielAfbeelding(model.AvatarUpload));
+                    Session["profileimageurl"] = gebruiker.ImageUrl;
                 }
 
                 if (model.BackgroundUpload != null)
                 {
-                    client.AddBackground(ImageUploadBackgroundAfbeelding(model.BackgroundUpload));
-                    Session["backgroundurl"] = client.BackgroundUrl;
+                    gebruiker.AddBackground(ImageUploadBackgroundAfbeelding(model.BackgroundUpload));
+                    Session["backgroundurl"] = gebruiker.BackgroundUrl;
                 }
                 _gebruikerRepository.SaveChanges();
                 this.AddNotification("De veranderingen zijn opgeslagen.", NotificationType.SUCCESS);
 
             }
 
-            var ivm = new GebruikerViewModel.InstellingenViewModel(client.BackgroundUrl, client.ImageUrl);
+            var ivm = new GebruikerViewModel.InstellingenViewModel(gebruiker.GetType().Name, gebruiker.BackgroundUrl, gebruiker.ImageUrl);
             return View(ivm);
         }
 

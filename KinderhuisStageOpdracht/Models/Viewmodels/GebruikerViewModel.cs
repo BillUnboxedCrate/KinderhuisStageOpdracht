@@ -793,6 +793,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         #region Instellingen
         public class InstellingenViewModel
         {
+            public string GebruikerType { get; set; }
+
             public string BackgroundUrl { get; set; }
             [DataType(DataType.Upload)]
             public HttpPostedFileBase BackgroundUpload { get; set; }
@@ -802,6 +804,13 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public HttpPostedFileBase AvatarUpload { get; set; }
 
             public InstellingenViewModel() { }
+
+            public InstellingenViewModel(string gebruikerType, string backgroundUrl, string avatarUrl)
+            {
+                GebruikerType = gebruikerType;
+                BackgroundUrl = backgroundUrl;
+                AvatarUrl = avatarUrl;
+            }
 
             public InstellingenViewModel(string backgroundUrl, string avatarUrl)
             {

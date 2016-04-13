@@ -31,6 +31,9 @@ namespace KinderhuisStageOpdracht.Models.Domain
         [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
 
+        [DataType(DataType.ImageUrl)]
+        public string BackgroundUrl { get; set; }
+
         /*private string _salt;
         public string Salt
         {
@@ -95,9 +98,9 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
             if (imageUrl != "~/Content/Images/Aanduidingen/vraagteken.png")
             {
-                ImageUrl = imageUrl; 
+                ImageUrl = imageUrl;
             }
-            
+
         }
 
         public void DeleteGebruiker()
@@ -105,9 +108,16 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Visable = false;
         }
 
+        //Instellingen
         public void AddImage(string imageUrl)
         {
             ImageUrl = imageUrl;
+        }
+
+
+        public void AddBackground(string backgroundUrl)
+        {
+            BackgroundUrl = backgroundUrl;
         }
 
         public void WachtwoordAanpassen(string nieuwWachtwoord, string salt)

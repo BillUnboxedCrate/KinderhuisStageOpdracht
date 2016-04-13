@@ -18,9 +18,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public virtual ICollection<TimeTrack> TimeTrackList { get; set; }
 
-        [DataType(DataType.ImageUrl)]
-        public string BackgroundUrl { get; set; }
-
         public Client()
         {
             KamerControles = new List<KamerControle>();
@@ -149,13 +146,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
             }
             return Forums.FirstOrDefault(f => f.Client == client && f.Opvoeder == opvoeder);
         }
-
-        //Instellingen
-        public void AddBackground(string backgroundUrl)
-        {
-            BackgroundUrl = backgroundUrl;
-        }
-
 
         //TimeTracking
         public List<TimeTrack> GetTimeTrackList()
