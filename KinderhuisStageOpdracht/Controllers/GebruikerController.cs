@@ -99,13 +99,14 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         //[Authorize]
-        public ActionResult AdminIndex()
+        public ActionResult AdminIndex(string searchString)
         {
             if (UserStillLoggedIn() != null)
             {
                 return UserStillLoggedIn();
             }
 
+           
             if (Session["gebruiker"] == null || !Request.IsAuthenticated)
             {
                 return View("Error");
@@ -121,8 +122,16 @@ namespace KinderhuisStageOpdracht.Controllers
 
             List<Gebruiker> opvoeders = _gebruikerRepository.FindAllOpvoeders().ToList();
             List<Gebruiker> clients = _gebruikerRepository.FindAllClients().ToList();
+            
             List<Opvangtehuis> opvangtehuizen = _opvangtehuisRepository.FindAll().ToList();
 
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                opvoeders = opvoeders.Where(s => s.Naam.ToLower().Contains(searchString.ToLower()) || s.Voornaam.ToLower().Contains(searchString.ToLower())).ToList();
+                clients = clients.Where(s => s.Naam.ToLower().Contains(searchString.ToLower()) || s.Voornaam.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+
+            
             foreach (var gebruiker in opvoeders)
             {
                 var o = (Opvoeder)gebruiker;

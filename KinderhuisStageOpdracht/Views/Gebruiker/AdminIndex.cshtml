@@ -30,7 +30,13 @@
     }
 </table>
 
-
+@using (Html.BeginForm())
+{
+    <div>
+        Zoek via naam: @Html.TextBox("SearchString", null, new { @class = "form-control" })
+        <input type="submit" value="Zoeken" />
+    </div>
+}
 <h3>Opvoeders</h3>
 @Html.ActionLink("Voeg opvoeder toe", "CreateOpvoeder")
 <table class="table">
