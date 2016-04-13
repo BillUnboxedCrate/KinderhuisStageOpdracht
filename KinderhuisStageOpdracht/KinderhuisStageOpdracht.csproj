@@ -408,6 +408,7 @@
     <Content Include="Views\Gebruiker\WachtwoordAanpassen.cshtml" />
     <Content Include="Views\Gebruiker\Instellingen.cshtml" />
     <Content Include="Views\Opvangtehuis\KamerOpdracht.cshtml" />
+    <Content Include="Views\Gebruiker\CreateLeefgroep.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

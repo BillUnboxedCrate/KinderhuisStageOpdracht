@@ -308,6 +308,35 @@ namespace KinderhuisStageOpdracht.Controllers
             return View(ccvm);
         }
 
+        public ActionResult CreateLeefgroep()
+        {
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateLeefgroep(GebruikerViewModel.LeefgroepViewModel model)
+        {
+            if (UserStillLoggedIn() != null)
+            {
+                return UserStillLoggedIn();
+            }
+            if (ModelState.IsValid)
+            {
+                var opvangtehuis = new Opvangtehuis(model.Naam, model.Straat, model.StraatNummer, model.Gemeente, model.Postcode);
+                _opvangtehuisRepository.AddLeefgroep(opvangtehuis);
+                _opvangtehuisRepository.SaveChanges();
+
+                this.AddNotification("De leefgroep is toegevoegd", NotificationType.SUCCESS);
+                return RedirectToAction("AdminIndex");
+            }
+            
+            return View();
+        }
+
         public ActionResult Details(int id)
         {
             if (UserStillLoggedIn() != null)

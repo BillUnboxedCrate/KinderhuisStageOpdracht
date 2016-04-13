@@ -38,16 +38,28 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public void AddLeefgroep(LeefgroepViewModel item)
             {
-               List.Add(item); 
+                List.Add(item);
             }
- 
+
         }
 
         public class LeefgroepViewModel
         {
             public int Id { get; set; }
+            [Required]
             public string Naam { get; set; }
+            [Required]
+            public string Straat { get; set; }
+            [Required]
+            public string StraatNummer { get; set; }
+            [Required]
+            public string Gemeente { get; set; }
+            [Required]
+            public string Postcode { get; set; }
+
             public string Adres { get; set; }
+
+            public LeefgroepViewModel() { }
 
             public LeefgroepViewModel(int id, string naam, string adres)
             {

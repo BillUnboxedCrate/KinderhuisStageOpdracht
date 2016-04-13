@@ -32,6 +32,15 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         }
 
+        public Opvangtehuis(string naam, string straat, string straatnummer, string gemeente, string postcode)
+        {
+            Naam = naam;
+            Straat = straat;
+            StraatNummer = straatnummer;
+            Gemeente = gemeente;
+            Postcode = postcode;
+        }
+
 
         //Suggesties
         public List<Suggestie> GetSuggesties()

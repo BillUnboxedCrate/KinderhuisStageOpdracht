@@ -30,6 +30,11 @@ namespace KinderhuisStageOpdracht.Models.DAL
             return _context.OpvangtehuisSet.SingleOrDefault(oh => oh.Naam == name);
         }
 
+        public void AddLeefgroep(Opvangtehuis opvangtehuis)
+        {
+            _context.OpvangtehuisSet.Add(opvangtehuis);
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();
