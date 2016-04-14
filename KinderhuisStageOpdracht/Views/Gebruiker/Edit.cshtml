@@ -36,7 +36,7 @@
         @Html.LabelFor(m => m.GeboorteDatum, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.GeboorteDatum, new { @class = "form-control datepickeredit", @readonly = true, @Value = Model.GeboorteDatum.ToString("dd/MM/yyyy") })
-            @Html.ValidationMessageFor(m => m.GeboorteDatum, "", new { @class = "text-danger"})
+            @Html.ValidationMessageFor(m => m.GeboorteDatum, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -48,10 +48,10 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.GebruikersNaam, new {@class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.GebruikersNaam, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.GebruikersNaam, new {@class = "form-control"})
-            @Html.ValidationMessageFor(m => m.GebruikersNaam, "", new {@class = "text-danger"})
+            @Html.TextBoxFor(m => m.GebruikersNaam, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.GebruikersNaam, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -63,13 +63,17 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Aanpassen" />
-        </div>
-    </div>
-}
+    <table class="buttontable">
+        <tr>
+            <td>
+                <input type="submit" class="button" value="Aanpassen" />
+            </td>
 
-<div class="terugButton">
-    @(Model.TypeGebruiker.Contains("Opvoeder") ? Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker") : Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker"))
-</div>
+            <td>
+                <span class="terugButton">
+                    @(Model.TypeGebruiker.Contains("Opvoeder") ? Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker") : Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker"))
+                </span>
+            </td>
+        </tr>
+    </table>
+}

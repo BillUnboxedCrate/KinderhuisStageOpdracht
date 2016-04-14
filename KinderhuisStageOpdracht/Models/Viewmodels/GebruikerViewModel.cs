@@ -256,6 +256,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
         public class CreateClientViewModel
         {
+            public string GebruikerType { get; set; }
+
             [Required]
             [Display(Name = "Naam")]
             public string Naam { get; set; }
@@ -301,6 +303,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public CreateClientViewModel()
             {
+                Opvangtehuizen = new List<string>();
+            }
+
+            public CreateClientViewModel(string gebruikerType)
+            {
+                GebruikerType = gebruikerType;
                 Opvangtehuizen = new List<string>();
             }
 

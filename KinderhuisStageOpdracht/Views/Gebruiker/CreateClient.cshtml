@@ -69,10 +69,25 @@
             @Html.ValidationMessageFor(m => m.BevestigWachtwoord, "", new { @class = "text-danger" })
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Voeg cliënt toe" />
-        </div>
-    </div>
+    <table class="buttontable">
+        <tr>
+            <td>
+                <input type="submit" class="button" value="Voeg cliënt toe" />
+            </td>
+
+            <td>
+                <span class="terugButton">
+                    @if (Model.GebruikerType.Contains("Admin"))
+                    {
+                        @Html.ActionLink("Terug", "AdminIndex", "Gebruiker")
+                    }
+                    else if (Model.GebruikerType.Contains("Opvoeder"))
+                    {
+                        @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
+                    }
+                </span>
+            </td>
+        </tr>
+    </table>
 }
 

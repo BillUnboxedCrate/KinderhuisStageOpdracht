@@ -80,20 +80,26 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.BevestigWachtwoord, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BevestigWachtwoord, new {@class = "col-md-2 control-label"})
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.BevestigWachtwoord, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.BevestigWachtwoord, "", new { @class = "text-danger" })
+            @Html.PasswordFor(m => m.BevestigWachtwoord, new {@class = "form-control"})
+            @Html.ValidationMessageFor(m => m.BevestigWachtwoord, "", new {@class = "text-danger"})
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Voeg opvoeder toe" />
-        </div>
-    </div>
+
+    <table class="buttontable">
+        <tr>
+            <td>
+                <input type="submit" class="button" value="Voeg opvoeder toe"/>
+            </td>
+
+            <td>
+                <span class="terugButton">
+                    @Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker")
+                </span>
+
+            </td>
+        </tr>
+    </table>
+   
 }
-
-<div class="terugButton">
-    @Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker")
-</div>
-

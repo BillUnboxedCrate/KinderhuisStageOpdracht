@@ -244,7 +244,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 return View("Error");
             }
 
-            var ccvm = new GebruikerViewModel.CreateClientViewModel();
+            var ccvm = new GebruikerViewModel.CreateClientViewModel((_gebruikerRepository.FindById((int)Session["gebruiker"])).GetType().Name);
 
             if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
             {
