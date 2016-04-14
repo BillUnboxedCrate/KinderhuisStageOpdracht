@@ -22,9 +22,9 @@ namespace KinderhuisStageOpdracht.Controllers
         // GET: Klacht
         public ActionResult Index()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
@@ -40,9 +40,9 @@ namespace KinderhuisStageOpdracht.Controllers
         public ActionResult Index(StrafViewModel.StrafListIndexViewModel model)
         {
             Opvangtehuis opvangtehuis;
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!ImageIsValidType(model.StrafIndexViewModel.ImageUpload))
@@ -102,14 +102,16 @@ namespace KinderhuisStageOpdracht.Controllers
             return false;
         }
 
-        public ActionResult UserStillLoggedIn()
+        public bool UserStillLoggedIn()
         {
-            if (Session["gebruiker"] == null)
-            {
-                FormsAuthentication.SignOut();
-                return RedirectToAction("Login", "Account");
-            }
-            return null;
+            return Session["gebruiker"] == null;
+        }
+
+        public ActionResult ReturnToLogin()
+        {
+            FormsAuthentication.SignOut();
+            Session["gebruiker"] = null;
+            return RedirectToAction("Login", "Account");
         }
         #endregion
     }

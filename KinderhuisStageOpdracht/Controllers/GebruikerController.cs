@@ -29,9 +29,9 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult ClientIndex()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (Session["gebruiker"] == null || !Request.IsAuthenticated)
@@ -44,9 +44,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult OpvoederOverzicht()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var id = (int)Session["gebruiker"];
@@ -70,9 +70,9 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult OpvoederIndex()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (Session["gebruiker"] == null || !Request.IsAuthenticated)
@@ -101,9 +101,9 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult AdminIndex(string searchString)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
 
@@ -165,9 +165,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateOpvoeder()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -186,9 +186,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateOpvoeder(GebruikerViewModel.CreateOpvoederViewModel model)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!ImageIsValidType(model.ImageUpload))
@@ -234,9 +234,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateClient()
         {
-            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
+            if (UserStillLoggedIn() || _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -262,9 +262,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateClient(GebruikerViewModel.CreateClientViewModel model)
         {
-            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
+            if (UserStillLoggedIn() || _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (ModelState.IsValid)
@@ -317,9 +317,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateLeefgroep()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
             return View();
         }
@@ -327,9 +327,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult CreateLeefgroep(GebruikerViewModel.LeefgroepViewModel model)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
             if (ModelState.IsValid)
             {
@@ -346,9 +346,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Details(int id)
         {
-            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
+            if (UserStillLoggedIn() || _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -397,9 +397,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Delete(int id)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -423,9 +423,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             try
@@ -446,9 +446,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Edit(int id)
         {
-            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
+            if (UserStillLoggedIn() || _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -478,9 +478,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(GebruikerViewModel.EditViewModel model)
         {
-            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
+            if (UserStillLoggedIn() || _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (ModelState.IsValid)
@@ -516,9 +516,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult GestrafteOverzicht()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
@@ -539,9 +539,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateSanctie(int id)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
@@ -553,9 +553,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult CreateSanctie(GebruikerViewModel.SanctieViewModel model)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
             Opvangtehuis opvangtehuis;
             if (ModelState.IsValid)
@@ -585,9 +585,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Sancties()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
@@ -603,9 +603,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KamerControle()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
@@ -636,9 +636,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KamerControleOpvoeder(int id)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn()  || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var client = (Client)_gebruikerRepository.FindById(id);
@@ -669,9 +669,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult KamerControleOpvoeder(GebruikerViewModel.ListKamerControleItemsViewmodel model)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var client = (Client)_gebruikerRepository.FindById(model.KamerControleListIndexViewModel.ClientId);
@@ -694,9 +694,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Forum(int id)
         {
-            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
+            if (UserStillLoggedIn() || _gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -740,9 +740,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult Forum(GebruikerViewModel.ForumViewModel model)
         {
-            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
+            if (UserStillLoggedIn() || _gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (ModelState.IsValid)
@@ -770,9 +770,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Instellingen()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn())
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
@@ -784,9 +784,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult Instellingen(GebruikerViewModel.InstellingenViewModel model)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn())
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
@@ -814,9 +814,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult WachtwoordAanpassen()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn())
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
@@ -827,9 +827,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult WachtwoordAanpassen(GebruikerViewModel.WachtwoordChangeViewModel model)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn())
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
@@ -899,15 +899,18 @@ namespace KinderhuisStageOpdracht.Controllers
             return false;
         }
 
-        public ActionResult UserStillLoggedIn()
+        public bool UserStillLoggedIn()
         {
-            if (Session["gebruiker"] == null)
-            {
-                FormsAuthentication.SignOut();
-                return RedirectToAction("Login", "Account");
-            }
-            return null;
+            return Session["gebruiker"] == null;
         }
+
+        public ActionResult ReturnToLogin()
+        {
+            FormsAuthentication.SignOut();
+            Session["gebruiker"] = null;
+            return RedirectToAction("Login", "Account");
+        }
+
 
         public bool IsValid(string password, string username)
         {

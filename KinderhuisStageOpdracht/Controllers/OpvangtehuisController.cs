@@ -28,9 +28,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [OutputCacheAttribute(VaryByParam = "*", Duration = 0, NoStore = true)]
         public ActionResult Suggesties()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -53,9 +53,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateSuggestie()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -71,9 +71,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateSuggestie(OpvangtehuisViewModel.CreateSuggestieViewModel model)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (ModelState.IsValid)
@@ -144,9 +144,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult DeleteSuggestion(int id)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
             try
             {
@@ -166,9 +166,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult MenuIndex()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -192,9 +192,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult DeleteMenu(int id)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
             try
             {
@@ -214,9 +214,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateMenu()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn())
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -260,9 +260,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateMenu(OpvangtehuisViewModel.MenuViewModel model)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (model.BeginWeek.DayOfWeek != DayOfWeek.Monday)
@@ -413,9 +413,9 @@ namespace KinderhuisStageOpdracht.Controllers
         //Extreem slordige code, moet later herwerkt worden
         public ActionResult EditMenu(int id)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -492,9 +492,9 @@ namespace KinderhuisStageOpdracht.Controllers
         //Reformat needed
         public ActionResult WeekMenu()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!Request.IsAuthenticated)
@@ -573,9 +573,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KlachtIndex()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
@@ -592,9 +592,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult DeleteKlacht(int id)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
             try
             {
@@ -614,9 +614,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Klacht()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             return View();
@@ -625,9 +625,9 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult Klacht(OpvangtehuisViewModel.KlachtViewModel model)
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (ModelState.IsValid)
@@ -653,9 +653,9 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KamerOpdracht()
         {
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
@@ -673,9 +673,9 @@ namespace KinderhuisStageOpdracht.Controllers
         public ActionResult KamerOpdracht(OpvangtehuisViewModel.KamerOpdrachtListViewModel model)
         {
             Opvangtehuis opvangtehuis;
-            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
-                return UserStillLoggedIn();
+                return ReturnToLogin();
             }
 
             if (!ImageIsValidType(model.KamerOpracht.ImageUpload))
@@ -711,20 +711,16 @@ namespace KinderhuisStageOpdracht.Controllers
             return cal.GetWeekOfYear(datum, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
         }
 
-        public ActionResult UserStillLoggedIn()
+        public bool UserStillLoggedIn()
         {
-            //string szCookieHeader = Request.Headers["gebruiker"];
-            //if ((null != szCookieHeader) && (szCookieHeader.IndexOf("ASP.NET_SessionId") >= 0))
-            //{
-            //    return RedirectToAction("LogOff", "Account");
-            //} 
+            return Session["gebruiker"] == null;
+        }
 
-            if (Session["gebruiker"] == null)
-            {
-                FormsAuthentication.SignOut();
-                return RedirectToAction("Login", "Account");
-            }
-            return null;
+        public ActionResult ReturnToLogin()
+        {
+            FormsAuthentication.SignOut();
+            Session["gebruiker"] = null;
+            return RedirectToAction("Login", "Account");
         }
         public bool ImageIsValidType(HttpPostedFileBase file)
         {
