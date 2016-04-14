@@ -8,6 +8,7 @@
     <tr>
         <th>Persoon</th>
         <th>Straf</th>
+        <th>Rede</th>
         <th>Van</th>
         <th>Tot</th>
 
@@ -17,13 +18,14 @@
         <tr>
             <td>@Html.DisplayFor(modelItem => o.Client)</td>
             <td>@Html.DisplayFor(modelItem => o.GeselecteerdeStraf)</td>
+            <td>@Html.DisplayFor(modelItem => o.Rede)</td>
             <td>@Html.DisplayFor(modelItem => o.Date)</td>
             <td>@Html.DisplayFor(modelItem => o.EindDatum)</td>
         </tr>
     }
 </table>
 
-<span class="terugButton">
+<div class="terugButton">
     @Html.ActionLink("Terug naar index", "OpvoederIndex")
-</span>
+</div>
 

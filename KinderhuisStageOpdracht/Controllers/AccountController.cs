@@ -102,8 +102,8 @@ namespace KinderhuisStageOpdracht.Controllers
                         if (gebruiker is Opvoeder)
                         {
                             System.Diagnostics.Debug.WriteLine("Type opvoeder");
-                            Session["backgroundurl"] = "";
-                            Session["profileimageurl"] = "";
+                            Session["backgroundurl"] = gebruiker.BackgroundUrl;
+                            Session["profileimageurl"] = gebruiker.ImageUrl;
                             return RedirectToAction("OpvoederIndex", "Gebruiker");
                         }
                         if (gebruiker is Client)

@@ -24,27 +24,53 @@
         <th>Naam</th>
         <th>Acties</th>
     </tr>
-    
+
     @foreach (var o in Model.Clients)
     {
         <tr>
             <td>@Html.DisplayFor(modelItem => o.FullName)</td>
 
             <td>
-                @Html.ActionLink("Details", "Details", new {id = o.Id})
+                @Html.ActionLink("Details", "Details", new { id = o.Id })
                 <span> | </span>
-                @Html.ActionLink("Aanpassen", "Edit", new {id = o.Id})
+                @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })
                 <span> | </span>
-                @Html.ActionLink("Straffen", "CreateSanctie", new {id = o.Id})
+                @Html.ActionLink("Straffen", "CreateSanctie", new { id = o.Id })
                 <span> | </span>
                 @Html.ActionLink("Kamercontrole", "KamerControleOpvoeder", new { id = o.Id })
                 <span> | </span>
                 @Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })
             </td>
-     
+
         </tr>
+
+
     }
 </table>
+
+<div class="opvoederindexclients">
+    @foreach (var o in Model.Clients)
+    {
+        <div class="opvoederindexclientscard">
+            <div id="opvoederindexclientnaam">@Html.DisplayFor(modelItem => o.FullName)</div>
+            <div class="opvoederindexclientaction">
+                <div>@Html.ActionLink("Details", "Details", new { id = o.Id })</div>
+            </div>
+            <div class="opvoederindexclientaction">
+                <div>@Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })</div>
+            </div>
+            <div class="opvoederindexclientaction">
+                <div>@Html.ActionLink("Straffen", "CreateSanctie", new { id = o.Id })</div>
+            </div>
+            <div class="opvoederindexclientaction">
+                <div>@Html.ActionLink("Kamercontrole", "KamerControleOpvoeder", new { id = o.Id })</div>
+            </div>
+            <div class="opvoederindexclientaction">
+                <div>@Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })</div>
+            </div>
+        </div>
+    }
+</div>
 
 
 

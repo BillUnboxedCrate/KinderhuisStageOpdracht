@@ -9,8 +9,8 @@ body {
 
 html {
     font-size: 100%;
-    -ms-text-size-adjust: 100%; 
-    -webkit-text-size-adjust: 100%; 
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
     height: 100%;
 }
 
@@ -32,7 +32,7 @@ html {
     margin-right: auto;
 }
 
-    /*.form th {
+/*.form th {
         width: 150px;
     }
 
@@ -833,7 +833,7 @@ label:hover .hovertext {
 #profilepicture {
     margin-right: 5px;
     max-height: 100%;
-    /*height: 54px;*/
+    height: 55px;
     width: 55px;
     border-radius: 35px;
 }
@@ -885,6 +885,53 @@ label:hover .hovertext {
     border-top: 1px solid black;
     height: 45px;
 }
+
+.opvoederindexclients {
+    text-align: center;
+}
+
+.opvoederindexclientscard {
+    width: 280px;
+    min-height: 300px;
+    background-color: white;
+    vertical-align: top;
+    display: inline-block;
+    border: 1px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    margin: 10px;
+}
+
+#opvoederindexclientnaam {
+    border: 1px solid black;
+    min-height: 50px;
+}
+
+.opvoederindexclientaction {
+    height: 50px;
+}
+
+    .opvoederindexclientaction div {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+
+    .opvoederindexclientaction a {
+        text-decoration: none;
+        display: table-cell;
+        margin-left: auto;
+        margin-right: auto;
+        border: 3px solid blue;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+
+        .opvoederindexclientaction a:hover {
+            border: 3px solid red;
+        }
+
 
 
 
