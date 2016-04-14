@@ -38,12 +38,12 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
         public IQueryable<Gebruiker> FindAllOpvoeders()
         {
-            return _context.GebruikerSet.Where(g => g is Opvoeder).Where(g => g.Visable);
+            return _context.GebruikerSet.Where(g => g is Opvoeder).Where(g => g.Visable).OrderBy(g => g.Opvangtehuis.Id);
         }
 
         public IQueryable<Gebruiker> FindAllClients()
         {
-            return _context.GebruikerSet.Where(g => g is Client).Where(g => g.Visable);
+            return _context.GebruikerSet.Where(g => g is Client).Where(g => g.Visable).OrderBy(g => g.Opvangtehuis.Id);
         }
 
         public void AddOpvoeder(Opvoeder opvoeder)

@@ -307,8 +307,9 @@ namespace KinderhuisStageOpdracht.Controllers
                 }
             }
 
-            var ccvm = new GebruikerViewModel.CreateClientViewModel
+            var ccvm = new GebruikerViewModel.CreateClientViewModel()
             {
+                GebruikerType = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name,
                 Opvangtehuizen = _opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList()
             };
 
