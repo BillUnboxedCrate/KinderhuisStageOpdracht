@@ -29,7 +29,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult ClientIndex()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
                 return UserStillLoggedIn();
             }
@@ -44,7 +44,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult OpvoederOverzicht()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
                 return UserStillLoggedIn();
             }
@@ -70,7 +70,7 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult OpvoederIndex()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
                 return UserStillLoggedIn();
             }
@@ -101,12 +101,12 @@ namespace KinderhuisStageOpdracht.Controllers
         //[Authorize]
         public ActionResult AdminIndex(string searchString)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
                 return UserStillLoggedIn();
             }
 
-           
+
             if (Session["gebruiker"] == null || !Request.IsAuthenticated)
             {
                 return View("Error");
@@ -122,7 +122,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
             List<Gebruiker> opvoeders = _gebruikerRepository.FindAllOpvoeders().ToList();
             List<Gebruiker> clients = _gebruikerRepository.FindAllClients().ToList();
-            
+
             List<Opvangtehuis> opvangtehuizen = _opvangtehuisRepository.FindAll().ToList();
 
             if (!String.IsNullOrEmpty(searchString))
@@ -131,7 +131,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 clients = clients.Where(s => s.Naam.ToLower().Contains(searchString.ToLower()) || s.Voornaam.ToLower().Contains(searchString.ToLower())).ToList();
             }
 
-            
+
             foreach (var gebruiker in opvoeders)
             {
                 var o = (Opvoeder)gebruiker;
@@ -165,7 +165,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateOpvoeder()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
                 return UserStillLoggedIn();
             }
@@ -186,7 +186,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateOpvoeder(GebruikerViewModel.CreateOpvoederViewModel model)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
                 return UserStillLoggedIn();
             }
@@ -195,8 +195,6 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 ModelState.AddModelError("ImageUpload", "Dit is geen foto");
             }
-
-
 
             if (ModelState.IsValid)
             {
@@ -236,7 +234,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateClient()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
             {
                 return UserStillLoggedIn();
             }
@@ -264,7 +262,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateClient(GebruikerViewModel.CreateClientViewModel model)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
             {
                 return UserStillLoggedIn();
             }
@@ -319,7 +317,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateLeefgroep()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
                 return UserStillLoggedIn();
             }
@@ -342,13 +340,13 @@ namespace KinderhuisStageOpdracht.Controllers
                 this.AddNotification("De leefgroep is toegevoegd", NotificationType.SUCCESS);
                 return RedirectToAction("AdminIndex");
             }
-            
+
             return View();
         }
 
         public ActionResult Details(int id)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
             {
                 return UserStillLoggedIn();
             }
@@ -399,7 +397,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Delete(int id)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
                 return UserStillLoggedIn();
             }
@@ -425,7 +423,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
             {
                 return UserStillLoggedIn();
             }
@@ -448,7 +446,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Edit(int id)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
             {
                 return UserStillLoggedIn();
             }
@@ -480,7 +478,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(GebruikerViewModel.EditViewModel model)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
             {
                 return UserStillLoggedIn();
             }
@@ -518,7 +516,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult GestrafteOverzicht()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
                 return UserStillLoggedIn();
             }
@@ -541,7 +539,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult CreateSanctie(int id)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
                 return UserStillLoggedIn();
             }
@@ -555,7 +553,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult CreateSanctie(GebruikerViewModel.SanctieViewModel model)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
                 return UserStillLoggedIn();
             }
@@ -587,7 +585,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Sancties()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
                 return UserStillLoggedIn();
             }
@@ -605,7 +603,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KamerControle()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
                 return UserStillLoggedIn();
             }
@@ -638,7 +636,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KamerControleOpvoeder(int id)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
                 return UserStillLoggedIn();
             }
@@ -671,7 +669,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult KamerControleOpvoeder(GebruikerViewModel.ListKamerControleItemsViewmodel model)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
                 return UserStillLoggedIn();
             }
@@ -696,7 +694,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Forum(int id)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
             {
                 return UserStillLoggedIn();
             }
@@ -742,7 +740,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult Forum(GebruikerViewModel.ForumViewModel model)
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && _gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
             {
                 return UserStillLoggedIn();
             }

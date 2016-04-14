@@ -22,7 +22,7 @@ namespace KinderhuisStageOpdracht.Controllers
         // GET: Klacht
         public ActionResult Index()
         {
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
                 return UserStillLoggedIn();
             }
@@ -40,7 +40,7 @@ namespace KinderhuisStageOpdracht.Controllers
         public ActionResult Index(StrafViewModel.StrafListIndexViewModel model)
         {
             Opvangtehuis opvangtehuis;
-            if (UserStillLoggedIn() != null)
+            if (UserStillLoggedIn() != null && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
                 return UserStillLoggedIn();
             }

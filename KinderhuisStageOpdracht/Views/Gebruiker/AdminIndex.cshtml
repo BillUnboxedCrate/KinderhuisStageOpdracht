@@ -12,7 +12,6 @@
     <tr>
         <th>Naam</th>
         <th>Adres</th>
-        <th>Acties</th>
 
     </tr>
     @foreach (var o in Model.Llvm.List)
@@ -20,23 +19,26 @@
         <tr>
             <td>@Html.DisplayFor(modelItem => o.Naam)</td>
             <td>@Html.DisplayFor(modelItem => o.Adres)</td>
-
-            <td>
-                @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })
-                <span> | </span>
-                @Html.ActionLink("Verwijderen", "Delete", new { id = o.Id })
-            </td>
         </tr>
     }
 </table>
 
 @using (Html.BeginForm())
 {
-    <div>
-        Zoek via naam: @Html.TextBox("SearchString", null, new { @class = "form-control" })
-        <input type="submit" value="Zoeken" />
-    </div>
+    <table>
+        <tr>
+            <td>Zoek via naam: </td>
+            <td>@Html.TextBox("SearchString", null, new { @class = "form-control" })</td>
+            <td><input type="submit" value="Zoeken" class="button" /></td>
+            <td>
+                <span class="terugButton">
+                    @Html.ActionLink("Reset", "AdminIndex")
+                </span>
+            </td>
+        </tr>
+    </table>
 }
+
 <h3>Opvoeders</h3>
 @Html.ActionLink("Voeg opvoeder toe", "CreateOpvoeder")
 <table class="table">
