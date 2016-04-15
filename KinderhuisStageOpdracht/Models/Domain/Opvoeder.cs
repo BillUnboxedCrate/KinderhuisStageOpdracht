@@ -16,16 +16,14 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Forums = new List<Forum>();
         }
 
-        public Opvoeder(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum, string imageUrl, bool isStagair)
+        public Opvoeder(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string wachtwoord, string salt, string imageUrl, bool isStagair)
         {
             Naam = naam;
             Voornaam = voornaam;
             Opvangtehuis = opvangtehuis;
             Gebruikersnaam = gebruikersnaam;
-            Email = email;
             Wachtwoord = wachtwoord;
             Salt = salt;
-            GeboorteDatum = geboortedatum;
             ImageUrl = imageUrl;
             IsStagair = isStagair;
         }

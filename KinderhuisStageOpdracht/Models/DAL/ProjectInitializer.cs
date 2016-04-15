@@ -54,12 +54,10 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Baert",
                 Voornaam = "Bram",
-                GeboorteDatum = new DateTime(1993, 11, 16),
                 Gebruikersnaam = "Admin",
                 //Wachtwoord = "test",
                 //testing
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "bram.baert@hotmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
@@ -72,10 +70,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Braeckman",
                 Voornaam = "Yannick",
-                GeboorteDatum = new DateTime(1992, 3, 24),
                 Gebruikersnaam = "YannickBraeckman",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "yannickbraeckman@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
@@ -87,10 +83,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "De Seager",
                 Voornaam = "Tom",
-                GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Opvoeder",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/tomds.jpg"
@@ -101,10 +95,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Michiels",
                 Voornaam = "Sandra",
-                GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Sandra",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/Sandra.jpg"
@@ -114,10 +106,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Cattelain",
                 Voornaam = "Julie",
-                GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Julie",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/Julie.jpg"
@@ -127,10 +117,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Gysens",
                 Voornaam = "Anneliese",
-                GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Anneliese",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
@@ -140,10 +128,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Hamerlinck",
                 Voornaam = "Magda",
-                GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Magda",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
@@ -153,10 +139,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Jacobs",
                 Voornaam = "Candy",
-                GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Candy",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/Candy.jpg"
@@ -166,10 +150,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Lejeune",
                 Voornaam = "Alexander",
-                GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Alexander",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/alex.jpg"
@@ -179,10 +161,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Spruyt",
                 Voornaam = "Martine",
-                GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Martine",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/Martine.jpg"
@@ -192,10 +172,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Verstuyft",
                 Voornaam = "Tom",
-                GeboorteDatum = new DateTime(1990, 11, 11),
                 Gebruikersnaam = "Tom",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "tomdesaeger@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/tomv.jpg"
@@ -206,10 +184,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Bauwens",
                 Voornaam = "Brikke",
-                GeboorteDatum = new DateTime(1991, 12, 5),
                 Gebruikersnaam = "BrikkeBauwens",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
-                Email = "brikke.bauwens@gmail.com",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"
@@ -219,7 +195,6 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Hollanders",
                 Voornaam = "Roy",
-                GeboorteDatum = new DateTime(1992, 2, 14),
                 Gebruikersnaam = "RoyHollanders",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
@@ -231,9 +206,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Van Den Berghe",
                 Voornaam = "Rutger",
-                GeboorteDatum = new DateTime(1993, 9, 24),
                 Gebruikersnaam = "RutgerVanDenBerghe",
-                Email = "doglife3@runescape.ayy",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
@@ -245,7 +218,6 @@ namespace KinderhuisStageOpdracht.Models.DAL
             {
                 Naam = "Braeckman",
                 Voornaam = "Sean",
-                GeboorteDatum = new DateTime(1992, 3, 25),
                 Gebruikersnaam = "SeanBraeckman",
                 Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",

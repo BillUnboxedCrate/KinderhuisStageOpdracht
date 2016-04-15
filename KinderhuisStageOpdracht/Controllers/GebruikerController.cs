@@ -135,7 +135,7 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var gebruiker in opvoeders)
             {
                 var o = (Opvoeder)gebruiker;
-                var opvoedervm = new GebruikerViewModel.OpvoederViewModel(o.Id, o.GiveFullName(), o.Email,
+                var opvoedervm = new GebruikerViewModel.OpvoederViewModel(o.Id, o.GiveFullName(),
                     o.GetOpvangtehuisnaam());
 
                 opvoederlistvm.AddOpvoeder(opvoedervm);
@@ -144,7 +144,7 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var gebruiker in clients)
             {
                 var c = (Client)gebruiker;
-                var clientvm = new GebruikerViewModel.ClientViewModel(c.Id, c.GiveFullName(), c.Email,
+                var clientvm = new GebruikerViewModel.ClientViewModel(c.Id, c.GiveFullName(),
                     c.GetOpvangtehuisnaam());
 
                 clientlistvm.AddClient(clientvm);
@@ -210,8 +210,7 @@ namespace KinderhuisStageOpdracht.Controllers
                     var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
 
                     var opvoeder = new Opvoeder(model.Naam, model.Voornaam,
-                        _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                        model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum, ImageUploadProfielAfbeelding(model.ImageUpload), model.IsStagair);
+                        _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam, encrytwachtwoord, crypto.Salt, ImageUploadProfielAfbeelding(model.ImageUpload), model.IsStagair);
 
                     _gebruikerRepository.AddOpvoeder(opvoeder);
                     _gebruikerRepository.SaveChanges();
@@ -285,7 +284,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                         var client = new Client(model.Naam, model.Voornaam,
                             _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                            model.Email, encrytwachtwoord, crypto.Salt, model.GeboorteDatum);
+                             encrytwachtwoord, crypto.Salt);
 
                         _gebruikerRepository.AddClient(client);
                         _gebruikerRepository.SaveChanges();
@@ -364,7 +363,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
                 dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
+                     gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
 
                 if (gebruiker is Opvoeder)
                 {
@@ -415,7 +414,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 string type = gebruiker.GetType().ToString();
                 dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                    gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
+                     gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
             }
             return View(dvm);
         }
@@ -461,7 +460,7 @@ namespace KinderhuisStageOpdracht.Controllers
             var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
 
             var evm = new GebruikerViewModel.EditViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                gebruiker.GeboorteDatum, gebruiker.Gebruikersnaam, gebruiker.Email, gebruiker.GetOpvangtehuisnaam(), type, gebruiker.ImageUrl);
+                 gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuisnaam(), type, gebruiker.ImageUrl);
 
             if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
             {
@@ -491,7 +490,7 @@ namespace KinderhuisStageOpdracht.Controllers
                     var gebruiker = _gebruikerRepository.FindById(model.Id);
                     gebruiker.EditGebruiker(model.Naam, model.Voornaam,
                         _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                        model.Email, model.GeboorteDatum, ImageUploadProfielAfbeelding(model.Image));
+                     ImageUploadProfielAfbeelding(model.Image));
 
                     _gebruikerRepository.UpdateGebruiker(gebruiker);
                     _gebruikerRepository.SaveChanges();
@@ -637,7 +636,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KamerControleOpvoeder(int id)
         {
-            if (UserStillLoggedIn()  || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
                 return ReturnToLogin();
             }

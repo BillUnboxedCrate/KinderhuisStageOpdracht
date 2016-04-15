@@ -16,8 +16,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public int Id { get; set; }
         public string Voornaam { get; set; }
         public string Naam { get; set; }
-        public DateTime GeboorteDatum { get; set; }
-        public string Email { get; set; }
         public string Gebruikersnaam { get; set; }
         public string Wachtwoord { get; set; }
         [NotMapped]
@@ -87,16 +85,14 @@ namespace KinderhuisStageOpdracht.Models.Domain
         }
 
         public void EditGebruiker(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam,
-            string email, DateTime geboortedatum, string imageUrl)
+             string imageUrl)
         {
             Naam = naam;
             Voornaam = voornaam;
             Opvangtehuis = opvangtehuis;
             Gebruikersnaam = gebruikersnaam;
-            Email = email;
-            GeboorteDatum = geboortedatum;
 
-            if (imageUrl != "~/Content/Images/Aanduidingen/vraagteken.png")
+            if (imageUrl != "~/Content/Images/ProfielAfbeelding/dafault.png" || imageUrl != "~/Content/Images/ProfielAfbeelding/dafaultAvatar.png")
             {
                 ImageUrl = imageUrl;
             }

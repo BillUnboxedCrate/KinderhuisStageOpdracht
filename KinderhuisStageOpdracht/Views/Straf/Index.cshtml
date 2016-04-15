@@ -7,25 +7,6 @@
 <div id="strafIndex">
     @using (Html.BeginForm("Index", "Straf", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
-    <div class="KamerOpdrachtCardSystem">
-        @foreach (var o in Model.List)
-        {
-            <div class="KamerOpdrachtCard">
-                <div class="KamerOpdrachtCardTitelBlok">
-                    @Html.DisplayFor(modelItem => o.Naam)
-                </div>
-                <div class="KamerOpdrachtCardImageBlok">
-                    <img src="@Url.Content(o.ImageUrl)" />
-                </div>
-                <div class="KamerOpdrachtCardActionBlok">
-
-                </div>
-
-            </div>
-
-        }
-    </div>
-
         <div id="strafToevoegen">
             @Html.AntiForgeryToken()
             <h2>Straf toevoegen</h2>
@@ -63,5 +44,26 @@
                 </td>
             </tr>
         </table>
+
+        <div class="KamerOpdrachtCardSystem">
+            @foreach (var o in Model.List)
+            {
+                <div class="KamerOpdrachtCard">
+                    <div class="KamerOpdrachtCardTitelBlok">
+                        @Html.DisplayFor(modelItem => o.Naam)
+                    </div>
+                    <div class="KamerOpdrachtCardImageBlok">
+                        <img src="@Url.Content(o.ImageUrl)" />
+                    </div>
+                    <div class="KamerOpdrachtCardActionBlok">
+
+                    </div>
+
+                </div>
+
+            }
+        </div>
+
+        
     }
 </div>

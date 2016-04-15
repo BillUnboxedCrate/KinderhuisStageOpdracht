@@ -26,16 +26,14 @@ namespace KinderhuisStageOpdracht.Models.Domain
             TimeTrackList = new List<TimeTrack>();
         }
 
-        public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string email, string wachtwoord, string salt, DateTime geboortedatum)
+        public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string wachtwoord, string salt)
         {
             Naam = naam;
             Voornaam = voornaam;
             Opvangtehuis = opvangtehuis;
             Gebruikersnaam = gebruikersnaam;
-            Email = email;
             Wachtwoord = wachtwoord;
             Salt = salt;
-            GeboorteDatum = geboortedatum;
             ImageUrl = "~/Content/Images/ProfielAfbeelding/defaultAvatar.png";
         }
 

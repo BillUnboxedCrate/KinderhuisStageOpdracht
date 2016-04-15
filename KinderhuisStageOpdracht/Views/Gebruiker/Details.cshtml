@@ -21,16 +21,6 @@
         <td>@Html.DisplayFor(m => m.GebruikersNaam)</td>
     </tr>
 
-    <tr>
-        <th>@Html.LabelFor(m => m.Email)</th>
-        <td>@Html.DisplayFor(m => m.Email)</td>
-    </tr>
-
-    <tr>
-        <th>@Html.LabelFor(m => m.GeboorteDatum)</th>
-        <td>@Html.DisplayFor(m => m.GeboorteDatum)</td>
-    </tr>
-
     @if (Model.TypeGebruiker.Contains("Opvoeder") && Model.IsStagair)
     {
         <tr>

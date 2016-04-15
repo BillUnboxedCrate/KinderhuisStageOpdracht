@@ -75,7 +75,6 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Id { get; set; }
             public string FullName { get; set; }
             public string Voornaam { get; set; }
-            public string Email { get; set; }
             public string Opvangtehuis { get; set; }
             public string ImageUrl { get; set; }
 
@@ -91,11 +90,10 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 ImageUrl = imageUrl;
             }
 
-            public OpvoederViewModel(int id, string fullname, string email, string opvangtehuis)
+            public OpvoederViewModel(int id, string fullname, string opvangtehuis)
             {
                 Id = id;
                 FullName = fullname;
-                Email = email;
                 Opvangtehuis = opvangtehuis;
             }
         }
@@ -120,7 +118,6 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Id { get; set; }
             public string FullName { get; set; }
             public string Voornaam { get; set; }
-            public string Email { get; set; }
             public string Opvangtehuis { get; set; }
             public string ImageUrl { get; set; }
 
@@ -136,11 +133,10 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 ImageUrl = imageUrl;
             }
 
-            public ClientViewModel(int id, string fullname, string email, string opvangtehuis)
+            public ClientViewModel(int id, string fullname, string opvangtehuis)
             {
                 Id = id;
                 FullName = fullname;
-                Email = email;
                 Opvangtehuis = opvangtehuis;
             }
         }
@@ -173,20 +169,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Voornaam { get; set; }
 
             [Required]
-            [DataType(DataType.Date)]
-            [Display(Name = "Geboorte datum")]
-            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            public DateTime GeboorteDatum { get; set; }
-
-            [Required]
-            [Display(Name = "Gebruikers naam")]
+            [Display(Name = "Gebruikersnaam")]
             [StringLength(50, ErrorMessage = "De gebruikersnaam kan maar {0} karakters zijn.")]
             public string GebruikersNaam { get; set; }
-
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Email adres")]
-            public string Email { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} karakters lang zijn.", MinimumLength = 4)]
@@ -200,7 +185,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
             public string BevestigWachtwoord { get; set; }
 
-            [Display(Name = "Kies een opvangtehuis")]
+            [Display(Name = "Kies een leefgroep")]
             public List<string> Opvangtehuizen { get; set; }
 
             public string GeselecteerdOpvangtehuisId { get; set; }
@@ -209,7 +194,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Kies een foto")]
             public HttpPostedFileBase ImageUpload { get; set; }
 
-            [Display(Name = "Is deze persoon een stagair")]
+            [Display(Name = "Is deze persoon een stagiair")]
             public bool IsStagair { get; set; }
 
             public CreateOpvoederViewModel()
@@ -238,24 +223,13 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Voornaam { get; set; }
 
             [Required]
-            [DataType(DataType.Date)]
-            [Display(Name = "Geboorte datum")]
-            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            public DateTime GeboorteDatum { get; set; }
-
-            [Required]
-            [Display(Name = "Gebruikers naam")]
+            [Display(Name = "Gebruikersnaam")]
             [StringLength(50, ErrorMessage = "De gebruikersnaam kan maar {0} karakters zijn.")]
             public string GebruikersNaam { get; set; }
 
             //public string Wachtwoord { get; set; }
 
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Email adres")]
-            public string Email { get; set; }
-
-            [Display(Name = "Kies een opvangtehuis")]
+            [Display(Name = "Kies een leefgroep")]
             public List<string> Opvangtehuizen { get; set; }
 
             public string GeselecteerdOpvangtehuisId { get; set; }
@@ -276,18 +250,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Voornaam { get; set; }
 
             [Required]
-            [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            [Display(Name = "Geboorte datum")]
-            public DateTime GeboorteDatum { get; set; }
-
-            [Required]
-            [Display(Name = "Gebruikers naam")]
+            [Display(Name = "Gebruikersnaam")]
             [StringLength(50, ErrorMessage = "De gebruikersnaam kan maar {0} karakters zijn.")]
             public string GebruikersNaam { get; set; }
-
-            [EmailAddress]
-            [Display(Name = "Email adres")]
-            public string Email { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} karakters lang zijn.", MinimumLength = 4)]
@@ -301,7 +266,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
             public string BevestigWachtwoord { get; set; }
 
-            [Display(Name = "Kies een opvangtehuis")]
+            [Display(Name = "Kies een leefgroep")]
             public List<string> Opvangtehuizen { get; set; }
 
             [Display(Name = "Kies een foto")]
@@ -355,23 +320,13 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Voornaam { get; set; }
 
             [Required]
-            [DataType(DataType.Date)]
-            [Display(Name = "Geboorte datum")]
-            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            public DateTime GeboorteDatum { get; set; }
-
-            [Required]
-            [Display(Name = "Gebruikers naam")]
+            [Display(Name = "Gebruikersnaam")]
             [StringLength(50, ErrorMessage = "De gebruikersnaam kan maar {0} karakters zijn.")]
             public string GebruikersNaam { get; set; }
 
-            [EmailAddress]
-            [Display(Name = "Email adres")]
-            public string Email { get; set; }
-
             //public string Wachtwoord { get; set; }
 
-            [Display(Name = "Kies een opvangtehuis")]
+            [Display(Name = "Kies een leefgroep")]
             public List<string> Opvangtehuizen { get; set; }
 
             public string GeselecteerdOpvangtehuisId { get; set; }
@@ -389,18 +344,10 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Voornaam")]
             public string Voornaam { get; set; }
 
-            [DataType(DataType.Date)]
-            [Display(Name = "Geboorte datum")]
-            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            public DateTime? GeboorteDatum { get; set; }
-
-            [Display(Name = "Gebruikers naam")]
+            [Display(Name = "Gebruikersnaam")]
             public string GebruikersNaam { get; set; }
 
-            [Display(Name = "Email adres")]
-            public string Email { get; set; }
-
-            [Display(Name = "Opvangtehuis")]
+            [Display(Name = "Leefgroep")]
             public string Opvangtehuis { get; set; }
 
             [Display(Name = "Kies een foto")]
@@ -421,15 +368,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 TimeTrackerList = new List<TimeTrackerViewModel>();
             }
 
-            public DetailViewModel(int id, string naam, string voornaam, DateTime? geboortedatum, string gebruikersnaam,
-                string email, string opvangtehuis, string typeGebruiker, string imageUrl)
+            public DetailViewModel(int id, string naam, string voornaam, string gebruikersnaam, string opvangtehuis, string typeGebruiker, string imageUrl)
             {
                 Id = id;
                 Naam = naam;
                 Voornaam = voornaam;
-                GeboorteDatum = geboortedatum;
                 GebruikersNaam = gebruikersnaam;
-                Email = email;
                 Opvangtehuis = opvangtehuis;
                 TypeGebruiker = typeGebruiker;
                 ImageUrl = imageUrl;
@@ -478,18 +422,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Voornaam { get; set; }
 
             [Required]
-            [DataType(DataType.Date)]
-            [Display(Name = "Geboorte datum")]
-            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            public DateTime GeboorteDatum { get; set; }
-
-            [Required]
-            [Display(Name = "Gebruikers naam")]
+            [Display(Name = "Gebruikersnaam")]
             public string GebruikersNaam { get; set; }
-
-            [EmailAddress]
-            [Display(Name = "Email adres")]
-            public string Email { get; set; }
 
             public string ImageUrl { get; set; }
 
@@ -497,7 +431,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             //public string Wachtwoord { get; set; }
 
-            [Display(Name = "Kies een opvangtehuis")]
+            [Display(Name = "Kies een leefgroep")]
             public List<string> Opvangtehuizen { get; set; }
 
             public string GeselecteerdOpvangtehuisId { get; set; }
@@ -507,15 +441,13 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Opvangtehuizen = new List<string>();
             }
 
-            public EditViewModel(int id, string naam, string voornaam, DateTime geboortedatum, string gebruikersnaam,
-                string email, string opvangtehuis, string typegebruiker, string imageUrl)
+            public EditViewModel(int id, string naam, string voornaam, string gebruikersnaam,
+                 string opvangtehuis, string typegebruiker, string imageUrl)
             {
                 Id = id;
                 Naam = naam;
                 Voornaam = voornaam;
-                GeboorteDatum = geboortedatum;
                 GebruikersNaam = gebruikersnaam;
-                Email = email;
                 GeselecteerdOpvangtehuisId = opvangtehuis;
                 TypeGebruiker = typegebruiker;
                 ImageUrl = imageUrl;
