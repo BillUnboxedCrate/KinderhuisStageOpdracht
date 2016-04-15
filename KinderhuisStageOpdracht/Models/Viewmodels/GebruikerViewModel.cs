@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
-using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using KinderhuisStageOpdracht.Models.Domain;
 
 namespace KinderhuisStageOpdracht.Models.Viewmodels
 {
@@ -47,12 +44,16 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         {
             public int Id { get; set; }
             [Required]
+            [StringLength(50, ErrorMessage = "De naam kan maar {0} karakters zijn.")]
             public string Naam { get; set; }
             [Required]
+            [StringLength(50, ErrorMessage = "De naam kan maar {0} karakters zijn.")]
             public string Straat { get; set; }
             [Required]
+            [StringLength(5, ErrorMessage = "De naam kan maar {0} karakters zijn.")]
             public string StraatNummer { get; set; }
             [Required]
+            [StringLength(50, ErrorMessage = "De naam kan maar {0} karakters zijn.")]
             public string Gemeente { get; set; }
             [Required]
             [RegularExpression("/^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i", ErrorMessage = "Dit is geen correcte postcode")]

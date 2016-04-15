@@ -57,7 +57,11 @@
                 <img src="@Url.Content(o.ImageUrl)" />
             </div>
             <div class="KamerOpdrachtCardActionBlok">
-
+                @Ajax.ActionLink("Verwijderen", "DeleteKamerOpdracht", "Opvangtehuis", new { id = o.Id }, new AjaxOptions()
+                {
+                    HttpMethod = "POST",
+                    OnComplete = "window.location.reload()"
+                })
             </div>
 
         </div>

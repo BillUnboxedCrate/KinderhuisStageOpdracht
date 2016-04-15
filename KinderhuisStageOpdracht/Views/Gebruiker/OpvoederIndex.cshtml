@@ -11,40 +11,14 @@
         <li>@Html.ActionLink("Toon de lijst van klachten", "KlachtIndex", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Toon de lijst van straffen", "Index", "Straf")</li>
         <li>@Html.ActionLink("Geef overzicht van gestrafte cliënten", "GestrafteOverzicht", "Gebruiker")</li>
-        <li>@Html.ActionLink("Toon de lijst van kamercontrole opdrachten", "KamerOpdracht", "Opvangtehuis")</li>
+        <li>@Html.ActionLink("kamer controle opdrachten overzicht", "KamerOpdracht", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Instellingen", "Instellingen", "Gebruiker")</li>
     </ul>
 </div>
 
+<h3 style="text-align: center">Cliënten</h3>
+
 <div class="terugButton">@Html.ActionLink("Voeg cliënt toe", "CreateClient")</div>
-@*<table class="table">
-    <tr>
-        <th>Naam</th>
-        <th>Acties</th>
-    </tr>
-
-    @foreach (var o in Model.Clients)
-    {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => o.FullName)</td>
-
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = o.Id })
-                <span> | </span>
-                @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })
-                <span> | </span>
-                @Html.ActionLink("Straffen", "CreateSanctie", new { id = o.Id })
-                <span> | </span>
-                @Html.ActionLink("Kamercontrole", "KamerControleOpvoeder", new { id = o.Id })
-                <span> | </span>
-                @Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })
-            </td>
-
-        </tr>
-
-
-    }
-</table>*@
 
 <div class="opvoederindexclients">
     @foreach (var o in Model.Clients)
@@ -52,10 +26,10 @@
         <div class="opvoederindexclientscard">
             <div id="opvoederindexclientnaam">@Html.DisplayFor(modelItem => o.FullName)</div>
             <div class="opvoederindexclientaction">
-                <div>@Html.ActionLink("Details", "Details", new { id = o.Id })</div>
+                <div>@Html.ActionLink("Persoonlijke gegevens weergeven", "Details", new { id = o.Id })</div>
             </div>
             <div class="opvoederindexclientaction">
-                <div>@Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })</div>
+                <div>@Html.ActionLink("Persoonlijke gegeven aanpassen", "Edit", new { id = o.Id })</div>
             </div>
             <div class="opvoederindexclientaction">
                 <div>@Html.ActionLink("Straffen", "CreateSanctie", new { id = o.Id })</div>

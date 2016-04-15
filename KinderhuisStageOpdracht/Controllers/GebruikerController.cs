@@ -583,6 +583,18 @@ namespace KinderhuisStageOpdracht.Controllers
 
         }
 
+        public ActionResult EditSanctie(int id)
+        {
+            if (UserStillLoggedIn() && !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            {
+                return ReturnToLogin();
+            }
+
+
+
+            return View("Sanctie");
+        }
+
         public ActionResult Sancties()
         {
             if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))

@@ -13,10 +13,12 @@ namespace KinderhuisStageOpdracht.Controllers
     public class StrafController : Controller
     {
         private readonly IGebruikerRepository _gebruikerRepository;
+        private readonly IOpvangtehuisRepository _opvangtehuisRepository;
 
-        public StrafController(IGebruikerRepository gebruikerRepository)
+        public StrafController(IGebruikerRepository gebruikerRepository, IOpvangtehuisRepository opvangtehuisRepository)
         {
             _gebruikerRepository = gebruikerRepository;
+            _opvangtehuisRepository = opvangtehuisRepository;
         }
 
         // GET: Klacht
@@ -67,6 +69,29 @@ namespace KinderhuisStageOpdracht.Controllers
                 silvm.AddStrafIndexViewModel(new StrafViewModel.StrafIndexViewModel(s.Id, s.ImageUrl, s.Naam));
             }
             return View(silvm);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteStraf(int id)
+        {
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            {
+                return ReturnToLogin();
+            }
+            try
+            {
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                opvangtehuis.RemoveStraf(id);
+                _opvangtehuisRepository.SaveChanges();
+
+                this.AddNotification("De straf is verwijderd", NotificationType.SUCCESS);
+                return RedirectToAction("Index");
+            }
+            catch (ApplicationException e)
+            {
+                ModelState.AddModelError("", e.Message);
+            }
+            return RedirectToAction("Index");
         }
 
         #region helper

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace KinderhuisStageOpdracht.Models.Domain
 {
@@ -151,6 +150,12 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Straffen.Add(new Straf(naam, imageUrl));
         }
 
+        public void RemoveStraf(int id)
+        {
+            var straf = Straffen.FirstOrDefault(s => s.Id == id);
+            Straffen.Remove(straf);
+        }
+
         public List<Straf> GetStraffen()
         {
             return Straffen.OrderBy(s => s.Id).ToList();
@@ -183,12 +188,13 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return Opdrachten.OrderBy(k => k.Titel).ToList();
         }
 
-        public void RemoveOpdrachten(int id)
+        public void RemoveOpdracht(int id)
         {
-            Opdrachten.Remove(FindOpdrachById(id));
+            var opdracht = Opdrachten.FirstOrDefault(o => o.Id == id);
+            Opdrachten.Remove(opdracht);
         }
 
-
+        //Return string
         public override string ToString()
         {
             return String.Format("{0}\n{1} {2}\n{3} {4}", Naam, Straat, StraatNummer, Postcode, Gemeente);

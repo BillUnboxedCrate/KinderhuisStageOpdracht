@@ -17,8 +17,6 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public virtual Straf Straf { get; set; }
 
-        
-        [NotMapped]
         public int AantalDagen { get; set; }
 
         public Sanctie() { }
@@ -28,6 +26,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Rede = rede;
             BeginDatum = datum;
             EindDatum = datum.AddDays(aantalDagen - 1);
+            AantalDagen = aantalDagen;
             Straf = straf;
         }
 

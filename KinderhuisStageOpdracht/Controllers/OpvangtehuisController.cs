@@ -701,6 +701,29 @@ namespace KinderhuisStageOpdracht.Controllers
             return View(kol);
         }
 
+        [HttpPost]
+        public ActionResult DeleteKamerOpdracht(int id)
+        {
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            {
+                return ReturnToLogin();
+            }
+            try
+            {
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                opvangtehuis.RemoveOpdracht(id);
+                _opvangtehuisRepository.SaveChanges();
+
+                this.AddNotification("De kamercontrole opdracht is verwijderd", NotificationType.SUCCESS);
+                return RedirectToAction("KamerOpdracht");
+            }
+            catch (ApplicationException e)
+            {
+                ModelState.AddModelError("", e.Message);
+            }
+            return RedirectToAction("KamerOpdracht");
+        }
+
 
         #region helpers
         private int GetWeekVanHetJaar(DateTime datum)
