@@ -78,6 +78,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Voornaam { get; set; }
             public string Opvangtehuis { get; set; }
             public string ImageUrl { get; set; }
+            public bool IsStagiair { get; set; }
 
             public OpvoederViewModel()
             {
@@ -91,11 +92,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 ImageUrl = imageUrl;
             }
 
-            public OpvoederViewModel(int id, string fullname, string opvangtehuis)
+            public OpvoederViewModel(int id, string fullname, string opvangtehuis, bool isStagiair)
             {
                 Id = id;
                 FullName = fullname;
                 Opvangtehuis = opvangtehuis;
+                IsStagiair = isStagiair;
             }
         }
 

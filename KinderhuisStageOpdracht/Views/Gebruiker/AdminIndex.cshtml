@@ -51,7 +51,13 @@
     @foreach (var o in Model.Olmv.Opvoeders)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => o.FullName)</td>
+            <td>
+                @Html.DisplayFor(modelItem => o.FullName)
+                @if (o.IsStagiair)
+                {
+                    @Html.Display(" - S")
+                }
+            </td>
             <td>@Html.DisplayFor(modelItem => o.Opvangtehuis)</td>
 
             <td>

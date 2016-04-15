@@ -136,7 +136,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 var o = (Opvoeder)gebruiker;
                 var opvoedervm = new GebruikerViewModel.OpvoederViewModel(o.Id, o.GiveFullName(),
-                    o.GetOpvangtehuisnaam());
+                    o.GetOpvangtehuisnaam(), o.IsStagair);
 
                 opvoederlistvm.AddOpvoeder(opvoedervm);
             }
