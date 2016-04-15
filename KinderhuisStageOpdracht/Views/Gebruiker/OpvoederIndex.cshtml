@@ -4,8 +4,7 @@
     ViewBag.Title = "OpvoederIndex";
 }
 
-<h2>OpvoederIndex</h2>
-<div>
+<div style="margin-top: 20px">
     <ul class="category-menu">
         <li>@Html.ActionLink("Toon lijst van gegeven suggesties", "Suggesties", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Toon lijst van menus", "MenuIndex", "Opvangtehuis")</li>
@@ -17,9 +16,8 @@
     </ul>
 </div>
 
-<h3>Cliënten</h3>
-@Html.ActionLink("Voeg cliënt toe", "CreateClient")
-<table class="table">
+<div class="terugButton">@Html.ActionLink("Voeg cliënt toe", "CreateClient")</div>
+@*<table class="table">
     <tr>
         <th>Naam</th>
         <th>Acties</th>
@@ -46,7 +44,7 @@
 
 
     }
-</table>
+</table>*@
 
 <div class="opvoederindexclients">
     @foreach (var o in Model.Clients)

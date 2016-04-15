@@ -55,6 +55,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             public string Gemeente { get; set; }
             [Required]
+            [RegularExpression("/^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i", ErrorMessage = "Dit is geen correcte postcode")]
             public string Postcode { get; set; }
 
             public string Adres { get; set; }
@@ -163,10 +164,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         {
             [Required]
             [Display(Name = "Naam")]
+            [StringLength(50, ErrorMessage = "De naam kan maar {0} karakters zijn.")]
             public string Naam { get; set; }
 
             [Required]
             [Display(Name = "Voornaam")]
+            [StringLength(50, ErrorMessage = "De voornaam kan maar {0} karakters zijn.")]
             public string Voornaam { get; set; }
 
             [Required]
@@ -177,6 +180,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Required]
             [Display(Name = "Gebruikers naam")]
+            [StringLength(50, ErrorMessage = "De gebruikersnaam kan maar {0} karakters zijn.")]
             public string GebruikersNaam { get; set; }
 
             [Required]
@@ -185,7 +189,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} karakters lang zijn.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} karakters lang zijn.", MinimumLength = 4)]
             [DataType(DataType.Password)]
             [Display(Name = "Wachtwoord")]
             public string Wachtwoord { get; set; }
@@ -225,10 +229,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Required]
             [Display(Name = "Naam")]
+            [StringLength(50, ErrorMessage = "De naam kan maar {0} karakters zijn.")]
             public string Naam { get; set; }
 
             [Required]
             [Display(Name = "Voornaam")]
+            [StringLength(50, ErrorMessage = "De voornaam kan maar {0} karakters zijn.")]
             public string Voornaam { get; set; }
 
             [Required]
@@ -239,6 +245,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Required]
             [Display(Name = "Gebruikers naam")]
+            [StringLength(50, ErrorMessage = "De gebruikersnaam kan maar {0} karakters zijn.")]
             public string GebruikersNaam { get; set; }
 
             //public string Wachtwoord { get; set; }
@@ -260,10 +267,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Required]
             [Display(Name = "Naam")]
+            [StringLength(50, ErrorMessage = "De naam kan maar {0} karakters zijn.")]
             public string Naam { get; set; }
 
             [Required]
             [Display(Name = "Voornaam")]
+            [StringLength(50, ErrorMessage = "De voornaam kan maar {0} karakters zijn.")]
             public string Voornaam { get; set; }
 
             [Required]
@@ -273,6 +282,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Required]
             [Display(Name = "Gebruikers naam")]
+            [StringLength(50, ErrorMessage = "De gebruikersnaam kan maar {0} karakters zijn.")]
             public string GebruikersNaam { get; set; }
 
             [EmailAddress]
@@ -336,10 +346,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Required]
             [Display(Name = "Naam")]
+            [StringLength(50, ErrorMessage = "De naam kan maar {0} karakters zijn.")]
             public string Naam { get; set; }
 
             [Required]
             [Display(Name = "Voornaam")]
+            [StringLength(50, ErrorMessage = "De voornaam kan maar {0} karakters zijn.")]
             public string Voornaam { get; set; }
 
             [Required]
@@ -350,6 +362,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [Required]
             [Display(Name = "Gebruikers naam")]
+            [StringLength(50, ErrorMessage = "De gebruikersnaam kan maar {0} karakters zijn.")]
             public string GebruikersNaam { get; set; }
 
             [EmailAddress]

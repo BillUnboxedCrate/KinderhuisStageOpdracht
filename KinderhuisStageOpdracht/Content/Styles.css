@@ -888,10 +888,11 @@ label:hover .hovertext {
 
 .opvoederindexclients {
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .opvoederindexclientscard {
-    width: 280px;
+    width: 260px;
     min-height: 300px;
     background-color: white;
     vertical-align: top;
@@ -915,6 +916,7 @@ label:hover .hovertext {
         position: relative;
         height: 100%;
         width: 100%;
+        border: 1px solid black;
     }
 
     .opvoederindexclientaction a {
@@ -922,14 +924,15 @@ label:hover .hovertext {
         display: table-cell;
         margin-left: auto;
         margin-right: auto;
-        border: 3px solid blue;
+        background-color: lightgray;
+        /*border: 3px solid blue;*/
         position: absolute;
         height: 100%;
         width: 100%;
     }
 
         .opvoederindexclientaction a:hover {
-            border: 3px solid red;
+            background-color: lightcyan;
         }
 
 
