@@ -31,18 +31,18 @@ namespace KinderhuisStageOpdracht.Controllers
             var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
 
 
-            var cplvm = new PlanningViewModel.ClientPlanningListViewModel();
+            var plvm = new PlanningViewModel.PlanningListViewModel();
 
             foreach (var i in client.GetPlanning())
             {
-                cplvm.AddItem(new PlanningViewModel.ClientPlanningViewModel(i.Id, i.Actie, i.Datum));
+                plvm.AddItem(new PlanningViewModel.PlanningItemViewModel(i.Id, i.Actie, i.Datum));
             }
 
-            return View(cplvm);
+            return View(plvm);
         }
 
         [HttpPost]
-        public ActionResult ClientPlanning(PlanningViewModel.ClientPlanningListViewModel model)
+        public ActionResult ClientPlanning(PlanningViewModel.PlanningListViewModel model)
         {
             if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
@@ -55,14 +55,14 @@ namespace KinderhuisStageOpdracht.Controllers
 
             _gebruikerRepository.SaveChanges();
 
-            var cplvm = new PlanningViewModel.ClientPlanningListViewModel();
+            var plvm = new PlanningViewModel.PlanningListViewModel();
 
             foreach (var i in client.GetPlanning())
             {
-                cplvm.AddItem(new PlanningViewModel.ClientPlanningViewModel(i.Id, i.Actie, i.Datum));
+                plvm.AddItem(new PlanningViewModel.PlanningItemViewModel(i.Id, i.Actie, i.Datum));
             }
 
-            return View(cplvm);
+            return View(plvm);
         }
 
         public ActionResult RemoveClientPlanningItem(int id)
@@ -78,16 +78,34 @@ namespace KinderhuisStageOpdracht.Controllers
                 client.RemovePlanning(id);
                 _gebruikerRepository.SaveChanges();
 
-                return RedirectToAction("ClientPlanning");
+                return RedirectToAction("Planning");
             }
             catch (ApplicationException e)
             {
                 ModelState.AddModelError("", e.Message);
             }
-            return RedirectToAction("ClientPlanning");
+            return RedirectToAction("Planning");
         }
 
+        public ActionResult PlanningOverview(int id)
+        {
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            {
+                return ReturnToLogin();
+            }
 
+            var client = (Client)_gebruikerRepository.FindById(id);
+
+
+            var plvm = new PlanningViewModel.PlanningListViewModel();
+
+            foreach (var i in client.GetPlanning())
+            {
+                plvm.AddItem(new PlanningViewModel.PlanningItemViewModel(i.Id, i.Actie, i.Datum));
+            }
+
+            return View(plvm);
+        }
 
 
         #region helpers

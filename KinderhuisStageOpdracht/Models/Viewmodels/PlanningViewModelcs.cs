@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -8,25 +9,25 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 {
     public class PlanningViewModel
     {
-        public class ClientPlanningListViewModel
+        public class PlanningListViewModel
         {
-            public ClientPlanningViewModel ClientPlanningViewModel { get; set; }
+            public PlanningItemViewModel ClientPlanningViewModel { get; set; }
 
-            public List<ClientPlanningViewModel> PlannigList { get; set; }
+            public List<PlanningItemViewModel> PlannigList { get; set; }
 
-            public ClientPlanningListViewModel()
+            public PlanningListViewModel()
             {
-                PlannigList = new List<ClientPlanningViewModel>();
+                PlannigList = new List<PlanningItemViewModel>();
             }
 
 
-            public void AddItem(ClientPlanningViewModel item)
+            public void AddItem(PlanningItemViewModel item)
             {
                 PlannigList.Add(item);
             }
         }
 
-        public class ClientPlanningViewModel
+        public class PlanningItemViewModel
         {
             public int Id { get; set; }
             [Required]
@@ -39,13 +40,23 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateTime Datum { get; set; }
 
-            public ClientPlanningViewModel() { }
+            public string Dag { get; set; }
 
-            public ClientPlanningViewModel(int id, string activiteit, DateTime datum)
+            public PlanningItemViewModel() { }
+
+            public PlanningItemViewModel(int id, string activiteit, DateTime datum)
             {
                 Id = id;
                 Activiteit = activiteit;
                 Datum = datum;
+                Dag = GetDayOfWeek(Datum);
+            }
+
+            private string GetDayOfWeek(DateTime date)
+            {
+                var culture = new CultureInfo("nl-NL");
+                var dag = culture.DateTimeFormat.GetDayName(date.DayOfWeek);
+                return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dag);
             }
 
         }

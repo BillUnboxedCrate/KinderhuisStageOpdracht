@@ -38,7 +38,10 @@
                 <div>@Html.ActionLink("Kamercontrole", "KamerControleOpvoeder", new { id = o.Id })</div>
             </div>
             <div class="opvoederindexclientaction">
-                <div>@Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })</div>
+                <div>@Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new {id = o.Id})</div>
+            </div>
+            <div class="opvoederindexclientaction">
+                <div>@Html.ActionLink("Bekijk planning", "", new { id = o.Id })</div>
             </div>
         </div>
     }
