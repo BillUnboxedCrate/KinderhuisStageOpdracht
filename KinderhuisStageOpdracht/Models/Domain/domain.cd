@@ -10,35 +10,35 @@
   <Class Name="KinderhuisStageOpdracht.Models.Domain.Client">
     <Position X="7.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIAABAAAAAAgAAAAAAACAAAAIggA0AAAAA=</HashCode>
+      <HashCode>AoAAgIAAAAIAABAgAAggggAAAgAACAQIAIAgA0AAAIA=</HashCode>
       <FileName>Models\Domain\Client.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="KinderhuisStageOpdracht.Models.Domain.Gebruiker" Collapsed="true">
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CABCQQAgACAAAACAAAAgBgAAEACAIAAAAAgAAAAAAAQ=</HashCode>
+      <HashCode>CABCQQAgAAAAAACEAAAgBgAAEACAIACACAAAAAEiAAQ=</HashCode>
       <FileName>Models\Domain\Gebruiker.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="KinderhuisStageOpdracht.Models.Domain.KamerControle">
     <Position X="7.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAIAAAAAAAAAAAAAAAAAACAAAAAAgACAAAAAA=</HashCode>
+      <HashCode>AAACAAAAIAAAAAAAAAAAAAAAAAACAAAAAABACAAAAEA=</HashCode>
       <FileName>Models\Domain\KamerControle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="KinderhuisStageOpdracht.Models.Domain.KamerControleOpdracht">
     <Position X="7.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAA=</HashCode>
+      <HashCode>AAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Models\Domain\KamerControleOpdracht.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="KinderhuisStageOpdracht.Models.Domain.Menu">
     <Position X="0.5" Y="2.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAABABAIAAAQAEAAAACAAAAAAABAAIAAAAA=</HashCode>
+      <HashCode>AAACQAAAAAABABAIAAAQAEAAAACAAAAAAABAAIAAAAA=</HashCode>
       <FileName>Models\Domain\Menu.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -55,21 +55,14 @@
   <Class Name="KinderhuisStageOpdracht.Models.Domain.Opvoeder">
     <Position X="3.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAkAAAIA=</HashCode>
       <FileName>Models\Domain\Opvoeder.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="KinderhuisStageOpdracht.Models.Domain.Planning">
-    <Position X="3.5" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAgAEAAAAAAAAAAAABAAAEAAAQ=</HashCode>
-      <FileName>Models\Domain\Planning.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="KinderhuisStageOpdracht.Models.Domain.PlanningItem">
     <Position X="5.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAIAAQAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\PlanningItem.cs</FileName>
     </TypeIdentifier>
   </Class>

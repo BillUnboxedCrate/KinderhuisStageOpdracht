@@ -9,19 +9,17 @@ namespace KinderhuisStageOpdracht.Models.Domain
     public class PlanningItem
     {
         public int Id { get; set; }
-        public string Titel { get; set; }
-        public string Omschrijving { get; set; }
+        public DateTime Datum { get; set; }
+        public string Actie { get; set; }
         public bool Verwijderbaar { get; set; }
-        public DateTime DatumTijd { get; set; }
 
         public PlanningItem() { }
 
-        public PlanningItem(string titel, string omschrijving, bool verwijderbaar, DateTime dateTime)
+        public PlanningItem(string actie, DateTime datum, bool verwijderbaar)
         {
-            Titel = titel;
-            Omschrijving = omschrijving;
+            Actie = actie;
+            Datum = datum;
             Verwijderbaar = verwijderbaar;
-            DatumTijd = dateTime;
         }
     }
 }

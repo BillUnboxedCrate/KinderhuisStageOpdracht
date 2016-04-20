@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace KinderhuisStageOpdracht.Controllers
 {
@@ -16,13 +17,16 @@ namespace KinderhuisStageOpdracht.Controllers
 
 
         #region helpers
-        public ActionResult UserStillLoggedIn()
+        public bool UserStillLoggedIn()
         {
-            if (Session["gebruiker"] == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            return null;
+            return Session["gebruiker"] == null;
+        }
+
+        public ActionResult ReturnToLogin()
+        {
+            FormsAuthentication.SignOut();
+            Session["gebruiker"] = null;
+            return RedirectToAction("Login", "Account");
         }
         #endregion
     }

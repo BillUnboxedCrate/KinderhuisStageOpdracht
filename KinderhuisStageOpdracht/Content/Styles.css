@@ -632,7 +632,8 @@ label:hover .hovertext {
     text-align: center;
     padding-bottom: 10px;
     border-bottom: 1px solid black;
-    height: 40px;
+    min-height: 40px;
+    height: auto;
 }
 
 .kamerControleCard {
@@ -643,7 +644,8 @@ label:hover .hovertext {
     display: inline-block;
     border: 3px solid black;
     width: 300px;
-    height: 450px;
+    min-height: 450px;
+    height: auto;
     margin: 10px;
 }
 
@@ -673,10 +675,23 @@ label:hover .hovertext {
     position: relative;
 }
 
+.kamerControleCardCheckboxBlock {
+    border-bottom: 1px solid black;
+    height: 100px;
+}
+
 .kamerControleCardUitlegBlock {
     height: 160px;
     text-align: left;
 }
+
+    .kamerControleCardUitlegBlock textarea {
+        height: 269px;
+        border: 1px solid #2962ff;
+        width: 294.5px;
+        max-height: 269px;
+        max-width: 294.5px;
+    }
 
 .kamerControleCardUitlegBlockEmpty {
     height: 154px;
@@ -839,8 +854,8 @@ label:hover .hovertext {
 }
 
 .bigcheckbox {
-    width: 75px;
-    height: 75px;
+    width: 90px;
+    height: 90px;
 }
 
 .KamerOpdrachtCardSystem {
@@ -905,6 +920,7 @@ label:hover .hovertext {
 
 #opvoederindexclientnaam {
     border: 1px solid black;
+    padding-top: 12px;
     min-height: 50px;
 }
 
@@ -920,6 +936,7 @@ label:hover .hovertext {
     }
 
     .opvoederindexclientaction a {
+        padding-top: 12px;
         text-decoration: none;
         display: table-cell;
         margin-left: auto;

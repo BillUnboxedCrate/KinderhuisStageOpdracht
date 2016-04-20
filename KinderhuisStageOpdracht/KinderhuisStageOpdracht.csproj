@@ -212,7 +212,6 @@
     <Compile Include="Models\DAL\Mappers\OpvangtehuisMapper.cs" />
     <Compile Include="Models\DAL\Mappers\OpvoederMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PlanningItemMapper.cs" />
-    <Compile Include="Models\DAL\Mappers\PlanningMapper.cs" />
     <Compile Include="Models\DAL\Mappers\PostMapper.cs" />
     <Compile Include="Models\DAL\Mappers\SanctieMapper.cs" />
     <Compile Include="Models\DAL\Mappers\StrafMapper.cs" />
@@ -233,7 +232,6 @@
     <Compile Include="Models\Domain\Klacht.cs" />
     <Compile Include="Models\Domain\Menu.cs" />
     <Compile Include="Models\Domain\MenuItem.cs" />
-    <Compile Include="Models\Domain\Planning.cs" />
     <Compile Include="Models\Domain\PlanningItem.cs" />
     <Compile Include="Models\Domain\Post.cs" />
     <Compile Include="Models\Domain\Sanctie.cs" />
@@ -250,6 +248,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Viewmodels\GebruikerViewModel.cs" />
     <Compile Include="Models\Viewmodels\OpvangtehuisViewModel.cs" />
+    <Compile Include="Models\Viewmodels\PlanningViewModelcs.cs" />
     <Compile Include="Models\Viewmodels\StrafViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

@@ -440,35 +440,6 @@ namespace KinderhuisStageOpdracht.Models.DAL
             };
             #endregion
 
-            #region planning
-
-            var planning1 = new Planning()
-            {
-                BegindagWeek = new DateTime(2016, 2, 15),
-                EinddagWeek = new DateTime(2016, 2, 21)
-            };
-
-            var planning2 = new Planning()
-            {
-                BegindagWeek = new DateTime(2016, 2, 15),
-                EinddagWeek = new DateTime(2016, 2, 21)
-            };
-
-            var planning3 = new Planning()
-            {
-                BegindagWeek = new DateTime(2016, 2, 15),
-                EinddagWeek = new DateTime(2016, 2, 21)
-            };
-
-            #region planningitem
-
-            var planningitem1 = new PlanningItem()
-            {
-
-            };
-            #endregion
-            #endregion
-
             #region KamerControleOpdracht
             var kamercontroleOpracht1 = new KamerControleOpdracht()
             {

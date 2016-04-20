@@ -8,7 +8,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
 {
     public class Client : Gebruiker
     {
-        public virtual Planning Planning { get; set; }
+        public virtual ICollection<PlanningItem> PlanningItems { get; set; }
 
         public virtual ICollection<KamerControle> KamerControles { get; set; }
 
@@ -24,6 +24,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Forums = new List<Forum>();
             Sancties = new List<Sanctie>();
             TimeTrackList = new List<TimeTrack>();
+            PlanningItems = new List<PlanningItem>();
         }
 
         public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string wachtwoord, string salt)

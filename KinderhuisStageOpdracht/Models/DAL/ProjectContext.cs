@@ -32,7 +32,6 @@ namespace KinderhuisStageOpdracht.Models.DAL
             modelBuilder.Configurations.Add(new MenuItemMapper());
             modelBuilder.Configurations.Add(new MenuMapper());
             modelBuilder.Configurations.Add(new PlanningItemMapper());
-            modelBuilder.Configurations.Add(new PlanningMapper());
             modelBuilder.Configurations.Add(new TaakMapper());
             modelBuilder.Configurations.Add(new OpvangtehuisMapper());
             modelBuilder.Configurations.Add(new KlachtMapper());
