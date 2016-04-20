@@ -1,0 +1,73 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.PlanningViewModel.ClientPlanningListViewModel
+@{
+    ViewBag.Title = "ClientPlanning";
+}
+
+<h2>ClientPlanning</h2>
+
+@using (Html.BeginForm("ClientPlanning", "Planning", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div id="strafToevoegen">
+        @Html.AntiForgeryToken()
+        <h2>Straf toevoegen</h2>
+        <table class="form">
+            <tr>
+                <th>
+                    @Html.LabelFor(m => m.ClientPlanningViewModel.Datum, new { @class = "control-label" })
+                </th>
+                <td>
+                    @Html.TextBoxFor(m => m.ClientPlanningViewModel.Datum, new { @class = "datepickersanctie form-control", @readonly = true })
+                    @Html.ValidationMessageFor(m => m.ClientPlanningViewModel.Datum, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(m => m.ClientPlanningViewModel.Activiteit, new { @class = "control-label" })
+                </th>
+                <td>
+                    @Html.TextAreaFor(m => m.ClientPlanningViewModel.Activiteit, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ClientPlanningViewModel.Activiteit, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <table class="buttontable">
+        <tr>
+            <td>
+                <div class="imagebutton">
+                    <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" alt="Accepteren" title="Accpeteren" />
+                </div>
+            </td>
+            <td>
+                <div class="imagebutton">
+                    <a href="@Url.Action("ClientIndex", "Gebruiker")">
+                        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </table>
+}
+
+<div class="planningcardsystem">
+    @foreach (var p in Model.PlannigList)
+    {
+        <div class="planningcard">
+            <div class="planningcarddate">
+                @Html.DisplayFor(modelItem => p.Datum)
+            </div>
+            <div class="planningcardactivity">
+                @Html.DisplayFor(modelItem => p.Activiteit)
+            </div>
+            <div class="planningcardaction">
+                @Ajax.ActionLink("Verwijderen", "RemoveClientPlanningItem", "Planning", new { id = p.Id }, new AjaxOptions()
+                {
+                    HttpMethod = "POST",
+                    OnComplete = "window.location.reload()"
+                })
+            </div>
+        </div>
+    }
+
+</div>

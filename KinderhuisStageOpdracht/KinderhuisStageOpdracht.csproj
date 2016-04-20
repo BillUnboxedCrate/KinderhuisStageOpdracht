@@ -408,13 +408,13 @@
     <Content Include="Views\Gebruiker\Instellingen.cshtml" />
     <Content Include="Views\Opvangtehuis\KamerOpdracht.cshtml" />
     <Content Include="Views\Gebruiker\CreateLeefgroep.cshtml" />
+    <Content Include="Views\Planning\ClientPlanning.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Avatars\" />
     <Folder Include="Content\Images\Backgrounds\" />
     <Folder Include="Content\Images\Menu\" />
-    <Folder Include="Views\Planning\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

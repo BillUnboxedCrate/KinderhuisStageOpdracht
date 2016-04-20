@@ -21,5 +21,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Datum = datum;
             Verwijderbaar = verwijderbaar;
         }
+
+        public PlanningItem(string actie, DateTime datum)
+        {
+            Actie = actie;
+            Datum = datum;
+        }
     }
 }

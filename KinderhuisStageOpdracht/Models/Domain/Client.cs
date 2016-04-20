@@ -146,6 +146,23 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return Forums.FirstOrDefault(f => f.Client == client && f.Opvoeder == opvoeder);
         }
 
+        //Planning
+        public List<PlanningItem> GetPlanning()
+        {
+            return PlanningItems.Where(p => p.Datum >= DateTime.Today).OrderBy(p => p.Datum).ToList();
+        }
+
+        public void AddPlanning(DateTime datum, string activiteit)
+        {
+            PlanningItems.Add(new PlanningItem(activiteit, datum));
+        }
+
+        public void RemovePlanning(int id)
+        {
+            var item = PlanningItems.FirstOrDefault(p => p.Id == id);
+            PlanningItems.Remove(item);
+        }
+
         //TimeTracking
         public List<TimeTrack> GetTimeTrackList()
         {

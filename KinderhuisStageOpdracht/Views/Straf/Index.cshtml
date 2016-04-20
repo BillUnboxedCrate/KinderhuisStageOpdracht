@@ -5,11 +5,10 @@
 
 
 <div id="strafIndex">
-    @using (Html.BeginForm("Index", "Straf", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("ClientPlanning", "Straf", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
         <div id="strafToevoegen">
             @Html.AntiForgeryToken()
-            <h2>Straf toevoegen</h2>
             <table class="form">
                 <tr>
                     <th>
