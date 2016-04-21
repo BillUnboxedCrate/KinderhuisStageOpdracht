@@ -41,7 +41,7 @@
                 <div>@Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new {id = o.Id})</div>
             </div>
             <div class="opvoederindexclientaction">
-                <div>@Html.ActionLink("Bekijk planning", "", new { id = o.Id })</div>
+                <div>@Html.ActionLink("Bekijk planning", "PlanningOverview", "Planning" , new { id = o.Id }, null)</div>
             </div>
         </div>
     }

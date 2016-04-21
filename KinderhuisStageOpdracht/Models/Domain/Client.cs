@@ -157,6 +157,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
             PlanningItems.Add(new PlanningItem(activiteit, datum));
         }
 
+        public void AddPlanning(DateTime datum, string activiteit, bool verwijderbaar)
+        {
+            PlanningItems.Add(new PlanningItem(activiteit, datum, false));
+        }
+
         public void RemovePlanning(int id)
         {
             var item = PlanningItems.FirstOrDefault(p => p.Id == id);

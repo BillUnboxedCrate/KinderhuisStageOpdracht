@@ -26,6 +26,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             Actie = actie;
             Datum = datum;
+            Verwijderbaar = true;
         }
     }
 }

@@ -266,6 +266,7 @@
     <Content Include="Content\Images\Aanduidingen\film.png" />
     <Content Include="Content\Images\Aanduidingen\klacht.png" />
     <Content Include="Content\Images\Aanduidingen\menu.png" />
+    <Content Include="Content\Images\Aanduidingen\Planning.png" />
     <Content Include="Content\Images\StrafImages\pacmansanctie.png" />
     <Content Include="Content\Images\Aanduidingen\password.png" />
     <Content Include="Content\Images\Aanduidingen\sanctie.jpg" />
@@ -409,6 +410,7 @@
     <Content Include="Views\Opvangtehuis\KamerOpdracht.cshtml" />
     <Content Include="Views\Gebruiker\CreateLeefgroep.cshtml" />
     <Content Include="Views\Planning\ClientPlanning.cshtml" />
+    <Content Include="Views\Planning\PlanningOverview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

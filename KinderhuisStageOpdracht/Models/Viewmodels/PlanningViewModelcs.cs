@@ -11,12 +11,19 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
     {
         public class PlanningListViewModel
         {
+            public int ClientId { get; set; }
             public PlanningItemViewModel ClientPlanningViewModel { get; set; }
 
             public List<PlanningItemViewModel> PlannigList { get; set; }
 
             public PlanningListViewModel()
             {
+                PlannigList = new List<PlanningItemViewModel>();
+            }
+
+            public PlanningListViewModel(int id)
+            {
+                ClientId = id;
                 PlannigList = new List<PlanningItemViewModel>();
             }
 
@@ -41,6 +48,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public DateTime Datum { get; set; }
 
             public string Dag { get; set; }
+            public bool Verwijderbaar { get; set; }
 
             public PlanningItemViewModel() { }
 
@@ -49,6 +57,15 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Id = id;
                 Activiteit = activiteit;
                 Datum = datum;
+                Dag = GetDayOfWeek(Datum);
+            }
+
+            public PlanningItemViewModel(int id, string activiteit, DateTime datum, bool verwijderbaar)
+            {
+                Id = id;
+                Activiteit = activiteit;
+                Datum = datum;
+                Verwijderbaar = verwijderbaar;
                 Dag = GetDayOfWeek(Datum);
             }
 

@@ -5,7 +5,7 @@
 
 <h2>ClientPlanning</h2>
 
-@using (Html.BeginForm("ClientPlanning", "Planning", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("PlanningOverview", "Planning", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <div id="strafToevoegen">
         @Html.AntiForgeryToken()
@@ -14,6 +14,7 @@
             <tr>
                 <th>
                     @Html.LabelFor(m => m.ClientPlanningViewModel.Datum, new { @class = "control-label" })
+                    @Html.HiddenFor(m => m.ClientId)
                 </th>
                 <td>
                     @Html.TextBoxFor(m => m.ClientPlanningViewModel.Datum, new { @class = "datepickersanctie form-control", @readonly = true })
@@ -35,16 +36,12 @@
     <table class="buttontable">
         <tr>
             <td>
-                <div class="imagebutton">
-                    <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" alt="Accepteren" title="Accpeteren" />
-                </div>
+                <input type="submit" class="button" value="Opslaan" />
             </td>
             <td>
-                <div class="imagebutton">
-                    <a href="@Url.Action("ClientIndex", "Gebruiker")">
-                        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
-                    </a>
-                </div>
+                <span class="terugButton">
+                    @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
+                </span>
             </td>
         </tr>
     </table>
@@ -61,19 +58,11 @@
                 @Html.DisplayFor(modelItem => p.Activiteit)
             </div>
             <div class="planningcardaction">
-                @if (p.Verwijderbaar)
+                @Ajax.ActionLink("Verwijderen", "", "Planning", new { id = p.Id }, new AjaxOptions()
                 {
-                    @Ajax.ActionLink("Verwijderen", "RemoveClientPlanningItem", "Planning", new {id = p.Id}, new AjaxOptions()
-                    {
-                        HttpMethod = "POST",
-                        OnComplete = "window.location.reload()"
-                    })
-                }
-                else
-                {
-                    <span>Kan niet worden verwijderd.</span>
-                }
-
+                    HttpMethod = "POST",
+                    OnComplete = "window.location.reload()"
+                })
             </div>
         </div>
     }

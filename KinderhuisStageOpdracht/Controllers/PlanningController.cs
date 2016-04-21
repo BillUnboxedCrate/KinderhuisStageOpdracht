@@ -35,7 +35,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
             foreach (var i in client.GetPlanning())
             {
-                plvm.AddItem(new PlanningViewModel.PlanningItemViewModel(i.Id, i.Actie, i.Datum));
+                plvm.AddItem(new PlanningViewModel.PlanningItemViewModel(i.Id, i.Actie, i.Datum, i.Verwijderbaar));
             }
 
             return View(plvm);
@@ -51,15 +51,20 @@ namespace KinderhuisStageOpdracht.Controllers
 
             var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
 
-            client.AddPlanning(model.ClientPlanningViewModel.Datum, model.ClientPlanningViewModel.Activiteit);
+            if (ModelState.IsValid)
+            {
+                client.AddPlanning(model.ClientPlanningViewModel.Datum, model.ClientPlanningViewModel.Activiteit);
 
-            _gebruikerRepository.SaveChanges();
+                _gebruikerRepository.SaveChanges();
+                this.AddNotification("Dit is gepland", NotificationType.SUCCESS);
+                return RedirectToAction("ClientPlanning");
+            }
 
             var plvm = new PlanningViewModel.PlanningListViewModel();
 
             foreach (var i in client.GetPlanning())
             {
-                plvm.AddItem(new PlanningViewModel.PlanningItemViewModel(i.Id, i.Actie, i.Datum));
+                plvm.AddItem(new PlanningViewModel.PlanningItemViewModel(i.Id, i.Actie, i.Datum, i.Verwijderbaar));
             }
 
             return View(plvm);
@@ -96,6 +101,35 @@ namespace KinderhuisStageOpdracht.Controllers
 
             var client = (Client)_gebruikerRepository.FindById(id);
 
+            var plvm = new PlanningViewModel.PlanningListViewModel(id);
+
+            foreach (var i in client.GetPlanning())
+            {
+                plvm.AddItem(new PlanningViewModel.PlanningItemViewModel(i.Id, i.Actie, i.Datum));
+            }
+
+            return View(plvm);
+        }
+
+        [HttpPost]
+        public ActionResult PlanningOverview(PlanningViewModel.PlanningListViewModel model)
+        {
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            {
+                return ReturnToLogin();
+            }
+
+            var client = (Client)_gebruikerRepository.FindById(model.ClientId);
+
+            if (ModelState.IsValid)
+            {
+                client.AddPlanning(model.ClientPlanningViewModel.Datum, model.ClientPlanningViewModel.Activiteit, false);
+
+                _gebruikerRepository.SaveChanges();
+
+                this.AddNotification("Dit is gepland", NotificationType.SUCCESS);
+                return RedirectToAction("PlanningOverview");
+            }
 
             var plvm = new PlanningViewModel.PlanningListViewModel();
 
