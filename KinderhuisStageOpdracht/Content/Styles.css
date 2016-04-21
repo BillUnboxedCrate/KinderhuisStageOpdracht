@@ -513,15 +513,20 @@ label:hover .hovertext {
 
     .clientIndexTable td {
         padding: 15px;
-        width: 240px;
-        height: 240px;
+        width: 200px;
+        height: 200px;
     }
+
+        .clientIndexTable td[colspan="3"] {
+            display: table-cell;
+            text-align: center;
+        }
 
     .clientIndexTable a {
         font-size: 20pt;
-        display: inline-block;
-        height: 200px;
-        width: 200px;
+        /*display: inline-block;*/
+        height: 160px;
+        width: 160px;
         background: rgb(248, 248, 248);
         vertical-align: middle;
         text-align: center;
@@ -537,12 +542,25 @@ label:hover .hovertext {
             border-width: 7px;
         }
 
+        .clientIndexTable img {
+            height: 155px;
+            width: 155px;
+        }
+
 #groenlink {
     border-color: #00CC00;
 }
 
     #groenlink:hover {
         border-color: #006600;
+    }
+
+#planninglink {
+    border-color: rgb(138, 176, 39);
+}
+
+    #planninglink:hover {
+        border-color: rgb(64,105,14);
     }
 
 #orangelink {
