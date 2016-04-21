@@ -506,15 +506,14 @@ label:hover .hovertext {
 
 
 .clientIndexTable {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
 }
 
     .clientIndexTable td {
-        padding: 15px;
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
 
         .clientIndexTable td[colspan="3"] {
@@ -523,13 +522,10 @@ label:hover .hovertext {
         }
 
     .clientIndexTable a {
-        font-size: 20pt;
         /*display: inline-block;*/
         height: 160px;
         width: 160px;
         background: rgb(248, 248, 248);
-        vertical-align: middle;
-        text-align: center;
         border: solid 5px;
         color: black;
         border-color: #348CFF;
@@ -542,10 +538,10 @@ label:hover .hovertext {
             border-width: 7px;
         }
 
-        .clientIndexTable img {
-            height: 155px;
-            width: 155px;
-        }
+    .clientIndexTable img {
+        height: 155px;
+        width: 155px;
+    }
 
 #groenlink {
     border-color: #00CC00;
@@ -981,17 +977,19 @@ label:hover .hovertext {
     background-color: white;
     vertical-align: top;
     display: inline-block;
-    border: 1px solid black;
-    border-radius: 15px;
+    border: 5px double;
     margin: 10px;
+    box-shadow: 10px 10px 5px;
 }
 
 .planningcarddate {
     height: 25px;
     border-bottom: 1px solid black;
+    font-weight: bold;
 }
 
 .planningcardactivity {
+    padding: 2px 4px 2px 4px;
     text-align: left;
     min-height: 75px;
     height: auto;

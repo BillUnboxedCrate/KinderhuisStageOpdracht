@@ -3,13 +3,10 @@
     ViewBag.Title = "ClientPlanning";
 }
 
-<h2>ClientPlanning</h2>
-
 @using (Html.BeginForm("ClientPlanning", "Planning", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    <div id="strafToevoegen">
+    <div class="formPage">
         @Html.AntiForgeryToken()
-        <h2>Straf toevoegen</h2>
         <table class="form">
             <tr>
                 <th>
@@ -55,6 +52,7 @@
     {
         <div class="planningcard">
             <div class="planningcarddate">
+                @Html.DisplayFor(modelItem => p.Dag) -
                 @Html.DisplayFor(modelItem => p.Datum)
             </div>
             <div class="planningcardactivity">
@@ -63,7 +61,7 @@
             <div class="planningcardaction">
                 @if (p.Verwijderbaar)
                 {
-                    @Ajax.ActionLink("Verwijderen", "RemoveClientPlanningItem", "Planning", new {id = p.Id}, new AjaxOptions()
+                    @Ajax.ActionLink("Verwijderen", "RemoveClientPlanningItem", "Planning", new { id = p.Id }, new AjaxOptions()
                     {
                         HttpMethod = "POST",
                         OnComplete = "window.location.reload()"
