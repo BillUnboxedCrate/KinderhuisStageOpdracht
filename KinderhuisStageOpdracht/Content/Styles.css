@@ -166,9 +166,9 @@ input[type="text"], input[type="password"], textarea, select {
         }
 
         .category-menu > li > a {
-            display: inline-block;
-            height: 100px;
-            width: 100px;
+            /*display: inline-block;*/
+            height: 120px;
+            width: 120px;
             background: rgb(248, 248, 248);
             display: table-cell;
             vertical-align: middle;
@@ -176,7 +176,7 @@ input[type="text"], input[type="password"], textarea, select {
             border: solid 5px;
             border-radius: 5px;
             color: black;
-            border-color: #348CFF;
+            border-color: rgb(66, 133, 244);
             text-decoration: none;
         }
 
@@ -582,7 +582,7 @@ label:hover .hovertext {
     #beloningstraflink:hover {
         border-left-color: rgb(105,132,36);
         border-top-color: rgb(105,132,36);
-        border-right-color: #990000 ;
+        border-right-color: #990000;
         border-bottom-color: #990000;
     }
 
@@ -892,10 +892,11 @@ label:hover .hovertext {
 }
 
 .KamerOpdrachtCard {
+    border-radius: 10px;
     background-color: white;
     vertical-align: top;
     display: inline-block;
-    border: 1px solid black;
+    border: 2px solid black;
     width: 200px;
     min-height: 225px;
     height: auto;
@@ -903,15 +904,20 @@ label:hover .hovertext {
 }
 
 .KamerOpdrachtCardTitelBlok {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     min-height: 20px;
     height: auto;
-    font-size: 12pt;
+    font-size: 14pt;
+    font-weight: bold;
     border-bottom: 1px solid black;
+    color: white;
 }
 
 .KamerOpdrachtCardImageBlok {
     height: 185px;
     position: relative;
+    background-color: lightgray;
 }
 
     .KamerOpdrachtCardImageBlok img {
@@ -929,8 +935,24 @@ label:hover .hovertext {
 
 .KamerOpdrachtCardActionBlok {
     border-top: 1px solid black;
-    height: 20px;
+    min-height: 20px;
 }
+
+    .KamerOpdrachtCardActionBlok a {
+        color: white;
+        font-weight: bold;
+        display: inline-block;
+        background-color: gray;
+        width: 100%;
+        height: 100%;
+        border-top: 1px solid black;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+        .KamerOpdrachtCardActionBlok a:hover {
+            text-decoration: none;
+        }
 
 .opvoederindexclients {
     text-align: center;
@@ -943,16 +965,23 @@ label:hover .hovertext {
     background-color: white;
     vertical-align: top;
     display: inline-block;
-    border: 1px solid black;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
+    border: 2px solid black;
+    border-bottom: 1px solid black;
     margin: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 #opvoederindexclientnaam {
-    border: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: rgb(52, 168, 83);
+    color: white;
+    font-weight: bolder;
+    font-size: 15pt;
     padding-top: 12px;
     min-height: 50px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
 
 .opvoederindexclientaction {
@@ -963,16 +992,17 @@ label:hover .hovertext {
         position: relative;
         height: 100%;
         width: 100%;
-        border: 1px solid black;
+        border-bottom: 1px solid black;
     }
 
     .opvoederindexclientaction a {
+        font-weight: bold;
         padding-top: 12px;
         text-decoration: none;
         display: table-cell;
         margin-left: auto;
         margin-right: auto;
-        background-color: lightgray;
+        background-color: White;
         /*border: 3px solid blue;*/
         position: absolute;
         height: 100%;
@@ -980,7 +1010,9 @@ label:hover .hovertext {
     }
 
         .opvoederindexclientaction a:hover {
-            background-color: lightcyan;
+            background-color: rgb(66, 133, 244);
+            color: white;
+            font-weight: bold;
         }
 
 .planningcardsystem {
@@ -991,18 +1023,23 @@ label:hover .hovertext {
 .planningcard {
     width: 260px;
     min-height: 125px;
+    height: auto;
     background-color: white;
     vertical-align: top;
     display: inline-block;
-    border: 5px double;
+    border: 3px solid black;
+    border-radius: 10px;
     margin: 10px;
-    box-shadow: 10px 10px 5px;
 }
 
 .planningcarddate {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     height: 25px;
+    color: white;
     border-bottom: 1px solid black;
-    font-weight: bold;
+    font-weight: bolder;
+    background-color: rgb(180, 196, 38);
 }
 
 .planningcardactivity {
@@ -1016,3 +1053,21 @@ label:hover .hovertext {
     border-top: 1px solid black;
     height: 25px;
 }
+
+    .planningcardaction a {
+        height: 100%;
+        width: 100%;
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        font-weight: bolder;
+        background-color: rgb(180, 196, 38);
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
+
+
+        .planningcardaction a:hover {
+            color: black;
+            background-color: red;
+        }

@@ -29,13 +29,15 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Id { get; set; }
 
             [Required]
-            [Display(Name = "Straf")]
+            [Display(Name = "Naam voor de beloning/straf")]
             public string Naam { get; set; }
 
             [DataType(DataType.Upload)]
             [Display(Name = "Kies een foto")]
             public HttpPostedFileBase ImageUpload { get; set; }
 
+            [Required]
+            [Display(Name = "Is dit een beloning of straf")]
             public bool StrafOfBeloning { get; set; }
 
             public string ImageUrl { get; set; }

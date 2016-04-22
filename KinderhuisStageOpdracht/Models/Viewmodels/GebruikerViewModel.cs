@@ -547,7 +547,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string Client { get; set; }
 
             [Required(ErrorMessage = "Er moet een rede worden opgegeven.")]
-            [Display(Name = "Rede voor de sanctie")]
+            [Display(Name = "Rede voor de beloning/sanctie")]
             public string Rede { get; set; }
 
             [Required]
@@ -564,7 +564,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Aantal dagen")]
             public int AantalDagen { get; set; }
 
-            [Display(Name = "Kies een straf")]
+            [Display(Name = "Kies een beloning/straf")]
             public List<string> Straffen { get; set; }
             public string GeselecteerdeStraf { get; set; }
 

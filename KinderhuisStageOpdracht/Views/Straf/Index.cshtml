@@ -1,4 +1,5 @@
-﻿@model KinderhuisStageOpdracht.Models.Viewmodels.StrafViewModel.StrafListIndexViewModel
+﻿@using System.Collections.Concurrent
+@model KinderhuisStageOpdracht.Models.Viewmodels.StrafViewModel.StrafListIndexViewModel
 @{
     ViewBag.Title = "Index";
 }
@@ -24,8 +25,8 @@
                         @Html.LabelFor(m => m.StrafIndexViewModel.StrafOfBeloning, new { @class = "control-label" })
                     </th>
                     <td>
-                        @Html.RadioButtonFor(m => m.StrafIndexViewModel.StrafOfBeloning, true) Sanctie
-                        @Html.RadioButtonFor(m => m.StrafIndexViewModel.StrafOfBeloning, false) Beloning
+                        @Html.RadioButtonFor(m => m.StrafIndexViewModel.StrafOfBeloning, false, new { @checked = true }) Beloning
+                        @Html.RadioButtonFor(m => m.StrafIndexViewModel.StrafOfBeloning, true) Straf
                     </td>
                 </tr>
                 <tr>
@@ -57,17 +58,21 @@
             @foreach (var o in Model.List)
             {
                 <div class="KamerOpdrachtCard">
-                    <div class="KamerOpdrachtCardTitelBlok">
-                        @if (o.StrafOfBeloning)
-                        {
-                            <span style="color: red">@Html.DisplayFor(modelItem => o.Naam)</span>
-                        }
-                        else
-                        {
-                            <span style="color: green">@Html.DisplayFor(modelItem => o.Naam)</span>
-                        }
-                        
-                    </div>
+
+                    @if (o.StrafOfBeloning)
+                    {
+                        <div class="KamerOpdrachtCardTitelBlok" style="background-color: rgb(234, 67, 53);">
+                            @Html.DisplayFor(modelItem => o.Naam)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="KamerOpdrachtCardTitelBlok" style="background-color: rgb(52,168, 83);">
+                            @Html.DisplayFor(modelItem => o.Naam)
+                        </div>
+                    }
+
+
                     <div class="KamerOpdrachtCardImageBlok">
                         <img src="@Url.Content(o.ImageUrl)" />
                     </div>
