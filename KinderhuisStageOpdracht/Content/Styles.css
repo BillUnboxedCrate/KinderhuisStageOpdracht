@@ -557,11 +557,11 @@ label:hover .hovertext {
     }
 
 #planninglink {
-    border-color: rgb(138, 176, 39);
+    border-color: rgb(223, 97, 0);
 }
 
     #planninglink:hover {
-        border-color: rgb(64,105,14);
+        border-color: rgb(200,85,0);
     }
 
 #orangelink {
@@ -572,12 +572,18 @@ label:hover .hovertext {
         border-color: #CC6600;
     }
 
-#redlink {
-    border-color: #FF0000;
+#beloningstraflink {
+    border-left-color: rgb(183,226,56);
+    border-top-color: rgb(183,226,56);
+    border-right-color: rgb(219, 9, 44);
+    border-bottom-color: rgb(219, 9, 44);
 }
 
-    #redlink:hover {
-        border-color: #990000;
+    #beloningstraflink:hover {
+        border-left-color: rgb(105,132,36);
+        border-top-color: rgb(105,132,36);
+        border-right-color: #990000 ;
+        border-bottom-color: #990000;
     }
 
 #brownlink {
@@ -596,12 +602,12 @@ label:hover .hovertext {
         border-color: #006666;
     }
 
-#graylink {
-    border-color: #A0A0A0;
+#settingslink {
+    border-color: rgb(13,81,117);
 }
 
-    #graylink:hover {
-        border-color: #606060;
+    #settingslink:hover {
+        border-color: rgb(6,41,60);
     }
 
 #googlelink {

@@ -267,9 +267,9 @@
     <Content Include="Content\Images\Aanduidingen\klacht.png" />
     <Content Include="Content\Images\Aanduidingen\menu.png" />
     <Content Include="Content\Images\Aanduidingen\Planning.png" />
+    <Content Include="Content\Images\Aanduidingen\strafbeloning.png" />
     <Content Include="Content\Images\StrafImages\pacmansanctie.png" />
     <Content Include="Content\Images\Aanduidingen\password.png" />
-    <Content Include="Content\Images\Aanduidingen\sanctie.jpg" />
     <Content Include="Content\Images\Aanduidingen\suggestie.png" />
     <Content Include="Content\Images\Aanduidingen\terug.png" />
     <Content Include="Content\Images\Aanduidingen\versturen.png" />
