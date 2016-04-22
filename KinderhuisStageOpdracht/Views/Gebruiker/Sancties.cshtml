@@ -16,7 +16,15 @@
                     </div>
 
                     <div class="SanctieTitleBlock">
+                    @if (o.StrafOfBeloning)
+                    {
                         <div id="strafText">@Html.DisplayFor(modelItem => o.GeselecteerdeStraf)</div>
+                    }
+                    else
+                    {
+                        <div id="beloningText">@Html.DisplayFor(modelItem => o.GeselecteerdeStraf)</div>
+                    }
+                        
                     </div>
 
                     <div class="SanctieTimeBlock">

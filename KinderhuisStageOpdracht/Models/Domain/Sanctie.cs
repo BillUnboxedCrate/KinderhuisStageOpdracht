@@ -40,5 +40,10 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return Straf.ImageUrl;
         }
 
+        public bool GetIfStrafOrBeloning()
+        {
+            return Straf.StrafOfBeloning;
+        }
+
     }
 }

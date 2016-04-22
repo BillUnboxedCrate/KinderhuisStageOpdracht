@@ -568,6 +568,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public List<string> Straffen { get; set; }
             public string GeselecteerdeStraf { get; set; }
 
+            public bool StrafOfBeloning { get; set; }
+
             public string ImageUrl { get; set; }
 
             public SanctieViewModel()
@@ -590,6 +592,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 GeselecteerdeStraf = straf;
                 BeginDateDay = GetDayOfWeek(Date);
                 EndDateDay = GetDayOfWeek(EindDatum);
+
             }
 
             public SanctieViewModel(string client, string rede, DateTime begindatum, DateTime eindatum, string straf)
@@ -603,7 +606,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 EndDateDay = GetDayOfWeek(EindDatum);
             }
 
-            public SanctieViewModel(string rede, DateTime begindatum, DateTime eindatum, string straf, string imageUrl)
+            public SanctieViewModel(string rede, DateTime begindatum, DateTime eindatum, string straf, string imageUrl, bool strafofbeloning)
             {
                 Rede = rede;
                 Date = begindatum;
@@ -612,6 +615,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 ImageUrl = imageUrl;
                 BeginDateDay = GetDayOfWeek(Date);
                 EndDateDay = GetDayOfWeek(EindDatum);
+                StrafOfBeloning = strafofbeloning;
             }
 
             public void AddStraf(string straf)
@@ -780,7 +784,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string GebruikerType { get; set; }
 
             [Required]
-            [Display(Name = "Wachtwoord")]
+            [Display(Name = "Huidig wachtwoord")]
             [DataType(DataType.Password)]
             public string Wachtwoord { get; set; }
 

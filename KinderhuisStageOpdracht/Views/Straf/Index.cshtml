@@ -5,7 +5,7 @@
 
 
 <div id="strafIndex">
-    @using (Html.BeginForm("ClientPlanning", "Straf", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Index", "Straf", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
         <div id="strafToevoegen">
             @Html.AntiForgeryToken()
@@ -17,6 +17,15 @@
                     <td>
                         @Html.TextBoxFor(m => m.StrafIndexViewModel.Naam, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.StrafIndexViewModel.Naam, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.LabelFor(m => m.StrafIndexViewModel.StrafOfBeloning, new { @class = "control-label" })
+                    </th>
+                    <td>
+                        @Html.RadioButtonFor(m => m.StrafIndexViewModel.StrafOfBeloning, true) Sanctie
+                        @Html.RadioButtonFor(m => m.StrafIndexViewModel.StrafOfBeloning, false) Beloning
                     </td>
                 </tr>
                 <tr>
@@ -34,11 +43,11 @@
         <table class="buttontable">
             <tr>
                 <td>
-                    <input type="submit" class="button" value="Voeg straf toe" />
+                    <input type="submit" class="button" value="Bevestingen" />
                 </td>
                 <td>
                     <span class="terugButton">
-                        @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
+                        @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
                     </span>
                 </td>
             </tr>
@@ -49,7 +58,15 @@
             {
                 <div class="KamerOpdrachtCard">
                     <div class="KamerOpdrachtCardTitelBlok">
-                        @Html.DisplayFor(modelItem => o.Naam)
+                        @if (o.StrafOfBeloning)
+                        {
+                            <span style="color: red">@Html.DisplayFor(modelItem => o.Naam)</span>
+                        }
+                        else
+                        {
+                            <span style="color: green">@Html.DisplayFor(modelItem => o.Naam)</span>
+                        }
+                        
                     </div>
                     <div class="KamerOpdrachtCardImageBlok">
                         <img src="@Url.Content(o.ImageUrl)" />

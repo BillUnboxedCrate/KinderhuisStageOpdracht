@@ -9,7 +9,6 @@
 {
     <div id="strafToevoegen">
         @Html.AntiForgeryToken()
-        <h2>Straf toevoegen</h2>
         <table class="form">
             <tr>
                 <th>
@@ -52,6 +51,7 @@
     {
         <div class="planningcard">
             <div class="planningcarddate">
+                @Html.DisplayFor(modelItem => p.Dag) - 
                 @Html.DisplayFor(modelItem => p.Datum)
             </div>
             <div class="planningcardactivity">

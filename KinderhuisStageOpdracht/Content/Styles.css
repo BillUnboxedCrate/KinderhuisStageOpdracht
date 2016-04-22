@@ -271,6 +271,11 @@ input[type="text"], input[type="password"], textarea, select {
     color: red;
 }
 
+#beloningText {
+    font-size: 20pt;
+    color: green;
+}
+
 #geenStraffen {
     /*margin-right: auto;
     margin-left: auto;*/
@@ -728,7 +733,8 @@ label:hover .hovertext {
     display: inline-block;
     border: 2px double black;
     width: 300px;
-    height: 450px;
+    min-height: 450px;
+    height: auto;
     margin: 10px;
     border-radius: 5px;
 }
@@ -742,7 +748,8 @@ label:hover .hovertext {
 .SanctieHeaderBlock {
     border: 1px solid black;
     border-bottom: none;
-    height: 110px;
+    min-height: 110px;
+    height: auto;
     vertical-align: central;
     position: relative;
 }
@@ -750,7 +757,8 @@ label:hover .hovertext {
 .SanctieTitleBlock {
     border-left: 1px solid black;
     border-right: 1px solid black;
-    height: 40px;
+    min-height: 40px;
+    height: auto;
 }
 
 .SanctieTimeBlock {
@@ -771,7 +779,8 @@ label:hover .hovertext {
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
-    height: 250px;
+    min-height: 250px;
+    height: auto;
     text-align: left;
     padding: 10px;
 }
@@ -882,12 +891,14 @@ label:hover .hovertext {
     display: inline-block;
     border: 1px solid black;
     width: 200px;
-    height: 275px;
+    min-height: 225px;
+    height: auto;
     margin: 10px;
 }
 
 .KamerOpdrachtCardTitelBlok {
-    height: 45px;
+    min-height: 20px;
+    height: auto;
     font-size: 12pt;
     border-bottom: 1px solid black;
 }
@@ -912,7 +923,7 @@ label:hover .hovertext {
 
 .KamerOpdrachtCardActionBlok {
     border-top: 1px solid black;
-    height: 45px;
+    height: 20px;
 }
 
 .opvoederindexclients {

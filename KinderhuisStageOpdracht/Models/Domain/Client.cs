@@ -136,6 +136,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public Forum GetForum(Opvoeder opvoeder, Client client)
         {
+            if (client == null || opvoeder == null)
+            {
+                return null;
+            }
+
             if (!IsForumAlGemaakt(client.Id, opvoeder.Id))
             {
                 var forum = new Forum(opvoeder, client);

@@ -607,7 +607,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
             foreach (var s in client.GetAppliedSancties())
             {
-                slvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam(), s.GetStrafImageUrl()));
+                slvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam(), s.GetStrafImageUrl(), s.GetIfStrafOrBeloning()));
             }
 
             return View(slvm);
@@ -716,37 +716,55 @@ namespace KinderhuisStageOpdracht.Controllers
                 return View("Error");
             }
 
-            Client client;
-            Opvoeder opvoeder;
-            string type;
-
             var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
 
-            if (gebruiker is Client)
+            try
             {
-                client = (Client)gebruiker;
-                opvoeder = (Opvoeder)_gebruikerRepository.FindById(id);
-                type = "client";
+                Client client;
+                Opvoeder opvoeder;
+                string type;
+
+                if (gebruiker is Client)
+                {
+                    client = (Client)gebruiker;
+                    opvoeder = (Opvoeder)_gebruikerRepository.FindById(id);
+                    type = "client";
+                }
+                else
+                {
+                    opvoeder = (Opvoeder)gebruiker;
+                    client = (Client)_gebruikerRepository.FindById(id);
+                    type = "Opvoeder";
+
+                }
+
+                var forum = client.GetForum(opvoeder, client);
+                if (forum == null)
+                    _gebruikerRepository.SaveChanges();
+                var fvm = new GebruikerViewModel.ForumViewModel(forum.Id, type);
+
+                foreach (var p in forum.Posts)
+                {
+                    var mine = p.Gebruiker == gebruiker;
+                    fvm.AddPost(new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap, mine, p.Gebruiker.ImageUrl));
+                }
+
+                return View(fvm);
             }
-            else
+            catch (NullReferenceException e)
             {
-                opvoeder = (Opvoeder)gebruiker;
-                client = (Client)_gebruikerRepository.FindById(id);
-                type = "Opvoeder";
+                if (gebruiker is Client)
+                {
+                    return RedirectToAction("ClientIndex");
+                }
+                if (gebruiker is Opvoeder)
+                {
+                    return RedirectToAction("OpvoederIndex");
+                }
 
             }
+            return View();
 
-            var forum = client.GetForum(opvoeder, client);
-            _gebruikerRepository.SaveChanges();
-            var fvm = new GebruikerViewModel.ForumViewModel(forum.Id, type);
-
-            foreach (var p in forum.Posts)
-            {
-                var mine = p.Gebruiker == gebruiker;
-                fvm.AddPost(new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap, mine, p.Gebruiker.ImageUrl));
-            }
-
-            return View(fvm);
         }
 
         [HttpPost]

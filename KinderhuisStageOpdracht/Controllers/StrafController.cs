@@ -33,7 +33,7 @@ namespace KinderhuisStageOpdracht.Controllers
             var silvm = new StrafViewModel.StrafListIndexViewModel();
             foreach (var s in opvangtehuis.GetStraffen())
             {
-                silvm.AddStrafIndexViewModel(new StrafViewModel.StrafIndexViewModel(s.Id, s.ImageUrl, s.Naam));
+                silvm.AddStrafIndexViewModel(new StrafViewModel.StrafIndexViewModel(s.Id, s.ImageUrl, s.Naam, s.StrafOfBeloning));
             }
             return View(silvm);
         }
@@ -55,7 +55,7 @@ namespace KinderhuisStageOpdracht.Controllers
             if (ModelState.IsValid)
             {
                 opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-                opvangtehuis.AddStraf(new Straf(model.StrafIndexViewModel.Naam, ImageUploadStrafAfbeeling(model.StrafIndexViewModel.ImageUpload)));
+                opvangtehuis.AddStraf(new Straf(model.StrafIndexViewModel.Naam, ImageUploadStrafAfbeeling(model.StrafIndexViewModel.ImageUpload), model.StrafIndexViewModel.StrafOfBeloning));
                 _gebruikerRepository.SaveChanges();
 
                 this.AddNotification("Straf toegevoegd", NotificationType.SUCCESS);
@@ -66,7 +66,7 @@ namespace KinderhuisStageOpdracht.Controllers
             var silvm = new StrafViewModel.StrafListIndexViewModel();
             foreach (var s in opvangtehuis.GetStraffen())
             {
-                silvm.AddStrafIndexViewModel(new StrafViewModel.StrafIndexViewModel(s.Id, s.ImageUrl, s.Naam));
+                silvm.AddStrafIndexViewModel(new StrafViewModel.StrafIndexViewModel(s.Id, s.ImageUrl, s.Naam, s.StrafOfBeloning));
             }
             return View(silvm);
         }

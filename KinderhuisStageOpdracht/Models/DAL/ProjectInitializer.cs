@@ -260,24 +260,28 @@ namespace KinderhuisStageOpdracht.Models.DAL
             var straf1 = new Straf()
             {
                 Naam = "Geen frisdrank",
+                StrafOfBeloning = true,
                 ImageUrl = "/Content/Images/StrafImages/frisdrank.png"
             };
 
             var straf2 = new Straf()
             {
                 Naam = "Geen spelletjes",
+                StrafOfBeloning = true,
                 ImageUrl = "/Content/Images/StrafImages/video_games.png"
             };
 
             var straf3 = new Straf()
             {
                 Naam = "Geen frisdrank",
+                StrafOfBeloning = true,
                 ImageUrl = "/Content/Images/StrafImages/frisdrank.png"
             };
 
             var straf4 = new Straf()
             {
                 Naam = "Geen spelletjes",
+                StrafOfBeloning = true,
                 ImageUrl = "/Content/Images/StrafImages/video_games.png"
             };
 
