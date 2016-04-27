@@ -34,16 +34,10 @@
                         <img src="@Url.Content(@Model.ListKamerControleItemsViewmodel.KamerControleItems[i].ImageUrl)" alt="Image" class="kamerControleImage" />
                     </div>
 
-                    @if (Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Uitleg != null)
-                    {
-                        <div class="kamerControleCardUitlegBlock">
-                            @Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Uitleg)
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="kamerControleCardUitlegBlockEmpty"></div>
-                    }
+                    <div class="kamerControleCardUitlegBlock">
+                        @Html.DisplayFor(modelItem => Model.ListKamerControleItemsViewmodel.KamerControleItems[i].Uitleg)
+                    </div>
+
                 </div>
             }
         </div>

@@ -257,39 +257,25 @@ namespace KinderhuisStageOpdracht.Models.DAL
 
             #region Straf
 
-            var straf1 = new Straf()
-            {
-                Naam = "Geen frisdrank",
-                StrafOfBeloning = true,
-                ImageUrl = "/Content/Images/StrafImages/frisdrank.png"
-            };
+            var straf1 = new Straf("Geen frisdrank", true);
 
-            var straf2 = new Straf()
-            {
-                Naam = "Geen spelletjes",
-                StrafOfBeloning = true,
-                ImageUrl = "/Content/Images/StrafImages/video_games.png"
-            };
+            var straf2 = new Straf("Geen spelletjes", true);
 
-            var straf3 = new Straf()
-            {
-                Naam = "Geen frisdrank",
-                StrafOfBeloning = true,
-                ImageUrl = "/Content/Images/StrafImages/frisdrank.png"
-            };
+            var straf3 = new Straf("Geen frisdrank", true);
 
-            var straf4 = new Straf()
-            {
-                Naam = "Geen spelletjes",
-                StrafOfBeloning = true,
-                ImageUrl = "/Content/Images/StrafImages/video_games.png"
-            };
+            var straf4 = new Straf("Geen spelletjes", true);
+
+            var beloning1 = new Straf("Half uurtje langer opblijven", false);
+            var beloning2 = new Straf("Half uurtje langer opblijven", false);
+
 
             opvangtehuis1.Straffen.Add(straf1);
             opvangtehuis1.Straffen.Add(straf2);
+            opvangtehuis1.Straffen.Add(beloning1);
 
             opvangtehuis2.Straffen.Add(straf3);
             opvangtehuis2.Straffen.Add(straf4);
+            opvangtehuis2.Straffen.Add(beloning2);
             #endregion
 
             #region menus

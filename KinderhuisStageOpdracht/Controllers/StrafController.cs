@@ -47,15 +47,10 @@ namespace KinderhuisStageOpdracht.Controllers
                 return ReturnToLogin();
             }
 
-            if (!ImageIsValidType(model.StrafIndexViewModel.ImageUpload))
-            {
-                ModelState.AddModelError("ImageUpload", "Dit is geen foto");
-            }
-
             if (ModelState.IsValid)
             {
                 opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-                opvangtehuis.AddStraf(new Straf(model.StrafIndexViewModel.Naam, ImageUploadStrafAfbeeling(model.StrafIndexViewModel.ImageUpload), model.StrafIndexViewModel.StrafOfBeloning));
+                opvangtehuis.AddStraf(new Straf(model.StrafIndexViewModel.Naam, model.StrafIndexViewModel.StrafOfBeloning));
                 _gebruikerRepository.SaveChanges();
 
                 this.AddNotification("Straf toegevoegd", NotificationType.SUCCESS);

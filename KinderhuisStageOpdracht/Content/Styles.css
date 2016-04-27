@@ -653,6 +653,8 @@ label:hover .hovertext {
 
 
 .kamercontroleTitel {
+    color: white;
+    font-weight: bold;
     font-size: 20pt;
     text-align: center;
     padding-bottom: 10px;
@@ -663,15 +665,15 @@ label:hover .hovertext {
 
 .kamerControleCard {
     border-radius: 5px;
-    box-shadow: 10px 10px 5px;
     background-color: white;
     vertical-align: top;
     display: inline-block;
     border: 3px solid black;
     width: 300px;
-    min-height: 450px;
+    min-height: 290px;
     height: auto;
     margin: 10px;
+    background-color: rgb(66, 133, 244);
 }
 
 .doneContainer {
@@ -706,16 +708,21 @@ label:hover .hovertext {
 }
 
 .kamerControleCardUitlegBlock {
-    height: 160px;
+    height: auto;
     text-align: left;
 }
 
-    .kamerControleCardUitlegBlock textarea {
-        height: 269px;
-        border: 1px solid #2962ff;
-        width: 294.5px;
-        max-height: 269px;
-        max-width: 294.5px;
+.kamerControleCardUitlegBlockWithTextArea {
+    height: 295px;
+    text-align: center;
+}
+
+    .kamerControleCardUitlegBlockWithTextArea textarea {
+        height: 265px;
+        width: 285px;
+        max-height: 265px;
+        max-width: 285px;
+        background: lightgray;
     }
 
 .kamerControleCardUitlegBlockEmpty {
@@ -733,16 +740,15 @@ label:hover .hovertext {
 }
 
 .SanctieCard {
-    box-shadow: 10px 10px 5px;
-    background-color: white;
+    background-color: lightsteelblue;
     vertical-align: top;
     display: inline-block;
-    border: 2px double black;
+    border: 3px solid black;
     width: 300px;
-    min-height: 450px;
+    min-height: 230px;
     height: auto;
     margin: 10px;
-    border-radius: 5px;
+    border-radius: 12px;
 }
 
 #backgroundImageShow {
@@ -752,8 +758,7 @@ label:hover .hovertext {
 }
 
 .SanctieHeaderBlock {
-    border: 1px solid black;
-    border-bottom: none;
+    border-bottom: 1px solid black;
     min-height: 110px;
     height: auto;
     vertical-align: central;
@@ -761,14 +766,12 @@ label:hover .hovertext {
 }
 
 .SanctieTitleBlock {
-    border-left: 1px solid black;
-    border-right: 1px solid black;
     min-height: 40px;
     height: auto;
 }
 
 .SanctieTimeBlock {
-    height: 49px;
+    height: 47px;
 }
 
     .SanctieTimeBlock table {
@@ -782,10 +785,8 @@ label:hover .hovertext {
     }
 
 .SanctieUitlegBlock {
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-    min-height: 250px;
+    border-top: 1px solid black;
+    min-height: 30px;
     height: auto;
     text-align: left;
     padding: 10px;
@@ -904,6 +905,7 @@ label:hover .hovertext {
 }
 
 .KamerOpdrachtCardTitelBlok {
+    background-color: gray;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     min-height: 20px;
@@ -939,6 +941,7 @@ label:hover .hovertext {
 }
 
     .KamerOpdrachtCardActionBlok a {
+        font-size: 14pt;
         color: white;
         font-weight: bold;
         display: inline-block;
@@ -952,6 +955,8 @@ label:hover .hovertext {
 
         .KamerOpdrachtCardActionBlok a:hover {
             text-decoration: none;
+            background-color: white;
+            color: black;
         }
 
 .opvoederindexclients {

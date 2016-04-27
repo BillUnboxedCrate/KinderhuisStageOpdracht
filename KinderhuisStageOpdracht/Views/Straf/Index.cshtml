@@ -29,15 +29,7 @@
                         @Html.RadioButtonFor(m => m.StrafIndexViewModel.StrafOfBeloning, true) Straf
                     </td>
                 </tr>
-                <tr>
-                    <th>
-                        @Html.LabelFor(m => m.StrafIndexViewModel.ImageUpload, new { @class = "control-label" })
-                    </th>
-                    <td>
-                        @Html.TextBoxFor(m => m.StrafIndexViewModel.ImageUpload, new { type = "file", @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.StrafIndexViewModel.ImageUpload, "", new { @class = "text-danger" })
-                    </td>
-                </tr>
+
             </table>
         </div>
 
@@ -74,7 +66,7 @@
 
 
                     <div class="KamerOpdrachtCardImageBlok">
-                        <img src="@Url.Content(o.ImageUrl)" />
+                        <img src="@Url.Content(o.ImageUrl)" style="border: none;" />
                     </div>
                     <div class="KamerOpdrachtCardActionBlok">
                         @Ajax.ActionLink("Verwijderen", "DeleteStraf", "Straf", new { id = o.Id }, new AjaxOptions()

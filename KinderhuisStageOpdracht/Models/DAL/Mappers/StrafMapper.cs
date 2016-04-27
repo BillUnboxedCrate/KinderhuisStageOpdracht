@@ -16,7 +16,6 @@ namespace KinderhuisStageOpdracht.Models.DAL.Mappers
 
             //Property
             Property(s => s.Naam).IsRequired();
-            Property(s => s.ImageUrl).IsRequired();
 
             //Foreign Key
         }   

@@ -145,9 +145,9 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Straffen.Add(straf);
         }
 
-        public void AddStraf(string naam, string imageUrl, bool strafofbeloning)
+        public void AddStraf(string naam, bool strafofbeloning)
         {
-            Straffen.Add(new Straf(naam, imageUrl, strafofbeloning));
+            Straffen.Add(new Straf(naam, strafofbeloning));
         }
 
         public void RemoveStraf(int id)

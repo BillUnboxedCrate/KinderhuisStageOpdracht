@@ -14,11 +14,16 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public Straf() { }
 
-        public Straf(string naam, string imageUrl, bool strafofbeloning)
+        public Straf(string naam, bool strafofbeloning)
         {
             Naam = naam;
-            ImageUrl = imageUrl;
             StrafOfBeloning = strafofbeloning;
+            ImageUrl = BeloningOfStrafImage(strafofbeloning);
+        }
+
+        private string BeloningOfStrafImage(bool strafofbeloning)
+        {
+            return strafofbeloning ? "/Content/Images/StrafImages/Straf.png" : "/Content/Images/StrafImages/Beloning.png";
         }
     }
 }

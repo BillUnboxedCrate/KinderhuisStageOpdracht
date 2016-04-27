@@ -9,7 +9,7 @@
         <li>@Html.ActionLink("Lijst van suggesties", "Suggesties", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Lijst van menus", "MenuIndex", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Lijst van klachten", "KlachtIndex", "Opvangtehuis")</li>
-        <li>@Html.ActionLink("Lijst van straffen", "Index", "Straf")</li>
+        <li>@Html.ActionLink("Lijst van beloningen / straffen", "Index", "Straf")</li>
         <li>@Html.ActionLink("Overzicht van beloonde / gestrafte cliënten", "GestrafteOverzicht", "Gebruiker")</li>
         <li>@Html.ActionLink("kamer controle opdrachten overzicht", "KamerOpdracht", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Instellingen", "Instellingen", "Gebruiker")</li>
@@ -32,7 +32,7 @@
                 <div>@Html.ActionLink("Persoonlijke gegeven aanpassen", "Edit", new { id = o.Id })</div>
             </div>
             <div class="opvoederindexclientaction">
-                <div>@Html.ActionLink("Straffen", "CreateSanctie", new { id = o.Id })</div>
+                <div>@Html.ActionLink("Belonen/Straffen", "CreateSanctie", new { id = o.Id })</div>
             </div>
             <div class="opvoederindexclientaction">
                 <div>@Html.ActionLink("Kamercontrole", "KamerControleOpvoeder", new { id = o.Id })</div>
