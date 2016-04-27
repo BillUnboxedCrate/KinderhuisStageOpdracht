@@ -58,7 +58,7 @@
                 @Html.DisplayFor(modelItem => p.Activiteit)
             </div>
             <div class="planningcardaction">
-                @Ajax.ActionLink("Verwijderen", "", "Planning", new { id = p.Id }, new AjaxOptions()
+                @Ajax.ActionLink("Verwijderen", "RemoveClientPlanningItemAsOpvoeder", "Planning", new { id = p.Id, clientid = Model.ClientId }, new AjaxOptions()
                 {
                     HttpMethod = "POST",
                     OnComplete = "window.location.reload()"

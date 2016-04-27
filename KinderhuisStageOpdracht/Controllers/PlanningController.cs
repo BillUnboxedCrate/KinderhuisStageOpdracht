@@ -131,7 +131,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 return RedirectToAction("PlanningOverview");
             }
 
-            var plvm = new PlanningViewModel.PlanningListViewModel();
+            var plvm = new PlanningViewModel.PlanningListViewModel(model.ClientId);
 
             foreach (var i in client.GetPlanning())
             {
@@ -139,6 +139,28 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             return View(plvm);
+        }
+
+        public ActionResult RemoveClientPlanningItemAsOpvoeder(int id, int clientid)
+        {
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            {
+                return ReturnToLogin();
+            }
+
+            try
+            {
+                var client = (Client)_gebruikerRepository.FindById(clientid);
+                client.RemovePlanning(id);
+                _gebruikerRepository.SaveChanges();
+
+                return RedirectToAction("Planning");
+            }
+            catch (ApplicationException e)
+            {
+                ModelState.AddModelError("", e.Message);
+            }
+            return RedirectToAction("Planning");
         }
 
 
