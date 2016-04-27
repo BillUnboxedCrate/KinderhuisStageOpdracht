@@ -41,6 +41,39 @@
                 @Html.ValidationMessageFor(m => m.BackgroundUpload, "", new { @class = "text-danger" })
             </div>
             <br />
+
+            <table class="buttontable">
+                <tr>
+                    <td>
+                        @if (Model.GebruikerType.Contains("Client"))
+                        {
+                            <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/opslaan.png")" alt="Oplsaan" title="Opslaan" />
+                        }
+                        else if (Model.GebruikerType.Contains("Opvoeder"))
+                        {
+
+                            <input type="submit" class="button" value="Opslaan" />
+                        }
+                    </td>
+                    <td>
+                        @if (Model.GebruikerType.Contains("Client"))
+                        {
+                            <span class="imagebutton">
+                                <a href="@Url.Action("ClientIndex", "Gebruiker")">
+                                    <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                                </a>
+                            </span>
+                        }
+                        else if (Model.GebruikerType.Contains("Opvoeder"))
+                        {
+                            <span class="terugButton">
+                                @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
+                            </span>
+                        }
+                    </td>
+                </tr>
+            </table>
+
         </div>
 
         <div id="instellingenRight">
@@ -51,39 +84,7 @@
         </div>
     </div>
 
-    <div id="buttonsInstellingen">
-        <table class="buttontable">
-            <tr>
-                <td>
-                    @if (Model.GebruikerType.Contains("Client"))
-                    {
-                        <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/opslaan.png")" alt="Oplsaan" title="Opslaan"/>
-                    }
-                    else if (Model.GebruikerType.Contains("Opvoeder"))
-                    {
-                        
-                        <input type="submit" class="button" value="Opslaan" />
-                    }
-                </td>
-                <td>
-                    @if (Model.GebruikerType.Contains("Client"))
-                    {
-                        <span class="imagebutton">
-                            <a href="@Url.Action("ClientIndex", "Gebruiker")">
-                                <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
-                            </a>
-                        </span>
-                    }
-                    else if (Model.GebruikerType.Contains("Opvoeder"))
-                    {
-                        <span class="terugButton">
-                            @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
-                        </span>
-                    }
-                </td>
-            </tr>
-        </table>
-    </div>
+
 }
 
 

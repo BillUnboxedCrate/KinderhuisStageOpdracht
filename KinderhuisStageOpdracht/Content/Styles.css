@@ -268,12 +268,12 @@ input[type="text"], input[type="password"], textarea, select {
 
 #strafText {
     font-size: 20pt;
-    color: red;
+    color: rgb(219, 9, 44);
 }
 
 #beloningText {
     font-size: 20pt;
-    color: green;
+    color: rgb(183,226,56);
 }
 
 #geenStraffen {
@@ -573,17 +573,19 @@ label:hover .hovertext {
     }
 
 #beloningstraflink {
-    border-left-color: rgb(183,226,56);
+    border-color: rgb(183, 226, 56) rgb(219, 9, 44) rgb(219, 9, 44) rgb(183, 226, 56);
+    /*border-left-color: rgb(183,226,56);
     border-top-color: rgb(183,226,56);
     border-right-color: rgb(219, 9, 44);
-    border-bottom-color: rgb(219, 9, 44);
+    border-bottom-color: rgb(219, 9, 44);*/
 }
 
     #beloningstraflink:hover {
-        border-left-color: rgb(105,132,36);
+        border-color: rgb(105, 132, 36) #990000 #990000 rgb(105, 132, 36);
+        /*border-left-color: rgb(105,132,36);
         border-top-color: rgb(105,132,36);
         border-right-color: #990000;
-        border-bottom-color: #990000;
+        border-bottom-color: #990000;*/
     }
 
 #brownlink {
@@ -611,17 +613,19 @@ label:hover .hovertext {
     }
 
 #googlelink {
-    border-top-color: rgb(234, 67, 53);
+    border-color: rgb(234, 67, 53) rgb(66, 133, 244) rgb(52, 168, 83) rgb(251, 188, 5);
+    /*border-top-color: rgb(234, 67, 53);
     border-bottom-color: rgb(52,168, 83);
     border-left-color: rgb(251, 188, 5);
-    border-right-color: rgb(66, 133, 244);
+    border-right-color: rgb(66, 133, 244);*/
 }
 
     #googlelink:hover {
-        border-top-color: #d50000;
+        border-color: #d50000 #2962ff #1b5e20 #f57f17;
+        /*border-top-color: #d50000;
         border-bottom-color: #1b5e20;
         border-left-color: #f57f17;
-        border-right-color: #2962ff;
+        border-right-color: #2962ff;*/
     }
 
 #youtubelink {
@@ -665,10 +669,9 @@ label:hover .hovertext {
 
 .kamerControleCard {
     border-radius: 5px;
-    background-color: white;
     vertical-align: top;
     display: inline-block;
-    border: 3px solid black;
+    border: 4px solid black;
     width: 300px;
     min-height: 290px;
     height: auto;
@@ -702,12 +705,17 @@ label:hover .hovertext {
     position: relative;
 }
 
+    .kamerControleCardImageBlock img {
+        border: 3px solid black;
+    }
+
 .kamerControleCardCheckboxBlock {
     border-bottom: 1px solid black;
     height: 100px;
 }
 
 .kamerControleCardUitlegBlock {
+    background-color: white;
     height: auto;
     text-align: left;
 }
@@ -758,7 +766,6 @@ label:hover .hovertext {
 }
 
 .SanctieHeaderBlock {
-    border-bottom: 1px solid black;
     min-height: 110px;
     height: auto;
     vertical-align: central;
@@ -785,7 +792,6 @@ label:hover .hovertext {
     }
 
 .SanctieUitlegBlock {
-    border-top: 1px solid black;
     min-height: 30px;
     height: auto;
     text-align: left;
@@ -819,17 +825,12 @@ label:hover .hovertext {
 
 #instellingenLeft {
     float: left;
-    margin-left: 90px;
+    margin-left: 100px;
 }
 
 #instellingenRight {
     float: right;
-    margin-right: 90px;
-}
-
-#buttonsInstellingen {
-    top: 100%;
-    bottom: 0;
+    margin-right: 100px;
 }
 
 #sendbutton {
@@ -886,7 +887,14 @@ label:hover .hovertext {
 .bigcheckbox {
     width: 90px;
     height: 90px;
+    cursor: pointer;
 }
+
+    .bigcheckbox:checked {
+        width: 90px;
+        height: 90px;
+        font-size: 70pt;
+    }
 
 .KamerOpdrachtCardSystem {
     text-align: center;
