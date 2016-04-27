@@ -544,6 +544,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         {
             public int Id { get; set; }
 
+            [Display(Name = "Cliënt")]
             public string Client { get; set; }
 
             [Required(ErrorMessage = "Er moet een rede worden opgegeven.")]

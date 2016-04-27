@@ -597,20 +597,35 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult Sancties()
         {
-            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
+            try
             {
-                return ReturnToLogin();
+                if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
+                {
+                    return ReturnToLogin();
+                }
+
+                var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
+                var slvm = new GebruikerViewModel.SanctieListViewModel();
+
+                foreach (var s in client.GetAppliedSancties())
+                {
+                    slvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam(), s.GetStrafImageUrl(), s.GetIfStrafOrBeloning()));
+                }
+
+                return View(slvm);
             }
-
-            var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
-            var slvm = new GebruikerViewModel.SanctieListViewModel();
-
-            foreach (var s in client.GetAppliedSancties())
+            catch (NullReferenceException e)
             {
-                slvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam(), s.GetStrafImageUrl(), s.GetIfStrafOrBeloning()));
-            }
+                if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
+                {
+                    return RedirectToAction("ClientIndex");
+                }
+                if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder)
+                {
+                    return RedirectToAction("OpvoederIndex");
+                }
 
-            return View(slvm);
+            }
         }
 
         public ActionResult KamerControle()

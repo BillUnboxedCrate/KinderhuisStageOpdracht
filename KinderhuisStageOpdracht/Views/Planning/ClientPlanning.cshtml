@@ -13,7 +13,7 @@
                     @Html.LabelFor(m => m.ClientPlanningViewModel.Datum, new { @class = "control-label" })
                 </th>
                 <td>
-                    @Html.TextBoxFor(m => m.ClientPlanningViewModel.Datum, new { @class = "datepickersanctie form-control", @readonly = true })
+                    @Html.TextBoxFor(m => m.ClientPlanningViewModel.Datum, new { @class = "datepickersanctie form-control pointer", @readonly = true })
                     @Html.ValidationMessageFor(m => m.ClientPlanningViewModel.Datum, "", new { @class = "text-danger" })
                 </td>
             </tr>
