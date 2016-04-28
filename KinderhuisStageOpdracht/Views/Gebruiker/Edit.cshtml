@@ -3,78 +3,78 @@
 @{
     ViewBag.Title = "View";
 }
+<div class="form">
+    @using (Html.BeginForm("Edit", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <h2>Pas de gegevens aan.</h2>
+        <hr />
+        @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
 
-@using (Html.BeginForm("Edit", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    <h2>Pas de gegevens aan.</h2>
-    <hr />
-    @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
-    <table>
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.Voornaam, new { @class = "control-label" })
-            </td>
-            <td>
-                @Html.TextBoxFor(m => m.Voornaam, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Voornaam, "", new { @class = "text-danger" })
-            </td>
-        </tr>
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Voornaam, new { @class = "control-label" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Voornaam, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Voornaam, "", new { @class = "text-danger" })
+                </td>
+            </tr>
 
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.Naam, new { @class = "control-label" })
-            </td>
-            <td>
-                @Html.TextBoxFor(m => m.Naam, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Naam, "", new { @class = "text-danger" })
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Naam, new { @class = "control-label" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Naam, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Naam, "", new { @class = "text-danger" })
+                </td>
+            </tr>
 
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.Opvangtehuizen, new { @class = "control-label" })
-            </td>
-            <td>
-                @Html.DropDownListFor(m => m.GeselecteerdOpvangtehuisId, new SelectList(Model.Opvangtehuizen), new { @class = "form-control" })
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Opvangtehuizen, new { @class = "control-label" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.GeselecteerdOpvangtehuisId, new SelectList(Model.Opvangtehuizen), new { @class = "form-control" })
+                </td>
+            </tr>
 
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.GebruikersNaam, new { @class = "control-label" })
-            </td>
-            <td>
-                @Html.TextBoxFor(m => m.GebruikersNaam, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.GebruikersNaam, "", new { @class = "text-danger" })
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.GebruikersNaam, new { @class = "control-label" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.GebruikersNaam, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.GebruikersNaam, "", new { @class = "text-danger" })
+                </td>
+            </tr>
 
-        <tr>
-            <td>
-                <img src="@Url.Content(Model.ImageUrl)" class="profileImage" />
-            </td>
-            <td>
-                @Html.TextBoxFor(m => m.Image, new { type = "file" })
-                @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-
+            <tr>
+                <td rowspan="2" colspan="2">
+                    <img src="@Url.Content(Model.ImageUrl)" class="profileImage" /><br/>
+                    @Html.TextBoxFor(m => m.Image, new { type = "file" })
+                    @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+                </td>
+            </tr>
 
 
-    </table>
 
-    <table class="buttontable">
-        <tr>
-            <td>
-                <input type="submit" class="button" value="Aanpassen" />
-            </td>
+        </table>
 
-            <td>
-                <span class="terugButton">
-                    @(Model.TypeGebruiker.Contains("Opvoeder") ? Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker") : Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker"))
-                </span>
-            </td>
-        </tr>
-    </table>
-}
+        <table class="buttontable">
+            <tr>
+                <td>
+                    <input type="submit" class="button" value="Aanpassen" />
+                </td>
+
+                <td>
+                    <span class="terugButton">
+                        @(Model.TypeGebruiker.Contains("Opvoeder") ? Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker") : Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker"))
+                    </span>
+                </td>
+            </tr>
+        </table>
+    }
+</div>
