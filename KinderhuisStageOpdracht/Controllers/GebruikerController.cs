@@ -356,37 +356,56 @@ namespace KinderhuisStageOpdracht.Controllers
                 return View("Error");
             }
 
-            var gebruiker = _gebruikerRepository.FindById(id);
-            GebruikerViewModel.DetailViewModel dvm = null;
-
-            if (gebruiker != null)
+            try
             {
-                var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
-                dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                     gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
+                var gebruiker = _gebruikerRepository.FindById(id);
 
-                if (gebruiker is Opvoeder)
+                if (gebruiker != null)
                 {
-                    Opvoeder opvoeder = (Opvoeder)gebruiker;
-                    dvm.IsStagair = opvoeder.IsStagair;
-                }
+                    var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
+                    var dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
+                        gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
 
-                if (gebruiker is Client)
-                {
-                    var client = (Client)gebruiker;
-                    foreach (var s in client.GetAppliedSancties())
+                    if (gebruiker is Opvoeder)
                     {
-                        dvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam()));
+                        Opvoeder opvoeder = (Opvoeder)gebruiker;
+                        dvm.IsStagair = opvoeder.IsStagair;
                     }
 
-                    foreach (var track in client.GetTimeTrackList())
+                    if (gebruiker is Client)
                     {
-                        dvm.AddTimeTrack(new GebruikerViewModel.TimeTrackerViewModel(track.Aanmelden));
+                        var client = (Client)gebruiker;
+                        foreach (var s in client.GetAppliedSancties())
+                        {
+                            dvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum,
+                                s.GetstrafNaam()));
+                        }
+
+                        foreach (var track in client.GetTimeTrackList())
+                        {
+                            dvm.AddTimeTrack(new GebruikerViewModel.TimeTrackerViewModel(track.Aanmelden));
+                        }
                     }
+                    return View("Details", dvm);
                 }
+
+                throw new NullReferenceException();
+            }
+            catch (NullReferenceException e)
+            {
+                ModelState.AddModelError("", e.Message);
+                if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
+                {
+                    return RedirectToAction("AdminIndex");
+                }
+                if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder)
+                {
+                    return RedirectToAction("OpvoederIndex");
+                }
+
             }
 
-            return View("Details", dvm);
+            return View();
         }
 
 
@@ -407,16 +426,26 @@ namespace KinderhuisStageOpdracht.Controllers
                 return View("Error");
             }
 
-            var gebruiker = _gebruikerRepository.FindById(id);
-            GebruikerViewModel.DetailViewModel dvm = null;
-
-            if (gebruiker != null)
+            try
             {
-                string type = gebruiker.GetType().ToString();
-                dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                     gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
+                var gebruiker = _gebruikerRepository.FindById(id);
+
+                if (gebruiker != null)
+                {
+                    string type = gebruiker.GetType().ToString();
+                    var dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
+                        gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
+
+                    return View(dvm);
+                }
+                throw new NullReferenceException();
             }
-            return View(dvm);
+            catch (NullReferenceException e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return RedirectToAction("AdminIndex");
+            }
+
         }
 
         [HttpPost, ActionName("Delete")]
@@ -441,6 +470,11 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 ModelState.AddModelError("", e.Message);
             }
+            catch (NullReferenceException e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return RedirectToAction("AdminIndex");
+            }
             return View();
         }
 
@@ -456,22 +490,38 @@ namespace KinderhuisStageOpdracht.Controllers
                 return View("Error");
             }
 
-            var gebruiker = _gebruikerRepository.FindById(id);
-            var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
-
-            var evm = new GebruikerViewModel.EditViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                 gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuisnaam(), type, gebruiker.ImageUrl);
-
-            if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
+            try
             {
-                evm.SetOpvangtehuizen(_opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList());
-            }
-            else
-            {
-                evm.AddOpvangtehuis(_gebruikerRepository.FindById((int)Session["gebruiker"]).GetOpvangtehuisnaam());
-            }
+                var gebruiker = _gebruikerRepository.FindById(id);
+                var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
 
-            return View(evm);
+                var evm = new GebruikerViewModel.EditViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
+                     gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuisnaam(), type, gebruiker.ImageUrl);
+
+                if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
+                {
+                    evm.SetOpvangtehuizen(_opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList());
+                }
+                else
+                {
+                    evm.AddOpvangtehuis(_gebruikerRepository.FindById((int)Session["gebruiker"]).GetOpvangtehuisnaam());
+                }
+
+                return View(evm);
+            }
+            catch (NullReferenceException e)
+            {
+                ModelState.AddModelError("", e.Message);
+                if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder)
+                {
+                    return RedirectToAction("OpvoederIndex");
+                }
+                if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
+                {
+                    return RedirectToAction("AdminIndex");
+                }
+            }
+            return View();
         }
 
         [HttpPost]
@@ -544,10 +594,18 @@ namespace KinderhuisStageOpdracht.Controllers
                 return ReturnToLogin();
             }
 
-            var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-            var svm = new GebruikerViewModel.SanctieViewModel(id, _gebruikerRepository.FindById(id).GiveFullName());
-            svm.SetStraffen(opvangtehuis.GetStraffen().Select(s => s.Naam).ToList());
-            return View(svm);
+            try
+            {
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                var svm = new GebruikerViewModel.SanctieViewModel(id, _gebruikerRepository.FindById(id).GiveFullName());
+                svm.SetStraffen(opvangtehuis.GetStraffen().Select(s => s.Naam).ToList());
+                return View(svm);
+            }
+            catch (NullReferenceException e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return RedirectToAction("OpvoederIndex");
+            }
         }
 
         [HttpPost]
@@ -590,42 +648,25 @@ namespace KinderhuisStageOpdracht.Controllers
                 return ReturnToLogin();
             }
 
-
-
             return View("Sanctie");
         }
 
         public ActionResult Sancties()
         {
-            try
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
             {
-                if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client))
-                {
-                    return ReturnToLogin();
-                }
-
-                var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
-                var slvm = new GebruikerViewModel.SanctieListViewModel();
-
-                foreach (var s in client.GetAppliedSancties())
-                {
-                    slvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam(), s.GetStrafImageUrl(), s.GetIfStrafOrBeloning()));
-                }
-
-                return View(slvm);
+                return ReturnToLogin();
             }
-            catch (NullReferenceException e)
+
+            var client = (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]);
+            var slvm = new GebruikerViewModel.SanctieListViewModel();
+
+            foreach (var s in client.GetAppliedSancties())
             {
-                if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Client)
-                {
-                    return RedirectToAction("ClientIndex");
-                }
-                if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder)
-                {
-                    return RedirectToAction("OpvoederIndex");
-                }
-
+                slvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam(), s.GetStrafImageUrl(), s.GetIfStrafOrBeloning()));
             }
+
+            return View(slvm);
         }
 
         public ActionResult KamerControle()
@@ -668,29 +709,37 @@ namespace KinderhuisStageOpdracht.Controllers
                 return ReturnToLogin();
             }
 
-            var client = (Client)_gebruikerRepository.FindById(id);
-            //Session["client"] = id;
-            var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
-            var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
-            var kclivm = new GebruikerViewModel.KamerControleListIndexViewModel(client.Id);
-            var kamercontrole = client.ViewKamerControle(opvangtehuis.GetKamerControleOpdrachten());
-
-            foreach (var i in kamercontrole.KamerControleItems)
+            try
             {
-                lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtTitel(), i.OpdrachtGedaanControle, i.Uitleg));
-            }
+                var client = (Client)_gebruikerRepository.FindById(id);
+                //Session["client"] = id;
+                var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
+                var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
+                var kclivm = new GebruikerViewModel.KamerControleListIndexViewModel(client.Id);
+                var kamercontrole = client.ViewKamerControle(opvangtehuis.GetKamerControleOpdrachten());
 
-            foreach (var i in client.GetKamerControles())
+                foreach (var i in kamercontrole.KamerControleItems)
+                {
+                    lkcivm.AddKamerControleItem(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtTitel(), i.OpdrachtGedaanControle, i.Uitleg));
+                }
+
+                foreach (var i in client.GetKamerControles())
+                {
+                    kclivm.AddKamerControleIndexItem(new GebruikerViewModel.KamerControleIndexViewModel(i.Id, i.Datum, i.IsAllesInOrde()));
+                }
+
+                lkcivm.KamerControleListIndexViewModel = kclivm;
+
+                _gebruikerRepository.SaveChanges();
+
+
+                return View(lkcivm);
+            }
+            catch (NullReferenceException e)
             {
-                kclivm.AddKamerControleIndexItem(new GebruikerViewModel.KamerControleIndexViewModel(i.Id, i.Datum, i.IsAllesInOrde()));
+                ModelState.AddModelError("", e.Message);
+                return RedirectToAction("OpvoederIndex");
             }
-
-            lkcivm.KamerControleListIndexViewModel = kclivm;
-
-            _gebruikerRepository.SaveChanges();
-
-
-            return View(lkcivm);
         }
 
         [HttpPost]

@@ -98,17 +98,24 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 return ReturnToLogin();
             }
-
-            var client = (Client)_gebruikerRepository.FindById(id);
-
-            var plvm = new PlanningViewModel.PlanningListViewModel(id);
-
-            foreach (var i in client.GetPlanning())
+            try
             {
-                plvm.AddItem(new PlanningViewModel.PlanningItemViewModel(i.Id, i.Actie, i.Datum));
-            }
+                var client = (Client)_gebruikerRepository.FindById(id);
 
-            return View(plvm);
+                var plvm = new PlanningViewModel.PlanningListViewModel(id);
+
+                foreach (var i in client.GetPlanning())
+                {
+                    plvm.AddItem(new PlanningViewModel.PlanningItemViewModel(i.Id, i.Actie, i.Datum));
+                }
+
+                return View(plvm);
+            }
+            catch (NullReferenceException e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return RedirectToAction("OpvoederIndex", "Gebruiker");
+            }
         }
 
         [HttpPost]
@@ -147,7 +154,6 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 return ReturnToLogin();
             }
-
             try
             {
                 var client = (Client)_gebruikerRepository.FindById(clientid);
@@ -155,6 +161,11 @@ namespace KinderhuisStageOpdracht.Controllers
                 _gebruikerRepository.SaveChanges();
 
                 return RedirectToAction("Planning");
+            }
+            catch (NullReferenceException e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return RedirectToAction("OpvoederIndex", "Gebruiker");
             }
             catch (ApplicationException e)
             {

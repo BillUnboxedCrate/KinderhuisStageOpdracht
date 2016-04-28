@@ -25,7 +25,6 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         // GET: Opvangtehuis
-        [OutputCacheAttribute(VaryByParam = "*", Duration = 0, NoStore = true)]
         public ActionResult Suggesties()
         {
             if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
@@ -150,7 +149,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
             try
             {
-                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                var opvangtehuis = _gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis;
                 opvangtehuis.DeleteSuggestie(id);
                 _opvangtehuisRepository.SaveChanges();
 
@@ -160,6 +159,11 @@ namespace KinderhuisStageOpdracht.Controllers
             catch (ApplicationException e)
             {
                 ModelState.AddModelError("", e.Message);
+            }
+            catch (NullReferenceException e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return RedirectToAction("OpvoederIndex", "Gebruiker");
             }
             return RedirectToAction("Suggesties");
         }
@@ -413,80 +417,87 @@ namespace KinderhuisStageOpdracht.Controllers
         //Extreem slordige code, moet later herwerkt worden
         public ActionResult EditMenu(int id)
         {
-            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            try
             {
-                return ReturnToLogin();
-            }
-
-            if (!Request.IsAuthenticated)
-            {
-                return View("Error");
-            }
-
-            var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-
-            var menu = opvangtehuis.Menus.FirstOrDefault(m => m.Id == id);
-
-            var mvm = new OpvangtehuisViewModel.MenuViewModel
-            {
-                Id = id,
-                BeginWeek = menu.BegindagWeek,
-                Week = menu.Week,
-                MenuImageUrl = menu.ImageUrl,
-                MaandagViewModel = new OpvangtehuisViewModel.CreateMenuItemMaandagViewModel()
+                if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int) Session["gebruiker"]) is Opvoeder))
                 {
-                    Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Dag,
-                    Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Hoofdgerecht,
-                    Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Voorgerecht,
-                    Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Dessert
-                },
-                DinsdagViewModel = new OpvangtehuisViewModel.CreateMenuItemDinsdagViewModel()
-                {
-                    Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Dag,
-                    Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Hoofdgerecht,
-                    Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Voorgerecht,
-                    Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Dessert
-                },
-                WoensdagViewModel = new OpvangtehuisViewModel.CreateMenuItemWoensdagViewModel()
-                {
-                    Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Dag,
-                    Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Hoofdgerecht,
-                    Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Voorgerecht,
-                    Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Dessert
-                },
-                DonderdagViewModel = new OpvangtehuisViewModel.CreateMenuItemDonderdagViewModel()
-                {
-                    Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Dag,
-                    Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Hoofdgerecht,
-                    Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Voorgerecht,
-                    Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Dessert
-                },
-                VrijdagViewModel = new OpvangtehuisViewModel.CreateMenuItemVrijdagViewModel()
-                {
-                    Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Dag,
-                    Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Hoofdgerecht,
-                    Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Voorgerecht,
-                    Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Dessert
-                },
-
-                ZaterdagViewModel = new OpvangtehuisViewModel.CreateMenuItemZaterdagViewModel()
-                {
-                    Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Dag,
-                    Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Hoofdgerecht,
-                    Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Voorgerecht,
-                    Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Dessert
-                },
-
-                ZondagViewModel = new OpvangtehuisViewModel.CreateMenuItemZondagViewModel()
-                {
-                    Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Dag,
-                    Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Hoofdgerecht,
-                    Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Voorgerecht,
-                    Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Dessert
+                    return ReturnToLogin();
                 }
-            };
 
-            return View("CreateMenu", mvm);
+                if (!Request.IsAuthenticated)
+                {
+                    return View("Error");
+                }
+
+                var opvangtehuis = _gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis;
+
+                var menu = opvangtehuis.Menus.FirstOrDefault(m => m.Id == id);
+
+                var mvm = new OpvangtehuisViewModel.MenuViewModel
+                {
+                    Id = id,
+                    BeginWeek = menu.BegindagWeek,
+                    Week = menu.Week,
+                    MenuImageUrl = menu.ImageUrl,
+                    MaandagViewModel = new OpvangtehuisViewModel.CreateMenuItemMaandagViewModel()
+                    {
+                        Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Dag,
+                        Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Hoofdgerecht,
+                        Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Voorgerecht,
+                        Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Maandag").Dessert
+                    },
+                    DinsdagViewModel = new OpvangtehuisViewModel.CreateMenuItemDinsdagViewModel()
+                    {
+                        Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Dag,
+                        Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Hoofdgerecht,
+                        Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Voorgerecht,
+                        Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Dinsdag").Dessert
+                    },
+                    WoensdagViewModel = new OpvangtehuisViewModel.CreateMenuItemWoensdagViewModel()
+                    {
+                        Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Dag,
+                        Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Hoofdgerecht,
+                        Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Voorgerecht,
+                        Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Woensdag").Dessert
+                    },
+                    DonderdagViewModel = new OpvangtehuisViewModel.CreateMenuItemDonderdagViewModel()
+                    {
+                        Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Dag,
+                        Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Hoofdgerecht,
+                        Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Voorgerecht,
+                        Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Donderdag").Dessert
+                    },
+                    VrijdagViewModel = new OpvangtehuisViewModel.CreateMenuItemVrijdagViewModel()
+                    {
+                        Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Dag,
+                        Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Hoofdgerecht,
+                        Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Voorgerecht,
+                        Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Vrijdag").Dessert
+                    },
+
+                    ZaterdagViewModel = new OpvangtehuisViewModel.CreateMenuItemZaterdagViewModel()
+                    {
+                        Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Dag,
+                        Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Hoofdgerecht,
+                        Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Voorgerecht,
+                        Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zaterdag").Dessert
+                    },
+
+                    ZondagViewModel = new OpvangtehuisViewModel.CreateMenuItemZondagViewModel()
+                    {
+                        Dag = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Dag,
+                        Hoofdgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Hoofdgerecht,
+                        Voorgerecht = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Voorgerecht,
+                        Dessert = menu.MenuItems.FirstOrDefault(mi => mi.Dag == "Zondag").Dessert
+                    }
+                };
+
+                return View("CreateMenu", mvm);
+            }
+            catch (NullReferenceException e)
+            {
+                return RedirectToAction("OpvoederIndex", "Gebruiker");    
+            }           
         }
 
         //Reformat needed
@@ -598,7 +609,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
             try
             {
-                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                var opvangtehuis = _gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis;
                 opvangtehuis.DeleteKlacht(id);
                 _opvangtehuisRepository.SaveChanges();
 
@@ -608,6 +619,11 @@ namespace KinderhuisStageOpdracht.Controllers
             catch (ApplicationException e)
             {
                 ModelState.AddModelError("", e.Message);
+            }
+            catch (NullReferenceException e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return RedirectToAction("OpvoederIndex", "Gebruiker");
             }
             return RedirectToAction("KlachtIndex");
         }
@@ -710,7 +726,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
             try
             {
-                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                var opvangtehuis = _gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis;
                 opvangtehuis.RemoveOpdracht(id);
                 _opvangtehuisRepository.SaveChanges();
 
@@ -720,6 +736,11 @@ namespace KinderhuisStageOpdracht.Controllers
             catch (ApplicationException e)
             {
                 ModelState.AddModelError("", e.Message);
+            }
+            catch (NullReferenceException e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return RedirectToAction("OpvoederIndex", "Gebruiker");
             }
             return RedirectToAction("KamerOpdracht");
         }
