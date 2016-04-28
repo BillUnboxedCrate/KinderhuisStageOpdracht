@@ -84,6 +84,21 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return Opvangtehuis.ToString();
         }
 
+        public string GetLeefgroepNaam()
+        {
+            return Opvangtehuis.Naam;
+        }
+
+        public string GetLeefgroepAdres()
+        {
+            return Opvangtehuis.Straat + " " + Opvangtehuis.StraatNummer;
+        }
+
+        public string GetLeefgroepGemeente()
+        {
+            return Opvangtehuis.Postcode + " " + Opvangtehuis.Gemeente;
+        }
+
         public void EditGebruiker(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam,
              string imageUrl)
         {

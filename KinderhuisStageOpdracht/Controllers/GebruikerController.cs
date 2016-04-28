@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using System.Web.Security;
 using KinderhuisStageOpdracht.Extensions;
 using KinderhuisStageOpdracht.Models.Domain;
@@ -364,12 +361,19 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
                     var dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                        gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
+                        gebruiker.Gebruikersnaam, gebruiker.GetLeefgroepNaam(), 
+                        gebruiker.GetLeefgroepAdres(), gebruiker.GetLeefgroepGemeente(), type, gebruiker.ImageUrl);
 
                     if (gebruiker is Opvoeder)
                     {
                         Opvoeder opvoeder = (Opvoeder)gebruiker;
                         dvm.IsStagair = opvoeder.IsStagair;
+
+                        List<Gebruiker> clients = _gebruikerRepository.FindAllClients().Where(c => c.Opvangtehuis.Id == opvoeder.Opvangtehuis.Id).ToList();
+                        foreach (var client in clients)
+                        {
+                            dvm.AddClient(client.GiveFullName());
+                        }
                     }
 
                     if (gebruiker is Client)
@@ -434,7 +438,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     string type = gebruiker.GetType().ToString();
                     var dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                        gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuis(), type, gebruiker.ImageUrl);
+                        gebruiker.Gebruikersnaam, gebruiker.GetLeefgroepNaam(), gebruiker.GetLeefgroepAdres(), gebruiker.GetLeefgroepGemeente(), type, gebruiker.ImageUrl);
 
                     return View(dvm);
                 }

@@ -350,8 +350,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Gebruikersnaam")]
             public string GebruikersNaam { get; set; }
 
-            [Display(Name = "Leefgroep")]
-            public string Opvangtehuis { get; set; }
+            public string LeefgroepNaam { get; set; }
+            public string LeefgroepAdres { get; set; }
+            public string LeefgroepGemeente { get; set; }
 
             [Display(Name = "Kies een foto")]
             [DataType(DataType.Upload)]
@@ -365,24 +366,34 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public List<TimeTrackerViewModel> TimeTrackerList { get; set; }
 
+            public List<string> Clients { get; set; } 
+
             public DetailViewModel()
             {
                 Sancties = new List<SanctieViewModel>();
                 TimeTrackerList = new List<TimeTrackerViewModel>();
+                Clients = new List<string>();
             }
 
-            public DetailViewModel(int id, string naam, string voornaam, string gebruikersnaam, string opvangtehuis, string typeGebruiker, string imageUrl)
+            public DetailViewModel(int id, string naam, string voornaam, string gebruikersnaam, 
+                string leefgroepNaam,string leefgroepAdres, string leefgroepGemeente,
+                string typeGebruiker, string imageUrl)
             {
                 Id = id;
                 Naam = naam;
                 Voornaam = voornaam;
                 GebruikersNaam = gebruikersnaam;
-                Opvangtehuis = opvangtehuis;
+
+                LeefgroepNaam = leefgroepNaam;
+                LeefgroepAdres = leefgroepAdres;
+                LeefgroepGemeente = leefgroepGemeente;
+
                 TypeGebruiker = typeGebruiker;
                 ImageUrl = imageUrl;
                 IsStagair = false;
                 Sancties = new List<SanctieViewModel>();
                 TimeTrackerList = new List<TimeTrackerViewModel>();
+                Clients = new List<string>();
             }
 
             public List<SanctieViewModel> Sancties { get; set; }
@@ -395,6 +406,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public void AddTimeTrack(TimeTrackerViewModel item)
             {
                 TimeTrackerList.Add(item);
+            }
+
+            public void AddClient(string item)
+            {
+                Clients.Add(item);
             }
 
         }

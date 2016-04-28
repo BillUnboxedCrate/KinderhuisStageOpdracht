@@ -40,9 +40,7 @@ html {
         width: 250px;
     }*/
 
-.navbar {
-    background-color: #286366;
-}
+
 
 #loginContainer {
     min-height: 234px;
@@ -368,17 +366,7 @@ textarea {
     padding: 20px;
 }
 
-footer {
-    text-align: center;
-    border-top: solid 1px black;
-    background-color: #286366;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    padding-top: 10px;
-    height: 5%; /* Height of the footer */
-    color: white;
-}
+
 
 .omschrijvingColumn {
     width: 65%;
@@ -453,6 +441,7 @@ footer {
     height: auto;
     width: 200px;
     float: left;
+    border: 2px solid black;
 }
 
 .indexAfbeelding {
