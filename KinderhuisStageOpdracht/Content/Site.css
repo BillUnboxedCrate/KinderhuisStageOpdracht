@@ -78,32 +78,6 @@ html {
         width: 250px;
     }*/
 
-
-
-#loginContainer {
-    min-height: 234px;
-    border-radius: 5px;
-    height: auto;
-    width: 400px;
-    border: solid 1px;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    border: solid 1px;
-    background-color: #f8f8ff;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
-    font-size: medium;
-}
-
-    #loginContainer [type="text"], input[type="password"] {
-        width: 300px;
-    }
-
-#loginForm {
-}
-
 .button-gray {
     padding: 7px 10px;
     background: rgb(238, 233, 233);
@@ -309,7 +283,7 @@ input[type="text"], input[type="password"], textarea, select {
 
 #beloningText {
     font-size: 20pt;
-    color: rgb(183,226,56);
+    color: rgb(141,197,27);
 }
 
 #geenStraffen {
