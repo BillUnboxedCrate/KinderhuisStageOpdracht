@@ -361,7 +361,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
                     var dvm = new GebruikerViewModel.DetailViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                        gebruiker.Gebruikersnaam, gebruiker.GetLeefgroepNaam(), 
+                        gebruiker.Gebruikersnaam, gebruiker.GetLeefgroepNaam(),
                         gebruiker.GetLeefgroepAdres(), gebruiker.GetLeefgroepGemeente(), type, gebruiker.ImageUrl);
 
                     if (gebruiker is Opvoeder)
@@ -814,7 +814,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 foreach (var p in forum.Posts)
                 {
                     var mine = p.Gebruiker == gebruiker;
-                    fvm.AddPost(new GebruikerViewModel.PostViewModel(p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap, mine, p.Gebruiker.ImageUrl));
+                    fvm.AddPost(new GebruikerViewModel.PostViewModel(p.Id, p.Gebruiker.GiveFullName(), p.TimeStamp, p.Boodschap, mine, p.Gebruiker.ImageUrl));
                 }
 
                 return View(fvm);
@@ -860,7 +860,6 @@ namespace KinderhuisStageOpdracht.Controllers
 
                 _gebruikerRepository.SaveChanges();
 
-                this.AddNotification("Je boodschap is gepost", NotificationType.SUCCESS);
                 return RedirectToAction("Forum");
             }
             return View();
@@ -877,6 +876,41 @@ namespace KinderhuisStageOpdracht.Controllers
             var ivm = new GebruikerViewModel.InstellingenViewModel(gebruiker.GetType().Name, gebruiker.BackgroundUrl, gebruiker.ImageUrl);
 
             return View(ivm);
+        }
+
+        [HttpPost]
+        public ActionResult DeletePost(int id, int forumId)
+        {
+            if (UserStillLoggedIn() || _gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
+            {
+                return ReturnToLogin();
+            }
+            try
+            {
+                var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
+                if (gebruiker is Client)
+                {
+                    var client = (Client)gebruiker;
+                    var forum = client.GetForumById(forumId);
+                    if (forum.GetPost(id).Gebruiker.Id == client.Id)
+                    {
+                        forum.DeletePost(id);
+                    }
+                }
+                else
+                {
+                    var opvoeder = (Opvoeder)gebruiker;
+                    opvoeder.GetForumById(forumId).DeletePost(id);
+                }
+
+                _gebruikerRepository.SaveChanges();
+                return RedirectToAction("Forum");
+            }
+            catch (NullReferenceException e)
+            {
+                return RedirectToAction("Forum");
+            }
+
         }
 
         [HttpPost]

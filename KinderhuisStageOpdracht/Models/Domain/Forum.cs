@@ -37,5 +37,16 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             Posts.Add(post);
         }
+
+        public Post GetPost(int id)
+        {
+            return Posts.FirstOrDefault(p => p.Id == id);
+        }
+
+        public void DeletePost(int id)
+        {
+            var post = Posts.FirstOrDefault(p => p.Id == id);
+            Posts.Remove(post);
+        }
     }
 }

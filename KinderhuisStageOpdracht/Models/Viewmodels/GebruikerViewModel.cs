@@ -525,8 +525,9 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public PostViewModel() { }
 
-            public PostViewModel(string sendby, DateTime timestamp, string boodschap, bool mine, string imageUrl)
+            public PostViewModel(int id, string sendby, DateTime timestamp, string boodschap, bool mine, string imageUrl)
             {
+                Id = id;
                 SendBy = sendby;
                 TimeStamp = timestamp;
                 Boodschap = boodschap;

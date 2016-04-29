@@ -14,7 +14,14 @@
                 <div id="myPost">
                     <img src="@Url.Content(p.ImageUrl)" />
                     @Html.DisplayFor(modelItem => p.Boodschap)<br />
-                    <span class="postinfo">@Html.DisplayFor(modelItem => p.SendBy) - @Html.DisplayFor(modelItem => p.TimeStamp)</span>
+                    <span class="postinfo">
+                        @Html.DisplayFor(modelItem => p.SendBy) - @Html.DisplayFor(modelItem => p.TimeStamp) -
+                        @Ajax.ActionLink("Verwijderen", "DeletePost", "Gebruiker", new { id = p.Id, forumId = Model.ForumId }, new AjaxOptions()
+                        {
+                            HttpMethod = "POST",
+                            OnComplete = "window.location.reload()"
+                        })
+                    </span>
                 </div>
             }
             else
@@ -22,7 +29,20 @@
                 <div id="otherPost">
                     <img src="@Url.Content(p.ImageUrl)" />
                     @Html.DisplayFor(modelItem => p.Boodschap)<br />
-                    <span class="postinfo">@Html.DisplayFor(modelItem => p.TimeStamp) - @Html.DisplayFor(modelItem => p.SendBy)</span>
+                    <span class="postinfo">
+                        @if (Model.TypeGebruiker.Contains("Opvoeder"))
+                        {
+
+                            @Ajax.ActionLink("Verwijderen", "DeletePost", "Gebruiker", new { id = p.Id, forumId = Model.ForumId }, new AjaxOptions()
+                            {
+                                HttpMethod = "POST",
+                                OnComplete = "window.location.reload()"
+                            })
+                            <span> - </span>
+                        }
+                        @Html.DisplayFor(modelItem => p.TimeStamp) - @Html.DisplayFor(modelItem => p.SendBy)
+
+                    </span>
                 </div>
             }
         }
@@ -38,7 +58,7 @@
                 @Html.TextAreaFor(model => model.Post, new { @class = "form-control", @cols = 30, @rows = 5 })
 
                 <div class="form-group">
-                    <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/versturen.png")" alt="versturen" id="sendbutton" />
+                    <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/versturen.png")" onclick="window.scrollTo(0, document.body.scrollHeight);" alt="versturen" id="sendbutton" />
                 </div>
             </div>
         }
@@ -60,4 +80,3 @@
         }
     </div>
 </div>
-
