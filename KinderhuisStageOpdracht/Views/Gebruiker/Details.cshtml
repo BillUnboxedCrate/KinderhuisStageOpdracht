@@ -35,15 +35,15 @@
 <div class="terugButton">
     @if (Model.TypeGebruiker.Contains("Opvoeder"))
     {
-        @Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker")
+        @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
     }
     else if (Model.TypeGebruiker.Contains("Admin"))
     {
-        @Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker")
+        @Html.ActionLink("Terug", "AdminIndex", "Gebruiker")
     }
     else
     {
-        @Html.ActionLink("Terug naar index", "ClientIndex", "Gebruiker")
+        @Html.ActionLink("Terug", "ClientIndex", "Gebruiker")
     }
 </div>
 

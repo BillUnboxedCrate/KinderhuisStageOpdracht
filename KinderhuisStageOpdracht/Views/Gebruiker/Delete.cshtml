@@ -22,11 +22,6 @@
             <td>@Html.LabelFor(m => m.GebruikersNaam)</td>
             <td>@Html.DisplayFor(m => m.GebruikersNaam)</td>
         </tr>
-
-        <tr>
-            <td>@Html.LabelFor(m => m.Opvangtehuis)</td>
-            <td>@Html.DisplayFor(m => m.Opvangtehuis)</td>
-        </tr>
     </table>
 
     <table class="buttontable">
@@ -37,7 +32,7 @@
 
             <td>
                 <span class="terugButton">
-                    @Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker")
+                    @Html.ActionLink("Terug", "AdminIndex", "Gebruiker")
                 </span>
             </td>
         </tr>

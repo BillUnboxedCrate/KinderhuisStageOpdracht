@@ -71,7 +71,7 @@
 
                 <td>
                     <span class="terugButton">
-                        @(Model.TypeGebruiker.Contains("Opvoeder") ? Html.ActionLink("Terug naar index", "OpvoederIndex", "Gebruiker") : Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker"))
+                        @(Model.TypeGebruiker.Contains("Opvoeder") ? Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker") : Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker"))
                     </span>
                 </td>
             </tr>
