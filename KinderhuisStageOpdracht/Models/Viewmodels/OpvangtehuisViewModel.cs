@@ -500,7 +500,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             public string Titel { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Gelieve een foto te selecteren.")]
             [DataType(DataType.Upload)]
             [Display(Name = "Kies een foto")]
             public HttpPostedFileBase ImageUpload { get; set; }

@@ -17,6 +17,7 @@ using Owin;
 using KinderhuisStageOpdracht.Models;
 using KinderhuisStageOpdracht.Models.Domain;
 using KinderhuisStageOpdracht.Models.Viewmodels;
+using SimpleCrypto;
 
 namespace KinderhuisStageOpdracht.Controllers
 {
@@ -131,13 +132,18 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public bool IsValid(string password, string username)
         {
-            var crypto = new SimpleCrypto.PBKDF2();
+            ICryptoService cryptoService = new PBKDF2();
             bool isValid = false;
 
             var gebruiker = _gebruikerRepository.FindByUsername(username);
             if (gebruiker != null)
             {
-                if (gebruiker.Wachtwoord == crypto.Compute(password, gebruiker.Salt))
+                //var encryptedpassword = cryptoService.Compute(password, gebruiker.Salt);
+                //if (cryptoService.Compare(gebruiker.Wachtwoord, encryptedpassword))
+                //{
+                //    isValid = true;
+                //}
+                if (BCrypt.Net.BCrypt.CheckPassword(password, gebruiker.Wachtwoord))
                 {
                     isValid = true;
                 }

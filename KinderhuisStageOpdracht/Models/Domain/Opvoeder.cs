@@ -28,6 +28,17 @@ namespace KinderhuisStageOpdracht.Models.Domain
             IsStagair = isStagair;
         }
 
+        public Opvoeder(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string wachtwoord, string imageUrl, bool isStagair)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            Opvangtehuis = opvangtehuis;
+            Gebruikersnaam = gebruikersnaam;
+            Wachtwoord = wachtwoord;
+            ImageUrl = imageUrl;
+            IsStagair = isStagair;
+        }
+
         public Forum GetForumById(int id)
         {
             return Forums.FirstOrDefault(f => f.Id == id);

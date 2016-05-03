@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Configuration;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -203,11 +204,17 @@ namespace KinderhuisStageOpdracht.Controllers
                         return RedirectToAction("CreateOpvoeder");
                     }
 
-                    var crypto = new SimpleCrypto.PBKDF2();
-                    var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
+
+                    string pass = BCrypt.Net.BCrypt.HashPassword(model.Wachtwoord, BCrypt.Net.BCrypt.GenerateSalt());
 
                     var opvoeder = new Opvoeder(model.Naam, model.Voornaam,
-                        _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam, encrytwachtwoord, crypto.Salt, ImageUploadProfielAfbeelding(model.ImageUpload), model.IsStagair);
+                        _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam, pass, ImageUploadProfielAfbeelding(model.ImageUpload), model.IsStagair);
+
+                    //var crypto = new SimpleCrypto.PBKDF2();
+                    //var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
+
+                    //var opvoeder = new Opvoeder(model.Naam, model.Voornaam,
+                    //    _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam, encrytwachtwoord, crypto.Salt, ImageUploadProfielAfbeelding(model.ImageUpload), model.IsStagair);
 
                     _gebruikerRepository.AddOpvoeder(opvoeder);
                     _gebruikerRepository.SaveChanges();
@@ -276,12 +283,14 @@ namespace KinderhuisStageOpdracht.Controllers
                             return RedirectToAction("CreateClient");
                         }
 
-                        var crypto = new SimpleCrypto.PBKDF2();
-                        var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
+                        //var crypto = new SimpleCrypto.PBKDF2();
+                        //var encrytwachtwoord = crypto.Compute(model.Wachtwoord);
+
+                        string pass = BCrypt.Net.BCrypt.HashPassword(model.Wachtwoord, BCrypt.Net.BCrypt.GenerateSalt());
 
                         var client = new Client(model.Naam, model.Voornaam,
                             _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
-                             encrytwachtwoord, crypto.Salt);
+                             pass);
 
                         _gebruikerRepository.AddClient(client);
                         _gebruikerRepository.SaveChanges();

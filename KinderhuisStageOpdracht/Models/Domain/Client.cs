@@ -38,6 +38,16 @@ namespace KinderhuisStageOpdracht.Models.Domain
             ImageUrl = "~/Content/Images/ProfielAfbeelding/defaultAvatar.png";
         }
 
+        public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string wachtwoord)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            Opvangtehuis = opvangtehuis;
+            Gebruikersnaam = gebruikersnaam;
+            Wachtwoord = wachtwoord;
+            ImageUrl = "~/Content/Images/ProfielAfbeelding/defaultAvatar.png";
+        }
+
         public void AddKamerControle(KamerControle kamerControle)
         {
             KamerControles.Add(kamerControle);

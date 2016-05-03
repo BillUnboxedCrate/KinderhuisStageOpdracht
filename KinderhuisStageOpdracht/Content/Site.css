@@ -981,8 +981,6 @@ label:hover .hovertext {
     border: 2px solid black;
     border-bottom: 1px solid black;
     margin: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
 }
 
 #opvoederindexclientnaam {
@@ -993,8 +991,6 @@ label:hover .hovertext {
     font-size: 15pt;
     padding-top: 12px;
     min-height: 50px;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
 }
 
 .opvoederindexclientaction {

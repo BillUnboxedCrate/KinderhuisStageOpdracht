@@ -57,7 +57,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Gebruikersnaam = "Admin",
                 //Wachtwoord = "test",
                 //testing
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
@@ -71,7 +71,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Braeckman",
                 Voornaam = "Yannick",
                 Gebruikersnaam = "YannickBraeckman",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
@@ -84,7 +84,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "De Seager",
                 Voornaam = "Tom",
                 Gebruikersnaam = "Opvoeder",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                //Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/tomds.jpg"
@@ -96,7 +97,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Michiels",
                 Voornaam = "Sandra",
                 Gebruikersnaam = "Sandra",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/Sandra.jpg"
@@ -107,7 +108,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Cattelain",
                 Voornaam = "Julie",
                 Gebruikersnaam = "Julie",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/Julie.jpg"
@@ -118,7 +119,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Gysens",
                 Voornaam = "Anneliese",
                 Gebruikersnaam = "Anneliese",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
@@ -129,7 +130,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Hamerlinck",
                 Voornaam = "Magda",
                 Gebruikersnaam = "Magda",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/default.png"
@@ -140,7 +141,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Jacobs",
                 Voornaam = "Candy",
                 Gebruikersnaam = "Candy",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/Candy.jpg"
@@ -151,7 +152,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Lejeune",
                 Voornaam = "Alexander",
                 Gebruikersnaam = "Alexander",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/alex.jpg"
@@ -162,7 +163,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Spruyt",
                 Voornaam = "Martine",
                 Gebruikersnaam = "Martine",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/Martine.jpg"
@@ -173,7 +174,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Verstuyft",
                 Voornaam = "Tom",
                 Gebruikersnaam = "Tom",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/tomv.jpg"
@@ -185,7 +186,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Bauwens",
                 Voornaam = "Brikke",
                 Gebruikersnaam = "BrikkeBauwens",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"
@@ -196,7 +197,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Hollanders",
                 Voornaam = "Roy",
                 Gebruikersnaam = "RoyHollanders",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"
@@ -207,7 +208,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Van Den Berghe",
                 Voornaam = "Rutger",
                 Gebruikersnaam = "RutgerVanDenBerghe",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis2,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png",
@@ -219,7 +220,7 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 Naam = "Braeckman",
                 Voornaam = "Sean",
                 Gebruikersnaam = "SeanBraeckman",
-                Wachtwoord = "hSnuFWINbUy6RcorgcO6yzbXxqvTNxsxg8G59Q3MduePwlhnRdjzRXZlsljumUJ/PfkEd+QezJDwpvRB6F14Ug==",
+                Wachtwoord = "$2a$10$GRgbctIhj9/kkzr.VPiH/.IDOE5CwwpmbbwcV8T4ex7nEOlOhQLzO",
                 Salt = "100000.tPEvKWuP2095wwvwwedVj0InJATX3Zqh49l8itxrhYpIuQ==",
                 Opvangtehuis = opvangtehuis1,
                 ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png"

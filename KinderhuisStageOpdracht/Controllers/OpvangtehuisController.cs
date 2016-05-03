@@ -91,6 +91,11 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     ModelState.AddModelError("", e.Message);
                 }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                    return View("Error");
+                }
             }
 
             var csvm = new OpvangtehuisViewModel.CreateSuggestieViewModel();
@@ -149,7 +154,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
             try
             {
-                var opvangtehuis = _gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis;
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
                 opvangtehuis.DeleteSuggestie(id);
                 _opvangtehuisRepository.SaveChanges();
 
@@ -164,6 +169,11 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 ModelState.AddModelError("", e.Message);
                 return RedirectToAction("OpvoederIndex", "Gebruiker");
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return View("Error");
             }
             return RedirectToAction("Suggesties");
         }
@@ -213,6 +223,12 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 ModelState.AddModelError("", e.Message);
             }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return View("Error");
+            }
+
             return RedirectToAction("Suggesties");
         }
 
@@ -406,8 +422,12 @@ namespace KinderhuisStageOpdracht.Controllers
                 }
                 catch (ApplicationException e)
                 {
-
                     ModelState.AddModelError("", e.Message);
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                    return View("Error");
                 }
             }
 
@@ -419,7 +439,7 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             try
             {
-                if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int) Session["gebruiker"]) is Opvoeder))
+                if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
                 {
                     return ReturnToLogin();
                 }
@@ -429,7 +449,7 @@ namespace KinderhuisStageOpdracht.Controllers
                     return View("Error");
                 }
 
-                var opvangtehuis = _gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis;
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
 
                 var menu = opvangtehuis.Menus.FirstOrDefault(m => m.Id == id);
 
@@ -496,8 +516,13 @@ namespace KinderhuisStageOpdracht.Controllers
             }
             catch (NullReferenceException e)
             {
-                return RedirectToAction("OpvoederIndex", "Gebruiker");    
-            }           
+                return RedirectToAction("OpvoederIndex", "Gebruiker");
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return View("Error");
+            }
         }
 
         //Reformat needed
@@ -609,7 +634,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
             try
             {
-                var opvangtehuis = _gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis;
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
                 opvangtehuis.DeleteKlacht(id);
                 _opvangtehuisRepository.SaveChanges();
 
@@ -624,6 +649,11 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 ModelState.AddModelError("", e.Message);
                 return RedirectToAction("OpvoederIndex", "Gebruiker");
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return View("Error");
             }
             return RedirectToAction("KlachtIndex");
         }
@@ -663,6 +693,11 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     ModelState.AddModelError("", e.Message);
                 }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                    return View("Error");
+                }
             }
             return View();
         }
@@ -688,7 +723,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult KamerOpdracht(OpvangtehuisViewModel.KamerOpdrachtListViewModel model)
         {
-            Opvangtehuis opvangtehuis;
+
             if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
                 return ReturnToLogin();
@@ -698,23 +733,42 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 ModelState.AddModelError("ImageUpload", "Dit is geen foto");
             }
-
-            if (ModelState.IsValid)
+            try
             {
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+                if (ModelState.IsValid)
+                {
+                    opvangtehuis.AddOpdracht(new KamerControleOpdracht(model.KamerOpracht.Titel,
+                        ImageUploadKamerControleAfbeelding(model.KamerOpracht.ImageUpload)));
+                    _opvangtehuisRepository.SaveChanges();
+
+                    this.AddNotification("Straf toegevoegd", NotificationType.SUCCESS);
+                }
+
                 opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-                opvangtehuis.AddOpdracht(new KamerControleOpdracht(model.KamerOpracht.Titel, ImageUploadKamerControleAfbeelding(model.KamerOpracht.ImageUpload)));
-                _opvangtehuisRepository.SaveChanges();
-
-                this.AddNotification("Straf toegevoegd", NotificationType.SUCCESS);
+                var kol = new OpvangtehuisViewModel.KamerOpdrachtListViewModel();
+                foreach (var opdracht in opvangtehuis.GetKamerControleOpdrachten())
+                {
+                    kol.AddItem(new OpvangtehuisViewModel.KamerOprachtViewModel(opdracht.Id, opdracht.Titel,
+                        opdracht.ImageUrl));
+                }
+                return View(kol);
             }
-
-            opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
-            var kol = new OpvangtehuisViewModel.KamerOpdrachtListViewModel();
-            foreach (var opdracht in opvangtehuis.GetKamerControleOpdrachten())
+            catch (ApplicationException e)
             {
-                kol.AddItem(new OpvangtehuisViewModel.KamerOprachtViewModel(opdracht.Id, opdracht.Titel, opdracht.ImageUrl));
+                ModelState.AddModelError("", e.Message);
             }
-            return View(kol);
+            catch (NullReferenceException e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return RedirectToAction("OpvoederIndex", "Gebruiker");
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return View("Error");
+            }
+            return View();
         }
 
         [HttpPost]
@@ -726,7 +780,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
             try
             {
-                var opvangtehuis = _gebruikerRepository.FindById((int) Session["gebruiker"]).Opvangtehuis;
+                var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
                 opvangtehuis.RemoveOpdracht(id);
                 _opvangtehuisRepository.SaveChanges();
 
