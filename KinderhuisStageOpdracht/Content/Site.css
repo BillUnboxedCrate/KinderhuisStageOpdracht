@@ -1,6 +1,10 @@
-﻿@import '//fonts.googleapis.com/css?family=Open+Sans:400,300';
+﻿@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+    height: 100%;
+    /*background-image: url("/Content/Images/Backgrounds/serious-sam-hd-the-second-encounter.jpg");*/
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -34,15 +38,6 @@ footer {
 
 .navbar {
     background-color: #286366;
-}
-
-@import '//fonts.googleapis.com/css?family=Open+Sans:400,300';
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0 auto;
-    height: 100%;
-    /*background-image: url("/Content/Images/Backgrounds/serious-sam-hd-the-second-encounter.jpg");*/
 }
 
 html {
@@ -1084,5 +1079,3 @@ label:hover .hovertext {
 .pointer {
     cursor: pointer;
 }
-
-
