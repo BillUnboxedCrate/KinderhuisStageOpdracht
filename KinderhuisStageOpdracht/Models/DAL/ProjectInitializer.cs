@@ -8,7 +8,7 @@ using KinderhuisStageOpdracht.Models.Domain;
 
 namespace KinderhuisStageOpdracht.Models.DAL
 {
-    public class ProjectInitializer : DropCreateDatabaseAlways<ProjectContext>
+    public class ProjectInitializer : CreateDatabaseIfNotExists<ProjectContext>
     {
         enum Dagen
         {
@@ -430,6 +430,8 @@ namespace KinderhuisStageOpdracht.Models.DAL
                 DatumTijd = new DateTime(2016, 2, 17, 12, 0, 0)
             };
             #endregion
+
+
 
             #region KamerControleOpdracht
             var kamercontroleOpracht1 = new KamerControleOpdracht()

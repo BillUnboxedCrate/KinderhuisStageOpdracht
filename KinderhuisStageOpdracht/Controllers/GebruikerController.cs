@@ -704,7 +704,7 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             //Overzicht van de kamercontroles
-            foreach (var i in client.GetKamerControles())
+            foreach (var i in client.GetKamerControlesFromSameWeek())
             {
                 kclivm.AddKamerControleIndexItem(new GebruikerViewModel.KamerControleIndexViewModel(i.Id, i.Datum, i.IsAllesInOrde()));
             }
@@ -816,7 +816,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 }
 
                 var forum = client.GetForum(opvoeder, client);
-                if (forum == null)
+                if (forum != null)
                     _gebruikerRepository.SaveChanges();
                 var fvm = new GebruikerViewModel.ForumViewModel(forum.Id, type);
 
@@ -978,10 +978,9 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 if (IsValid(model.Wachtwoord, gebruiker.Gebruikersnaam))
                 {
-                    var crypto = new SimpleCrypto.PBKDF2();
-                    var encrytwachtwoord = crypto.Compute(model.NieuwWachtwoord);
+                    string pass = BCrypt.Net.BCrypt.HashPassword(model.NieuwWachtwoord, BCrypt.Net.BCrypt.GenerateSalt());
 
-                    gebruiker.WachtwoordAanpassen(encrytwachtwoord, crypto.Salt);
+                    gebruiker.WachtwoordAanpassen(pass);
                     _gebruikerRepository.SaveChanges();
 
                     this.AddNotification("Je wachtwoord is aangepast", NotificationType.SUCCESS);
@@ -992,6 +991,44 @@ namespace KinderhuisStageOpdracht.Controllers
             var wcvm = new GebruikerViewModel.WachtwoordChangeViewModel(gebruiker.GetType().Name);
             return View(wcvm);
         }
+
+        public ActionResult VergetenWachtwoordAanpassen(int id)
+        {
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
+            {
+                return ReturnToLogin();
+            }
+
+            var fpcvm = new GebruikerViewModel.ForgottenPasswordChangeViewModel(id);
+
+            return View(fpcvm);
+        }
+
+        [HttpPost]
+        public ActionResult VergetenWachtwoordAanpassen(GebruikerViewModel.ForgottenPasswordChangeViewModel model)
+        {
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin))
+            {
+                return ReturnToLogin();
+            }
+
+            var gebruiker = _gebruikerRepository.FindById(model.Id);
+            if (ModelState.IsValid)
+            {
+                string pass = BCrypt.Net.BCrypt.HashPassword(model.NieuwWachtwoord, BCrypt.Net.BCrypt.GenerateSalt());
+
+                gebruiker.WachtwoordAanpassen(pass);
+                _gebruikerRepository.SaveChanges();
+
+                this.AddNotification("Je wachtwoord is aangepast", NotificationType.SUCCESS);
+                return RedirectToAction("AdminIndex");
+            }
+            var fpcvm = new GebruikerViewModel.ForgottenPasswordChangeViewModel(gebruiker.Id);
+
+            return View(fpcvm);
+        }
+
+
 
 
         #region helper
@@ -1055,13 +1092,13 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public bool IsValid(string password, string username)
         {
-            var crypto = new SimpleCrypto.PBKDF2();
+
             bool isValid = false;
 
             var gebruiker = _gebruikerRepository.FindByUsername(username);
             if (gebruiker != null)
             {
-                if (gebruiker.Wachtwoord == crypto.Compute(password, gebruiker.Salt))
+                if (BCrypt.Net.BCrypt.CheckPassword(password, gebruiker.Wachtwoord))
                 {
                     isValid = true;
                 }

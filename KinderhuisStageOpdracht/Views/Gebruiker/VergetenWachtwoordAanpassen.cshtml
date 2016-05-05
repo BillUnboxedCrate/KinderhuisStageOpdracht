@@ -1,0 +1,42 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.ForgottenPasswordChangeViewModel
+@{
+    ViewBag.Title = "VergetenWachtwoordAanpassen";
+}
+
+<h2>VergetenWachtwoordAanpassen</h2>
+@using (Html.BeginForm("VergetenWachtwoordAanpassen", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    <table class="form">
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.NieuwWachtwoord, new { @class = "control-label" })
+            </td>
+            <td>
+                @Html.PasswordFor(m => m.NieuwWachtwoord, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.NieuwWachtwoord, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.BevestigNieuwWachtwoord, new { @class = "control-label" })
+            </td>
+            <td>
+                @Html.PasswordFor(m => m.BevestigNieuwWachtwoord, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.BevestigNieuwWachtwoord, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+    </table>
+    <table class="buttontable">
+        <tr>
+            <td><input type="submit" class="button" value="Opslaan" /></td>
+            <td>
+                <span class="terugButton">
+                    @Html.ActionLink("Terug", "AdminIndex", "Gebruiker")
+                </span>
+            </td>
+    </table>
+
+}

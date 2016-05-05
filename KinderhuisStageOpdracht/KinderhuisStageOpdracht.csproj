@@ -415,6 +415,7 @@
     <Content Include="Views\Gebruiker\CreateLeefgroep.cshtml" />
     <Content Include="Views\Planning\ClientPlanning.cshtml" />
     <Content Include="Views\Planning\PlanningOverview.cshtml" />
+    <Content Include="Views\Gebruiker\VergetenWachtwoordAanpassen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

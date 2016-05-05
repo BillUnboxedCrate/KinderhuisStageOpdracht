@@ -366,7 +366,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public List<TimeTrackerViewModel> TimeTrackerList { get; set; }
 
-            public List<string> Clients { get; set; } 
+            public List<string> Clients { get; set; }
 
             public DetailViewModel()
             {
@@ -375,8 +375,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Clients = new List<string>();
             }
 
-            public DetailViewModel(int id, string naam, string voornaam, string gebruikersnaam, 
-                string leefgroepNaam,string leefgroepAdres, string leefgroepGemeente,
+            public DetailViewModel(int id, string naam, string voornaam, string gebruikersnaam,
+                string leefgroepNaam, string leefgroepAdres, string leefgroepGemeente,
                 string typeGebruiker, string imageUrl)
             {
                 Id = id;
@@ -814,7 +814,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             [DataType(DataType.Password)]
             [Display(Name = "Bevestig wachtwoord")]
-            [System.ComponentModel.DataAnnotations.Compare("NieuwWachtwoord",
+            [Compare("NieuwWachtwoord",
                 ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
             public string BevestigNieuwWachtwoord { get; set; }
 
@@ -823,6 +823,30 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public WachtwoordChangeViewModel(string gebruikerType)
             {
                 GebruikerType = gebruikerType;
+            }
+        }
+
+        public class ForgottenPasswordChangeViewModel
+        {
+            public int Id { get; set; }
+
+            [Required]
+            [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} karakters lang zijn.", MinimumLength = 4)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Nieuw Wachtwoord")]
+            public string NieuwWachtwoord { get; set; }
+
+            [DataType(DataType.Password)]
+            [Display(Name = "Bevestig wachtwoord")]
+            [Compare("NieuwWachtwoord",
+                ErrorMessage = "Het wachtwoord en bevestig wachtwoord komen niet overeen")]
+            public string BevestigNieuwWachtwoord { get; set; }
+
+            public ForgottenPasswordChangeViewModel() { }
+
+            public ForgottenPasswordChangeViewModel(int id)
+            {
+                Id = id;
             }
         }
         #endregion

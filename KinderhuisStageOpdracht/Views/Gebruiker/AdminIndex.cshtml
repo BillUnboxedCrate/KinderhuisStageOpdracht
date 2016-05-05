@@ -65,6 +65,8 @@
                 <span> | </span>
                 @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })
                 <span> | </span>
+                @Html.ActionLink("Wachtwoord wijzigen", "VergetenWachtwoordAanpassen", new { id = o.Id })
+                <span> | </span>
                 @Html.ActionLink("Verwijderen", "Delete", new { id = o.Id })
             </td>
         </tr>
@@ -91,7 +93,10 @@
                 <span> | </span>
                 @Html.ActionLink("Aanpassen", "Edit", new { id = o.Id })
                 <span> | </span>
+                @Html.ActionLink("Wachtwoord wijzigen", "VergetenWachtwoordAanpassen", new { id = o.Id })
+                <span> | </span>
                 @Html.ActionLink("Verwijderen", "Delete", new { id = o.Id })
+
             </td>
         </tr>
     }

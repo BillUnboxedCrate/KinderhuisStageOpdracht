@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -35,7 +36,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Gebruikersnaam = gebruikersnaam;
             Wachtwoord = wachtwoord;
             Salt = salt;
-            ImageUrl = "~/Content/Images/ProfielAfbeelding/defaultAvatar.png";
+            ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png";
         }
 
         public Client(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam, string wachtwoord)
@@ -45,7 +46,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Opvangtehuis = opvangtehuis;
             Gebruikersnaam = gebruikersnaam;
             Wachtwoord = wachtwoord;
-            ImageUrl = "~/Content/Images/ProfielAfbeelding/defaultAvatar.png";
+            ImageUrl = "/Content/Images/ProfielAfbeelding/defaultAvatar.png";
         }
 
         public void AddKamerControle(KamerControle kamerControle)
@@ -66,6 +67,27 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public KamerControle GetTodaysKamerControle()
         {
             return KamerControles.FirstOrDefault(k => k.Datum == DateTime.Today);
+        }
+
+        public List<KamerControle> GetKamerControlesFromSameWeek()
+        {
+            var dfi = DateTimeFormatInfo.CurrentInfo;
+            var cal = dfi.Calendar;
+            
+            List<KamerControle> kamerControles = new List<KamerControle>();
+
+            int currentweek = cal.GetWeekOfYear(DateTime.Today, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
+
+            foreach (var k in KamerControles)
+            {
+                var currentweekkamercontrole = cal.GetWeekOfYear(k.Datum, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
+                if (currentweekkamercontrole == currentweek)
+                {
+                    kamerControles.Add(k);
+                } 
+            }
+
+            return kamerControles;
         }
 
         public KamerControle ViewKamerControle(List<KamerControleOpdracht> opdrachts)
