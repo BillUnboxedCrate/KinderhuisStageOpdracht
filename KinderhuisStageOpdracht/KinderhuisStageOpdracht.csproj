@@ -266,6 +266,7 @@
     <Content Include="Content\Images\Aanduidingen\chat.png" />
     <Content Include="Content\Images\Aanduidingen\checklist.png" />
     <Content Include="Content\Images\Aanduidingen\cross.png" />
+    <Content Include="Content\Images\Aanduidingen\datepicker.png" />
     <Content Include="Content\Images\Aanduidingen\opslaan.png" />
     <Content Include="Content\Images\Aanduidingen\film.png" />
     <Content Include="Content\Images\Aanduidingen\klacht.png" />

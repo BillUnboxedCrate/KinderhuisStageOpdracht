@@ -65,12 +65,12 @@ html {
     margin-right: auto;
 }
 
-/*.form th {
-        width: 150px;
+    /*.form th {
+        width: 200px;
     }
 
     .form td {
-        width: 250px;
+        width: 400px;
     }*/
 
 .button-gray {
@@ -1008,11 +1008,11 @@ label:hover .hovertext {
         width: 100%;
     }
 
-        .opvoederindexclientaction a:hover {
-            background-color: rgb(66, 133, 244);
-            color: white;
-            font-weight: bold;
-        }
+    .opvoederindexclientaction a:hover {
+        background-color: rgb(66, 133, 244);
+        color: white;
+        font-weight: bold;
+    }
 
 .planningcardsystem {
     text-align: center;
@@ -1076,9 +1076,9 @@ label:hover .hovertext {
     margin: 10px;
 }
 
-.instellingenblock td{
-    top: 0;
-}
+    .instellingenblock td {
+        top: 0;
+    }
 
 /*.ImageUploadBlock {
     display: inline-block;

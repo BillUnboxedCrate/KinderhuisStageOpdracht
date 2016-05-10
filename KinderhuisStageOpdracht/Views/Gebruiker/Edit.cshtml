@@ -65,15 +65,32 @@
 
         <table class="buttontable">
             <tr>
-                <td>
-                    <input type="submit" class="button" value="Aanpassen" />
-                </td>
+                @if (Model.TypeGebruiker.Contains("Opvoeder"))
+                {
+                    <td>
+                        <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" />
+                    </td>
+                    <td>
+                        <span class="imagebutton">
+                            <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+                                <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                            </a>
+                        </span>
+                    </td>
+                }
+                @if (Model.TypeGebruiker.Contains("Admin"))
+                {
+                    <td>
+                        <input type="submit" class="button" value="Aanpassen" />
+                    </td>
 
-                <td>
-                    <span class="terugButton">
-                        @(Model.TypeGebruiker.Contains("Opvoeder") ? Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker") : Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker"))
-                    </span>
-                </td>
+                    <td>
+                        <span class="terugButton">
+                            @Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker"))
+                        </span>
+                    </td>
+                }
+
             </tr>
         </table>
     }

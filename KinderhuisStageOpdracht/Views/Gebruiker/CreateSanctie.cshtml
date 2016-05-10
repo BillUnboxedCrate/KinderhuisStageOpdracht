@@ -33,7 +33,8 @@
                 @Html.LabelFor(m => m.Date, new { @class = "control-label" })
             </th>
             <td>
-                @Html.TextBoxFor(m => m.Date, new { @class = "form-control datepickersanctie", @readonly = true, @Value = Model.Date.ToString("dd/MM/yyyy") })
+                @Html.TextBoxFor(m => m.Date, new { @class = "datepickersanctie", @readonly = true, @Value = Model.Date.ToString("dd/MM/yyyy") })
+
                 @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
             </td>
         </tr>
@@ -50,10 +51,10 @@
 
         <tr>
             <th>
-                @Html.LabelFor(m => m.Rede, new { @class = "control-label" })
+                @Html.LabelFor(m => m.Rede)
             </th>
             <td>
-                @Html.TextAreaFor(m => m.Rede, new { @class = "form-control" })
+                @Html.TextAreaFor(m => m.Rede)
                 @Html.ValidationMessageFor(m => m.Rede, "", new { @class = "text-danger" })
             </td>
         </tr>
@@ -62,11 +63,13 @@
     <table class="buttontable">
         <tr>
             <td>
-                <input type="submit" class="button" value="Bevestigen" />
+                <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" />
             </td>
             <td>
-                <span class="terugButton">
-                    @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
+                <span class="imagebutton">
+                    <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+                        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                    </a>
                 </span>
             </td>
         </tr>

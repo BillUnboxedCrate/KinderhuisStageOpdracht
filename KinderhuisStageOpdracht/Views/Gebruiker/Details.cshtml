@@ -32,10 +32,14 @@
         </td>
 </table>
 
-<div class="terugButton">
+<div class="buttontable">
     @if (Model.TypeGebruiker.Contains("Opvoeder"))
     {
-        @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
+        <span class="imagebutton">
+            <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+            </a>
+        </span>
     }
     else if (Model.TypeGebruiker.Contains("Admin"))
     {

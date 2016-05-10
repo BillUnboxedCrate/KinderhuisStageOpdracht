@@ -89,7 +89,10 @@
                 showButtonPanel: false,
                 dateFormat: "dd/mm/yy",
                 shortYearCutoff: 50,
-                yearRange: "c-100:c+nn"
+                yearRange: "c-100:c+nn",
+                showOn: "button",
+                buttonImage: "../../Content/Images/Aanduidingen/datepicker.png",
+                buttonImageOnly: true
             }).datepicker("setDate", "01/01/2000");
         });
 
@@ -103,7 +106,10 @@
                 showButtonPanel: false,
                 dateFormat: "dd/mm/yy",
                 shortYearCutoff: 50,
-                yearRange: "c-100:c+nn"
+                yearRange: "c-100:c+nn",
+                showOn: "button",
+                buttonImage: "../../Content/Images/Aanduidingen/datepicker.png",
+                buttonImageOnly: true
             });
         });
 
@@ -117,7 +123,10 @@
                 showButtonPanel: false,
                 dateFormat: "dd/mm/yy",
                 shortYearCutoff: 50,
-                yearRange: "c-100:c+nn"
+                yearRange: "c-100:c+nn",
+                showOn: "button",
+                buttonImage: "../../Content/Images/Aanduidingen/datepicker.png",
+                buttonImageOnly: true
             }).datepicker("setDate", new Date());
         });
 
@@ -130,6 +139,9 @@
             monthNamesShort: ["Jan", "Feb", "Maa", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
             showButtonPanel: false,
             dateFormat: "dd/mm/yy",
+            showOn: "button",
+            buttonImage: "../../Content/Images/Aanduidingen/datepicker.png",
+            buttonImageOnly: true,
             yearRange: "-nn:+nn",
             beforeShowDay: function (date) {
                 var day = date.getDay();
@@ -145,6 +157,9 @@
             showButtonPanel: false,
             dateFormat: "dd/mm/yy",
             yearRange: "-nn:+nn",
+            showOn: "button",
+            buttonImage: "../../Content/Images/Aanduidingen/datepicker.png",
+            buttonImageOnly: true,
             beforeShowDay: function (date) {
                 var day = date.getDay();
                 return [(day === 1)];
