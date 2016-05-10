@@ -5,6 +5,7 @@ using System.Net.Configuration;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using KinderhuisStageOpdracht.App_Start;
 using KinderhuisStageOpdracht.Extensions;
 using KinderhuisStageOpdracht.Models.Domain;
 using KinderhuisStageOpdracht.Models.Viewmodels;
@@ -877,19 +878,6 @@ namespace KinderhuisStageOpdracht.Controllers
             return View();
         }
 
-        public ActionResult Instellingen()
-        {
-            if (UserStillLoggedIn())
-            {
-                return ReturnToLogin();
-            }
-
-            var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
-            var ivm = new GebruikerViewModel.InstellingenViewModel(gebruiker.GetType().Name, gebruiker.BackgroundUrl, gebruiker.ImageUrl);
-
-            return View(ivm);
-        }
-
         [HttpPost]
         public ActionResult DeletePost(int id, int forumId)
         {
@@ -925,8 +913,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult Instellingen(GebruikerViewModel.InstellingenViewModel model)
+        public ActionResult Instellingen()
         {
             if (UserStillLoggedIn())
             {
@@ -934,42 +921,18 @@ namespace KinderhuisStageOpdracht.Controllers
             }
 
             var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
-            if (ModelState.IsValid)
-            {
-                if (model.AvatarUpload != null)
-                {
-                    gebruiker.AddImage(ImageUploadProfielAfbeelding(model.AvatarUpload));
-                    Session["profileimageurl"] = gebruiker.ImageUrl;
-                }
 
-                if (model.BackgroundUpload != null)
-                {
-                    gebruiker.AddBackground(ImageUploadBackgroundAfbeelding(model.BackgroundUpload));
-                    Session["backgroundurl"] = gebruiker.BackgroundUrl;
-                }
-                _gebruikerRepository.SaveChanges();
-                this.AddNotification("De veranderingen zijn opgeslagen.", NotificationType.SUCCESS);
+            var pavm = new GebruikerViewModel.ProfielAfbeeldingInstellenViewModel(gebruiker.ImageUrl);
+            var aavm = new GebruikerViewModel.AchtergrondAfbeeldingInstellenViewModel(gebruiker.BackgroundUrl);
+            var ivm = new GebruikerViewModel.InstellingenViewModel(gebruiker.GetType().Name, pavm, aavm);
 
-            }
-
-            var ivm = new GebruikerViewModel.InstellingenViewModel(gebruiker.GetType().Name, gebruiker.BackgroundUrl, gebruiker.ImageUrl);
             return View(ivm);
         }
 
-        public ActionResult WachtwoordAanpassen()
-        {
-            if (UserStillLoggedIn())
-            {
-                return ReturnToLogin();
-            }
 
-            var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
-            var wcvm = new GebruikerViewModel.WachtwoordChangeViewModel(gebruiker.GetType().Name);
-            return View(wcvm);
-        }
 
         [HttpPost]
-        public ActionResult WachtwoordAanpassen(GebruikerViewModel.WachtwoordChangeViewModel model)
+        public ActionResult ProfielInstelling(GebruikerViewModel.InstellingenViewModel model)
         {
             if (UserStillLoggedIn())
             {
@@ -979,9 +942,60 @@ namespace KinderhuisStageOpdracht.Controllers
             var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
             if (ModelState.IsValid)
             {
-                if (IsValid(model.Wachtwoord, gebruiker.Gebruikersnaam))
+                if (model.ProfielAfbeeldingInstellenViewModel.ProfielAfbeeldingUpload != null)
                 {
-                    string pass = BCrypt.Net.BCrypt.HashPassword(model.NieuwWachtwoord, BCrypt.Net.BCrypt.GenerateSalt());
+                    gebruiker.AddImage(ImageUploadProfielAfbeelding(model.ProfielAfbeeldingInstellenViewModel.ProfielAfbeeldingUpload));
+                    Session["profileimageurl"] = gebruiker.ImageUrl;
+                    _gebruikerRepository.SaveChanges();
+                }
+            }
+
+            var pavm = new GebruikerViewModel.ProfielAfbeeldingInstellenViewModel(gebruiker.ImageUrl);
+            var aavm = new GebruikerViewModel.AchtergrondAfbeeldingInstellenViewModel(gebruiker.BackgroundUrl);
+            var ivm = new GebruikerViewModel.InstellingenViewModel(gebruiker.GetType().Name, pavm, aavm);
+            return View("Instellingen", ivm);
+        }
+
+        [HttpPost]
+        public ActionResult AchtergrondInstelling(GebruikerViewModel.InstellingenViewModel model)
+        {
+            if (UserStillLoggedIn())
+            {
+                return ReturnToLogin();
+            }
+
+            var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
+            if (ModelState.IsValid)
+            {
+                if (model.AchtergrondAfbeeldingInstellenViewModel.BackgroundUpload != null)
+                {
+                    gebruiker.AddBackground(ImageUploadBackgroundAfbeelding(model.AchtergrondAfbeeldingInstellenViewModel.BackgroundUpload));
+                    Session["backgroundurl"] = gebruiker.BackgroundUrl;
+                    _gebruikerRepository.SaveChanges();
+                }
+            }
+
+            var pavm = new GebruikerViewModel.ProfielAfbeeldingInstellenViewModel(gebruiker.ImageUrl);
+            var aavm = new GebruikerViewModel.AchtergrondAfbeeldingInstellenViewModel(gebruiker.BackgroundUrl);
+            var ivm = new GebruikerViewModel.InstellingenViewModel(gebruiker.GetType().Name, pavm, aavm);
+            return View("Instellingen", ivm);
+        }
+
+
+        [HttpPost]
+        public ActionResult WachtwoordAanpassen(GebruikerViewModel.InstellingenViewModel model)
+        {
+            if (UserStillLoggedIn())
+            {
+                return ReturnToLogin();
+            }
+
+            var gebruiker = _gebruikerRepository.FindById((int)Session["gebruiker"]);
+            if (ModelState.IsValid)
+            {
+                if (IsValid(model.ChangeViewModel.Wachtwoord, gebruiker.Gebruikersnaam))
+                {
+                    string pass = BCrypt.Net.BCrypt.HashPassword(model.ChangeViewModel.NieuwWachtwoord, BCrypt.Net.BCrypt.GenerateSalt());
 
                     gebruiker.WachtwoordAanpassen(pass);
                     _gebruikerRepository.SaveChanges();
@@ -991,8 +1005,10 @@ namespace KinderhuisStageOpdracht.Controllers
                 }
                 ModelState.AddModelError("Wachtwoord", "Het wachtwoord dat is ingegeven is niet correct");
             }
-            var wcvm = new GebruikerViewModel.WachtwoordChangeViewModel(gebruiker.GetType().Name);
-            return View(wcvm);
+            var pavm = new GebruikerViewModel.ProfielAfbeeldingInstellenViewModel(gebruiker.ImageUrl);
+            var aavm = new GebruikerViewModel.AchtergrondAfbeeldingInstellenViewModel(gebruiker.BackgroundUrl);
+            var ivm = new GebruikerViewModel.InstellingenViewModel(gebruiker.GetType().Name, pavm, aavm);
+            return View("Instellingen", ivm);
         }
 
         public ActionResult VergetenWachtwoordAanpassen(int id)

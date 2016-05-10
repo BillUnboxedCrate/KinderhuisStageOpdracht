@@ -775,34 +775,62 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         {
             public string GebruikerType { get; set; }
 
+            public ProfielAfbeeldingInstellenViewModel ProfielAfbeeldingInstellenViewModel { get; set; }
+            public AchtergrondAfbeeldingInstellenViewModel AchtergrondAfbeeldingInstellenViewModel { get; set; }
+            public WachtwoordChangeViewModel ChangeViewModel { get; set; }
+
+            public InstellingenViewModel() { }
+
+            public InstellingenViewModel(string gebruikerType, ProfielAfbeeldingInstellenViewModel profiel, AchtergrondAfbeeldingInstellenViewModel achtergrond)
+            {
+                GebruikerType = gebruikerType;
+                ProfielAfbeeldingInstellenViewModel = profiel;
+                AchtergrondAfbeeldingInstellenViewModel = achtergrond;
+            }
+
+            public InstellingenViewModel(ProfielAfbeeldingInstellenViewModel profiel, AchtergrondAfbeeldingInstellenViewModel achtergrond)
+            {
+                ProfielAfbeeldingInstellenViewModel = profiel;
+                AchtergrondAfbeeldingInstellenViewModel = achtergrond;
+            }
+
+
+        }
+
+        public class ProfielAfbeeldingInstellenViewModel
+        {
+            public string ProfielAfbeeldingUrl { get; set; }
+            [DataType(DataType.Upload)]
+            public HttpPostedFileBase ProfielAfbeeldingUpload { get; set; }
+
+            public ProfielAfbeeldingInstellenViewModel() { }
+
+            public ProfielAfbeeldingInstellenViewModel(string url)
+            {
+                ProfielAfbeeldingUrl = url;
+            }
+
+
+        }
+
+        public class AchtergrondAfbeeldingInstellenViewModel
+        {
             public string BackgroundUrl { get; set; }
             [DataType(DataType.Upload)]
             public HttpPostedFileBase BackgroundUpload { get; set; }
 
-            public string AvatarUrl { get; set; }
-            [DataType(DataType.Upload)]
-            public HttpPostedFileBase AvatarUpload { get; set; }
+            public AchtergrondAfbeeldingInstellenViewModel() { }
 
-            public InstellingenViewModel() { }
-
-            public InstellingenViewModel(string gebruikerType, string backgroundUrl, string avatarUrl)
-            {
-                GebruikerType = gebruikerType;
-                BackgroundUrl = backgroundUrl;
-                AvatarUrl = avatarUrl;
-            }
-
-            public InstellingenViewModel(string backgroundUrl, string avatarUrl)
+            public AchtergrondAfbeeldingInstellenViewModel(string backgroundUrl)
             {
                 BackgroundUrl = backgroundUrl;
-                AvatarUrl = avatarUrl;
             }
         }
 
+
+
         public class WachtwoordChangeViewModel
         {
-            public string GebruikerType { get; set; }
-
             [Required]
             [Display(Name = "Huidig wachtwoord")]
             [DataType(DataType.Password)]
@@ -821,11 +849,6 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public string BevestigNieuwWachtwoord { get; set; }
 
             public WachtwoordChangeViewModel() { }
-
-            public WachtwoordChangeViewModel(string gebruikerType)
-            {
-                GebruikerType = gebruikerType;
-            }
         }
 
         public class ForgottenPasswordChangeViewModel

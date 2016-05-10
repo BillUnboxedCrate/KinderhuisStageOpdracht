@@ -808,8 +808,8 @@ label:hover .hovertext {
 }
 
 #avatarImageShow {
-    width: 200px;
-    height: auto;
+    width: auto;
+    height: 220px;
     border: 5px solid black;
 }
 
@@ -1069,15 +1069,22 @@ label:hover .hovertext {
         }
 
 
-#uploadblocks {
+.instellingenblock {
+    width: 100%;
+    border: 1px solid black;
+    height: auto;
+    margin: 10px;
+}
+
+.instellingenblock td{
     top: 0;
 }
 
-.ImageUploadBlock {
+/*.ImageUploadBlock {
     display: inline-block;
     vertical-align: top;
     margin-right: 10px;
-}
+}*/
 
 #opvoedermenutable {
     margin-left: auto;

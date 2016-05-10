@@ -34,11 +34,13 @@
     <table class="buttontable">
         <tr>
             <td>
-                <input type="submit" class="button" value="Toevoegen" />
+                <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" />
             </td>
             <td>
-                <span class="terugButton">
-                    @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
+                <span class="imagebutton">
+                    <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+                        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                    </a>
                 </span>
             </td>
         </tr>
