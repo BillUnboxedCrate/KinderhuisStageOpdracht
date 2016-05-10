@@ -33,18 +33,23 @@
             </table>
         </div>
 
-        <table class="buttontable">
-            <tr>
-                <td>
-                    <input type="submit" class="button" value="Bevestingen" />
-                </td>
-                <td>
-                    <span class="terugButton">
-                        @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
-                    </span>
-                </td>
-            </tr>
-        </table>
+    <table class="buttontable">
+        <tr>
+            <td>
+                <div class="imagebutton">
+                    <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" alt="Accepteren" title="Accpeteren" />
+                </div>
+            </td>
+            <td>
+                <div class="imagebutton">
+                    <a href="@Url.Action("Op", "Gebruiker")">
+                        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    }
 
         <div class="KamerOpdrachtCardSystem">
             @foreach (var o in Model.List)

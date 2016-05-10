@@ -3,7 +3,13 @@
     ViewBag.Title = "MenuIndex";
 }
 
-<h2>Index</h2>
+<div style="float: right" class="imagebutton">
+    <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+    </a>
+</div>
+
+<h2>Overzicht van menus</h2>
 @Html.ActionLink("Maak de menu aan", "CreateMenu")
 <table class="table">
     <tr>
@@ -20,7 +26,7 @@
             <td>@Html.DisplayFor(modelItem => m.BeginWeek)</td>
             <td>@Html.DisplayFor(modelItem => m.EindeWeek)</td>
             <td>
-                @Html.ActionLink("Aanpassen", "EditMenu", new {id = m.Id}) |
+                @Html.ActionLink("Aanpassen", "EditMenu", new { id = m.Id }) |
                 @Ajax.ActionLink("Verwijderen", "DeleteMenu", "Opvangtehuis", new { id = m.Id }, new AjaxOptions()
                 {
                     HttpMethod = "POST",
@@ -31,6 +37,3 @@
     }
 </table>
 
-<div class="terugButton">
-    @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
-</div>

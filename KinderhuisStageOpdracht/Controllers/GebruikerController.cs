@@ -800,25 +800,28 @@ namespace KinderhuisStageOpdracht.Controllers
                 Client client;
                 Opvoeder opvoeder;
                 string type;
+                string name;
 
                 if (gebruiker is Client)
                 {
                     client = (Client)gebruiker;
                     opvoeder = (Opvoeder)_gebruikerRepository.FindById(id);
                     type = "client";
+                    name = opvoeder.Voornaam;
                 }
                 else
                 {
                     opvoeder = (Opvoeder)gebruiker;
                     client = (Client)_gebruikerRepository.FindById(id);
                     type = "Opvoeder";
+                    name = client.Voornaam;
 
                 }
 
                 var forum = client.GetForum(opvoeder, client);
                 if (forum != null)
                     _gebruikerRepository.SaveChanges();
-                var fvm = new GebruikerViewModel.ForumViewModel(forum.Id, type);
+                var fvm = new GebruikerViewModel.ForumViewModel(forum.Id, type, name);
 
                 foreach (var p in forum.Posts)
                 {

@@ -494,6 +494,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int ForumId { get; set; }
             public List<PostViewModel> List { get; set; }
             public string Post { get; set; }
+            public string OntvangerNaam { get; set; }
             public string TypeGebruiker { get; set; }
 
             public ForumViewModel()
@@ -501,10 +502,11 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 List = new List<PostViewModel>();
             }
 
-            public ForumViewModel(int id, string type)
+            public ForumViewModel(int id, string type, string ontvangernaam)
             {
                 ForumId = id;
                 TypeGebruiker = type;
+                OntvangerNaam = ontvangernaam;
                 List = new List<PostViewModel>();
             }
 

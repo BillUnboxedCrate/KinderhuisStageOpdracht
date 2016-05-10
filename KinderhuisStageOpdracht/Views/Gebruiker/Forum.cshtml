@@ -4,9 +4,11 @@
 }
 
 <div class="formPage">
+    <h2 style="text-align: center">Zeg iets tegen @Model.OntvangerNaam</h2>
     <div id="forum">
         @Html.HiddenFor(model => model.ForumId)
         @Html.HiddenFor(model => model.TypeGebruiker)
+
         @foreach (var p in Model.List)
         {
             if (p.Mine)
@@ -58,7 +60,7 @@
                 @Html.TextAreaFor(model => model.Post, new { @class = "form-control", @cols = 30, @rows = 5 })
 
                 <div class="form-group">
-                    <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/versturen.png")" onclick="window.scrollTo(0, document.body.scrollHeight);" alt="versturen" id="sendbutton" />
+                    <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/versturen.png")" onclick=" window.scrollTo(0, document.body.scrollHeight); " alt="versturen" id="sendbutton" />
                 </div>
             </div>
         }

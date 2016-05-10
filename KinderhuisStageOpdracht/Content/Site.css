@@ -172,21 +172,21 @@ input[type="text"], input[type="password"], textarea, select {
 
         .category-menu > li > a {
             /*display: inline-block;*/
-            height: 120px;
-            width: 120px;
+            font-weight: bold;
+            height: 60px;
+            width: 230px;
             background: rgb(248, 248, 248);
             display: table-cell;
             vertical-align: middle;
             text-align: center;
-            border: solid 5px;
-            border-radius: 5px;
-            color: black;
-            border-color: rgb(66, 133, 244);
+            border: solid 2px;
+            border-color: black;
             text-decoration: none;
         }
 
             .category-menu > li > a:hover {
-                border-color: #1042B0;
+                color: white;
+                background-color: rgb(66, 133, 244);
             }
 
 .menuItemBox {
@@ -962,7 +962,7 @@ label:hover .hovertext {
 }
 
 .opvoederindexclientscard {
-    width: 260px;
+    width: 200px;
     min-height: 300px;
     background-color: white;
     vertical-align: top;
@@ -977,7 +977,7 @@ label:hover .hovertext {
     background-color: rgb(52, 168, 83);
     color: white;
     font-weight: bolder;
-    font-size: 15pt;
+    font-size: 14pt;
     padding-top: 12px;
     min-height: 50px;
 }
@@ -993,14 +993,15 @@ label:hover .hovertext {
         border-bottom: 1px solid black;
     }
 
-    .opvoederindexclientaction a {
+    .opvoederindexclientaction > div > a {
         font-weight: bold;
-        padding-top: 12px;
+        /*padding-top: 12px;*/
         text-decoration: none;
         display: table-cell;
         margin-left: auto;
         margin-right: auto;
         background-color: White;
+        vertical-align: middle;
         /*border: 3px solid blue;*/
         position: absolute;
         height: 100%;
@@ -1077,3 +1078,36 @@ label:hover .hovertext {
     vertical-align: top;
     margin-right: 10px;
 }
+
+#opvoedermenutable {
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+}
+
+    #opvoedermenutable td {
+        vertical-align: top;
+        text-align: center;
+        width: 230px;
+        border: 1px solid black;
+        height: 50px;
+        position: relative;
+        padding: 0;
+    }
+
+    #opvoedermenutable a {
+        text-decoration: none;
+        font-weight: bold;
+        margin-left: auto;
+        margin-right: auto;
+        display: table-cell;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        vertical-align: middle;
+    }
+
+        #opvoedermenutable a:hover {
+            color: white;
+            background-color: rgb(66, 133, 244);
+        }

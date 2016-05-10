@@ -3,7 +3,13 @@
     ViewBag.Title = "GestrafteOverzicht";
 }
 
-<h2>GestrafteOverzicht</h2>
+<div style="float: right" class="imagebutton">
+    <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+    </a>
+</div>
+
+<h2>Overzicht van gestrafte cliënten</h2>
 <table class="table">
     <tr>
         <th>Persoon</th>
@@ -25,7 +31,4 @@
     }
 </table>
 
-<div class="terugButton">
-    @Html.ActionLink("Terug", "OpvoederIndex")
-</div>
 

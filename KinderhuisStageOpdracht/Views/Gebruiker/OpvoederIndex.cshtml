@@ -10,6 +10,11 @@
         <li>@Html.ActionLink("Lijst van menus", "MenuIndex", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Lijst van klachten", "KlachtIndex", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Lijst van beloningen / straffen", "Index", "Straf")</li>
+
+    </ul>
+
+    <ul class="category-menu">
+        <li>@Html.ActionLink("Voeg cliënt toe", "CreateClient")</li>
         <li>@Html.ActionLink("Overzicht van beloonde / gestrafte cliënten", "GestrafteOverzicht", "Gebruiker")</li>
         <li>@Html.ActionLink("kamer controle opdrachten overzicht", "KamerOpdracht", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Instellingen", "Instellingen", "Gebruiker")</li>
@@ -18,7 +23,7 @@
 
 <h3 style="text-align: center">Cliënten</h3>
 
-<div class="terugButton">@Html.ActionLink("Voeg cliënt toe", "CreateClient")</div>
+@*<div class="terugButton">@Html.ActionLink("Voeg cliënt toe", "CreateClient")</div>*@
 
 <div class="opvoederindexclients">
     @foreach (var o in Model.Clients)
@@ -38,10 +43,10 @@
                 <div>@Html.ActionLink("Kamercontrole", "KamerControleOpvoeder", new { id = o.Id })</div>
             </div>
             <div class="opvoederindexclientaction">
-                <div>@Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new {id = o.Id})</div>
+                <div>@Html.ActionLink("Zeg iets tegen " + o.Voornaam, "Forum", new { id = o.Id })</div>
             </div>
             <div class="opvoederindexclientaction">
-                <div>@Html.ActionLink("Bekijk planning", "PlanningOverview", "Planning" , new { id = o.Id }, null)</div>
+                <div>@Html.ActionLink("Bekijk planning", "PlanningOverview", "Planning", new { id = o.Id }, null)</div>
             </div>
         </div>
     }

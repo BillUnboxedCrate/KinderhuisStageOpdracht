@@ -3,7 +3,13 @@
     ViewBag.Title = "KlachtIndex";
 }
 
-<h2>KlachtIndex</h2>
+<div style="float: right" class="imagebutton">
+    <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+    </a>
+</div>
+
+<h2>Overzicht van de klachten</h2>
 
 <table class="table">
     <tr>
@@ -29,7 +35,3 @@
         </tr>
     }
 </table>
-
-<div class="terugButton">
-    @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
-</div>
