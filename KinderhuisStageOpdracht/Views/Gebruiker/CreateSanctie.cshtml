@@ -41,11 +41,12 @@
 
         <tr>
             <th>
-                @Html.LabelFor(m => m.AantalDagen, new { @class = "control-label" })
+                @Html.LabelFor(m => m.EindDatum, new { @class = "control-label" })
             </th>
             <td>
-                @Html.TextBoxFor(m => m.AantalDagen, new { @class = "form-control", @Value = 1, @type = "number", @min = 1 })
-                @Html.ValidationMessageFor(m => m.AantalDagen, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(m => m.EindDatum, new { @class = "datepickersanctie", @readonly = true, @Value = Model.Date.ToString("dd/MM/yyyy") })
+
+                @Html.ValidationMessageFor(m => m.EindDatum, "", new { @class = "text-danger" })
             </td>
         </tr>
 

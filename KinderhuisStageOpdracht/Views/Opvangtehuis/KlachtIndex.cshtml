@@ -13,8 +13,13 @@
 
 <table class="table">
     <tr>
-        <th>Doorgestuurd door</th>
+        @*<th>Doorgestuurd door</th>
         <th>Doorgestuurd op</th>
+        <th class="omschrijvingColumn">Omschrijving</th>
+        <th>Actie</th>*@
+
+        <th>@Html.ActionLink("Doorgestuurd door", "KlachtIndex", new { SortingOrder = "Client" })</th>
+        <th>@Html.ActionLink("Doorgestuurd op", "KlachtIndex", new { SortingOrder = "Date" })</th>
         <th class="omschrijvingColumn">Omschrijving</th>
         <th>Actie</th>
     </tr>

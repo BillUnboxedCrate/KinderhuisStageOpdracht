@@ -636,7 +636,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     var gebruiker = (Client)_gebruikerRepository.FindById(model.Id);
                     opvangtehuis = _gebruikerRepository.FindById(gebruiker.Id).Opvangtehuis;
-                    gebruiker.AddSanctie(model.Rede, model.Date, model.AantalDagen, opvangtehuis.FindStrafByName(model.GeselecteerdeStraf));
+                    gebruiker.AddSanctie(model.Rede, model.Date, model.EindDatum, opvangtehuis.FindStrafByName(model.GeselecteerdeStraf));
                     _gebruikerRepository.SaveChanges();
 
                     this.AddNotification("Een sanctie is toegevoegd", NotificationType.SUCCESS);
@@ -1105,6 +1105,7 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             FormsAuthentication.SignOut();
             Session["gebruiker"] = null;
+            ViewBag.IsForcedLogout = true;
             return RedirectToAction("Login", "Account");
         }
 

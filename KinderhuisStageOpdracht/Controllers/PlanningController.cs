@@ -185,6 +185,7 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             FormsAuthentication.SignOut();
             Session["gebruiker"] = null;
+            ViewBag.IsForcedLogout = true;
             return RedirectToAction("Login", "Account");
         }
         #endregion

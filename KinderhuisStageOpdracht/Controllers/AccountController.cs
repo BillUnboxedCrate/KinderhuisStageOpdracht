@@ -59,6 +59,7 @@ namespace KinderhuisStageOpdracht.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            ViewBag.IsForcedLogout = true;
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }

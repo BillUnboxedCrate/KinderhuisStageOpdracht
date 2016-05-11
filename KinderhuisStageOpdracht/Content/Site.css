@@ -189,7 +189,7 @@ input[type="text"], input[type="password"], textarea, select {
                 background-color: rgb(66, 133, 244);
             }
 
-.menutable th, td {
+.menutable th, .menutable td {
     padding-right: 15px;
     padding-bottom: 15px;
 }
@@ -741,6 +741,7 @@ label:hover .hovertext {
 }
 
 .SanctieCard {
+    background-color: white;
     vertical-align: top;
     display: inline-block;
     border: 3px solid black;
@@ -770,7 +771,7 @@ label:hover .hovertext {
 }
 
 .SanctieTimeBlock {
-    height: 47px;
+    /*height: 47px;*/
 }
 
     .SanctieTimeBlock table {

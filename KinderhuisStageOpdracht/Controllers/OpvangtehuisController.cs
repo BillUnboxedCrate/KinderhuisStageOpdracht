@@ -25,16 +25,35 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
         // GET: Opvangtehuis
-        public ActionResult Suggesties()
+        //public ActionResult Suggesties()
+        //{
+        //    if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+        //    {
+        //        return ReturnToLogin();
+        //    }
+
+        //    if (!Request.IsAuthenticated)
+        //    {
+        //        return View("Error");
+        //    }
+
+        //    var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+        //    var slvm = new OpvangtehuisViewModel.SuggestieListViewModel();
+
+        //    foreach (var s in opvangtehuis.GetSuggesties())
+        //    {
+        //        var svm = new OpvangtehuisViewModel.SuggestieViewModel(s.TimeStamp, s.Genre, s.Client.GiveFullName(),
+        //            s.Beschrijving, s.Id);
+        //        slvm.AddSuggestie(svm);
+        //    }
+        //    return View(slvm);
+        //}
+
+        public ActionResult Suggesties(string sortingOrder)
         {
             if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
                 return ReturnToLogin();
-            }
-
-            if (!Request.IsAuthenticated)
-            {
-                return View("Error");
             }
 
             var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
@@ -46,6 +65,20 @@ namespace KinderhuisStageOpdracht.Controllers
                     s.Beschrijving, s.Id);
                 slvm.AddSuggestie(svm);
             }
+
+            switch (sortingOrder)
+            {
+                case "Genre":
+                    slvm.Suggesties = slvm.Suggesties.OrderBy(m => m.Genre).ToList();
+                    break;
+                case "Client":
+                    slvm.Suggesties = slvm.Suggesties.OrderBy(m => m.Client).ToList();;
+                    break;
+                case "Wanneer":
+                   slvm.Suggesties = slvm.Suggesties.OrderByDescending(m => m.TimeStamp).ToList();;
+                    break;
+            }
+
             return View(slvm);
         }
 
@@ -607,7 +640,25 @@ namespace KinderhuisStageOpdracht.Controllers
         }
 
 
-        public ActionResult KlachtIndex()
+        //public ActionResult KlachtIndex()
+        //{
+        //    if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+        //    {
+        //        return ReturnToLogin();
+        //    }
+
+        //    var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+        //    var lkvm = new OpvangtehuisViewModel.ListKlachtViewModel();
+
+        //    foreach (var klacht in opvangtehuis.GetKlachten())
+        //    {
+        //        lkvm.AddKlacht(new OpvangtehuisViewModel.KlachtViewModel(klacht.Id, klacht.Omschrijving, klacht.Client.GiveFullName(), klacht.TimeStamp));
+        //    }
+
+        //    return View(lkvm);
+        //}
+
+        public ActionResult KlachtIndex(string sortingOrder)
         {
             if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
@@ -620,6 +671,16 @@ namespace KinderhuisStageOpdracht.Controllers
             foreach (var klacht in opvangtehuis.GetKlachten())
             {
                 lkvm.AddKlacht(new OpvangtehuisViewModel.KlachtViewModel(klacht.Id, klacht.Omschrijving, klacht.Client.GiveFullName(), klacht.TimeStamp));
+            }
+
+            switch (sortingOrder)
+            {
+                case "Client":
+                    lkvm.List = lkvm.List.OrderBy(m => m.Client).ToList();
+                    break;
+                case "Date":
+                    lkvm.List = lkvm.List.OrderByDescending(m => m.TimeStamp).ToList(); ;
+                    break;
             }
 
             return View(lkvm);
@@ -818,6 +879,7 @@ namespace KinderhuisStageOpdracht.Controllers
         {
             FormsAuthentication.SignOut();
             Session["gebruiker"] = null;
+            ViewBag.IsForcedLogout = true;
             return RedirectToAction("Login", "Account");
         }
         public bool ImageIsValidType(HttpPostedFileBase file)

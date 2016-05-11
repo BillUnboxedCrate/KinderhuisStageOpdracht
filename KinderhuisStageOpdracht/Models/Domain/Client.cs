@@ -73,7 +73,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         {
             var dfi = DateTimeFormatInfo.CurrentInfo;
             var cal = dfi.Calendar;
-            
+
             List<KamerControle> kamerControles = new List<KamerControle>();
 
             int currentweek = cal.GetWeekOfYear(DateTime.Today, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
@@ -84,7 +84,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
                 if (currentweekkamercontrole == currentweek)
                 {
                     kamerControles.Add(k);
-                } 
+                }
             }
 
             return kamerControles;
@@ -130,9 +130,9 @@ namespace KinderhuisStageOpdracht.Models.Domain
             Sancties.Add(sanctie);
         }
 
-        public void AddSanctie(string rede, DateTime datum, int aantalDagen, Straf straf)
+        public void AddSanctie(string rede, DateTime datum, DateTime endDate, Straf straf)
         {
-            var sanctie = new Sanctie(rede, datum, aantalDagen, straf);
+            var sanctie = new Sanctie(rede, datum, endDate, straf);
 
             Sancties.Add(sanctie);
         }
@@ -209,7 +209,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public List<TimeTrack> GetTimeTrackList()
         {
             return TimeTrackList.OrderBy(t => t.Aanmelden).ToList();
-        } 
+        }
 
         public void AddTimeTrack()
         {

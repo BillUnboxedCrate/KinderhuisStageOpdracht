@@ -21,12 +21,11 @@ namespace KinderhuisStageOpdracht.Models.Domain
 
         public Sanctie() { }
 
-        public Sanctie(string rede, DateTime datum, int aantalDagen, Straf straf)
+        public Sanctie(string rede, DateTime datum, DateTime endDate, Straf straf)
         {
             Rede = rede;
             BeginDatum = datum;
-            EindDatum = datum.AddDays(aantalDagen - 1);
-            AantalDagen = aantalDagen;
+            EindDatum = endDate;
             Straf = straf;
         }
 
