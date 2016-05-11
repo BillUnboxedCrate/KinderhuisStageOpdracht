@@ -4,7 +4,8 @@
 }
 @using (Html.BeginForm("KamerControleOpvoeder", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    <h2>KamerControle</h2>
+    <h2>Kamercontrole checklist van @Html.DisplayFor(model => model.KamerControleListIndexViewModel.ClientName)</h2>
+    <hr/>
     @Html.HiddenFor(model => model.KamerControleListIndexViewModel.ClientId)
     @*<table id="kamercontroleTableOpvoeder">
             <tr>
@@ -38,15 +39,15 @@
                 <div class="kamercontroleTitel">
                     @Html.DisplayFor(modelItem => Model.KamerControleItems[i].Titel)
                     @Html.HiddenFor(modelItem => Model.KamerControleItems[i].Titel)
-            </div>
-            <div class="kamerControleCardCheckboxBlock">
-                @Html.CheckBoxFor(modelItem => Model.KamerControleItems[i].DoneOpvoeder, new { @class = "bigcheckbox" })
-            </div>
+                </div>
+                <div class="kamerControleCardCheckboxBlock">
+                    @Html.CheckBoxFor(modelItem => Model.KamerControleItems[i].DoneOpvoeder, new { @class = "bigcheckbox" })
+                </div>
                 <div class="kamerControleCardUitlegBlockWithTextArea">
                     <div style="font-size: 14pt; text-align: center; font-weight: bold; color: white;">Feedback</div>
                     @Html.TextAreaFor(modelItem => Model.KamerControleItems[i].Uitleg)
                 </div>
-        </div>
+            </div>
         }
     </div>
 
@@ -69,12 +70,17 @@
 
 
     <br />
+
     <table class="buttontable">
         <tr>
-            <td><input type="submit" class="button" value="Opslaan" /></td>
             <td>
-                <span class="terugButton">
-                    @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
+                <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" />
+            </td>
+            <td>
+                <span class="imagebutton">
+                    <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+                        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                    </a>
                 </span>
             </td>
         </tr>

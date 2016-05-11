@@ -7,7 +7,7 @@
     @using (Html.BeginForm("Edit", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
-        <h2>Pas de gegevens aan.</h2>
+        <h2>Pas @Html.DisplayFor(m => m.Voornaam) @Html.DisplayFor(m => m.Naam) zijn gegevens aan</h2>
         <hr />
         @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
 
@@ -86,7 +86,7 @@
 
                     <td>
                         <span class="terugButton">
-                            @Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker"))
+                            @Html.ActionLink("Terug naar index", "AdminIndex", "Gebruiker")
                         </span>
                     </td>
                 }

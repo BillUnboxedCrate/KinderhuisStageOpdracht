@@ -12,11 +12,17 @@
 <h2>Overzicht van beloonde/gestrafte cliënten</h2>
 <table class="table">
     <tr>
-        <th>Persoon</th>
-        <th>Beloning/straf</th>
+        @*<th>Persoon</th>
+            <th>Beloning/straf</th>
+            <th>Reden</th>
+            <th>Van</th>
+            <th>Tot</th>*@
+
+        <th>@Html.ActionLink("Persoon", "GestrafteOverzicht", new { SortingOrder = "Persoon" })</th>
+        <th>@Html.ActionLink("Beloning/straf", "GestrafteOverzicht", new { SortingOrder = "Straf" })</th>
         <th>Reden</th>
-        <th>Van</th>
-        <th>Tot</th>
+        <th>@Html.ActionLink("Van", "GestrafteOverzicht", new { SortingOrder = "Van" })</th>
+        <th>@Html.ActionLink("Tot", "GestrafteOverzicht", new { SortingOrder = "Tot" })</th>
 
     </tr>
     @foreach (var o in Model.SanctieList)

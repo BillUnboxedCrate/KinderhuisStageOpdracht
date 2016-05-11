@@ -3,13 +3,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-<div></div>
+<h2>@Html.DisplayFor(m => m.Voornaam) @Html.DisplayFor(m => m.Naam)</h2>
+<hr/>
 <table id="detailTable">
     <tr>
         <td rowspan="5"><img src="@Url.Content(Model.ImageUrl)" class="profileImage" alt="Profiel afbeelding"/></td>
-        <th>Naam:</th>
-        <td>@Html.DisplayFor(m => m.Voornaam) @Html.DisplayFor(m => m.Naam)</td>
     </tr>
     <tr>
         <th>Gebruikersnaam:</th>
@@ -43,7 +41,9 @@
     }
     else if (Model.TypeGebruiker.Contains("Admin"))
     {
-        @Html.ActionLink("Terug", "AdminIndex", "Gebruiker")
+        <div class="terugButton">
+            @Html.ActionLink("Terug", "AdminIndex", "Gebruiker")
+        </div>
     }
     else
     {
@@ -93,7 +93,7 @@
 {
     <table class="table">
         <tr>
-            <th>Clienten waarover de opvoeder een overzicht van heeft</th>
+            <th>Cliënten waarover de opvoeder een overzicht van heeft</th>
         </tr>
         @foreach (var t in Model.Clients)
         {

@@ -708,11 +708,19 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         public class KamerControleListIndexViewModel
         {
             public int ClientId { get; set; }
+            public string ClientName { get; set; }
 
             public List<KamerControleIndexViewModel> List { get; set; }
 
             public KamerControleListIndexViewModel()
             {
+                List = new List<KamerControleIndexViewModel>();
+            }
+
+            public KamerControleListIndexViewModel(int clientId, string clientName)
+            {
+                ClientId = clientId;
+                ClientName = clientName;
                 List = new List<KamerControleIndexViewModel>();
             }
 

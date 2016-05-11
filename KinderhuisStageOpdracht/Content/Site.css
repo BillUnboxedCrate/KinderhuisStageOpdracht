@@ -633,9 +633,9 @@ label:hover .hovertext {
 
 .opvoederOverview {
     width: 150px;
-    height: auto;
+    height: 185px;
     display: inline-block;
-    margin: 20px;
+    margin: 15px;
 }
 
     .opvoederOverview img {

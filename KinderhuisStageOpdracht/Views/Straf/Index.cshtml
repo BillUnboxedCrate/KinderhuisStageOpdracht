@@ -4,7 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-
+<h2>Beloningen/straffen bekijken en aanpassen</h2>
+<hr/>
 <div id="strafIndex">
     @using (Html.BeginForm("Index", "Straf", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
@@ -13,7 +14,7 @@
             <table class="form">
                 <tr>
                     <th>
-                        @Html.LabelFor(m => m.StrafIndexViewModel.Naam, new { @class = "control-label" })
+                        @Html.LabelFor(m => m.StrafIndexViewModel.Naam)
                     </th>
                     <td>
                         @Html.TextBoxFor(m => m.StrafIndexViewModel.Naam, new { @class = "form-control" })
@@ -22,70 +23,71 @@
                 </tr>
                 <tr>
                     <th>
-                        @Html.LabelFor(m => m.StrafIndexViewModel.StrafOfBeloning, new { @class = "control-label" })
+                        @Html.LabelFor(m => m.StrafIndexViewModel.StrafOfBeloning)
                     </th>
                     <td>
-                        @Html.RadioButtonFor(m => m.StrafIndexViewModel.StrafOfBeloning, false, new { @checked = true }) Beloning
-                        @Html.RadioButtonFor(m => m.StrafIndexViewModel.StrafOfBeloning, true) Straf
+                        <div>
+                            @Html.RadioButtonFor(m => m.StrafIndexViewModel.StrafOfBeloning, false, new { @checked = true })
+                            @Html.Label("Beloning")
+                            @Html.RadioButtonFor(m => m.StrafIndexViewModel.StrafOfBeloning, true)
+                            @Html.Label("Straf")
+                        </div>
                     </td>
                 </tr>
 
             </table>
         </div>
 
-    <table class="buttontable">
-        <tr>
-            <td>
-                <div class="imagebutton">
-                    <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" alt="Accepteren" title="Accpeteren" />
-                </div>
-            </td>
-            <td>
-                <div class="imagebutton">
-                    <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
-                        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
-                    </a>
-                </div>
-            </td>
-        </tr>
-    </table>
+        <table class="buttontable">
+            <tr>
+                <td>
+                    <div class="imagebutton">
+                        <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" alt="Accepteren" title="Accpeteren" />
+                    </div>
+                </td>
+                <td>
+                    <div class="imagebutton">
+                        <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+                            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </table>
     }
 
-        <div class="KamerOpdrachtCardSystem">
-            @foreach (var o in Model.List)
-            {
-                <div class="KamerOpdrachtCard">
+    <div class="KamerOpdrachtCardSystem">
+        @foreach (var o in Model.List)
+        {
+            <div class="KamerOpdrachtCard">
 
-                    @if (o.StrafOfBeloning)
-                    {
-                        <div class="KamerOpdrachtCardTitelBlok" style="background-color: rgb(234, 67, 53);">
-                            @Html.DisplayFor(modelItem => o.Naam)
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="KamerOpdrachtCardTitelBlok" style="background-color: rgb(52,168, 83);">
-                            @Html.DisplayFor(modelItem => o.Naam)
-                        </div>
-                    }
-
-
-                    <div class="KamerOpdrachtCardImageBlok">
-                        <img src="@Url.Content(o.ImageUrl)" style="border: none;" />
+                @if (o.StrafOfBeloning)
+                {
+                    <div class="KamerOpdrachtCardTitelBlok" style="background-color: rgb(234, 67, 53);">
+                        @Html.DisplayFor(modelItem => o.Naam)
                     </div>
-                    <div class="KamerOpdrachtCardActionBlok">
-                        @Ajax.ActionLink("Verwijderen", "DeleteStraf", "Straf", new { id = o.Id }, new AjaxOptions()
+                }
+                else
+                {
+                    <div class="KamerOpdrachtCardTitelBlok" style="background-color: rgb(52,168, 83);">
+                        @Html.DisplayFor(modelItem => o.Naam)
+                    </div>
+                }
+
+
+                <div class="KamerOpdrachtCardImageBlok">
+                    <img src="@Url.Content(o.ImageUrl)" style="border: none;" />
+                </div>
+                <div class="KamerOpdrachtCardActionBlok">
+                    @Ajax.ActionLink("Verwijderen", "DeleteStraf", "Straf", new { id = o.Id }, new AjaxOptions()
                         {
                             HttpMethod = "POST",
                             OnComplete = "window.location.reload()"
                         })
-                    </div>
-
                 </div>
 
-            }
-        </div>
+            </div>
 
-
-    }
+        }
+    </div>
 </div>

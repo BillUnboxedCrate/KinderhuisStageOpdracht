@@ -6,7 +6,8 @@
 
 @using (Html.BeginForm("CreateSuggestie", "Opvangtehuis", FormMethod.Post, new { @class = "", role = "form" }))
 {
-    <h2 style="text-align: center">@ViewBag.Title</h2>
+    <h2>@ViewBag.Title</h2>
+    <hr/>
     @Html.AntiForgeryToken()
     <table class="suggestieform">
         <tr>

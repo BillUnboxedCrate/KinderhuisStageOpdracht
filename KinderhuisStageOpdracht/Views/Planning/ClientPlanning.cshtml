@@ -5,6 +5,8 @@
 
 @using (Html.BeginForm("ClientPlanning", "Planning", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
+    <h2>Je planning</h2>
+    <hr />
     <div class="formPage">
         @Html.AntiForgeryToken()
         <table class="form">
@@ -13,7 +15,7 @@
                     @Html.LabelFor(m => m.ClientPlanningViewModel.Datum, new { @class = "control-label" })
                 </th>
                 <td>
-                    @Html.TextBoxFor(m => m.ClientPlanningViewModel.Datum, new { @class = "datepickersanctie form-control pointer", @readonly = true })
+                    @Html.TextBoxFor(m => m.ClientPlanningViewModel.Datum, new { @class = "datepickersanctie", @readonly = true })
                     @Html.ValidationMessageFor(m => m.ClientPlanningViewModel.Datum, "", new { @class = "text-danger" })
                 </td>
             </tr>

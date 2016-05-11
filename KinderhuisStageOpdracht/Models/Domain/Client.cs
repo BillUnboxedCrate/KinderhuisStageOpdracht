@@ -81,7 +81,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
             foreach (var k in KamerControles)
             {
                 var currentweekkamercontrole = cal.GetWeekOfYear(k.Datum, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
-                if (currentweekkamercontrole == currentweek)
+                if (currentweekkamercontrole == currentweek || currentweekkamercontrole == currentweek-1)
                 {
                     kamerControles.Add(k);
                 }

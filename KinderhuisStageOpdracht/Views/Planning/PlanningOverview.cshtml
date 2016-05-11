@@ -8,25 +8,27 @@
 @using (Html.BeginForm("PlanningOverview", "Planning", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <div class="formPage">
+        <h2>Planning van @Html.DisplayFor(model => model.ClientName)</h2>
+        <hr/>
         @Html.AntiForgeryToken()
         <table class="form">
             <tr>
                 <th>
-                    @Html.LabelFor(m => m.ClientPlanningViewModel.Datum, new { @class = "control-label" })
+                    @Html.LabelFor(m => m.ClientPlanningViewModel.Datum, new {@class = "control-label"})
                     @Html.HiddenFor(m => m.ClientId)
                 </th>
                 <td>
-                    @Html.TextBoxFor(m => m.ClientPlanningViewModel.Datum, new { @class = "datepickersanctie", @readonly = true })
-                    @Html.ValidationMessageFor(m => m.ClientPlanningViewModel.Datum, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.ClientPlanningViewModel.Datum, new {@class = "datepickersanctie", @readonly = true})
+                    @Html.ValidationMessageFor(m => m.ClientPlanningViewModel.Datum, "", new {@class = "text-danger"})
                 </td>
             </tr>
             <tr>
                 <th>
-                    @Html.LabelFor(m => m.ClientPlanningViewModel.Activiteit, new { @class = "control-label" })
+                    @Html.LabelFor(m => m.ClientPlanningViewModel.Activiteit, new {@class = "control-label"})
                 </th>
                 <td>
-                    @Html.TextAreaFor(m => m.ClientPlanningViewModel.Activiteit, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.ClientPlanningViewModel.Activiteit, "", new { @class = "text-danger" })
+                    @Html.TextAreaFor(m => m.ClientPlanningViewModel.Activiteit, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.ClientPlanningViewModel.Activiteit, "", new {@class = "text-danger"})
                 </td>
             </tr>
         </table>

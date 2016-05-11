@@ -578,7 +578,30 @@ namespace KinderhuisStageOpdracht.Controllers
 
         }
 
-        public ActionResult GestrafteOverzicht()
+        //public ActionResult GestrafteOverzicht()
+        //{
+        //    if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+        //    {
+        //        return ReturnToLogin();
+        //    }
+
+        //    var opvangtehuis = _gebruikerRepository.FindById((int)Session["gebruiker"]).Opvangtehuis;
+        //    List<Gebruiker> clients = _gebruikerRepository.FindAllClients().Where(c => c.Opvangtehuis.Id == opvangtehuis.Id).ToList();
+        //    var slvm = new GebruikerViewModel.SanctieListViewModel();
+
+        //    foreach (var client in clients)
+        //    {
+        //        var c = (Client)client;
+        //        foreach (var s in c.GetAppliedSancties())
+        //        {
+        //            slvm.AddSanctie(new GebruikerViewModel.SanctieViewModel(c.GiveFullName(), s.Rede, s.BeginDatum, s.EindDatum, s.GetstrafNaam()));
+        //        }
+
+        //    }
+        //    return View(slvm);
+        //}
+
+        public ActionResult GestrafteOverzicht(string sortingOrder)
         {
             if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
             {
@@ -598,6 +621,23 @@ namespace KinderhuisStageOpdracht.Controllers
                 }
 
             }
+
+            switch (sortingOrder)
+            {
+                case "Persoon":
+                    slvm.SanctieList = slvm.SanctieList.OrderBy(m => m.Client).ToList();
+                    break;
+                case "Straf":
+                    slvm.SanctieList = slvm.SanctieList.OrderBy(m => m.GeselecteerdeStraf).ToList(); ;
+                    break;
+                case "Van":
+                    slvm.SanctieList = slvm.SanctieList.OrderByDescending(m => m.Date).ToList(); ;
+                    break;
+                case "Tot":
+                    slvm.SanctieList = slvm.SanctieList.OrderByDescending(m => m.EindDatum).ToList(); ;
+                    break;
+            }
+
             return View(slvm);
         }
 
@@ -730,7 +770,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 //Session["client"] = id;
                 var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
                 var lkcivm = new GebruikerViewModel.ListKamerControleItemsViewmodel();
-                var kclivm = new GebruikerViewModel.KamerControleListIndexViewModel(client.Id);
+                var kclivm = new GebruikerViewModel.KamerControleListIndexViewModel(client.Id, client.GiveFullName());
                 var kamercontrole = client.ViewKamerControle(opvangtehuis.GetKamerControleOpdrachten());
 
                 foreach (var i in kamercontrole.KamerControleItems)
@@ -828,7 +868,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
             foreach (var c in model.KamerControleViewModels)
             {
-                Client client = (Client) _gebruikerRepository.FindById(c.ClientId);
+                Client client = (Client)_gebruikerRepository.FindById(c.ClientId);
                 var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
                 var kamercontrole = client.ViewKamerControle(opvangtehuis.GetKamerControleOpdrachten());
 

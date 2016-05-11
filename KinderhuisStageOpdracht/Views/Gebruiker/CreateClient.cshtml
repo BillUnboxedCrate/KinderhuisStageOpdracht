@@ -75,7 +75,6 @@
     <table class="buttontable">
         <tr>
             <td>
-
                 @if (Model.GebruikerType.Contains("Admin"))
                 {
                 <td>
@@ -85,7 +84,9 @@
                 </td>
 
                     <td>
-                        @Html.ActionLink("Terug", "AdminIndex", "Gebruiker")
+                        <span class="terugButton">
+                            @Html.ActionLink("Terug", "AdminIndex", "Gebruiker")
+                        </span>
                     </td>
                 }
                 else if (Model.GebruikerType.Contains("Opvoeder"))

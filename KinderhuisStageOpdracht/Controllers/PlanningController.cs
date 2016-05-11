@@ -102,7 +102,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 var client = (Client)_gebruikerRepository.FindById(id);
 
-                var plvm = new PlanningViewModel.PlanningListViewModel(id);
+                var plvm = new PlanningViewModel.PlanningListViewModel(id, client.GiveFullName());
 
                 foreach (var i in client.GetPlanning())
                 {

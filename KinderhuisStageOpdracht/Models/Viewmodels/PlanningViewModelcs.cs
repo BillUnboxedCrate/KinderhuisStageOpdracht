@@ -12,6 +12,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
         public class PlanningListViewModel
         {
             public int ClientId { get; set; }
+            public string ClientName { get; set; }
             public PlanningItemViewModel ClientPlanningViewModel { get; set; }
 
             public List<PlanningItemViewModel> PlannigList { get; set; }
@@ -21,7 +22,14 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 PlannigList = new List<PlanningItemViewModel>();
             }
 
-            public PlanningListViewModel(int id)
+            public PlanningListViewModel(int id, string name)
+            {
+                ClientName = name;
+                ClientId = id;
+                PlannigList = new List<PlanningItemViewModel>();
+            }
+
+             public PlanningListViewModel(int id)
             {
                 ClientId = id;
                 PlannigList = new List<PlanningItemViewModel>();
