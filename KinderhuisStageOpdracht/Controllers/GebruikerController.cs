@@ -781,6 +781,59 @@ namespace KinderhuisStageOpdracht.Controllers
             return RedirectToAction("KamerControleOpvoeder");
         }
 
+        public ActionResult KamerControleOverview()
+        {
+            var id = (int)Session["gebruiker"];
+            var opvoeder = (Opvoeder)_gebruikerRepository.FindById(id);
+            var leefgroep = _opvangtehuisRepository.FindByName(opvoeder.GetLeefgroepNaam());
+            var kcovm = new GebruikerViewModel.KamerControleOverviewViewModel();
+
+            foreach (var o in leefgroep.GetKamerControleOpdrachten())
+            {
+                kcovm.AddTitles(o.Titel);
+            }
+
+            List<Gebruiker> clients = _gebruikerRepository.FindAllClients().Where(c => c.Opvangtehuis.Id == opvoeder.Opvangtehuis.Id).ToList();
+
+            foreach (var client in clients)
+            {
+                Client c = (Client)client;
+                var kcvm = new GebruikerViewModel.KamerControleViewModel(c.Id, c.GiveFullName());
+                var kamercontrole = c.ViewKamerControle(opvoeder.Opvangtehuis.GetKamerControleOpdrachten());
+                foreach (var i in kamercontrole.KamerControleItems.OrderBy(k => k.GetControleOpdrachtTitel()))
+                {
+                    kcvm.AddKamerControleItemViewModel(new GebruikerViewModel.KamerControleItemViewModel(i.GetControleOpdrachtTitel(), i.OpdrachtGedaanControle));
+                }
+                kcovm.AddKamercontroleViewModel(kcvm);
+            }
+
+            _gebruikerRepository.SaveChanges();
+
+            return View(kcovm);
+        }
+
+        [HttpPost]
+        public ActionResult KamerControleOverview(GebruikerViewModel.KamerControleOverviewViewModel model)
+        {
+            foreach (var c in model.KamerControleViewModels)
+            {
+                Client client = (Client) _gebruikerRepository.FindById(c.ClientId);
+                var opvangtehuis = _gebruikerRepository.FindById(client.Id).Opvangtehuis;
+                var kamercontrole = client.ViewKamerControle(opvangtehuis.GetKamerControleOpdrachten());
+
+                foreach (var i in kamercontrole.KamerControleItems)
+                {
+                    foreach (var ivm in c.ControleItemViewModels.Where(m => m.Titel == i.GetControleOpdrachtTitel()))
+                    {
+                        i.OpdrachtGedaanControle = ivm.DoneOpvoeder;
+                    }
+                }
+            }
+            _gebruikerRepository.SaveChanges();
+            this.AddNotification("De wijzigingen zijn opgeslagen", NotificationType.SUCCESS);
+            return RedirectToAction("KamerControleOverview");
+        }
+
 
         public ActionResult Forum(int id)
         {
@@ -1046,9 +1099,6 @@ namespace KinderhuisStageOpdracht.Controllers
 
             return View(fpcvm);
         }
-
-
-
 
         #region helper
         public string ImageUploadProfielAfbeelding(HttpPostedFileBase file)

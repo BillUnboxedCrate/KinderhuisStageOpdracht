@@ -417,6 +417,7 @@
     <Content Include="Views\Planning\ClientPlanning.cshtml" />
     <Content Include="Views\Planning\PlanningOverview.cshtml" />
     <Content Include="Views\Gebruiker\VergetenWachtwoordAanpassen.cshtml" />
+    <Content Include="Views\Gebruiker\KamerControleOverview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

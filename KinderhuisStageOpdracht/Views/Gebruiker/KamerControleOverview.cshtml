@@ -1,0 +1,46 @@
+﻿@model KinderhuisStageOpdracht.Models.Viewmodels.GebruikerViewModel.KamerControleOverviewViewModel
+@{
+    ViewBag.Title = "KamerControleOverview";
+}
+@using (Html.BeginForm("KamerControleOverview", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <h2>KamerControleOverview</h2>
+
+    <table>
+        <tr>
+            <th></th>
+            @foreach (var t in Model.Titels)
+            {
+                <th>@Html.Label(t)</th>
+            }
+        </tr>
+
+        @for (var y = 0; y < Model.KamerControleViewModels.Count(); y++)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => Model.KamerControleViewModels[y].Client)
+                    @Html.HiddenFor(modelItem => Model.KamerControleViewModels[y].ClientId)
+                </th>
+                @for (var i = 0; i < Model.KamerControleViewModels[y].ControleItemViewModels.Count(); i++)
+                {
+                    <td>
+                        @Html.CheckBoxFor(modelItem => Model.KamerControleViewModels[y].ControleItemViewModels[i].DoneOpvoeder, new { @class = "bigcheckbox" })
+                        @Html.HiddenFor(modelItem => Model.KamerControleViewModels[y].ControleItemViewModels[i].Titel)
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+
+    <table class="buttontable">
+        <tr>
+            <td><input type="submit" class="button" value="Opslaan" /></td>
+            <td>
+                <span class="terugButton">
+                    @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
+                </span>
+            </td>
+        </tr>
+    </table>
+}

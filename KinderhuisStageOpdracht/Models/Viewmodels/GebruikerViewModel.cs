@@ -692,31 +692,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             }
         }
 
-        public class KamerControleItemViewModel
-        {
-            public string ImageUrl { get; set; }
-            public string Titel { get; set; }
-            public bool DoneOpvoeder { get; set; }
-            public string Uitleg { get; set; }
 
-            public KamerControleItemViewModel() { }
-
-            public KamerControleItemViewModel(string imageUrl, string titel, bool doneOpvoeder, string uitleg)
-            {
-                ImageUrl = imageUrl;
-                Titel = titel;
-                DoneOpvoeder = doneOpvoeder;
-                Uitleg = uitleg;
-            }
-
-            public KamerControleItemViewModel(string titel, bool doneOpvoeder, string uitleg)
-            {
-                Titel = titel;
-                DoneOpvoeder = doneOpvoeder;
-                Uitleg = uitleg;
-            }
-
-        }
 
         public class KamerControleListIndexViewModel
         {
@@ -767,6 +743,87 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 var dag = culture.DateTimeFormat.GetDayName(date.DayOfWeek);
                 return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dag);
             }
+        }
+
+
+
+        public class KamerControleOverviewViewModel
+        {
+            public List<string> Titels { get; set; }
+            public List<KamerControleViewModel> KamerControleViewModels { get; set; }
+
+            public KamerControleOverviewViewModel()
+            {
+                Titels = new List<string>();
+                KamerControleViewModels = new List<KamerControleViewModel>();
+            }
+
+
+            public void AddTitles(string item)
+            {
+                Titels.Add(item);
+            }
+
+            public void AddKamercontroleViewModel(KamerControleViewModel item)
+            {
+                KamerControleViewModels.Add(item);
+            }
+        }
+
+        public class KamerControleViewModel
+        {
+            public int ClientId { get; set; }
+            public string Client { get; set; }
+            public List<KamerControleItemViewModel> ControleItemViewModels { get; set; }
+
+            public KamerControleViewModel()
+            {
+                ControleItemViewModels = new List<KamerControleItemViewModel>();
+            }
+
+            public KamerControleViewModel(int clientId, string client)
+            {
+                ClientId = clientId;
+                Client = client;
+                ControleItemViewModels = new List<KamerControleItemViewModel>();
+            }
+
+            public void AddKamerControleItemViewModel(KamerControleItemViewModel item)
+            {
+                ControleItemViewModels.Add(item);
+            }
+        }
+
+        public class KamerControleItemViewModel
+        {
+            public string ImageUrl { get; set; }
+            public string Titel { get; set; }
+            public bool DoneOpvoeder { get; set; }
+            public string Uitleg { get; set; }
+
+            public KamerControleItemViewModel() { }
+
+            public KamerControleItemViewModel(string imageUrl, string titel, bool doneOpvoeder, string uitleg)
+            {
+                ImageUrl = imageUrl;
+                Titel = titel;
+                DoneOpvoeder = doneOpvoeder;
+                Uitleg = uitleg;
+            }
+
+            public KamerControleItemViewModel(string titel, bool doneOpvoeder, string uitleg)
+            {
+                Titel = titel;
+                DoneOpvoeder = doneOpvoeder;
+                Uitleg = uitleg;
+            }
+
+            public KamerControleItemViewModel(string titel, bool doneOpvoeder)
+            {
+                Titel = titel;
+                DoneOpvoeder = doneOpvoeder;
+            }
+
         }
         #endregion
 
