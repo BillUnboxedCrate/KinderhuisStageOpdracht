@@ -87,7 +87,7 @@ namespace KinderhuisStageOpdracht.Models.Domain
                 }
             }
 
-            return kamerControles;
+            return kamerControles.OrderByDescending(k => k.Datum).ToList();
         }
 
         public KamerControle ViewKamerControle(List<KamerControleOpdracht> opdrachts)

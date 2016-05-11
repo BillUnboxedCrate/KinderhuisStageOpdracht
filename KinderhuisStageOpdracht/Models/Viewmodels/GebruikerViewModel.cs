@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Web;
+using Foolproof;
 
 namespace KinderhuisStageOpdracht.Models.Viewmodels
 {
@@ -570,13 +571,19 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Rede voor de beloning/sanctie")]
             public string Rede { get; set; }
 
+            public DateTime Today { get; set; }
+
             [Required]
-            [Display(Name = "Selecteer een datum")]
+            [Display(Name = "Begindatum")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+            [GreaterThan("Today", ErrorMessage = "De beloning/straf kan niet voor vandaag beginnen")]
             public DateTime Date { get; set; }
             public string BeginDateDay { get; set; }
 
+            [Required]
+            [Display(Name = "Einddatum")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+            [GreaterThan("Date", ErrorMessage = "De einddatum mag niet voor de begindatum komen")]
             public DateTime EindDatum { get; set; }
             public string EndDateDay { get; set; }
 
@@ -594,6 +601,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public SanctieViewModel()
             {
+                Today = DateTime.Today;
                 Straffen = new List<string>();
             }
 
@@ -606,6 +614,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public SanctieViewModel(string rede, DateTime begindatum, DateTime eindatum, string straf)
             {
+                Today = DateTime.Today;
                 Rede = rede;
                 Date = begindatum;
                 EindDatum = eindatum;
@@ -617,6 +626,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public SanctieViewModel(string client, string rede, DateTime begindatum, DateTime eindatum, string straf)
             {
+                Today = DateTime.Today;
                 Client = client;
                 Rede = rede;
                 Date = begindatum;
@@ -628,6 +638,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public SanctieViewModel(string rede, DateTime begindatum, DateTime eindatum, string straf, string imageUrl, bool strafofbeloning)
             {
+                Today = DateTime.Today;
                 Rede = rede;
                 Date = begindatum;
                 EindDatum = eindatum;

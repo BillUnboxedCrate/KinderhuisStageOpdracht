@@ -629,6 +629,7 @@ namespace KinderhuisStageOpdracht.Controllers
             {
                 return ReturnToLogin();
             }
+
             Opvangtehuis opvangtehuis;
             if (ModelState.IsValid)
             {
@@ -783,6 +784,11 @@ namespace KinderhuisStageOpdracht.Controllers
 
         public ActionResult KamerControleOverview()
         {
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            {
+                return ReturnToLogin();
+            }
+
             var id = (int)Session["gebruiker"];
             var opvoeder = (Opvoeder)_gebruikerRepository.FindById(id);
             var leefgroep = _opvangtehuisRepository.FindByName(opvoeder.GetLeefgroepNaam());
@@ -815,6 +821,11 @@ namespace KinderhuisStageOpdracht.Controllers
         [HttpPost]
         public ActionResult KamerControleOverview(GebruikerViewModel.KamerControleOverviewViewModel model)
         {
+            if (UserStillLoggedIn() || !(_gebruikerRepository.FindById((int)Session["gebruiker"]) is Opvoeder))
+            {
+                return ReturnToLogin();
+            }
+
             foreach (var c in model.KamerControleViewModels)
             {
                 Client client = (Client) _gebruikerRepository.FindById(c.ClientId);

@@ -6,15 +6,15 @@
 {
     <h2>KamerControleOverview</h2>
 
-    <table>
+    <table id="kamercontroleTable">
         <tr>
-            <th></th>
+            <th style="border: none; border-bottom: 1px solid; border-right: 1px solid"></th>
             @foreach (var t in Model.Titels)
             {
-                <th>@Html.Label(t)</th>
+                <th style="border: none; border-bottom: 1px solid">@Html.Label(t)</th>
+
             }
         </tr>
-
         @for (var y = 0; y < Model.KamerControleViewModels.Count(); y++)
         {
             <tr>
@@ -25,7 +25,7 @@
                 @for (var i = 0; i < Model.KamerControleViewModels[y].ControleItemViewModels.Count(); i++)
                 {
                     <td>
-                        @Html.CheckBoxFor(modelItem => Model.KamerControleViewModels[y].ControleItemViewModels[i].DoneOpvoeder, new { @class = "bigcheckbox" })
+                        @Html.CheckBoxFor(modelItem => Model.KamerControleViewModels[y].ControleItemViewModels[i].DoneOpvoeder, new { @class = "mediumcheckbox" })
                         @Html.HiddenFor(modelItem => Model.KamerControleViewModels[y].ControleItemViewModels[i].Titel)
                     </td>
                 }
@@ -35,10 +35,14 @@
 
     <table class="buttontable">
         <tr>
-            <td><input type="submit" class="button" value="Opslaan" /></td>
             <td>
-                <span class="terugButton">
-                    @Html.ActionLink("Terug", "OpvoederIndex", "Gebruiker")
+                <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/accept.png")" />
+            </td>
+            <td>
+                <span class="imagebutton">
+                    <a href="@Url.Action("OpvoederIndex", "Gebruiker")">
+                        <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                    </a>
                 </span>
             </td>
         </tr>
