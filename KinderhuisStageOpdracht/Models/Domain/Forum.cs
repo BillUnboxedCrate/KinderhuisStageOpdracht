@@ -22,14 +22,14 @@ namespace KinderhuisStageOpdracht.Models.Domain
         public Forum(Opvoeder opvoeder, Client client)
         {
             Opvoeder = opvoeder;
-            Client = client;    
+            Client = client;
             Posts = new List<Post>();
         }
 
         public void AddPost(string boodschap, Gebruiker gebruiker)
         {
             var post = new Post(boodschap, gebruiker);
-            
+
             Posts.Add(post);
         }
 

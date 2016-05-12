@@ -208,7 +208,23 @@ namespace KinderhuisStageOpdracht.Models.Domain
         //TimeTracking
         public List<TimeTrack> GetTimeTrackList()
         {
-            return TimeTrackList.OrderBy(t => t.Aanmelden).ToList();
+            var dfi = DateTimeFormatInfo.CurrentInfo;
+            var cal = dfi.Calendar;
+
+            List<TimeTrack> timeTracks = new List<TimeTrack>();
+
+            int currentweek = cal.GetWeekOfYear(DateTime.Today, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
+
+            foreach (var t in TimeTrackList)
+            {
+                var currentweekTimetrack = cal.GetWeekOfYear(t.Aanmelden, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
+                if (currentweekTimetrack == currentweek)
+                {
+                    timeTracks.Add(t);
+                }
+            }
+
+            return timeTracks.OrderBy(t => t.Aanmelden).ToList();
         }
 
         public void AddTimeTrack()

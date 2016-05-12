@@ -576,14 +576,14 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Required]
             [Display(Name = "Begindatum")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            [GreaterThan("Today", ErrorMessage = "De beloning/straf kan niet voor vandaag beginnen")]
+            [GreaterThanOrEqualTo("Today", ErrorMessage = "De beloning/straf kan niet voor vandaag beginnen")]
             public DateTime Date { get; set; }
             public string BeginDateDay { get; set; }
 
             [Required]
             [Display(Name = "Einddatum")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            [GreaterThan("Date", ErrorMessage = "De einddatum mag niet voor de begindatum komen")]
+            [GreaterThanOrEqualTo("Date", ErrorMessage = "De einddatum mag niet voor de begindatum komen")]
             public DateTime EindDatum { get; set; }
             public string EndDateDay { get; set; }
 

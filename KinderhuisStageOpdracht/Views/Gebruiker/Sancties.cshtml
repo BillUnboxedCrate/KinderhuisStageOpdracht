@@ -3,6 +3,9 @@
     ViewBag.Title = "Sancties";
 }
 
+<h2>Heb jij beloningen of straffen?</h2>
+<hr/>
+
 <div class="formPage">
     @if (Model.SanctieList.Count > 0)
     {
@@ -24,7 +27,7 @@
                     </div>
 
                     <div class="SanctieHeaderBlock">
-                        <img src="@Url.Content(o.ImageUrl)" class="sanctieImage" />
+                        <img src="@Url.Content(o.ImageUrl)" class="sanctieImage"/>
                     </div>
 
                     <div class="SanctieTimeBlock">
@@ -52,14 +55,15 @@
     else
     {
         <div id="geenStraffen">
-            <div><img src="@Url.Content("~/Content/Images/StrafImages/pacmansanctie.png")" /></div>
+            <div><img src="@Url.Content("~/Content/Images/StrafImages/pacmansanctie.png")"/>
+            </div>
             <div>Geen sancties, goed zo!!!</div>
         </div>
     }
 
     <div class="imagebutton">
         <a href="@Url.Action("ClientIndex", "Gebruiker")">
-            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug"/>
         </a>
     </div>
 </div>

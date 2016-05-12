@@ -3,12 +3,13 @@
 @{
     ViewBag.Title = "KamerControle";
 }
-
+<h2>Is je kamer in orde?</h2>
+<hr/>
 <div class="formPage">
     @if (Model.ListKamerControleItemsViewmodel.KamerControleItems.Count == 0)
     {
         <div class="nogNietAanwezig">
-            @Html.Label("De opvoeder moet je kamer nog controleren")
+            @Html.Label("De opvoeder moet je kamer vandaag nog controleren")
         </div>
     }
     else

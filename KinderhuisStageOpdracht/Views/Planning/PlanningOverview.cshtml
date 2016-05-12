@@ -27,7 +27,7 @@
                     @Html.LabelFor(m => m.ClientPlanningViewModel.Activiteit, new {@class = "control-label"})
                 </th>
                 <td>
-                    @Html.TextAreaFor(m => m.ClientPlanningViewModel.Activiteit, new {@class = "form-control"})
+                    @Html.TextAreaFor(m => m.ClientPlanningViewModel.Activiteit)
                     @Html.ValidationMessageFor(m => m.ClientPlanningViewModel.Activiteit, "", new {@class = "text-danger"})
                 </td>
             </tr>
