@@ -7,7 +7,9 @@
 
 <h2>Administrator index</h2>
 <h3>Leefgroep</h3>
-@Html.ActionLink("Voeg een leefgroep toe", "CreateLeefgroep")
+<div class="terugButton">
+    @Html.ActionLink("Voeg een leefgroep toe", "CreateLeefgroep")
+</div>
 <table class="table">
     <tr>
         <th>Naam</th>
@@ -40,7 +42,9 @@
 }
 
 <h3>Opvoeders</h3>
-@Html.ActionLink("Voeg opvoeder toe", "CreateOpvoeder")
+<div class="terugButton">
+    @Html.ActionLink("Voeg opvoeder toe", "CreateOpvoeder")
+</div>
 <table class="table">
     <tr>
         <th>Naam</th>
@@ -74,7 +78,9 @@
 </table>
 
 <h3>Cliënten</h3>
-@Html.ActionLink("Voeg cliënt toe", "CreateClient")
+<div class="terugButton">
+    @Html.ActionLink("Voeg cliënt toe", "CreateClient")
+</div>
 <table class="table">
     <tr>
         <th>Naam</th>

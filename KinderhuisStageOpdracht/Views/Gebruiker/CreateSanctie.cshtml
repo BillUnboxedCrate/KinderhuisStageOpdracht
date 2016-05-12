@@ -9,10 +9,10 @@
     @Html.HiddenFor(model => model.Id)
     <h2>Maak een sanctie aan</h2>
     <hr />
-    <table class="form">
+    <table class="inputformtable">
         <tr>
             <th>
-                @Html.LabelFor(m => m.Client, new { @class = "control-label" })
+                @Html.LabelFor(m => m.Client)
             </th>
             <td>
                 @Html.DisplayFor(m => m.Client, new { @class = "form-control" })
@@ -21,7 +21,7 @@
 
         <tr>
             <th>
-                @Html.LabelFor(m => m.Straffen, new { @class = "control-label" })
+                @Html.LabelFor(m => m.Straffen)
             </th>
             <td>
                 @Html.DropDownListFor(m => m.GeselecteerdeStraf, new SelectList(Model.Straffen), new { @class = "form-control" })
@@ -30,7 +30,7 @@
 
         <tr>
             <th>
-                @Html.LabelFor(m => m.Date, new { @class = "control-label" })
+                @Html.LabelFor(m => m.Date)
             </th>
             <td>
                 @Html.TextBoxFor(m => m.Date, new { @class = "datepickersanctie", @readonly = true, @Value = Model.Date.ToString("dd/MM/yyyy") })
@@ -41,7 +41,7 @@
 
         <tr>
             <th>
-                @Html.LabelFor(m => m.EindDatum, new { @class = "control-label" })
+                @Html.LabelFor(m => m.EindDatum)
             </th>
             <td>
                 @Html.TextBoxFor(m => m.EindDatum, new { @class = "datepickersanctie", @readonly = true, @Value = Model.Date.ToString("dd/MM/yyyy") })

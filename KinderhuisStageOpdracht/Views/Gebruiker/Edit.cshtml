@@ -11,10 +11,10 @@
         <hr />
         @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
 
-        <table>
+        <table class="inputformtable">
             <tr>
                 <td>
-                    @Html.LabelFor(m => m.Voornaam, new { @class = "control-label" })
+                    @Html.LabelFor(m => m.Voornaam)
                 </td>
                 <td>
                     @Html.TextBoxFor(m => m.Voornaam, new { @class = "form-control" })
@@ -24,7 +24,7 @@
 
             <tr>
                 <td>
-                    @Html.LabelFor(m => m.Naam, new { @class = "control-label" })
+                    @Html.LabelFor(m => m.Naam)
                 </td>
                 <td>
                     @Html.TextBoxFor(m => m.Naam, new { @class = "form-control" })
@@ -34,7 +34,7 @@
 
             <tr>
                 <td>
-                    @Html.LabelFor(m => m.Opvangtehuizen, new { @class = "control-label" })
+                    @Html.LabelFor(m => m.Opvangtehuizen)
                 </td>
                 <td>
                     @Html.DropDownListFor(m => m.GeselecteerdOpvangtehuisId, new SelectList(Model.Opvangtehuizen), new { @class = "form-control" })
@@ -43,7 +43,7 @@
 
             <tr>
                 <td>
-                    @Html.LabelFor(m => m.GebruikersNaam, new { @class = "control-label" })
+                    @Html.LabelFor(m => m.GebruikersNaam)
                 </td>
                 <td>
                     @Html.TextBoxFor(m => m.GebruikersNaam, new { @class = "form-control" })

@@ -8,7 +8,8 @@
     @Html.AntiForgeryToken()
     <h2>Maak een nieuwe leefgroep aan</h2>
     <hr />
-    <div class="form-group">
+
+    @*<div class="form-group">
         @Html.LabelFor(m => m.Naam, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Naam, new { @class = "form-control" })
@@ -44,7 +45,60 @@
             @Html.TextBoxFor(m => m.Postcode, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Postcode, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>*@
+
+    <table class="inputformtable">
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Naam)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Naam, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Naam, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Straat)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Straat, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Straat, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.StraatNummer)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.StraatNummer, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.StraatNummer, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Gemeente)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Gemeente, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Gemeente, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Postcode)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Postcode, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Postcode, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+    </table>
+
 
     <table class="buttontable">
         <tr>

@@ -117,7 +117,7 @@ namespace KinderhuisStageOpdracht.Controllers
                         (Client)_gebruikerRepository.FindById((int)Session["gebruiker"]));
                     _opvangtehuisRepository.SaveChanges();
 
-                    this.AddNotification("Uw suggestie wordt doorgegeven", NotificationType.SUCCESS);
+                    this.AddNotification("Je suggestie wordt doorgegeven", NotificationType.SUCCESS);
                     return RedirectToAction("ClientIndex", "Gebruiker");
                 }
                 catch (ApplicationException e)
@@ -747,7 +747,7 @@ namespace KinderhuisStageOpdracht.Controllers
 
                     _opvangtehuisRepository.SaveChanges();
 
-                    this.AddNotification("Uw suggestie wordt doorgegeven", NotificationType.SUCCESS);
+                    this.AddNotification("Je klacht wordt doorgegeven", NotificationType.SUCCESS);
                     return RedirectToAction("ClientIndex", "Gebruiker");
                 }
                 catch (ApplicationException e)
