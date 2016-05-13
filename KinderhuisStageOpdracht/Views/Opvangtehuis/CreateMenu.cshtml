@@ -21,6 +21,7 @@
                 @Html.TextBoxFor(m => m.BeginWeek, new { @class = "datepickermondayedit", @readonly = true, @Value = Model.BeginWeek.ToString("dd/MM/yyyy") })
                 @Html.ValidationMessageFor(m => m.BeginWeek, "", new { @class = "text-danger" })
             }
+            <h2 style="color: red">Altijd eerst voor zorgen dat de datum zeker een maandag is, anders moet alles opnieuw worden getypt.</h2>
 
         </div>
     </div>
@@ -28,9 +29,9 @@
     <table class="formPage form menutable">
         <tr>
             <th></th>
-            <th>Voorgerecht</th>
-            <th>Hoofdgerecht</th>
-            <th>Dessert</th>
+            <th>'s ochtends</th>
+            <th>'s middags</th>
+            <th>'s avonds</th>
         </tr>
 
         <tr>
