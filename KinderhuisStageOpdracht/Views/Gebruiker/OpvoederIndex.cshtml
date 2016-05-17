@@ -9,13 +9,13 @@
         <li>@Html.ActionLink("Overzicht van suggesties", "Suggesties", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Menu's bekijken en aanpassen", "MenuIndex", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Overzicht van klachten", "KlachtIndex", "Opvangtehuis")</li>
-        <li>@Html.ActionLink("Beloningen/straffen bekijken en aanpassen", "Index", "Straf")</li>
+        <li>@Html.ActionLink("Beloningen/sancties bekijken en aanpassen", "Index", "Straf")</li>
 
     </ul>
 
     <ul class="category-menu">
         <li>@Html.ActionLink("Voeg cliënt toe", "CreateClient")</li>
-        <li>@Html.ActionLink("Overzicht van beloonde/gestrafte cliënten", "GestrafteOverzicht", "Gebruiker")</li>
+        <li>@Html.ActionLink("Overzicht van beloningen/sancties van de cliënten", "GestrafteOverzicht", "Gebruiker")</li>
         <li>@Html.ActionLink("kamer controle opdrachten bekijken en aanpassen", "KamerOpdracht", "Opvangtehuis")</li>
         <li>@Html.ActionLink("Kamercontrole checklist voor alle cliënten", "KamerControleOverview", "Gebruiker")</li>
     </ul>
@@ -41,7 +41,7 @@
                 <div>@Html.ActionLink("Persoonlijke gegeven aanpassen", "Edit", new { id = o.Id })</div>
             </div>
             <div class="opvoederindexclientaction">
-                <div>@Html.ActionLink("Geef beloning/straf", "CreateSanctie", new { id = o.Id })</div>
+                <div>@Html.ActionLink("Geef beloning/sanctie", "CreateSanctie", new { id = o.Id })</div>
             </div>
             <div class="opvoederindexclientaction">
                 <div>@Html.ActionLink("Kamercontrole checklist", "KamerControleOpvoeder", new { id = o.Id })</div>

@@ -37,17 +37,7 @@
                     @Html.LabelFor(m => m.Opvangtehuizen)
                 </td>
                 <td>
-                    @Html.DropDownListFor(m => m.GeselecteerdOpvangtehuisId, new SelectList(Model.Opvangtehuizen), new { @class = "form-control" })
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.LabelFor(m => m.GebruikersNaam)
-                </td>
-                <td>
-                    @Html.TextBoxFor(m => m.GebruikersNaam, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.GebruikersNaam, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(m => m.GeselecteerdOpvangtehuisId, new SelectList(Model.Opvangtehuizen), new {@class = "form-control"})
                 </td>
             </tr>
 

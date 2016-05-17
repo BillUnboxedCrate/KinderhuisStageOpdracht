@@ -61,16 +61,16 @@
     }
 
     @*<div class="imagebutton">
-        <a href="@Url.Action("ClientIndex", "Gebruiker")">
-            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug"/>
-        </a>
-    </div>*@
+            <a href="@Url.Action("ClientIndex", "Gebruiker")">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug"/>
+            </a>
+        </div>*@
 
     <div class="imagebutton">
         @if (Model.TypeGebruiker.Contains("Client"))
         {
             <a href="@Url.Action("ClientIndex", "Gebruiker")">
-                <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug"/>
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
             </a>
         }
         else
@@ -82,13 +82,13 @@
                     </td>
                     <td>
                         <a href="@Url.Action("MenuIndex")">
-                            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")"  alt="Terug" title="Terug" />
-                        </a> 
+                            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+                        </a>
                     </td>
                 </tr>
 
             </table>
-           
+
         }
     </div>
 </div>

@@ -81,8 +81,8 @@
     <script type="text/javascript">
         $(function () {
             $(".datepicker").datepicker({
-                dayNames: ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],
-                dayNamesMin: ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+                dayNames: ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"],
+                dayNamesMin: ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"],
                 monthNamesShort: ["Jan", "Feb", "Maa", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
                 changeMonth: true,
                 changeYear: true,
@@ -98,8 +98,8 @@
 
         $(function () {
             $(".datepickeredit").datepicker({
-                dayNames: ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],
-                dayNamesMin: ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+                dayNames: ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"],
+                dayNamesMin: ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"],
                 monthNamesShort: ["Jan", "Feb", "Maa", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
                 changeMonth: true,
                 changeYear: true,
@@ -115,8 +115,8 @@
 
         $(function () {
             $(".datepickersanctie").datepicker({
-                dayNames: ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],
-                dayNamesMin: ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+                dayNames: ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"],
+                dayNamesMin: ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"],
                 monthNamesShort: ["Jan", "Feb", "Maa", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
                 changeMonth: true,
                 changeYear: true,
@@ -134,14 +134,13 @@
         var year = d.getFullYear() - 18;
 
         $(".datepickermonday").datepicker({
-            dayNames: ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],
-            dayNamesMin: ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+            dayNames: ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"],
+            dayNamesMin: ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"],
             monthNamesShort: ["Jan", "Feb", "Maa", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
             showButtonPanel: false,
             dateFormat: "dd/mm/yy",
             showOn: "button",
             buttonImage: "../../Content/Images/Aanduidingen/datepicker.png",
-            buttonImageOnly: true,
             yearRange: "-nn:+nn",
             beforeShowDay: function (date) {
                 var day = date.getDay();
@@ -151,15 +150,14 @@
         }).datepicker("setDate", new Date());
 
         $(".datepickermondayedit").datepicker({
-            dayNames: ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],
-            dayNamesMin: ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+            dayNames: ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"],
+            dayNamesMin: ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"],
             monthNamesShort: ["Jan", "Feb", "Maa", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
             showButtonPanel: false,
             dateFormat: "dd/mm/yy",
             yearRange: "-nn:+nn",
             showOn: "button",
             buttonImage: "../../Content/Images/Aanduidingen/datepicker.png",
-            buttonImageOnly: true,
             beforeShowDay: function (date) {
                 var day = date.getDay();
                 return [(day === 1)];

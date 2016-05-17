@@ -567,8 +567,8 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Cliënt")]
             public string Client { get; set; }
 
-            [Required(ErrorMessage = "Er moet een rede worden opgegeven.")]
-            [Display(Name = "Rede voor de beloning/sanctie")]
+            [Required(ErrorMessage = "Er moet een reden worden opgegeven.")]
+            [Display(Name = "Reden voor de beloning/sanctie")]
             public string Rede { get; set; }
 
             public DateTime Today { get; set; }
@@ -591,7 +591,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Aantal dagen")]
             public int AantalDagen { get; set; }
 
-            [Display(Name = "Kies een beloning/straf")]
+            [Display(Name = "Kies een beloning/sanctie")]
             public List<string> Straffen { get; set; }
             public string GeselecteerdeStraf { get; set; }
 
