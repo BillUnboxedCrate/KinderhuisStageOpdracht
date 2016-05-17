@@ -9,47 +9,49 @@
 
     @if (Model.Boodschap == null)
     {
-        <table id="weekMenu" border="1">
-            <tr>
-                <th>Maandag</th>
-                <th>Dinsdag</th>
-                <th>Woensdag</th>
-                <th>Donderdag</th>
-                <th>Vrijdag</th>
-                <th>Zaterdag</th>
-                <th>Zondag</th>
-            </tr>
+        <div id="printableArea">
+            <table id="weekMenu" border="1">
+                <tr>
+                    <th>Maandag</th>
+                    <th>Dinsdag</th>
+                    <th>Woensdag</th>
+                    <th>Donderdag</th>
+                    <th>Vrijdag</th>
+                    <th>Zaterdag</th>
+                    <th>Zondag</th>
+                </tr>
 
-            <tr>
-                <td>@Html.DisplayFor(m => m.MaandagViewModel.Voorgerecht)</td>
-                <td>@Html.DisplayFor(m => m.DinsdagViewModel.Voorgerecht)</td>
-                <td>@Html.DisplayFor(m => m.WoensdagViewModel.Voorgerecht)</td>
-                <td>@Html.DisplayFor(m => m.DonderdagViewModel.Voorgerecht)</td>
-                <td>@Html.DisplayFor(m => m.VrijdagViewModel.Voorgerecht)</td>
-                <td>@Html.DisplayFor(m => m.ZaterdagViewModel.Voorgerecht)</td>
-                <td>@Html.DisplayFor(m => m.ZondagViewModel.Voorgerecht)</td>
-            </tr>
+                <tr>
+                    <td>@Html.DisplayFor(m => m.MaandagViewModel.Voorgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.DinsdagViewModel.Voorgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.WoensdagViewModel.Voorgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.DonderdagViewModel.Voorgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.VrijdagViewModel.Voorgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.ZaterdagViewModel.Voorgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.ZondagViewModel.Voorgerecht)</td>
+                </tr>
 
-            <tr>
-                <td>@Html.DisplayFor(m => m.MaandagViewModel.Hoofdgerecht)</td>
-                <td>@Html.DisplayFor(m => m.DinsdagViewModel.Hoofdgerecht)</td>
-                <td>@Html.DisplayFor(m => m.WoensdagViewModel.Hoofdgerecht)</td>
-                <td>@Html.DisplayFor(m => m.DonderdagViewModel.Hoofdgerecht)</td>
-                <td>@Html.DisplayFor(m => m.VrijdagViewModel.Hoofdgerecht)</td>
-                <td>@Html.DisplayFor(m => m.ZaterdagViewModel.Hoofdgerecht)</td>
-                <td>@Html.DisplayFor(m => m.ZondagViewModel.Hoofdgerecht)</td>
-            </tr>
+                <tr>
+                    <td>@Html.DisplayFor(m => m.MaandagViewModel.Hoofdgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.DinsdagViewModel.Hoofdgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.WoensdagViewModel.Hoofdgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.DonderdagViewModel.Hoofdgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.VrijdagViewModel.Hoofdgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.ZaterdagViewModel.Hoofdgerecht)</td>
+                    <td>@Html.DisplayFor(m => m.ZondagViewModel.Hoofdgerecht)</td>
+                </tr>
 
-            <tr>
-                <td>@Html.DisplayFor(m => m.MaandagViewModel.Dessert)</td>
-                <td>@Html.DisplayFor(m => m.DinsdagViewModel.Dessert)</td>
-                <td>@Html.DisplayFor(m => m.WoensdagViewModel.Dessert)</td>
-                <td>@Html.DisplayFor(m => m.DonderdagViewModel.Dessert)</td>
-                <td>@Html.DisplayFor(m => m.VrijdagViewModel.Dessert)</td>
-                <td>@Html.DisplayFor(m => m.ZaterdagViewModel.Dessert)</td>
-                <td>@Html.DisplayFor(m => m.ZondagViewModel.Dessert)</td>
-            </tr>
-        </table>
+                <tr>
+                    <td>@Html.DisplayFor(m => m.MaandagViewModel.Dessert)</td>
+                    <td>@Html.DisplayFor(m => m.DinsdagViewModel.Dessert)</td>
+                    <td>@Html.DisplayFor(m => m.WoensdagViewModel.Dessert)</td>
+                    <td>@Html.DisplayFor(m => m.DonderdagViewModel.Dessert)</td>
+                    <td>@Html.DisplayFor(m => m.VrijdagViewModel.Dessert)</td>
+                    <td>@Html.DisplayFor(m => m.ZaterdagViewModel.Dessert)</td>
+                    <td>@Html.DisplayFor(m => m.ZondagViewModel.Dessert)</td>
+                </tr>
+            </table>
+        </div>
     }
     else
     {
@@ -58,9 +60,48 @@
         </div>
     }
 
-    <div class="imagebutton">
+    @*<div class="imagebutton">
         <a href="@Url.Action("ClientIndex", "Gebruiker")">
-            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug" />
+            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug"/>
         </a>
+    </div>*@
+
+    <div class="imagebutton">
+        @if (Model.TypeGebruiker.Contains("Client"))
+        {
+            <a href="@Url.Action("ClientIndex", "Gebruiker")">
+                <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")" alt="Terug" title="Terug"/>
+            </a>
+        }
+        else
+        {
+            <table class="buttontable">
+                <tr>
+                    <td>
+                        <input type="image" src="@Url.Content("~/Content/Images/Aanduidingen/print.png")" class="imagebutton" onclick="printDiv('printableArea')" value="print a div!" />
+                    </td>
+                    <td>
+                        <a href="@Url.Action("MenuIndex")">
+                            <img src="@Url.Content("~/Content/Images/Aanduidingen/terug.png")"  alt="Terug" title="Terug" />
+                        </a> 
+                    </td>
+                </tr>
+
+            </table>
+           
+        }
     </div>
 </div>
+
+<script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>

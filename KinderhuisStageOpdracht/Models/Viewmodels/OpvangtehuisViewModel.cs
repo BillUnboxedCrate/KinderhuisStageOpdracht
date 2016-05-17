@@ -125,7 +125,7 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             public int Id { get; set; }
             public int Week { get; set; }
 
-            public string MenuImageUrl { get; set; }
+            public string TypeGebruiker { get; set; }
 
             [DataType(DataType.Upload)]
             [Display(Name = "Kies een foto")]
@@ -144,9 +144,10 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
 
             public MenuViewModel() { }
 
-            public MenuViewModel(string boodschap)
+            public MenuViewModel(string boodschap, string typeGebruiker)
             {
                 Boodschap = boodschap;
+                TypeGebruiker = typeGebruiker;
             }
 
             public MenuViewModel(int id, int week, DateTime beginweek, DateTime eindeweek)
