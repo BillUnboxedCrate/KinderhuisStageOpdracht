@@ -99,13 +99,12 @@ namespace KinderhuisStageOpdracht.Models.Domain
             return Opvangtehuis.Postcode + " " + Opvangtehuis.Gemeente;
         }
 
-        public void EditGebruiker(string naam, string voornaam, Opvangtehuis opvangtehuis, string gebruikersnaam,
+        public void EditGebruiker(string naam, string voornaam, Opvangtehuis opvangtehuis,
              string imageUrl)
         {
             Naam = naam;
             Voornaam = voornaam;
             Opvangtehuis = opvangtehuis;
-            Gebruikersnaam = gebruikersnaam;
 
             if (imageUrl != "~/Content/Images/ProfielAfbeelding/dafault.png" || imageUrl != "~/Content/Images/ProfielAfbeelding/dafaultAvatar.png")
             {

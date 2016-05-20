@@ -3,11 +3,11 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Bent u zeker dat u deze gebruiker wilt verwijderen?</h2>
+<h2>Bent je zeker dat je deze gebruiker wilt verwijderen?</h2>
 @using (Html.BeginForm("Delete", "Gebruiker", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <table>
+    <table class="inputformtable">
         <tr>
             <td>@Html.LabelFor(m => m.Voornaam)</td>
             <td>@Html.DisplayFor(m => m.Voornaam)</td>

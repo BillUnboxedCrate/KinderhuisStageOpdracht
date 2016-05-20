@@ -441,10 +441,6 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
             [Display(Name = "Voornaam")]
             public string Voornaam { get; set; }
 
-            [Required]
-            [Display(Name = "Gebruikersnaam")]
-            public string GebruikersNaam { get; set; }
-
             public string ImageUrl { get; set; }
 
             public HttpPostedFileBase Image { get; set; }
@@ -461,13 +457,12 @@ namespace KinderhuisStageOpdracht.Models.Viewmodels
                 Opvangtehuizen = new List<string>();
             }
 
-            public EditViewModel(int id, string naam, string voornaam, string gebruikersnaam,
+            public EditViewModel(int id, string naam, string voornaam,
                  string opvangtehuis, string typegebruiker, string imageUrl)
             {
                 Id = id;
                 Naam = naam;
                 Voornaam = voornaam;
-                GebruikersNaam = gebruikersnaam;
                 GeselecteerdOpvangtehuisId = opvangtehuis;
                 TypeGebruiker = typegebruiker;
                 ImageUrl = imageUrl;

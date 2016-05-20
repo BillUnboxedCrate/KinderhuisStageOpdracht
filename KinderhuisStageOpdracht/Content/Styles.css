@@ -44,7 +44,6 @@ html {
 
 #loginContainer {
     min-height: 234px;
-    border-radius: 5px;
     height: auto;
     width: 400px;
     border: solid 1px;
@@ -92,10 +91,12 @@ html {
 }
 
 #loginWrapper {
-    background-image: url(../Content/Images/login_screen.png);
+    background-image: url(../Content/Images/login_screen.jpg);
     background-repeat: no-repeat;
     background-position: center;
-    background-color: gray;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     margin: 0 auto;
     height: 100%;
     overflow: auto;

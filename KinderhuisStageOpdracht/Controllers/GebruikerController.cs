@@ -510,7 +510,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
 
                 var evm = new GebruikerViewModel.EditViewModel(gebruiker.Id, gebruiker.Naam, gebruiker.Voornaam,
-                     gebruiker.Gebruikersnaam, gebruiker.GetOpvangtehuisnaam(), type, gebruiker.ImageUrl);
+                     gebruiker.GetOpvangtehuisnaam(), type, gebruiker.ImageUrl);
 
                 if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
                 {
@@ -553,7 +553,7 @@ namespace KinderhuisStageOpdracht.Controllers
                 {
                     var gebruiker = _gebruikerRepository.FindById(model.Id);
                     gebruiker.EditGebruiker(model.Naam, model.Voornaam,
-                        _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId), model.GebruikersNaam,
+                        _opvangtehuisRepository.FindByName(model.GeselecteerdOpvangtehuisId),
                      ImageUploadProfielAfbeelding(model.Image));
 
                     _gebruikerRepository.UpdateGebruiker(gebruiker);
@@ -574,7 +574,23 @@ namespace KinderhuisStageOpdracht.Controllers
                 }
 
             }
-            return View(model);
+
+            var gebruiker1 = _gebruikerRepository.FindById(model.Id);
+            var type = _gebruikerRepository.FindById((int)Session["gebruiker"]).GetType().Name;
+
+            var evm = new GebruikerViewModel.EditViewModel(gebruiker1.Id, gebruiker1.Naam, gebruiker1.Voornaam,
+                 gebruiker1.GetOpvangtehuisnaam(), type, gebruiker1.ImageUrl);
+
+            if (_gebruikerRepository.FindById((int)Session["gebruiker"]) is Admin)
+            {
+                evm.SetOpvangtehuizen(_opvangtehuisRepository.FindAll().Select(oh => oh.Naam).ToList());
+            }
+            else
+            {
+                evm.AddOpvangtehuis(_gebruikerRepository.FindById((int)Session["gebruiker"]).GetOpvangtehuisnaam());
+            }
+
+            return View(evm);
 
         }
 

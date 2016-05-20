@@ -5,6 +5,7 @@ body {
     margin: 0 auto;
     height: 100%;
     /*background-image: url("/Content/Images/Backgrounds/serious-sam-hd-the-second-encounter.jpg");*/
+    background-color: #1F5A70;
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -27,7 +28,7 @@ textarea {
 footer {
     text-align: center;
     border-top: solid 1px black;
-    background-color: #286366;
+    background-color: #004358;
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -36,8 +37,16 @@ footer {
     color: white;
 }
 
+a {
+    color: #1F8A70;
+}
+
+    a:hover {
+        color: #004358;
+    }
+
 .navbar {
-    background-color: #286366;
+    background-color: #004358;
 }
 
 html {
@@ -50,7 +59,7 @@ html {
 .body-content {
     min-height: 97%;
     background: rgb(255, 255, 255);
-    background: rgba(255, 255, 255, .5);
+    background: rgba(255, 255, 255, .6);
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
@@ -98,15 +107,15 @@ html {
     /*color: white;*/
 }
 
-#loginWrapper {
-    background-image: url(../Content/Images/login_screen.png);
+/*#loginWrapper {
+    background-image: url(../Content/Images/login_screen.jpg);
     background-repeat: no-repeat;
-    background-position: center;
-    background-color: gray;
+    background-position: center center;
+    background-size: cover;
     margin: 0 auto;
     height: 100%;
     overflow: auto;
-}
+}*/
 
 input[type="text"], input[type="password"], textarea, select {
     width: 300px;
@@ -186,7 +195,7 @@ input[type="text"], input[type="password"], textarea, select {
 
             .category-menu > li > a:hover {
                 color: white;
-                background-color: rgb(66, 133, 244);
+                background-color: #004358;
             }
 
 .menutable th, .menutable td {
@@ -396,14 +405,14 @@ textarea {
         padding: 9px;
         border: 3px solid black;
         text-decoration: none;
-        color: rgb(66, 133, 244);
         font-weight: bold;
+        background-color: white;
     }
 
         .terugButton a:hover {
             color: white;
             font-weight: bold;
-            background-color: rgb(66, 133, 244);
+            background-color: #004358;
         }
 
 .buttontable {
@@ -421,13 +430,13 @@ textarea {
     padding: 7px;
     border: 3px solid black;
     background-color: white;
-    color: rgb(66, 133, 244);
+    color: #1F8A70;
     font-weight: bold;
 }
 
     .button:hover {
         padding: 7px;
-        background-color: rgb(66, 133, 244);
+        background-color: #004358;
         color: white;
     }
 
@@ -479,12 +488,11 @@ label > input { /* HIDE RADIO */
     label > input + img { /* IMAGE STYLES */
         cursor: pointer;
         border: 2px solid transparent;
-        border-radius: 5px;
+        background-color: #004358;
     }
 
     label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
         border: 4px solid #228b22;
-        border-radius: 5px;
     }
 
 /*label .hovertext {
@@ -664,7 +672,8 @@ label:hover .hovertext {
     min-height: 290px;
     height: auto;
     margin: 10px;
-    background-color: rgb(66, 133, 244);
+    background-color: #004358;
+    color: black;
 }
 
 .doneContainer {
@@ -710,7 +719,9 @@ label:hover .hovertext {
 
 .kamerControleCardUitlegBlockWithTextArea {
     height: 295px;
+    color: white;
     text-align: center;
+    background-color: #004358;
 }
 
     .kamerControleCardUitlegBlockWithTextArea textarea {
@@ -718,7 +729,6 @@ label:hover .hovertext {
         width: 285px;
         max-height: 265px;
         max-width: 285px;
-        background: lightgray;
     }
 
 .kamerControleCardUitlegBlockEmpty {
@@ -904,7 +914,7 @@ label:hover .hovertext {
 }
 
 .KamerOpdrachtCardTitelBlok {
-    background-color: gray;
+    background-color: #004358;
     min-height: 20px;
     height: auto;
     font-size: 14pt;
@@ -941,7 +951,7 @@ label:hover .hovertext {
         color: white;
         font-weight: bold;
         display: inline-block;
-        background-color: gray;
+        background-color: #FD7400;
         width: 100%;
         height: 100%;
         border-top: 1px solid black;
@@ -949,7 +959,7 @@ label:hover .hovertext {
 
         .KamerOpdrachtCardActionBlok a:hover {
             text-decoration: none;
-            background-color: white;
+            background-color: #FF5347;
             color: black;
         }
 
@@ -971,7 +981,7 @@ label:hover .hovertext {
 
 #opvoederindexclientnaam {
     border-bottom: 1px solid black;
-    background-color: rgb(52, 168, 83);
+    background-color: #BEDB39;
     color: white;
     font-weight: bolder;
     font-size: 14pt;
@@ -1006,7 +1016,7 @@ label:hover .hovertext {
     }
 
     .opvoederindexclientaction a:hover {
-        background-color: rgb(66, 133, 244);
+        background-color: #004358;
         color: white;
         font-weight: bold;
     }
@@ -1027,13 +1037,18 @@ label:hover .hovertext {
     margin: 10px;
 }
 
+h1, h2, h3, h4 {
+    /*color: #1F8A70*/
+    color: black;
+}
+
 .planningcarddate {
     font-size: 13pt;
     height: 30px;
     color: white;
     border-bottom: 1px solid black;
     font-weight: bolder;
-    background-color: rgb(180, 196, 38);
+    background-color: #004358;
 }
 
 .planningcardactivity {
@@ -1056,13 +1071,13 @@ label:hover .hovertext {
         text-decoration: none;
         color: white;
         font-weight: bolder;
-        background-color: rgb(180, 196, 38);
+        background-color: #FD7400;
     }
 
 
         .planningcardaction a:hover {
             color: black;
-            background-color: red;
+            background-color: #FF5347;
         }
 
 
@@ -1121,6 +1136,6 @@ label:hover .hovertext {
     margin-right: auto;
 }
 
-.inputformtable td{
-    padding: 5px;
-}
+    .inputformtable td {
+        padding: 5px;
+    }

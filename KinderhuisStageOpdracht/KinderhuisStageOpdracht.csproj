@@ -284,6 +284,8 @@
     <Content Include="Content\Images\Aanduidingen\Planning.png" />
     <Content Include="Content\Images\Aanduidingen\print.png" />
     <Content Include="Content\Images\Aanduidingen\strafbeloning.png" />
+    <Content Include="Content\Images\login_screen.jpg" />
+    <Content Include="Content\Images\logo56.png" />
     <Content Include="Content\Images\StrafImages\Beloning.png" />
     <Content Include="Content\Images\StrafImages\pacmansanctie.png" />
     <Content Include="Content\Images\Aanduidingen\password.png" />
@@ -301,7 +303,6 @@
     <Content Include="Content\Images\KamerControleImages\bed_opmaken.png" />
     <Content Include="Content\Images\KamerControleImages\gordijn_openen.jpg" />
     <Content Include="Content\Images\KamerControleImages\was_opruimen.png" />
-    <Content Include="Content\Images\login_screen.png" />
     <Content Include="Content\Images\StrafImages\pacman.png" />
     <Content Include="Content\Images\StrafImages\Straf.png" />
     <Content Include="Content\Styles.css" />
